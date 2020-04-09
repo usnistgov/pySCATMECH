@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SolidAngle classes &mdash; pySCATMECH 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Integrator class" href="integrate2.html" />
+    <link rel="prev" title="Integrate Module" href="integrate.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pySCATMECH
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mueller.html">Mueller Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fresnel.html">Fresnel Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brdf.html">BRDF Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local.html">Local Module</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="integrate.html">Integrate Module</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SolidAngle classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrate2.html">Integrator class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="UsingMueller.html">Using the Mueller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingFresnel.html">Using the Fresnel module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingBRDF.html">Using the BRDF module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingLocal.html">Using the Local module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingIntegrate.html">Using the Integrate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingScatterer.html">Using the Scatterer module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingRCW.html">Using the RCW module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pySCATMECH</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="integrate.html">Integrate Module</a> &raquo;</li>
+        
+      <li>SolidAngle classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/integrate1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pySCATMECH.integrate">
+<span id="solidangle-classes"></span><h1>SolidAngle classes<a class="headerlink" href="#module-pySCATMECH.integrate" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pySCATMECH.integrate.SolidAngle">
+<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">SolidAngle</code><a class="headerlink" href="#pySCATMECH.integrate.SolidAngle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract class for a solid angle on a hemisphere.</p>
+<p>Inherited classes are expected to define inside(self,v) where
+v contains directional cosines and returns a tuple of
+bool (<cite>True</cite> if (x,y) is inside solid angle, <cite>False</cite> otherwise) and
+the Stokes vector sensitivity.</p>
+<p>The parent class provides __and__, __or__, and __invert__
+functionality, so that solid angles can be defined by combining
+other solid angle classes.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="pySCATMECH.integrate.Hemisphere">
+<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">Hemisphere</code><span class="sig-paren">(</span><em class="sig-param">sensitivity=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">polphi=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pySCATMECH.integrate.SolidAngle" title="pySCATMECH.integrate.SolidAngle"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.integrate.SolidAngle</span></code></a></p>
+<p>A solid angle defined by the entire hemisphere.</p>
+<dl class="method">
+<dt id="pySCATMECH.integrate.Hemisphere.inside">
+<code class="sig-name descname">inside</code><span class="sig-paren">(</span><em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere.inside" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>is_inside</strong> (<em>bool</em>) – True if v is inside solid angle, False otherwise</p></li>
+<li><p><strong>sensitivity</strong> (<em>StokesVector</em>) – The Stokes vector sensitivity</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pySCATMECH.integrate.EllipticalCone">
+<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">EllipticalCone</code><span class="sig-paren">(</span><em class="sig-param">theta=0</em>, <em class="sig-param">phi=0</em>, <em class="sig-param">alpha=0</em>, <em class="sig-param">gamma=0</em>, <em class="sig-param">sensitivity=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">polphi=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pySCATMECH.integrate.SolidAngle" title="pySCATMECH.integrate.SolidAngle"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.integrate.SolidAngle</span></code></a></p>
+<p>A solid angle defined as an elliptical circular cone.</p>
+<dl class="method">
+<dt id="pySCATMECH.integrate.EllipticalCone.inside">
+<code class="sig-name descname">inside</code><span class="sig-paren">(</span><em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone.inside" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>is_inside</strong> (<em>bool</em>) – True if v is inside solid angle, False otherwise</p></li>
+<li><p><strong>sensitivity</strong> (<em>StokesVector</em>) – The Stokes vector sensitivity</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pySCATMECH.integrate.RectangularCone">
+<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">RectangularCone</code><span class="sig-paren">(</span><em class="sig-param">theta=0</em>, <em class="sig-param">phi=0</em>, <em class="sig-param">alpha=0</em>, <em class="sig-param">gamma=0</em>, <em class="sig-param">sensitivity=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">polphi=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pySCATMECH.integrate.SolidAngle" title="pySCATMECH.integrate.SolidAngle"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.integrate.SolidAngle</span></code></a></p>
+<p>A solid angle defined by a rectangular collection cone.</p>
+<dl class="method">
+<dt id="pySCATMECH.integrate.RectangularCone.inside">
+<code class="sig-name descname">inside</code><span class="sig-paren">(</span><em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone.inside" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>is_inside</strong> (<em>bool</em>) – True if v is inside solid angle, False otherwise</p></li>
+<li><p><strong>sensitivity</strong> (<em>StokesVector</em>) – The Stokes vector sensitivity</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pySCATMECH.integrate.ProjectedPolygon">
+<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">ProjectedPolygon</code><span class="sig-paren">(</span><em class="sig-param">boundary</em>, <em class="sig-param">sensitivity=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">polphi=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#pySCATMECH.integrate.SolidAngle" title="pySCATMECH.integrate.SolidAngle"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.integrate.SolidAngle</span></code></a></p>
+<p>A solid angle defined by an array of (x,y) points in projected cosine space.</p>
+<dl class="method">
+<dt id="pySCATMECH.integrate.ProjectedPolygon.inside">
+<code class="sig-name descname">inside</code><span class="sig-paren">(</span><em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon.inside" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>is_inside</strong> (<em>bool</em>) – True if v is inside solid angle, False otherwise</p></li>
+<li><p><strong>sensitivity</strong> (<em>StokesVector</em>) – The Stokes vector sensitivity</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pySCATMECH.integrate.SquareCone">
+<code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">SquareCone</code><a class="headerlink" href="#pySCATMECH.integrate.SquareCone" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pySCATMECH.integrate.RectangularCone" title="pySCATMECH.integrate.RectangularCone"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.integrate.RectangularCone</span></code></a></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pySCATMECH.integrate.CircularCone">
+<code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">CircularCone</code><a class="headerlink" href="#pySCATMECH.integrate.CircularCone" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#pySCATMECH.integrate.EllipticalCone" title="pySCATMECH.integrate.EllipticalCone"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.integrate.EllipticalCone</span></code></a></p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="integrate2.html" class="btn btn-neutral float-right" title="Integrator class" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="integrate.html" class="btn btn-neutral float-left" title="Integrate Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Other polarization operations &mdash; pySCATMECH 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fresnel Module" href="fresnel.html" />
+    <link rel="prev" title="Mueller matrix decompositions" href="mueller3.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pySCATMECH
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="mueller.html">Mueller Module</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="mueller1.html">MuellerMatrix class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller2.html">StokesVector class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller3.html">Mueller matrix decompositions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Other polarization operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fresnel.html">Fresnel Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brdf.html">BRDF Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local.html">Local Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrate.html">Integrate Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="UsingMueller.html">Using the Mueller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingFresnel.html">Using the Fresnel module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingBRDF.html">Using the BRDF module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingLocal.html">Using the Local module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingIntegrate.html">Using the Integrate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingScatterer.html">Using the Scatterer module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingRCW.html">Using the RCW module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pySCATMECH</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="mueller.html">Mueller Module</a> &raquo;</li>
+        
+      <li>Other polarization operations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/mueller4.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pySCATMECH.mueller">
+<span id="other-polarization-operations"></span><h1>Other polarization operations<a class="headerlink" href="#module-pySCATMECH.mueller" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="pySCATMECH.mueller.JonesMueller">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesMueller</code><span class="sig-paren">(</span><em class="sig-param">jones</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesMueller" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a Jones matrix to a Mueller matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>jones</strong> (<em>2x2 list</em><em> or </em><em>array of int</em><em>, </em><em>float</em><em>, or </em><em>complex</em>) – A Jones matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mueller</strong> – The Mueller matrix associated with jones.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.JonesStokes">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesStokes</code><span class="sig-paren">(</span><em class="sig-param">jones</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesStokes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a Jones vector to a Stokes vector</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>jones</strong> (<em>2 element list</em><em> or </em><em>array of int</em><em>, </em><em>float</em><em>, or </em><em>complex</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.MuellerToHermitian">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerToHermitian</code><span class="sig-paren">(</span><em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerToHermitian" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a Mueller matrix into its equivalent Hermitian coherency matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>m</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The Mueller matrix to be converted.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>h</strong> – Hermitian coherence matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>4x4 complext np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.HermitianToMueller">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">HermitianToMueller</code><span class="sig-paren">(</span><em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.HermitianToMueller" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a Hermitian coherency matrix to its equivalent Mueller matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>h</strong> (<em>ndarray</em><em>(</em><em>(</em><em>4</em><em>,</em><em>4</em><em>)</em><em>,</em><em>complex</em><em>)</em>) – A Hermitian coherency matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>m</strong> – The Mueller matrix form of the coherency matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.MuellerExp">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerExp</code><span class="sig-paren">(</span><em class="sig-param">L</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerExp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns matrix exponential.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>L</strong> – The matrix exponent of M</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>4x4 np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.JonesZero">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesZero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesZero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a zero Jones matrix</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.JonesUnit">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesUnit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a unit Jones matrix</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.JonesRotator">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesRotator</code><span class="sig-paren">(</span><em class="sig-param">angle</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesRotator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Jones matrix that rotates the polarization by angle”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – Angle that matrix will rotate in radians</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>R</strong> – The rotation matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>2x2 np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.MuellerRotator">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerRotator</code><span class="sig-paren">(</span><em class="sig-param">angle</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerRotator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Mueller matrix that rotates the polarization by angle”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – Angle that matrix will rotate in radians</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>R</strong> – The rotation matrix</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.JonesLinearRetarder">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesLinearRetarder</code><span class="sig-paren">(</span><em class="sig-param">phase</em>, <em class="sig-param">angle</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesLinearRetarder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Jones matrix for a linear retarder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phase</strong> (<em>float</em>) – Phase in radians</p></li>
+<li><p><strong>angle</strong> (<em>float</em>) – Angle of retarder</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ret</strong> – A Jones matrix retarder</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>2x2 np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.JonesLinearPolarizer">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesLinearPolarizer</code><span class="sig-paren">(</span><em class="sig-param">angle</em>, <em class="sig-param">diattenuation=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesLinearPolarizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a Jones matrix for a linear polarizer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – Angle of polarizer</p></li>
+<li><p><strong>diattenuation</strong> (<em>float</em><em>, </em><em>optional</em>) – The diattenuation (default is 1)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ret</strong> – A Jones matrix linear polarizer</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>2x2 np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.MuellerZero">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerZero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerZero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a zero Mueller matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>m</strong> – Zero matrix</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.MuellerUnit">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerUnit</code><span class="sig-paren">(</span><em class="sig-param">attenuation=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerUnit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a unit Mueller matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>attenuation</strong> (<em>float</em><em>, </em><em>optional</em>) – Default is 1</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.MuellerDiagonal">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerDiagonal</code><span class="sig-paren">(</span><em class="sig-param">a</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerDiagonal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a diagonal Mueller matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>a</strong> (<em>4 element list</em><em> or </em><em>array of float</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.StokesZero">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">StokesZero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesZero" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns zero Stokes vector</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.Polarization">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Polarization</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Polarization" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a StokesVector with a given name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>args</strong> (<em>str</em><em> or </em><em>float</em>) – <dl class="simple">
+<dt>Can be any of:</dt><dd><p><cite>P</cite> or <cite>p</cite> for p-polarization
+<cite>S</cite> or <cite>s</cite> for s-polarization
+<cite>L</cite> or <cite>l</cite> for LCP-polarization
+<cite>R</cite> or <cite>r</cite> for RCP-polarization
+<cite>U</cite> or <cite>u</cite> for unpolarized
+any float for linear polarization at angle <cite>name</cite> in radians</p>
+</dd>
+</dl>
+</p></li>
+<li><p><strong>state</strong> (<em>str</em>) – Any of the aboves strings that can be used in args</p></li>
+<li><p><strong>I</strong> (<em>float</em><em>, </em><em>optional</em>) – The intensity. (Default is 1)</p></li>
+<li><p><strong>DOP</strong> (<em>float</em><em>, </em><em>optional</em>) – The degree of polarization. (Default is 1)</p></li>
+<li><p><strong>angle</strong> (<em>float</em><em>, </em><em>optional</em>) – The principal angle of the polarization. (Default is set by
+args or state.)</p></li>
+<li><p><strong>ellipticity</strong> (<em>float</em>) – The ellipticity of the polarization</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>s</strong> – The Stokes vector with the given parameters</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector">StokesVector</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.Sensitivity">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Sensitivity</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Sensitivity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a StokesVector with a given name that
+corresponds to a sensitivity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em><em> or </em><em>float</em>) – <dl class="simple">
+<dt>Can be any of:</dt><dd><p><cite>P</cite> or <cite>p</cite> for p-polarization
+<cite>S</cite> or <cite>s</cite> for s-polarization
+<cite>L</cite> or <cite>l</cite> for LCP-polarization
+<cite>R</cite> or <cite>r</cite> for RCP-polarization
+<cite>U</cite> or <cite>u</cite> for unpolarized
+any float for linear polarization at angle <cite>name</cite></p>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fresnel.html" class="btn btn-neutral float-right" title="Fresnel Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="mueller3.html" class="btn btn-neutral float-left" title="Mueller matrix decompositions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

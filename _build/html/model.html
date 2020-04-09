@@ -1,0 +1,396 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Model Module &mdash; pySCATMECH 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BRDF Module" href="brdf.html" />
+    <link rel="prev" title="FilmStack class" href="fresnel3.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pySCATMECH
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Modules</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mueller.html">Mueller Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fresnel.html">Fresnel Module</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brdf.html">BRDF Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local.html">Local Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrate.html">Integrate Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="UsingMueller.html">Using the Mueller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingFresnel.html">Using the Fresnel module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingBRDF.html">Using the BRDF module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingLocal.html">Using the Local module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingIntegrate.html">Using the Integrate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingScatterer.html">Using the Scatterer module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingRCW.html">Using the RCW module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pySCATMECH</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Model Module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/model.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-pySCATMECH.model">
+<span id="model-module"></span><h1>Model Module<a class="headerlink" href="#module-pySCATMECH.model" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="pySCATMECH.model.DialogGetModel">
+<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">DialogGetModel</code><span class="sig-paren">(</span><em class="sig-param">top</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.DialogGetModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a dialog box with a selection of Models inheriting top and
+returns the choice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>top</strong> (<em>str</em>) – The top level class from which to choose a child class</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>str</strong> (<em>The name of the selected child class</em>)</p></li>
+<li><p><em>Requires</em></p></li>
+<li><p><em>——–</em></p></li>
+<li><p><em>tkinter</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.model.DialogGetModelParameters">
+<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">DialogGetModelParameters</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.DialogGetModelParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens a dialog box with a selection of Models inheriting top and
+returns the choice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference internal" href="#pySCATMECH.model.Model" title="pySCATMECH.model.Model"><em>Model</em></a>) – The model to fill parameters out with.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>Model</em></p></li>
+<li><p><em>The model with new parameters</em></p></li>
+<li><p><em>Requires</em></p></li>
+<li><p><em>——–</em></p></li>
+<li><p><em>tkinter</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="pySCATMECH.model.Model">
+<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">Model</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for Models.</p>
+<dl class="method">
+<dt id="pySCATMECH.model.Model.askParameters">
+<code class="sig-name descname">askParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.askParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the user for parameter values.
+TODO FIX!</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.model.Model.getModelName">
+<code class="sig-name descname">getModelName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getModelName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the model’s name</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.model.Model.getParameter">
+<code class="sig-name descname">getParameter</code><span class="sig-paren">(</span><em class="sig-param">parameter</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a string corresponding to the value of a model parameter.
+Arguments:
+parameter: parameter name as a string
+Returns: parameter value</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.model.Model.getParameterDictionary">
+<code class="sig-name descname">getParameterDictionary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getParameterDictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary of dictionaries for each parameter that includes
+values, descriptions, and types.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.model.Model.getParameters">
+<code class="sig-name descname">getParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets all of the parameters for the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict with str keys</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.model.Model.printParameters">
+<code class="sig-name descname">printParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.printParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a printable string that includes all the parameters,
+their values, and their descriptions.
+Recommend surround with print()</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.model.Model.setParameter">
+<code class="sig-name descname">setParameter</code><span class="sig-paren">(</span><em class="sig-param">parameter</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.setParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets a single parameter for the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameter</strong> (<em>str</em>) – Parameter name as a string.
+Subparameters must use <cite>parameter.subparameter</cite> notation.</p></li>
+<li><p><strong>value</strong> (<em>float</em><em>, </em><em>str</em><em>, or </em><em>complex</em>) – Parameter value</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.model.Model.setParameters">
+<code class="sig-name descname">setParameters</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.setParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets one or more parameters for the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>parameter_values</strong> (<em>dict</em>) – Argument is a dictionary with with str keys being
+the parameters and values being the values.
+<cite>None</cite> key defines model name.</p></li>
+<li><p><strong>**kwargs</strong> – parameters can be set by parameter name,
+<cite>lambda</cite> should be replace with <cite>wavelength</cite>, since
+lambda is a Python keyword.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pySCATMECH.model.Model" title="pySCATMECH.model.Model">Model</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.model.chooseModel">
+<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">chooseModel</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.chooseModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Presents user with a choice of models and returns the user’s choice, by
+name.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.model.chooseModelAndParameters">
+<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">chooseModelAndParameters</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.chooseModelAndParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Presents user with a choice of models and asks for parameters.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.model.createDictOfDict">
+<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">createDictOfDict</code><span class="sig-paren">(</span><em class="sig-param">theDict</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.createDictOfDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a dictionary of dictionaries for a simple dictionary
+with dot-delimited keys. The result[gparent][parent][child]
+theDict[“gparent.parent.child”]–&gt;result[“gparent”][“parent”][“child”]
+theDict[“gparent.parent”]–&gt; result[gparent][parent][None]</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.model.getModelDictionary">
+<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">getModelDictionary</code><span class="sig-paren">(</span><em class="sig-param">model='Model'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.getModelDictionary" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dictionary containing all the models inheriting model and their
+descriptions.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.model.strDictOfDict">
+<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">strDictOfDict</code><span class="sig-paren">(</span><em class="sig-param">thedict</em>, <em class="sig-param">indent=''</em>, <em class="sig-param">result=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.strDictOfDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints a dictionary of dictionaries in a readable format</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="brdf.html" class="btn btn-neutral float-right" title="BRDF Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fresnel3.html" class="btn btn-neutral float-left" title="FilmStack class" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

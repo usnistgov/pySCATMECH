@@ -1,0 +1,868 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using the Mueller module &mdash; pySCATMECH 0.0.1 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using the Fresnel module" href="UsingFresnel.html" />
+    <link rel="prev" title="CrossRCW Module" href="crossrcw.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> pySCATMECH
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mueller.html">Mueller Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fresnel.html">Fresnel Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brdf.html">BRDF Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local.html">Local Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrate.html">Integrate Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using the Mueller module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#mueller-matrices">Mueller matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stokes-vectors">Stokes Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloude-decomposition">Cloude decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lu-chipman-decomposition">Lu-Chipman decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reverse-lu-chipman-decomposition">Reverse Lu-Chipman decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#symmetric-decomposition">Symmetric Decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#differential-logarithmic-decomposition">Differential (Logarithmic) Decomposition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-parameters">Other parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UsingFresnel.html">Using the Fresnel module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingBRDF.html">Using the BRDF module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingLocal.html">Using the Local module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingIntegrate.html">Using the Integrate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingScatterer.html">Using the Scatterer module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingRCW.html">Using the RCW module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pySCATMECH</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Using the Mueller module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/UsingMueller.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-the-mueller-module">
+<h1>Using the Mueller module<a class="headerlink" href="#using-the-mueller-module" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, we demonstrate how to use the Mueller module, which
+defines the <code class="docutils literal notranslate"><span class="pre">MuellerMatrix</span></code> and <code class="docutils literal notranslate"><span class="pre">StokesVector</span></code> classes and various
+operations on them.</p>
+<p>The first thing, of course, is to import the package and some other
+packages that we will be using. We will be creating some random matrices
+and vectors, so we need <code class="docutils literal notranslate"><span class="pre">random</span></code>, and we will be graphing a few
+things, so we need <code class="docutils literal notranslate"><span class="pre">maptplotlib.pyplot</span></code>.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> notebook
+<span class="kn">from</span> <span class="nn">pySCATMECH.mueller</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+<div class="section" id="mueller-matrices">
+<h2>Mueller matrices<a class="headerlink" href="#mueller-matrices" title="Permalink to this headline">¶</a></h2>
+<p>The class <code class="docutils literal notranslate"><span class="pre">MuellerMatrix</span></code> is used for handling Mueller matrices. Here
+we show several ways one can create a unit Mueller matrix. The
+<code class="docutils literal notranslate"><span class="pre">JonesMueller()</span></code> function converts a 2 x 2 complex Jones matrix into a
+Mueller matrix. And <code class="docutils literal notranslate"><span class="pre">MuellerUnit()</span></code> returns a unit Mueller matrix.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">MuellerMatrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">MuellerMatrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">m3</span> <span class="o">=</span> <span class="n">MuellerMatrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">m4</span> <span class="o">=</span> <span class="n">JonesMueller</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">m5</span> <span class="o">=</span> <span class="n">MuellerUnit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">1.</span> <span class="mf">0.</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">0.</span> <span class="mf">1.</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>We can check to see that these are valid matrices. The <code class="docutils literal notranslate"><span class="pre">valid</span></code> method
+tests whether a Mueller matrix maps the set of valid Stokes vectors onto
+itself. The <code class="docutils literal notranslate"><span class="pre">physically_valid</span></code> method tests whether a Mueller matrix
+is a convex sum of Jones-Mueller matrices. The latter is a more
+stringent test of whether the matrix is realizable.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">valid</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">physically_valid</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">True</span>
+<span class="kc">True</span>
+</pre></div>
+</div>
+<p>But, a random matrix is not necessarily valid. In fact, it probably
+isn’t!</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns a random number with a normal distribution...</span>
+<span class="n">ran</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create 20 random matrices...</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="p">[</span><span class="n">MuellerMatrix</span><span class="p">([[</span><span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">()],</span>
+                    <span class="p">[</span><span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">()],</span>
+                    <span class="p">[</span><span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">()],</span>
+                    <span class="p">[</span><span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">(),</span> <span class="n">ran</span><span class="p">()]])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+
+<span class="c1"># See if they are valid...</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number value() is True:&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">valid</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">m1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number physically valid() is True:&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">physically_valid</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">m1</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">value</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">Number</span> <span class="n">physically</span> <span class="n">valid</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>A Mueller matrix made from a random Jones matrix, however, always yields
+a valid Mueller matrix.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns a random complex number with a normal distribution...</span>
+<span class="n">ranc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
+
+<span class="c1"># Create 20 random Jones-Mueller matrices...</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="p">[</span><span class="n">JonesMueller</span><span class="p">([[</span><span class="n">ranc</span><span class="p">(),</span> <span class="n">ranc</span><span class="p">()],</span> <span class="p">[</span><span class="n">ranc</span><span class="p">(),</span> <span class="n">ranc</span><span class="p">()]])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">)]</span>
+
+<span class="c1"># See if they are valid...</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number value() is True:&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">valid</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">m1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number physically valid() is True:&quot;</span><span class="p">,</span> <span class="nb">sum</span><span class="p">([</span><span class="n">m</span><span class="o">.</span><span class="n">physically_valid</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">m1</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Number</span> <span class="n">value</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span> <span class="mi">20</span>
+<span class="n">Number</span> <span class="n">physically</span> <span class="n">valid</span><span class="p">()</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>To make a random depolarizing Mueller matrix, we average some random
+Jones-Mueller matrices:</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RandomMuellerMatrix</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a random Mueller matrix by averaging `n` Jones-Mueller matrices.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ranc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">JonesMueller</span><span class="p">([[</span><span class="n">ranc</span><span class="p">(),</span><span class="n">ranc</span><span class="p">()],[</span><span class="n">ranc</span><span class="p">(),</span><span class="n">ranc</span><span class="p">()]])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span><span class="o">/</span><span class="n">n</span>
+
+<span class="n">m</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m is a valid Stokes to Stokes mapper:&quot;</span><span class="p">,</span><span class="n">m</span><span class="o">.</span><span class="n">valid</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m is the sum of Jones-Mueller matrices:&quot;</span><span class="p">,</span><span class="n">m</span><span class="o">.</span><span class="n">physically_valid</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span> <span class="mf">1.02866177</span>  <span class="mf">0.10617174</span>  <span class="mf">0.04343313</span>  <span class="mf">0.08971954</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.100156</span>    <span class="mf">0.15165395</span> <span class="o">-</span><span class="mf">0.39219759</span>  <span class="mf">0.24570933</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.14134231</span> <span class="o">-</span><span class="mf">0.11237291</span> <span class="o">-</span><span class="mf">0.18125607</span> <span class="o">-</span><span class="mf">0.51173016</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.23233523</span>  <span class="mf">0.69174984</span>  <span class="mf">0.22671411</span> <span class="o">-</span><span class="mf">0.19292561</span><span class="p">]]</span>
+<span class="n">m</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">valid</span> <span class="n">Stokes</span> <span class="n">to</span> <span class="n">Stokes</span> <span class="n">mapper</span><span class="p">:</span> <span class="kc">True</span>
+<span class="n">m</span> <span class="ow">is</span> <span class="n">the</span> <span class="nb">sum</span> <span class="n">of</span> <span class="n">Jones</span><span class="o">-</span><span class="n">Mueller</span> <span class="n">matrices</span><span class="p">:</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stokes-vectors">
+<h2>Stokes Vectors<a class="headerlink" href="#stokes-vectors" title="Permalink to this headline">¶</a></h2>
+<p>The class <code class="docutils literal notranslate"><span class="pre">StokesVector</span></code> is used for handling Stokes vectors. We can
+create a Stokes vector a several ways. The <code class="docutils literal notranslate"><span class="pre">Polarization</span></code> function
+provides a means for generating arbitrary polarizations by name or
+parameter. (Note that SCATMECH’s convention for the signs of the Stokes
+vector elements differs from some others.)</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unpolarized Stokes vector:&quot;</span><span class="p">,</span> <span class="n">StokesVector</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unpolarized Stokes vector:&quot;</span><span class="p">,</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s-polarized unit polarization from a Jones vector:&quot;</span><span class="p">,</span> <span class="n">JonesStokes</span><span class="p">((</span><span class="mf">1.</span><span class="p">,</span><span class="mf">0.</span><span class="p">))</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;p-polarized unit Stokes vector:&quot;</span><span class="p">,</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s-polarized unit Stokes vector:&quot;</span><span class="p">,</span> <span class="n">Polarization</span><span class="p">(</span><span class="n">state</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Left-handed circularly polarized unit Stokes vector:&quot;</span><span class="p">,</span> <span class="n">Polarization</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Right-handed circularly polarized unit Stokes vector with intensity 2:&quot;</span><span class="p">,</span> <span class="n">Polarization</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unpolarized Stokes vector:&quot;</span><span class="p">,</span> <span class="n">Polarization</span><span class="p">(</span><span class="s2">&quot;U&quot;</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unpolarized Stokes vector:&quot;</span><span class="p">,</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">DOP</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Linear polarization at 45 degrees:&quot;</span><span class="p">,</span> <span class="n">Polarization</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="mi">45</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elliptically polarized radiation:&quot;</span><span class="p">,</span> <span class="n">Polarization</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="mi">34</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">ellipticity</span> <span class="o">=</span> <span class="mi">20</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Partially polarized radiation:&quot;</span><span class="p">,</span> <span class="n">Polarization</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="n">DOP</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Partially polarized elliptical polarized radiation with intensity 3:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span>
+      <span class="n">Polarization</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="mi">34</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">ellipticity</span> <span class="o">=</span> <span class="mi">20</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">DOP</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Unpolarized</span> <span class="n">Stokes</span> <span class="n">vector</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Unpolarized</span> <span class="n">Stokes</span> <span class="n">vector</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">s</span><span class="o">-</span><span class="n">polarized</span> <span class="n">unit</span> <span class="n">polarization</span> <span class="kn">from</span> <span class="nn">a</span> <span class="n">Jones</span> <span class="n">vector</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">p</span><span class="o">-</span><span class="n">polarized</span> <span class="n">unit</span> <span class="n">Stokes</span> <span class="n">vector</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">s</span><span class="o">-</span><span class="n">polarized</span> <span class="n">unit</span> <span class="n">Stokes</span> <span class="n">vector</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Left</span><span class="o">-</span><span class="n">handed</span> <span class="n">circularly</span> <span class="n">polarized</span> <span class="n">unit</span> <span class="n">Stokes</span> <span class="n">vector</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Right</span><span class="o">-</span><span class="n">handed</span> <span class="n">circularly</span> <span class="n">polarized</span> <span class="n">unit</span> <span class="n">Stokes</span> <span class="n">vector</span> <span class="k">with</span> <span class="n">intensity</span> <span class="mi">2</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">Unpolarized</span> <span class="n">Stokes</span> <span class="n">vector</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Unpolarized</span> <span class="n">Stokes</span> <span class="n">vector</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Linear</span> <span class="n">polarization</span> <span class="n">at</span> <span class="mi">45</span> <span class="n">degrees</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">6.123233995736766e-17</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">Elliptically</span> <span class="n">polarized</span> <span class="n">radiation</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.2869652992419897</span><span class="p">,</span><span class="mf">0.7102640395405222</span><span class="p">,</span><span class="mf">0.6427876096865393</span><span class="p">)</span>
+<span class="n">Partially</span> <span class="n">polarized</span> <span class="n">radiation</span><span class="p">:</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">Partially</span> <span class="n">polarized</span> <span class="n">elliptical</span> <span class="n">polarized</span> <span class="n">radiation</span> <span class="k">with</span> <span class="n">intensity</span> <span class="mi">3</span><span class="p">:</span>
+ <span class="n">StokesVector</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">0.6026271284081782</span><span class="p">,</span><span class="mf">1.4915544830350964</span><span class="p">,</span><span class="mf">1.3498539803417322</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that polarization sensitivity can also be expressed as a Stokes
+vector. However, there is often a factor of two that enters for all but
+unpolarized sensitivity. That is, a perfect polarizer transmits 50 % of
+unpolarized radiation. We can apply <code class="docutils literal notranslate"><span class="pre">senstivity</span> <span class="pre">=</span> <span class="pre">True</span></code> to the
+<code class="docutils literal notranslate"><span class="pre">Polarization()</span></code> function, or use a <code class="docutils literal notranslate"><span class="pre">Sensitivity</span></code> function.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only sensitive to p-polarization</span>
+<span class="c1"># The following two statements are equivalent...</span>
+<span class="n">sens</span> <span class="o">=</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="n">sensitivity</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">sens</span> <span class="o">=</span> <span class="n">Sensitivity</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Signal for p-polarization:&#39;</span><span class="p">,</span><span class="n">sens</span> <span class="o">@</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Signal for s-polarization:&#39;</span><span class="p">,</span><span class="n">sens</span> <span class="o">@</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Signal</span> <span class="k">for</span> <span class="n">p</span><span class="o">-</span><span class="n">polarization</span><span class="p">:</span> <span class="mf">1.0</span>
+<span class="n">Signal</span> <span class="k">for</span> <span class="n">s</span><span class="o">-</span><span class="n">polarization</span><span class="p">:</span> <span class="mf">0.0</span>
+</pre></div>
+</div>
+<p>Sensitivity does not need to be full polarizing. By setting <code class="docutils literal notranslate"><span class="pre">DOP</span></code> in
+the range [0,1], sensitivity to the orthogonal polarization can be
+non-zero.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="n">Sensitivity</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="n">DOP</span><span class="o">=.</span><span class="mi">8</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sens = &#39;</span><span class="p">,</span> <span class="n">sens</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Signal for p-polarization:&#39;</span><span class="p">,</span><span class="n">sens</span> <span class="o">@</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Signal for s-polarization:&#39;</span><span class="p">,</span><span class="n">sens</span> <span class="o">@</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span>  <span class="n">StokesVector</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span><span class="o">-</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.0</span><span class="p">)</span>
+<span class="n">Signal</span> <span class="k">for</span> <span class="n">p</span><span class="o">-</span><span class="n">polarization</span><span class="p">:</span> <span class="mf">1.0</span>
+<span class="n">Signal</span> <span class="k">for</span> <span class="n">s</span><span class="o">-</span><span class="n">polarization</span><span class="p">:</span> <span class="mf">0.19999999999999996</span>
+</pre></div>
+</div>
+<p>In a manner similar to what we did with Mueller matrices, we can create
+a random Stokes vector by averaging a number of Stokes vectors created
+from Jones vectors. For a single Jones vector, the Stokes vector is
+depolarized. For more than one, the Stokes vector is partially polarized
+or unpolarized. We illustrate that by plotting the degree of
+polarization (using the <code class="docutils literal notranslate"><span class="pre">DOP()</span></code> method) as a function of the number of
+Jones-Stokes vectors we add.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RandomStokesVector</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">ranc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">JonesStokes</span><span class="p">([</span><span class="n">ranc</span><span class="p">(),</span><span class="n">ranc</span><span class="p">()])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span><span class="o">/</span><span class="n">n</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">),[</span><span class="n">RandomStokesVector</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">DOP</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Degree of polarization vs. number of Jones-Stokes vectors&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;n&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;DOP&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Javascript</span> <span class="nb">object</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABCAAAAMYCAYAAAAaYpYrAAAgAElEQVR4Xu3YsQ0AMAzDsPj/p3OFNvaABiA8aecRIECAAAECBAgQIECAAAECBGKBxf/7ngABAgQIECBAgAABAgQIECBwAoQRECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEEmyo9MAAB/rSURBVDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAwAOVOAMZAU+CpAAAAABJRU5ErkJggg==" width="639.9999630089984"><p>We can multiply Mueller matrices and Stokes vectors. You can use the
+<code class="docutils literal notranslate"><span class="pre">&#64;</span></code> or <code class="docutils literal notranslate"><span class="pre">*</span></code> operators or the <code class="docutils literal notranslate"><span class="pre">dot()</span></code> function to multiply the
+objects. If a Stokes vector multiplies a Mueller matrix from the left,
+it is assumed to be transposed first. The product of two Stokes vectors
+is the inner product, a scalar.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">RandomStokesVector</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">RandomStokesVector</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m1 = </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">m1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m2 = </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">m2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s1 = &quot;</span><span class="p">,</span><span class="n">s1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s2 = &quot;</span><span class="p">,</span><span class="n">s2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m1 * s1 = &quot;</span><span class="p">,</span><span class="n">m1</span> <span class="o">*</span> <span class="n">s1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m1 @ s1 = &quot;</span><span class="p">,</span><span class="n">m1</span> <span class="o">*</span> <span class="n">s1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m1.dot(s1) = &quot;</span><span class="p">,</span><span class="n">m1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">s1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m1 @ m2 = &quot;</span><span class="p">,</span><span class="n">m1</span> <span class="o">*</span> <span class="n">m2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s1 @ m1 = &quot;</span><span class="p">,</span><span class="n">s1</span> <span class="o">*</span> <span class="n">m1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;s1 @ s2 = &quot;</span><span class="p">,</span><span class="n">s1</span> <span class="o">*</span> <span class="n">s2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span>
+ <span class="p">[[</span> <span class="mf">1.00517485</span>  <span class="mf">0.20422392</span>  <span class="mf">0.27231273</span>  <span class="mf">0.36257782</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.2386279</span>  <span class="o">-</span><span class="mf">0.23089232</span>  <span class="mf">0.14992156</span> <span class="o">-</span><span class="mf">0.10683577</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.0618103</span>  <span class="o">-</span><span class="mf">0.36095845</span> <span class="o">-</span><span class="mf">0.10485833</span>  <span class="mf">0.36767783</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.29101141</span>  <span class="mf">0.17490815</span>  <span class="mf">0.24489798</span>  <span class="mf">0.41802033</span><span class="p">]]</span>
+<span class="n">m2</span> <span class="o">=</span>
+ <span class="p">[[</span> <span class="mf">0.66807202</span>  <span class="mf">0.01348716</span> <span class="o">-</span><span class="mf">0.23718211</span> <span class="o">-</span><span class="mf">0.0527393</span> <span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.0709066</span>   <span class="mf">0.13823329</span> <span class="o">-</span><span class="mf">0.07899456</span>  <span class="mf">0.16022201</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.03722998</span> <span class="o">-</span><span class="mf">0.22927835</span> <span class="o">-</span><span class="mf">0.16160029</span> <span class="o">-</span><span class="mf">0.06475103</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.00838522</span>  <span class="mf">0.2918641</span>  <span class="o">-</span><span class="mf">0.09434956</span> <span class="o">-</span><span class="mf">0.21816941</span><span class="p">]]</span>
+<span class="n">s1</span> <span class="o">=</span>  <span class="n">StokesVector</span><span class="p">(</span><span class="mf">1.0574906644677142</span><span class="p">,</span><span class="mf">0.6608235078803372</span><span class="p">,</span><span class="mf">0.467798520388918</span><span class="p">,</span><span class="mf">0.295799578816021</span><span class="p">)</span>
+<span class="n">s2</span> <span class="o">=</span>  <span class="n">StokesVector</span><span class="p">(</span><span class="mf">0.5475531853049853</span><span class="p">,</span><span class="o">-</span><span class="mf">0.0528639703659642</span><span class="p">,</span><span class="mf">0.15219740411241975</span><span class="p">,</span><span class="mf">0.12585722047206344</span><span class="p">)</span>
+<span class="n">m1</span> <span class="o">*</span> <span class="n">s1</span> <span class="o">=</span>  <span class="n">StokesVector</span><span class="p">(</span><span class="mf">1.4325568437958527</span><span class="p">,</span><span class="o">-</span><span class="mf">0.3663947335532364</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2441872723409207</span><span class="p">,</span><span class="mf">0.6615384182038384</span><span class="p">)</span>
+<span class="n">m1</span> <span class="o">@</span> <span class="n">s1</span> <span class="o">=</span>  <span class="n">StokesVector</span><span class="p">(</span><span class="mf">1.4325568437958527</span><span class="p">,</span><span class="o">-</span><span class="mf">0.3663947335532364</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2441872723409207</span><span class="p">,</span><span class="mf">0.6615384182038384</span><span class="p">)</span>
+<span class="n">m1</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span> <span class="o">=</span>  <span class="p">[</span> <span class="mf">1.43255684</span> <span class="o">-</span><span class="mf">0.36639473</span> <span class="o">-</span><span class="mf">0.24418727</span>  <span class="mf">0.66153842</span><span class="p">]</span>
+<span class="n">m1</span> <span class="o">@</span> <span class="n">m2</span> <span class="o">=</span>  <span class="p">[[</span> <span class="mf">0.64995046</span>  <span class="mf">0.08517553</span> <span class="o">-</span><span class="mf">0.33275694</span> <span class="o">-</span><span class="mf">0.11702697</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.14952625</span> <span class="o">-</span><span class="mf">0.10069071</span>  <span class="mf">0.06069004</span> <span class="o">-</span><span class="mf">0.01080824</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.00871247</span>  <span class="mf">0.08062359</span>  <span class="mf">0.02542895</span> <span class="o">-</span><span class="mf">0.12800002</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.17640208</span>  <span class="mf">0.09395837</span> <span class="o">-</span><span class="mf">0.16185511</span> <span class="o">-</span><span class="mf">0.09438025</span><span class="p">]]</span>
+<span class="n">s1</span> <span class="o">@</span> <span class="n">m1</span> <span class="o">=</span>  <span class="n">StokesVector</span><span class="p">(</span><span class="mf">0.9624383785917531</span><span class="p">,</span><span class="o">-</span><span class="mf">0.05373225297759831</span><span class="p">,</span><span class="mf">0.41042801055101213</span><span class="p">,</span><span class="mf">0.6084724541717608</span><span class="p">)</span>
+<span class="n">s1</span> <span class="o">@</span> <span class="n">s2</span> <span class="o">=</span>  <span class="mf">0.6525248606792794</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cloude-decomposition">
+<h2>Cloude decomposition<a class="headerlink" href="#cloude-decomposition" title="Permalink to this headline">¶</a></h2>
+<p>So, now that we can create some physically valid Mueller matrices, we
+can explore some decompositions. The Cloude decomposition <a class="footnote-reference brackets" href="#id2" id="id1">1</a>
+decomposes a Mueller matrix into an incoherent, positive (convex) sum of
+Jones-Mueller matrices.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>S. R. Cloude, “Group theory and polarization algebra,” Optik
+(Stuttgart) <strong>75</strong>, 26–36 (1986) and S. R. Cloude and E. Pottier, “A
+review of target decomposition theorems in radar polarimetry,” IEEE
+Trans. Geosci. and Remote Sensing 34, 498–518 (1996).</p>
+</dd>
+</dl>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">MCD</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">Cloude_Decomposition</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;M = </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Cloude decomposition =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">MCD</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span>
+
+ <span class="p">[[</span> <span class="mf">1.06860871</span> <span class="o">-</span><span class="mf">0.25836215</span>  <span class="mf">0.41801319</span> <span class="o">-</span><span class="mf">0.47903485</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.28170505</span> <span class="o">-</span><span class="mf">0.04219007</span> <span class="o">-</span><span class="mf">0.09331764</span> <span class="o">-</span><span class="mf">0.46538519</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.34998893</span>  <span class="mf">0.29656975</span> <span class="o">-</span><span class="mf">0.21038422</span>  <span class="mf">0.26374476</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.1448985</span>  <span class="o">-</span><span class="mf">0.24315001</span> <span class="o">-</span><span class="mf">0.09975522</span>  <span class="mf">0.38279552</span><span class="p">]]</span>
+
+<span class="n">Cloude</span> <span class="n">decomposition</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">0.7488424</span>  <span class="o">-</span><span class="mf">0.21932986</span>  <span class="mf">0.28530053</span> <span class="o">-</span><span class="mf">0.53929038</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.34630918</span> <span class="o">-</span><span class="mf">0.15614657</span> <span class="o">-</span><span class="mf">0.10682545</span> <span class="o">-</span><span class="mf">0.47388339</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.48765473</span>  <span class="mf">0.3394226</span>  <span class="o">-</span><span class="mf">0.39043707</span>  <span class="mf">0.33254648</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.25019776</span> <span class="o">-</span><span class="mf">0.22123511</span> <span class="o">-</span><span class="mf">0.24077469</span>  <span class="mf">0.31001667</span><span class="p">]]</span>
+
+<span class="p">[[</span> <span class="mf">0.23532536</span> <span class="o">-</span><span class="mf">0.06502158</span>  <span class="mf">0.18244557</span>  <span class="mf">0.02871366</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.04242224</span>  <span class="mf">0.13691798</span> <span class="o">-</span><span class="mf">0.00459209</span> <span class="o">-</span><span class="mf">0.00844893</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.14040542</span> <span class="o">-</span><span class="mf">0.0414815</span>   <span class="mf">0.17623677</span> <span class="o">-</span><span class="mf">0.06303115</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.12971251</span> <span class="o">-</span><span class="mf">0.02828278</span>  <span class="mf">0.13872728</span>  <span class="mf">0.11755646</span><span class="p">]]</span>
+
+<span class="p">[[</span> <span class="mf">0.05521851</span>  <span class="mf">0.01987309</span> <span class="o">-</span><span class="mf">0.03386598</span>  <span class="mf">0.02987032</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.02960084</span> <span class="o">-</span><span class="mf">0.02560094</span>  <span class="mf">0.02838013</span> <span class="o">-</span><span class="mf">0.00551128</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.00920638</span>  <span class="mf">0.01428033</span>  <span class="mf">0.02222828</span> <span class="o">-</span><span class="mf">0.00131818</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.03838115</span> <span class="o">-</span><span class="mf">0.01227226</span>  <span class="mf">0.02150304</span> <span class="o">-</span><span class="mf">0.0384074</span> <span class="p">]]</span>
+
+<span class="p">[[</span> <span class="mf">0.02922244</span>  <span class="mf">0.00611619</span> <span class="o">-</span><span class="mf">0.01586694</span>  <span class="mf">0.00167155</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.00741895</span>  <span class="mf">0.00263945</span> <span class="o">-</span><span class="mf">0.01028023</span>  <span class="mf">0.0224584</span> <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.00646675</span> <span class="o">-</span><span class="mf">0.01565168</span> <span class="o">-</span><span class="mf">0.0184122</span>  <span class="o">-</span><span class="mf">0.00445238</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.0139679</span>   <span class="mf">0.01864015</span> <span class="o">-</span><span class="mf">0.01921085</span> <span class="o">-</span><span class="mf">0.00637021</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Notice that if we create the random Mueller matrix from less than four
+Jones-Mueller matrices, the Cloude decomposition will have only as many
+non-zero matrices as there were Jones-Mueller matrices. In the
+following, we plot the average magnitude of each element of the Cloude
+decomposition as a function of how many Jones-Mueller matrices were
+added.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jmax</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">imax</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">mCD00sums</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">imax</span><span class="p">):</span>
+    <span class="n">mCD00sum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">jmax</span><span class="p">):</span>
+        <span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">mCD</span> <span class="o">=</span> <span class="n">Cloude_Decomposition</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+        <span class="n">mCD00sum</span> <span class="o">=</span> <span class="n">mCD00sum</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">m</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">mCD</span><span class="p">])</span>
+    <span class="n">mCD00sums</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mCD00sum</span><span class="o">/</span><span class="n">jmax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mCD00sums</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of Jones-Mueller matrices averaged&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cloude decomposition&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">IPython</span><span class="o">.</span><span class="n">core</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">Javascript</span> <span class="nb">object</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABCAAAAMYCAYAAAAaYpYrAAAgAElEQVR4Xu3YsQ0AMAzDsPj/p3OFNvaABiA8aecRIECAAAECBAgQIECAAAECBGKBxf/7ngABAgQIECBAgAABAgQIECBwAoQRECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEEmyo9MAAB/rSURBVDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAgABhAwQIECBAgAABAgQIECBAgEAuIEDkxA4QIECAAAECBAgQIECAAAECAoQNECBAgAABAgQIECBAgAABArmAAJETO0CAAAECBAgQIECAAAECBAgIEDZAgAABAgQIECBAgAABAgQI5AICRE7sAAECBAgQIECAAAECBAgQICBA2AABAgQIECBAgAABAgQIECCQCwgQObEDBAgQIECAAAECBAgQIECAwAOVOAMZAU+CpAAAAABJRU5ErkJggg==" width="639.9999630089984"></div>
+<div class="section" id="lu-chipman-decomposition">
+<h2>Lu-Chipman decomposition<a class="headerlink" href="#lu-chipman-decomposition" title="Permalink to this headline">¶</a></h2>
+<p>The Lu-Chipman decomposition* decomposes a given Mueller matrix
+<span class="math notranslate nohighlight">\(\mathbf{M}\)</span> into the ordered product of three matrices:</p>
+<p><a href="#id3"><span class="problematic" id="id4">:raw-latex:`\begin{equation}
+\mathbf{M} = \mathbf{M}_\Delta \mathbf{M}_R \mathbf{M}_D
+\end{equation}`</span></a> where <span class="math notranslate nohighlight">\(\mathbf{M}_\Delta\)</span> is a depolarizer,
+<span class="math notranslate nohighlight">\(\mathbf{M}_R\)</span> is a retarder, and <span class="math notranslate nohighlight">\(\mathbf{M}_D\)</span> is a
+diattenuator. Notice that if there is only one Jones-Mueller matrix used
+to create the random matrix, there will be no depolarization.</p>
+<p>*S.-Y. Lu and R. A. Chipman, “Interpretation of Mueller matrices based
+on polar decomposition,” J. Opt. Soc. Am. A 13, 1106–1113 (1996)</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printMatrix</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="s2">&quot;=</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">depol</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span> <span class="n">diatten</span> <span class="o">=</span> <span class="n">Lu_Chipman_Decomposition</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;Depolarizer&quot;</span><span class="p">,</span><span class="n">depol</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;Retarder&quot;</span><span class="p">,</span><span class="n">ret</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator&quot;</span><span class="p">,</span><span class="n">diatten</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;The product Depolarizer . Retarder .  Diattenuator&quot;</span><span class="p">,</span><span class="n">depol</span> <span class="o">@</span> <span class="n">ret</span> <span class="o">@</span> <span class="n">diatten</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">M</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.12695731</span> <span class="o">-</span><span class="mf">0.29671037</span>  <span class="mf">0.05399026</span>  <span class="mf">0.17297412</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.04264541</span> <span class="o">-</span><span class="mf">0.05047176</span>  <span class="mf">0.1613752</span>  <span class="o">-</span><span class="mf">0.38652997</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.08635932</span> <span class="o">-</span><span class="mf">0.37774185</span>  <span class="mf">0.05129209</span> <span class="o">-</span><span class="mf">0.25458373</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.23501895</span> <span class="o">-</span><span class="mf">0.54356425</span>  <span class="mf">0.27040017</span>  <span class="mf">0.02397898</span><span class="p">]]</span>
+
+ <span class="n">Depolarizer</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.0793893</span>   <span class="mf">0.3772277</span>   <span class="mf">0.12907153</span>  <span class="mf">0.02551456</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.14631205</span>  <span class="mf">0.12907153</span>  <span class="mf">0.36076823</span>  <span class="mf">0.22574686</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.07381775</span>  <span class="mf">0.02551456</span>  <span class="mf">0.22574686</span>  <span class="mf">0.47645482</span><span class="p">]]</span>
+
+ <span class="n">Retarder</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.00000000e+00</span>  <span class="mf">0.00000000e+00</span> <span class="o">-</span><span class="mf">1.73472348e-18</span> <span class="o">-</span><span class="mf">2.77555756e-17</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.66533454e-16</span>  <span class="mf">2.12642682e-01</span>  <span class="mf">5.07488591e-01</span> <span class="o">-</span><span class="mf">8.35008036e-01</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">3.33066907e-16</span> <span class="o">-</span><span class="mf">7.34215278e-01</span> <span class="o">-</span><span class="mf">4.80889322e-01</span> <span class="o">-</span><span class="mf">4.79242513e-01</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.66533454e-16</span> <span class="o">-</span><span class="mf">6.44756556e-01</span>  <span class="mf">7.14983070e-01</span>  <span class="mf">2.70348281e-01</span><span class="p">]]</span>
+
+ <span class="n">Diattenuator</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.12695731</span> <span class="o">-</span><span class="mf">0.29671037</span>  <span class="mf">0.05399026</span>  <span class="mf">0.17297412</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.29671037</span>  <span class="mf">1.11202516</span> <span class="o">-</span><span class="mf">0.00728507</span> <span class="o">-</span><span class="mf">0.02333991</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.05399026</span> <span class="o">-</span><span class="mf">0.00728507</span>  <span class="mf">1.07331476</span>  <span class="mf">0.004247</span>  <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.17297412</span> <span class="o">-</span><span class="mf">0.02333991</span>  <span class="mf">0.004247</span>    <span class="mf">1.08559569</span><span class="p">]]</span>
+
+ <span class="n">The</span> <span class="n">product</span> <span class="n">Depolarizer</span> <span class="o">.</span> <span class="n">Retarder</span> <span class="o">.</span>  <span class="n">Diattenuator</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.12695731</span> <span class="o">-</span><span class="mf">0.29671037</span>  <span class="mf">0.05399026</span>  <span class="mf">0.17297412</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.04264541</span> <span class="o">-</span><span class="mf">0.05047176</span>  <span class="mf">0.1613752</span>  <span class="o">-</span><span class="mf">0.38652997</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.08635932</span> <span class="o">-</span><span class="mf">0.37774185</span>  <span class="mf">0.05129209</span> <span class="o">-</span><span class="mf">0.25458373</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.23501895</span> <span class="o">-</span><span class="mf">0.54356425</span>  <span class="mf">0.27040017</span>  <span class="mf">0.02397898</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reverse-lu-chipman-decomposition">
+<h2>Reverse Lu-Chipman decomposition<a class="headerlink" href="#reverse-lu-chipman-decomposition" title="Permalink to this headline">¶</a></h2>
+<p>The reverse Lu-Chipman decomposition is similar to the Lu-Chipman
+decomposition, except that the order of the elements us reversed. That
+is, <a href="#id5"><span class="problematic" id="id6">:raw-latex:`\begin{equation}
+\mathbf{M} = \mathbf{M}^\prime_D \mathbf{M}^\prime_R  \mathbf{M}^\prime_\Delta
+\end{equation}`</span></a> where <span class="math notranslate nohighlight">\(\mathbf{M}^\prime_D\)</span> is a diattenuator,
+<span class="math notranslate nohighlight">\(\mathbf{M}^\prime_R\)</span> is a retarder, and
+<span class="math notranslate nohighlight">\(\mathbf{M}^\prime_\Delta\)</span> is a depolarizer.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">diatten</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span> <span class="n">depol</span> <span class="o">=</span> <span class="n">Reverse_Lu_Chipman_Decomposition</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator&quot;</span><span class="p">,</span><span class="n">diatten</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;Retarder&quot;</span><span class="p">,</span><span class="n">ret</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;Depolarizer&quot;</span><span class="p">,</span><span class="n">depol</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;The product Diattenuator . Retarder .  Depolarizer&quot;</span><span class="p">,</span> <span class="n">diatten</span> <span class="o">@</span> <span class="n">ret</span> <span class="o">@</span> <span class="n">depol</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">M</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">0.88157661</span>  <span class="mf">0.1143886</span>   <span class="mf">0.04493886</span>  <span class="mf">0.33467904</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.13412376</span> <span class="o">-</span><span class="mf">0.14618923</span>  <span class="mf">0.00323921</span>  <span class="mf">0.27968422</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.1187766</span>  <span class="o">-</span><span class="mf">0.15088178</span> <span class="o">-</span><span class="mf">0.25065223</span>  <span class="mf">0.17114669</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.39345417</span>  <span class="mf">0.31533412</span> <span class="o">-</span><span class="mf">0.25032699</span>  <span class="mf">0.37782393</span><span class="p">]]</span>
+
+ <span class="n">Diattenuator</span> <span class="o">=</span>
+
+<span class="p">[[</span><span class="mf">0.88157661</span> <span class="mf">0.13412376</span> <span class="mf">0.1187766</span>  <span class="mf">0.39345417</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.13412376</span> <span class="mf">0.77919635</span> <span class="mf">0.00965577</span> <span class="mf">0.03198529</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.1187766</span>  <span class="mf">0.00965577</span> <span class="mf">0.77684386</span> <span class="mf">0.02832536</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.39345417</span> <span class="mf">0.03198529</span> <span class="mf">0.02832536</span> <span class="mf">0.8621223</span> <span class="p">]]</span>
+
+ <span class="n">Retarder</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.00000000e+00</span> <span class="o">-</span><span class="mf">5.55111512e-17</span> <span class="o">-</span><span class="mf">2.22044605e-16</span> <span class="o">-</span><span class="mf">1.66533454e-16</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">2.77555756e-17</span> <span class="o">-</span><span class="mf">4.14540594e-01</span>  <span class="mf">2.96084994e-01</span>  <span class="mf">8.60517154e-01</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.38777878e-17</span> <span class="o">-</span><span class="mf">5.78362878e-01</span> <span class="o">-</span><span class="mf">8.15776980e-01</span>  <span class="mf">2.07367381e-03</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.00000000e+00</span>  <span class="mf">7.02604069e-01</span> <span class="o">-</span><span class="mf">4.96831556e-01</span>  <span class="mf">5.09417243e-01</span><span class="p">]]</span>
+
+ <span class="n">Depolarizer</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.</span>          <span class="mf">0.02422852</span>  <span class="mf">0.2836757</span>   <span class="mf">0.15001216</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.46486905</span> <span class="o">-</span><span class="mf">0.07353728</span>  <span class="mf">0.01177111</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>         <span class="o">-</span><span class="mf">0.07353728</span>  <span class="mf">0.48167089</span> <span class="o">-</span><span class="mf">0.22858303</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.01177111</span> <span class="o">-</span><span class="mf">0.22858303</span>  <span class="mf">0.45203665</span><span class="p">]]</span>
+
+ <span class="n">The</span> <span class="n">product</span> <span class="n">Diattenuator</span> <span class="o">.</span> <span class="n">Retarder</span> <span class="o">.</span>  <span class="n">Depolarizer</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">0.88157661</span>  <span class="mf">0.1143886</span>   <span class="mf">0.04493886</span>  <span class="mf">0.33467904</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.13412376</span> <span class="o">-</span><span class="mf">0.14618923</span>  <span class="mf">0.00323921</span>  <span class="mf">0.27968422</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.1187766</span>  <span class="o">-</span><span class="mf">0.15088178</span> <span class="o">-</span><span class="mf">0.25065223</span>  <span class="mf">0.17114669</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.39345417</span>  <span class="mf">0.31533412</span> <span class="o">-</span><span class="mf">0.25032699</span>  <span class="mf">0.37782393</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="symmetric-decomposition">
+<h2>Symmetric Decomposition<a class="headerlink" href="#symmetric-decomposition" title="Permalink to this headline">¶</a></h2>
+<p>The symmetric decomposition, introduced by Ossikovski,* is a
+decomposition that treats the ordering of the Mueller matrix product as
+symmetric. That is, the Mueller matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is decomposed
+into <a href="#id7"><span class="problematic" id="id8">:raw-latex:`\begin{equation}
+\mathbf{M} = \mathbf{M}_{D_2} \mathbf{M}_{R_2}  \mathbf{M}_\Delta \mathbf{M}_{R_1} \mathbf{M}_{D_1}
+\end{equation}`</span></a> where <span class="math notranslate nohighlight">\(\mathbf{M}_{D_1}\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{M}_{D_2}\)</span> are a diattenuators,
+<span class="math notranslate nohighlight">\(\mathbf{M}^\prime_{R_1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{M}^\prime_{R_2}\)</span> are
+retarders, and <span class="math notranslate nohighlight">\(\mathbf{M}_\Delta\)</span> is a diagonal depolarizer.</p>
+<p>*R. Ossikovski, “Analysis of depolarizing Mueller matrices through a
+symmetric decomposition,” J. Opt. Soc. Am. A, 26(5), 1109-1118 (2009).</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">diatten2</span><span class="p">,</span> <span class="n">ret2</span><span class="p">,</span> <span class="n">depol</span><span class="p">,</span> <span class="n">ret1</span><span class="p">,</span> <span class="n">diatten1</span> <span class="o">=</span> <span class="n">Symmetric_Decomposition</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;diatten2&quot;</span><span class="p">,</span><span class="n">diatten2</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;ret2&quot;</span><span class="p">,</span><span class="n">ret2</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;depol&quot;</span><span class="p">,</span><span class="n">depol</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;ret1&quot;</span><span class="p">,</span><span class="n">ret1</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;diatten1&quot;</span><span class="p">,</span><span class="n">diatten1</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;The product Diattenuator2 . Retarder2 .  Depolarizer . Retarder1 . Diattenuator1&quot;</span><span class="p">,</span>
+            <span class="n">diatten2</span> <span class="o">@</span> <span class="n">ret2</span> <span class="o">@</span> <span class="n">depol</span> <span class="o">@</span> <span class="n">ret1</span> <span class="o">@</span> <span class="n">diatten1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">M</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.33851728</span>  <span class="mf">0.73849369</span>  <span class="mf">0.38614618</span>  <span class="mf">0.04756202</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.34155847</span>  <span class="mf">0.36006705</span>  <span class="mf">0.13987531</span> <span class="o">-</span><span class="mf">0.08121141</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.76708069</span>  <span class="mf">0.61749638</span>  <span class="mf">0.49178021</span>  <span class="mf">0.13074444</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.90303145</span>  <span class="mf">0.42611533</span>  <span class="mf">0.08372167</span>  <span class="mf">0.06026991</span><span class="p">]]</span>
+
+ <span class="n">diatten2</span> <span class="o">=</span>
+
+<span class="p">[[</span><span class="mf">1.</span>         <span class="mf">0.18663465</span> <span class="mf">0.47521842</span> <span class="mf">0.74194493</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.18663465</span> <span class="mf">0.45885259</span> <span class="mf">0.06182488</span> <span class="mf">0.09652541</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.47521842</span> <span class="mf">0.06182488</span> <span class="mf">0.5919934</span>  <span class="mf">0.24577779</span><span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.74194493</span> <span class="mf">0.09652541</span> <span class="mf">0.24577779</span> <span class="mf">0.81829767</span><span class="p">]]</span>
+
+ <span class="n">ret2</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>         <span class="o">-</span><span class="mf">0.38630333</span>  <span class="mf">0.8856964</span>  <span class="o">-</span><span class="mf">0.25751045</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>         <span class="o">-</span><span class="mf">0.89300647</span> <span class="o">-</span><span class="mf">0.2892485</span>   <span class="mf">0.34478218</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.23088782</span>  <span class="mf">0.36314901</span>  <span class="mf">0.90267027</span><span class="p">]]</span>
+
+ <span class="n">depol</span> <span class="o">=</span>
+
+<span class="p">[[</span><span class="mf">1.27210348</span> <span class="mf">0.</span>         <span class="mf">0.</span>         <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">1.27210348</span> <span class="mf">0.</span>         <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">0.</span>         <span class="mf">0.42293992</span> <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span><span class="mf">0.</span>         <span class="mf">0.</span>         <span class="mf">0.</span>         <span class="mf">0.42293992</span><span class="p">]]</span>
+
+ <span class="n">ret1</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>         <span class="o">-</span><span class="mf">0.73199293</span> <span class="o">-</span><span class="mf">0.65109431</span> <span class="o">-</span><span class="mf">0.20065531</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.65948317</span> <span class="o">-</span><span class="mf">0.60316132</span> <span class="o">-</span><span class="mf">0.44864059</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.</span>          <span class="mf">0.17107981</span> <span class="o">-</span><span class="mf">0.46073054</span>  <span class="mf">0.87089556</span><span class="p">]]</span>
+
+ <span class="n">diatten1</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.</span>          <span class="mf">0.25679694</span>  <span class="mf">0.26731885</span> <span class="o">-</span><span class="mf">0.18369217</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.25679694</span>  <span class="mf">0.94493225</span>  <span class="mf">0.03593288</span> <span class="o">-</span><span class="mf">0.02469182</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.26731885</span>  <span class="mf">0.03593288</span>  <span class="mf">0.9478189</span>  <span class="o">-</span><span class="mf">0.02570353</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.18369217</span> <span class="o">-</span><span class="mf">0.02469182</span> <span class="o">-</span><span class="mf">0.02570353</span>  <span class="mf">0.92807629</span><span class="p">]]</span>
+
+ <span class="n">The</span> <span class="n">product</span> <span class="n">Diattenuator2</span> <span class="o">.</span> <span class="n">Retarder2</span> <span class="o">.</span>  <span class="n">Depolarizer</span> <span class="o">.</span> <span class="n">Retarder1</span> <span class="o">.</span> <span class="n">Diattenuator1</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">1.33851728</span>  <span class="mf">0.73849369</span>  <span class="mf">0.38614618</span>  <span class="mf">0.04756202</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.34155847</span>  <span class="mf">0.36006705</span>  <span class="mf">0.13987531</span> <span class="o">-</span><span class="mf">0.08121141</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.76708069</span>  <span class="mf">0.61749638</span>  <span class="mf">0.49178021</span>  <span class="mf">0.13074444</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.90303145</span>  <span class="mf">0.42611533</span>  <span class="mf">0.08372167</span>  <span class="mf">0.06026991</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="differential-logarithmic-decomposition">
+<h2>Differential (Logarithmic) Decomposition<a class="headerlink" href="#differential-logarithmic-decomposition" title="Permalink to this headline">¶</a></h2>
+<p><p>The differential decomposition is simply the matrix logarithm of the
+Mueller matrix.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">MuellerLog</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
+<span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;MuellerExp(L)&quot;</span><span class="p">,</span><span class="n">MuellerExp</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="n">M</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">0.97391125</span>  <span class="mf">0.27090065</span> <span class="o">-</span><span class="mf">0.12701758</span> <span class="o">-</span><span class="mf">0.00910964</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.14071647</span>  <span class="mf">0.30806736</span>  <span class="mf">0.2087953</span>   <span class="mf">0.30739285</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.19316295</span> <span class="o">-</span><span class="mf">0.07743473</span> <span class="o">-</span><span class="mf">0.12215219</span>  <span class="mf">0.07191617</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.28802369</span> <span class="o">-</span><span class="mf">0.21550024</span> <span class="o">-</span><span class="mf">0.13336577</span> <span class="o">-</span><span class="mf">0.4741185</span> <span class="p">]]</span>
+
+ <span class="n">L</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">0.06120341</span><span class="o">-</span><span class="mf">0.19188379</span><span class="n">j</span>  <span class="mf">0.50235426</span><span class="o">-</span><span class="mf">0.12774794</span><span class="n">j</span> <span class="o">-</span><span class="mf">0.14744083</span><span class="o">-</span><span class="mf">0.55654225</span><span class="n">j</span>
+   <span class="mf">0.07070039</span><span class="o">-</span><span class="mf">0.36510625</span><span class="n">j</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.44059848</span><span class="o">+</span><span class="mf">0.51808849</span><span class="n">j</span> <span class="o">-</span><span class="mf">1.29938318</span><span class="o">+</span><span class="mf">0.40155479</span><span class="n">j</span>  <span class="mf">0.04952028</span><span class="o">+</span><span class="mf">0.95825559</span><span class="n">j</span>
+  <span class="o">-</span><span class="mf">0.0603199</span> <span class="o">+</span><span class="mf">1.51901887</span><span class="n">j</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.44688281</span><span class="o">-</span><span class="mf">0.65865719</span><span class="n">j</span> <span class="o">-</span><span class="mf">0.24087286</span><span class="o">-</span><span class="mf">0.31283663</span><span class="n">j</span> <span class="o">-</span><span class="mf">1.89097429</span><span class="o">-</span><span class="mf">3.11841924</span><span class="n">j</span>
+  <span class="o">-</span><span class="mf">0.39149457</span><span class="o">-</span><span class="mf">0.07004071</span><span class="n">j</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.00259523</span><span class="o">-</span><span class="mf">0.72750194</span><span class="n">j</span>  <span class="mf">0.03509707</span><span class="o">-</span><span class="mf">0.69571595</span><span class="n">j</span>  <span class="mf">0.47326365</span><span class="o">-</span><span class="mf">0.07811624</span><span class="n">j</span>
+  <span class="o">-</span><span class="mf">0.82296574</span><span class="o">-</span><span class="mf">3.37443707</span><span class="n">j</span><span class="p">]]</span>
+
+ <span class="n">MuellerExp</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">=</span>
+
+<span class="p">[[</span> <span class="mf">0.97391125</span>  <span class="mf">0.27090065</span> <span class="o">-</span><span class="mf">0.12701758</span> <span class="o">-</span><span class="mf">0.00910964</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.14071647</span>  <span class="mf">0.30806736</span>  <span class="mf">0.2087953</span>   <span class="mf">0.30739285</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.19316295</span> <span class="o">-</span><span class="mf">0.07743473</span> <span class="o">-</span><span class="mf">0.12215219</span>  <span class="mf">0.07191617</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.28802369</span> <span class="o">-</span><span class="mf">0.21550024</span> <span class="o">-</span><span class="mf">0.13336577</span> <span class="o">-</span><span class="mf">0.4741185</span> <span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="other-parameters">
+<h2>Other parameters<a class="headerlink" href="#other-parameters" title="Permalink to this headline">¶</a></h2>
+<p>One can obtain other parameters associated with a Mueller matrix.</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tmax = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">Tmax</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tmin = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">Tmin</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;diattenuation = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">diattenuation</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;linear diattenuation = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">linear_diattenuation</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;polarization dependent loss = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">polarization_dependent_loss</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;polarizance = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">polarizance</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;depolarization index = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">depolarization_index</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;extinction_ratio = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">extinction_ratio</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Tmax</span> <span class="o">=</span>  <span class="mf">1.8675626442096744</span>
+<span class="n">Tmin</span> <span class="o">=</span>  <span class="mf">0.666125324597013</span>
+<span class="n">diattenuation</span> <span class="o">=</span>  <span class="mf">0.47418519344294496</span>
+<span class="n">linear</span> <span class="n">diattenuation</span> <span class="o">=</span>  <span class="mf">0.4739255647317837</span>
+<span class="n">polarization</span> <span class="n">dependent</span> <span class="n">loss</span> <span class="o">=</span>  <span class="mf">4.477192335239427</span>
+<span class="n">polarizance</span> <span class="o">=</span>  <span class="mf">0.6209300430203902</span>
+<span class="n">depolarization</span> <span class="n">index</span> <span class="o">=</span>  <span class="mf">0.598432358487257</span>
+<span class="n">extinction_ratio</span> <span class="o">=</span>  <span class="mf">2.803620542935366</span>
+</pre></div>
+</div>
+<p>There is also a class <code class="docutils literal notranslate"><span class="pre">CharacterizedMueller</span></code> that performs a
+Lu-Chipman decomposition and extracts parameters from them. This is
+treated as a separate class, because initialization performs the
+decomposition, assigning values to the parameters. Note that the
+parameters differ from those shown above, due to differences in
+definition.</p>
+<p>N. Ghosh, M.F.G. Wood, and I.A. Vitkin, ‘’Mueller matrix decomposition
+for extraction of individual polarization parameters from complex turbid
+media exhibiting multiple scattering, optical activity, and linear
+birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).</p>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parametersM</span> <span class="o">=</span> <span class="n">CharacterizedMueller</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">parametersM</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Mdepol</span> <span class="o">=</span>
+<span class="p">[[</span> <span class="mf">1.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>          <span class="mf">0.</span>        <span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.1219448</span>   <span class="mf">0.19597171</span> <span class="o">-</span><span class="mf">0.18756082</span> <span class="o">-</span><span class="mf">0.17762873</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">0.30471425</span> <span class="o">-</span><span class="mf">0.18756082</span>  <span class="mf">0.28607071</span>  <span class="mf">0.23618986</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.49861543</span> <span class="o">-</span><span class="mf">0.17762873</span>  <span class="mf">0.23618986</span>  <span class="mf">0.30366274</span><span class="p">]]</span>
+<span class="n">Mret</span> <span class="o">=</span>
+<span class="p">[[</span> <span class="mf">1.00000000e+00</span> <span class="o">-</span><span class="mf">6.93889390e-18</span>  <span class="mf">6.45100293e-18</span> <span class="o">-</span><span class="mf">3.46944695e-18</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">4.44089210e-16</span> <span class="o">-</span><span class="mf">8.04143092e-01</span> <span class="o">-</span><span class="mf">8.73406141e-02</span> <span class="o">-</span><span class="mf">5.87984272e-01</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">4.44089210e-16</span>  <span class="mf">2.67739139e-01</span>  <span class="mf">8.29915333e-01</span> <span class="o">-</span><span class="mf">4.89444884e-01</span><span class="p">]</span>
+ <span class="p">[</span> <span class="mf">0.00000000e+00</span>  <span class="mf">5.30725580e-01</span> <span class="o">-</span><span class="mf">5.51010125e-01</span> <span class="o">-</span><span class="mf">6.43986181e-01</span><span class="p">]]</span>
+<span class="n">Mdiatten</span> <span class="o">=</span>
+<span class="p">[[</span> <span class="mf">1.26684398e+00</span> <span class="o">-</span><span class="mf">2.36137591e-02</span> <span class="o">-</span><span class="mf">5.99925198e-01</span> <span class="o">-</span><span class="mf">1.98760019e-02</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">2.36137591e-02</span>  <span class="mf">1.11559535e+00</span>  <span class="mf">5.94679617e-03</span>  <span class="mf">1.97022116e-04</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">5.99925198e-01</span>  <span class="mf">5.94679617e-03</span>  <span class="mf">1.26644408e+00</span>  <span class="mf">5.00549410e-03</span><span class="p">]</span>
+ <span class="p">[</span><span class="o">-</span><span class="mf">1.98760019e-02</span>  <span class="mf">1.97022116e-04</span>  <span class="mf">5.00549410e-03</span>  <span class="mf">1.11552711e+00</span><span class="p">]]</span>
+<span class="n">DiattenuationVector</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.02361376</span> <span class="o">-</span><span class="mf">0.5999252</span>  <span class="o">-</span><span class="mf">0.019876</span>  <span class="p">]</span>
+<span class="n">Diattenuation</span> <span class="o">=</span> <span class="mf">0.6007186598063307</span>
+<span class="n">CircularDiattenuation</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.019876001896182743</span>
+<span class="n">LinearDiattenuation</span> <span class="o">=</span> <span class="mf">0.6003897507354177</span>
+<span class="n">DiattenuationAngle</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.8050685952813176</span> <span class="n">rad</span> <span class="p">(</span><span class="o">-</span><span class="mf">46.12703272814528</span> <span class="n">deg</span><span class="p">)</span>
+<span class="n">PolarizanceVector</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">0.1219448</span>  <span class="o">-</span><span class="mf">0.30471425</span>  <span class="mf">0.49861543</span><span class="p">]</span>
+<span class="n">Polarizance</span> <span class="o">=</span> <span class="mf">0.5969410823139234</span>
+<span class="n">DepolarizationCoefficient</span> <span class="o">=</span> <span class="mf">0.26190172201093304</span>
+<span class="n">LinearRetardance</span> <span class="o">=</span> <span class="mf">2.270493680516809</span> <span class="n">rad</span> <span class="p">(</span><span class="mf">130.0897053047379</span> <span class="n">deg</span><span class="p">)</span>
+<span class="n">OpticalRotation</span> <span class="o">=</span> <span class="mf">0.7491709131664488</span> <span class="n">rad</span> <span class="p">(</span><span class="mf">42.924331458399394</span> <span class="n">deg</span><span class="p">)</span>
+<span class="n">Retardance</span> <span class="o">=</span> <span class="mf">2.5134272153035266</span> <span class="n">rad</span> <span class="p">(</span><span class="mf">144.00877155021135</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">RetardanceAngle</span> <span class="o">=</span> <span class="mf">0.383324255546159</span> <span class="n">rad</span> <span class="p">(</span><span class="mf">21.96286202778915</span> <span class="n">deg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="UsingFresnel.html" class="btn btn-neutral float-right" title="Using the Fresnel module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="crossrcw.html" class="btn btn-neutral float-left" title="CrossRCW Module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
