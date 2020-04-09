@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Mueller Module" href="mueller.html" /> 
+    <link rel="next" title="Using the Mueller module" href="UsingMueller.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,7 +80,18 @@
               
             
             
-              <p class="caption"><span class="caption-text">Modules</span></p>
+              <p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="UsingMueller.html">Using the Mueller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingFresnel.html">Using the Fresnel module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingBRDF.html">Using the BRDF module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingLocal.html">Using the Local module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingIntegrate.html">Using the Integrate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingScatterer.html">Using the Scatterer module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingRCW.html">Using the RCW module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="mueller.html">Mueller Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fresnel.html">Fresnel Module</a></li>
@@ -91,17 +102,6 @@
 <li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="UsingMueller.html">Using the Mueller module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingFresnel.html">Using the Fresnel module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingBRDF.html">Using the BRDF module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingLocal.html">Using the Local module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingIntegrate.html">Using the Integrate module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingScatterer.html">Using the Scatterer module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingRCW.html">Using the RCW module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
 </ul>
 
             
@@ -168,10 +168,9 @@
             
   <div class="section" id="pyscatmech-a-python-interface-to-the-scatmech-library">
 <h1>pySCATMECH : A Python Interface to the SCATMECH Library<a class="headerlink" href="#pyscatmech-a-python-interface-to-the-scatmech-library" title="Permalink to this headline">¶</a></h1>
-<p>pySCATMECH is a Python interface to the SCATMECH library of scattering codes.</p>
-<p>pySCATMECH is a Python interface to many of the features in the
-SCATMECH library. If you are unfamiliar with the SCATMECH library, be
-sure to check out its documentation at <a class="reference external" href="https://pages.nist.gov/SCATMECH/docs/index.htm">SCATMECH Polarized Light
+<p>pySCATMECH is a Python interface to the SCATMECH library of scattering codes.
+The documentation for the
+specific models are available at <a class="reference external" href="https://pages.nist.gov/SCATMECH/docs/index.htm">SCATMECH Polarized Light
 Scattering C++ Class Library</a>.</p>
 <p>To install, use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pySCATMECH</span></code> at a command prompt.</p>
 <dl class="field-list">
@@ -196,35 +195,6 @@ Scattering C++ Class Library</a>.</p>
 <dd class="field-odd"><p>0.0.1a0 (8 April 2020)</p>
 </dd>
 </dl>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Modules</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="mueller.html">Mueller Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="mueller1.html">MuellerMatrix class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mueller2.html">StokesVector class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mueller3.html">Mueller matrix decompositions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="mueller4.html">Other polarization operations</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="fresnel.html">Fresnel Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="fresnel1.html">OpticalFunction class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fresnel2.html">Film class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fresnel3.html">FilmStack class</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="brdf.html">BRDF Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="local.html">Local Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="integrate.html">Integrate Module</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="integrate1.html">SolidAngle classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="integrate2.html">Integrator class</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
-</ul>
-</div>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Examples</span></p>
 <ul>
@@ -271,6 +241,35 @@ Scattering C++ Class Library</a>.</p>
 <li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
 </ul>
 </div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mueller.html">Mueller Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mueller1.html">MuellerMatrix class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller2.html">StokesVector class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller3.html">Mueller matrix decompositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html">Other polarization operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fresnel.html">Fresnel Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fresnel1.html">OpticalFunction class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fresnel2.html">Film class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fresnel3.html">FilmStack class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brdf.html">BRDF Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local.html">Local Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrate.html">Integrate Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrate1.html">SolidAngle classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrate2.html">Integrator class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
+</ul>
+</div>
 </div>
 <div class="section" id="indices-and-tables">
 <h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
@@ -289,7 +288,7 @@ Scattering C++ Class Library</a>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="mueller.html" class="btn btn-neutral float-right" title="Mueller Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="UsingMueller.html" class="btn btn-neutral float-right" title="Using the Mueller module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

@@ -7,10 +7,8 @@ pySCATMECH : A Python Interface to the SCATMECH Library
 =======================================================
 
 pySCATMECH is a Python interface to the SCATMECH library of scattering codes.
-
-pySCATMECH is a Python interface to many of the features in the
-SCATMECH library. If you are unfamiliar with the SCATMECH library, be
-sure to check out its documentation at `SCATMECH Polarized Light
+The documentation for the 
+specific models are available at `SCATMECH Polarized Light
 Scattering C++ Class Library <https://pages.nist.gov/SCATMECH/docs/index.htm>`_.
 
 To install, use ``pip install pySCATMECH`` at a command prompt.
@@ -27,6 +25,19 @@ To install, use ``pip install pySCATMECH`` at a command prompt.
 
 .. toctree::
    :maxdepth: 2
+   :caption: Examples
+
+   UsingMueller
+   UsingFresnel
+   UsingBRDF
+   UsingLocal
+   UsingIntegrate
+   UsingScatterer
+   UsingRCW
+   UsingCrossRCW
+
+.. toctree::
+   :maxdepth: 2
    :caption: Modules
 	     
    mueller
@@ -39,19 +50,7 @@ To install, use ``pip install pySCATMECH`` at a command prompt.
    rcw
    crossrcw
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Examples
-
-   UsingMueller
-   UsingFresnel
-   UsingBRDF
-   UsingLocal
-   UsingIntegrate
-   UsingScatterer
-   UsingRCW
-   UsingCrossRCW
-
+   
 Indices and tables
 ==================
 
