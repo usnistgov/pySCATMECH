@@ -40,7 +40,7 @@ private:
 
 static PyObject * Get_Model(PyObject *self, PyObject *args)
 {
-  try {
+  try { 
     const char *modelname;
 
     if (!PyArg_ParseTuple(args, "s", &modelname))
