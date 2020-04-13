@@ -2,6 +2,7 @@ import numpy as np
 from pySCATMECH.model import *
 from pySCATMECH.mueller import *
 import SCATPY 
+import os
 
 class OpticalFunction():
     """
@@ -22,12 +23,14 @@ class OpticalFunction():
             # create a temporary file
             from random import randint
             import string
-            chars = string.ascii_letters+string.digits
-            self.filename = ""
-            for i in range(12):
+            # Make a 12 character random name starting with a letter
+            chars = string.ascii_letters
+            self.filename = chars[randint(0,len(chars)-1)]
+            # Numbers can follow...
+            chars = chars + string.digits
+            for i in range(11):
                 self.filename += chars[randint(0,len(chars)-1)]
             self.filename += ".tmp"
-
             try:
                 with open(self.filename,"w") as file:
                     for L in iter:
@@ -36,7 +39,6 @@ class OpticalFunction():
                                    (L,nk.real,nk.imag))
             except Exception as e:
                 # if there was an exception, delete the file
-                import os
                 os.remove(self.filename)
                 del self.filename
                 raise
@@ -45,9 +47,11 @@ class OpticalFunction():
             self.name = name
             
     def __del__(self):
-        if hasattr(self,'filename'): 
-            import os
-            os.remove(self.filename)
+        if hasattr(self,'filename'):
+            try: 
+                os.remove(self.filename)
+            except:
+                print("Problem removing",self.filename)
                
 
     def __call__(self, wavelength):
