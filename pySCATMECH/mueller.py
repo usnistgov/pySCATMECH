@@ -4,7 +4,7 @@ import cmath
 
 def unit(a):
     """
-    Returns the unit matrix associated with a vector.
+    Return the unit matrix associated with a vector.
     
     Parameters
     ----------
@@ -21,7 +21,7 @@ def unit(a):
 
 def perpto(a,b):
     """
-    Returns a unit vector perpendicular to two vectors.
+    Return a unit vector perpendicular to two vectors.
 
     Parameters
     ----------
@@ -120,7 +120,7 @@ class MuellerMatrix(np.ndarray):
         Returns
         -------
 
-        pow : MuellerMatrix
+            : MuellerMatrix
               Matrix power operation
 
         """
@@ -130,7 +130,7 @@ class MuellerMatrix(np.ndarray):
         
     def Tmax(self):
         """
-        Returns the maximum transmittance.
+        Return the maximum transmittance.
         
         Returns
         -------
@@ -142,7 +142,7 @@ class MuellerMatrix(np.ndarray):
 
     def Tmin(self):
         """
-        Returns the minimum transmittance.
+        Return the minimum transmittance.
         
         Returns
         -------
@@ -154,7 +154,7 @@ class MuellerMatrix(np.ndarray):
 
     def diattenuation(self):
         """
-        Returns the diattenuation.
+        Return the diattenuation.
         
         Returns
         -------
@@ -166,7 +166,7 @@ class MuellerMatrix(np.ndarray):
 
     def linear_diattenuation(self):
         """
-        Returns the linear diattenuation.
+        Return the linear diattenuation.
         
         Returns
         -------
@@ -178,7 +178,7 @@ class MuellerMatrix(np.ndarray):
 
     def polarization_dependent_loss(self):
         """
-        Returns the polarization dependent loss.
+        Return the polarization dependent loss.
 
         Returns
         -------
@@ -190,7 +190,7 @@ class MuellerMatrix(np.ndarray):
 
     def polarizance(self):
         """
-        Returns the polarizance.
+        Return the polarizance.
 
         Returns
         -------
@@ -202,7 +202,7 @@ class MuellerMatrix(np.ndarray):
 
     def depolarization_index(self):
         """
-        Returns the depolarization index.
+        Return the depolarization index.
 
         Returns
         -------
@@ -216,7 +216,7 @@ class MuellerMatrix(np.ndarray):
 
     def extinction_ratio(self):
         """
-        Returns the extinction ratio.
+        Return the extinction ratio.
 
         Returns
         -------
@@ -228,7 +228,9 @@ class MuellerMatrix(np.ndarray):
 
     def rotate(self,angle):
         """
-        Mueller matrix rotated by an angle.
+        Return a Mueller matrix rotated by an angle.
+
+        The angle is measured clockwise looking into the beam.
 
         Parameters
         ----------
@@ -839,12 +841,16 @@ MuellerMatrix.Cloude_Decomposition = Cloude_Decomposition
 
 def Lu_Chipman_Decomposition(M):
     """
-    Returns a depolarizer, a retarder, and a diattenuator whose product is the
-    Mueller matrix
+    Return a depolarizer, a retarder, and a diattenuator whose ordered product is the
+    Mueller matrix. 
+
+    See: S.-Y. Lu and R.A. Chipman, "Interpretation of Mueller matrices based on 
+    polar decomposition," J. Opt. Soc. Am. A **13**, 1106-1113 (1996).
 
     Parameters
     ----------
        M : MuellerMatrix
+           The matrix to be decomposed
 
     Returns
     -------
@@ -852,10 +858,6 @@ def Lu_Chipman_Decomposition(M):
        retarder : MuellerMatrix
        diattenuator : MuellerMatrix
             M = depolarizer @ retarder @ diattenuator
-
-    S.-Y. Lu and R.A. Chipman, "Interpretation of Mueller matrices based on 
-    polar decomposition," J. Opt. Soc. Am. A 13, 1106-1113 (1996) 
-
     """
     diattenuator = MuellerMatrix()
     retarder = MuellerMatrix()
@@ -1170,12 +1172,16 @@ class CharacterizedMueller():
 
 def Reverse_Lu_Chipman_Decomposition(M):
     """
-    Performs the reverse Lu-Chipman decomposition.
+    Return a diattenuator, a retarder, and a depolarizer whose ordered product is the
+    Mueller matrix. 
 
+    See: S.-Y. Lu and R.A. Chipman, "Interpretation of Mueller matrices based on 
+    polar decomposition," J. Opt. Soc. Am. A **13**, 1106-1113 (1996).
 
     Parameters
     ----------
        M : MuellerMatrix
+           The matrix to be decomposed
 
     Returns
     -------
@@ -1193,6 +1199,10 @@ MuellerMatrix.Reverse_Lu_Chipman_Decomposition = (
 
 def Symmetric_Decomposition(M):
     """
+    Perform the symmetric decomposition described by Ossikovski.
+
+    See: R. Ossikovski, J. Opt. Soc. Am. A **26**, 1109-1118 (2009).
+
     Parameters
     ----------
        M : MuellerMatrix
@@ -1205,13 +1215,10 @@ def Symmetric_Decomposition(M):
        ret1 : MuellerMatrix
        diatten1 : MuellerMatrix
              M = diatten2 @ ret2 @ depol @ ret1 @ diatten1
-
-    Performs the symmetric decomposition described in 
-    R. Ossikovski, J. Opt. Soc. Am. A 26(5), 1109-1118 (2009)
     """
     def diattenFromVec(D):
         """
-        Constructs the diattenuator from the diattenuation veotor
+        Construct the diattenuator from the diattenuation veotor.
         """
         MD = np.zeros((4,4))
         MD[0,0] = 1
@@ -1303,12 +1310,11 @@ MuellerMatrix.Symmetric_Decomposition = Symmetric_Decomposition
 
 def MuellerLog(M):
     """
-    Returns matrix logarithm (logarithmic decomposition).
+    Return matrix logarithm (logarithmic decomposition).
 
     Returns
     -------
-
-    L : 4x4 np.array 
+         :4x4 np.array 
         The matrix logarithm of M
     """
     Q, W = np.linalg.eig(np.array(M))
@@ -1431,51 +1437,169 @@ def MuellerRotator(angle):
                           (0,-sin2a,cos2a,0),
                           (0,0,0,1)))
 
-def JonesLinearRetarder(phase,angle):
+def JonesBasis(angle=0, DOCP=None, jones=None):
     """
-    Returns a Jones matrix for a linear retarder.
-
-    Arguments
-    ---------
-
-    phase: float
-           Phase in radians
-
-    angle: float
-           Angle of retarder
-
+    Returns the basis vectors for a Jones Matrix using a Jones vector or a 
+    degree of circular polarization and an angle. The returned vectors are 
+    orthogonal to one another and of unit intensity. This function
+    is primarily used by JonesRetarder and JonesDiattenuator
+    
+    Parameters
+    ----------
+    
+    angle : float
+            Angle (in radians) of axis (default is 0)
+    
+    DOCP : float
+           Degree of circular polarization of the axis.
+           Cannot define both DOCP and jones. 
+    
+    jones : 2-element list of complex
+            Jones vector associated with axis
+            Cannot define both DOCP and jones. (Default is [1,0])
+    
     Returns
     -------
     
-    ret : 2x2 np.array
-          A Jones matrix retarder
+    jones1, jones2 : 2-element lists of complex
+                     Two Jones vectors that are mutually orthogonal 
+                     and of unit intensity
     """
-    R = JonesRotator
-    return R(-angle) @ np.array([[1,0],[0,np.exp(1j*phase)]]) @ R(angle)
+    if jones == None:
+        try:
+            jones1 = np.array([1,(1/DOCP-np.sqrt(1/DOCP**2-1))*1j])
+        except:
+            jones1 = np.array([1,0])
+    else:
+        if DOCP == None:
+            jones1 = jones/np.sqrt(jones @ np.conj(jones))
+        else:
+            raise Error("DOCP and jones both defined")
+    
+    jones2 = np.array([np.conj(jones1[1]),-np.conj(jones1[0])])
+    jones1 = jones1/np.sqrt(jones1 @ np.conj(jones1))
+    jones2 = jones2/np.sqrt(jones2 @ np.conj(jones2))
 
-def JonesLinearPolarizer(angle,diattenuation=1):
+    R = JonesRotator(angle)
+    return (jones1 @ R,jones2 @ R)
+
+def JonesRetarder(phase=None, angle=0, DOCP=None, jones=None):
     """
-    Returns a Jones matrix for a linear polarizer
-
-    Arguments
-    ---------
-
-    angle : float 
-            Angle of polarizer
-
-    diattenuation : float, optional
-            The diattenuation (default is 1)
-
+    Returns the Jones matrix for a homogeneous retarder with a given phase 
+    and axes. 
+    
+    Parameters
+    ----------
+    
+    angle : float
+            Angle (in radians) of axis (default is 0)
+    
+    DOCP : float
+           Degree of circular polarization of the axis.
+           Cannot define both DOCP and jones. 
+    
+    jones : 2-element list of complex
+            Jones vector associated with axis
+            Cannot define both DOCP and jones. (Default is [1,0])
+    
     Returns
     -------
-
-    ret : 2x2 np.array
-          A Jones matrix linear polarizer
-    """
-    R = JonesRotator
-    a = np.sqrt(-(diattenuation-1.)/(diattenuation+1.))
-    return R(angle) @ np.array([[a,0],[0,1]]) @ R(-angle)
     
+    jones : 2x2 numpy array of complex
+            Jones matrix retarder
+    
+    """
+    j1, j2 = JonesBasis(angle, DOCP, jones)
+    return np.outer(j1,np.conj(j1)) + np.outer(j2,np.conj(j2))*np.exp(1j*phase)
+
+        
+def JonesDiattenuator(diatten=None, angle=0, DOCP=None, jones=None):
+    """
+    Returns the Jones matrix for a homogeneous diattenuator with a given 
+    phase and axes. 
+    
+    Parameters
+    ----------
+    
+    angle : float
+            Angle (in radians) of axis (default is 0)
+    
+    DOCP : float
+           Degree of circular polarization of the axis.
+           Cannot define both DOCP and jones. 
+    
+    jones : 2-element list of complex
+            Jones vector associated with axis
+            Cannot define both DOCP and jones. (Default is [1,0])
+    
+    Returns
+    -------
+    
+    jones : 2x2 numpy array of complex
+            Jones matrix diattenuator
+    
+    """
+    j1, j2 = JonesBasis(angle, DOCP, jones)
+    return np.outer(j1,np.conj(j1)) + np.outer(j2,np.conj(j2))*np.sqrt(diatten)
+
+def MuellerRetarder(phase=0, angle=0, DOCP=None, jones=None):
+    """
+    Returns the Mueller matrix for a homogeneous retarder with a given 
+    phase and axis. 
+    
+    Parameters
+    ----------
+    
+    angle : float
+            Angle (in radians) of axis (default is 0)
+    
+    DOCP : float
+           Degree of circular polarization of the axis.
+           Cannot define both DOCP and jones. 
+    
+    jones : 2-element list of complex
+            Jones vector associated with axis
+            Cannot define both DOCP and jones. (Default is [1,0])
+    
+    Returns
+    -------
+    
+    jones : 2x2 numpy array of complex
+            Jones matrix retarder
+    
+    """
+    return JonesMueller(JonesRetarder(phase,angle,DOCP,jones))
+
+def MuellerDiattenuator(diatten=0, angle=0, DOCP=None, jones=None):
+    """
+    Returns the Mueller matrix for a homogeneous diattenuator with a 
+    given phase and axis. 
+    
+    Parameters
+    ----------
+    
+    angle : float
+            Angle (in radians) of axis (default is 0)
+    
+    DOCP : float
+           Degree of circular polarization of the axis.
+           Cannot define both DOCP and jones. 
+    
+    jones : 2-element list of complex
+            Jones vector associated with axis
+            Cannot define both DOCP and jones. (Default is [1,0])
+    
+    Returns
+    -------
+    
+    MuellerMatrix diattenuator
+    
+    """    
+    return JonesMueller(JonesDiattenuator(diatten,angle,DOCP,jones))
+
+JonesPolarizer = JonesDiattenuator
+MuellerPolarizer = MuellerDiattenuator
+
 def MuellerZero():
     """
     Returns a zero Mueller matrix

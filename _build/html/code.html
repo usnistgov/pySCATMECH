@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,19 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -25,17 +31,25 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
+
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+<script src="https://pages.nist.gov/nist-header-footer/js/jquery-1.9.0.min.js" type="text/javascript" defer="defer"></script>
+<script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+<script language="JavaScript" id="_fed_an_js_tag" src="/js/federated-analytics.all.min.js?agency=NIST&subagency=pml&pua=UA-37115410-46&yt=true"></script>
+
+
 </head>
 
 <body class="wy-body-for-nav">
@@ -49,7 +63,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> pySCATMECH
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> pySCATMECH
           
 
           
@@ -72,6 +86,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -79,7 +94,18 @@
               
             
             
-              <p class="caption"><span class="caption-text">Modules</span></p>
+              <p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="UsingMueller.html">Using the Mueller module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingFresnel.html">Using the Fresnel module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingBRDF.html">Using the BRDF module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingLocal.html">Using the Local module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingIntegrate.html">Using the Integrate module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingScatterer.html">Using the Scatterer module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingRCW.html">Using the RCW module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Modules</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="mueller.html">Mueller Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fresnel.html">Fresnel Module</a></li>
@@ -91,21 +117,11 @@
 <li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Examples</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="UsingMueller.html">Using the Mueller module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingFresnel.html">Using the Fresnel module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingBRDF.html">Using the BRDF module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingLocal.html">Using the Local module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingIntegrate.html">Using the Integrate module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingScatterer.html">Using the Scatterer module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingRCW.html">Using the RCW module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
-</ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -144,7 +160,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
       <li>Documentation</li>
     
@@ -165,7 +181,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-pySCATMECH.mueller">
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="module-pySCATMECH.mueller">
 <span id="documentation"></span><h1>Documentation<a class="headerlink" href="#module-pySCATMECH.mueller" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="pySCATMECH.mueller.CharacterizedMueller">
@@ -375,41 +415,52 @@ M1[0,0] &gt;= M2[0,0] &gt;= M3[0,0] &gt;= M4[0,0]</p>
 </dd></dl>
 
 <dl class="function">
-<dt id="pySCATMECH.mueller.JonesLinearPolarizer">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesLinearPolarizer</code><span class="sig-paren">(</span><em class="sig-param">angle</em>, <em class="sig-param">diattenuation=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesLinearPolarizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a Jones matrix for a linear polarizer</p>
+<dt id="pySCATMECH.mueller.JonesBasis">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesBasis</code><span class="sig-paren">(</span><em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesBasis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the basis vectors for a Jones Matrix using a Jones vector or a
+degree of circular polarization and an angle. The returned vectors are
+orthogonal to one another and of unit intensity. This function
+is primarily used by JonesRetarder and JonesDiattenuator</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>angle</strong> (<em>float</em>) – Angle of polarizer</p></li>
-<li><p><strong>diattenuation</strong> (<em>float</em><em>, </em><em>optional</em>) – The diattenuation (default is 1)</p></li>
+<li><p><strong>angle</strong> (<em>float</em>) – Angle (in radians) of axis (default is 0)</p></li>
+<li><p><strong>DOCP</strong> (<em>float</em>) – Degree of circular polarization of the axis.
+Cannot define both DOCP and jones.</p></li>
+<li><p><strong>jones</strong> (<em>2-element list of complex</em>) – Jones vector associated with axis
+Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ret</strong> – A Jones matrix linear polarizer</p>
+<dd class="field-even"><p><strong>jones1, jones2</strong> – Two Jones vectors that are mutually orthogonal
+and of unit intensity</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>2x2 np.array</p>
+<dd class="field-odd"><p>2-element lists of complex</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="function">
-<dt id="pySCATMECH.mueller.JonesLinearRetarder">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesLinearRetarder</code><span class="sig-paren">(</span><em class="sig-param">phase</em>, <em class="sig-param">angle</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesLinearRetarder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a Jones matrix for a linear retarder.</p>
+<dt id="pySCATMECH.mueller.JonesDiattenuator">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesDiattenuator</code><span class="sig-paren">(</span><em class="sig-param">diatten=None</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesDiattenuator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jones matrix for a homogeneous diattenuator with a given
+phase and axes.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>phase</strong> (<em>float</em>) – Phase in radians</p></li>
-<li><p><strong>angle</strong> (<em>float</em>) – Angle of retarder</p></li>
+<li><p><strong>angle</strong> (<em>float</em>) – Angle (in radians) of axis (default is 0)</p></li>
+<li><p><strong>DOCP</strong> (<em>float</em>) – Degree of circular polarization of the axis.
+Cannot define both DOCP and jones.</p></li>
+<li><p><strong>jones</strong> (<em>2-element list of complex</em>) – Jones vector associated with axis
+Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ret</strong> – A Jones matrix retarder</p>
+<dd class="field-even"><p><strong>jones</strong> – Jones matrix diattenuator</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>2x2 np.array</p>
+<dd class="field-odd"><p>2x2 numpy array of complex</p>
 </dd>
 </dl>
 </dd></dl>
@@ -427,6 +478,54 @@ M1[0,0] &gt;= M2[0,0] &gt;= M3[0,0] &gt;= M4[0,0]</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.JonesPolarizer">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesPolarizer</code><span class="sig-paren">(</span><em class="sig-param">diatten=None</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesPolarizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jones matrix for a homogeneous diattenuator with a given
+phase and axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – Angle (in radians) of axis (default is 0)</p></li>
+<li><p><strong>DOCP</strong> (<em>float</em>) – Degree of circular polarization of the axis.
+Cannot define both DOCP and jones.</p></li>
+<li><p><strong>jones</strong> (<em>2-element list of complex</em>) – Jones vector associated with axis
+Cannot define both DOCP and jones. (Default is [1,0])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>jones</strong> – Jones matrix diattenuator</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>2x2 numpy array of complex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.JonesRetarder">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesRetarder</code><span class="sig-paren">(</span><em class="sig-param">phase=None</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesRetarder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jones matrix for a homogeneous retarder with a given phase
+and axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – Angle (in radians) of axis (default is 0)</p></li>
+<li><p><strong>DOCP</strong> (<em>float</em>) – Degree of circular polarization of the axis.
+Cannot define both DOCP and jones.</p></li>
+<li><p><strong>jones</strong> (<em>2-element list of complex</em>) – Jones vector associated with axis
+Cannot define both DOCP and jones. (Default is [1,0])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>jones</strong> – Jones matrix retarder</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>2x2 numpy array of complex</p>
 </dd>
 </dl>
 </dd></dl>
@@ -481,11 +580,13 @@ Argument: 3-element list of int</p>
 <dl class="function">
 <dt id="pySCATMECH.mueller.Lu_Chipman_Decomposition">
 <code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Lu_Chipman_Decomposition</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a depolarizer, a retarder, and a diattenuator whose product is the
-Mueller matrix</p>
+<dd><p>Return a depolarizer, a retarder, and a diattenuator whose ordered product is the
+Mueller matrix.</p>
+<p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
+polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – </p>
+<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The matrix to be decomposed</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
@@ -496,8 +597,6 @@ Mueller matrix</p>
 </p>
 </dd>
 </dl>
-<p>S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
-polar decomposition,” J. Opt. Soc. Am. A 13, 1106-1113 (1996)</p>
 </dd></dl>
 
 <dl class="function">
@@ -507,6 +606,30 @@ polar decomposition,” J. Opt. Soc. Am. A 13, 1106-1113 (1996)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>a</strong> (<em>4 element list</em><em> or </em><em>array of float</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.MuellerDiattenuator">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerDiattenuator</code><span class="sig-paren">(</span><em class="sig-param">diatten=0</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerDiattenuator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Mueller matrix for a homogeneous diattenuator with a
+given phase and axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – Angle (in radians) of axis (default is 0)</p></li>
+<li><p><strong>DOCP</strong> (<em>float</em>) – Degree of circular polarization of the axis.
+Cannot define both DOCP and jones.</p></li>
+<li><p><strong>jones</strong> (<em>2-element list of complex</em>) – Jones vector associated with axis
+Cannot define both DOCP and jones. (Default is [1,0])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>MuellerMatrix diattenuator</p>
 </dd>
 </dl>
 </dd></dl>
@@ -528,13 +651,15 @@ polar decomposition,” J. Opt. Soc. Am. A 13, 1106-1113 (1996)</p>
 <dl class="function">
 <dt id="pySCATMECH.mueller.MuellerLog">
 <code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerLog</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerLog" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns matrix logarithm (logarithmic decomposition).</p>
+<dd><p>Return matrix logarithm (logarithmic decomposition).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>L</strong> – The matrix logarithm of M</p>
+<dd class="field-odd"><p></p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>4x4 np.array</p>
+<dd class="field-even"><p><p>4x4 np.array</p>
+<p>The matrix logarithm of M</p>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -585,11 +710,13 @@ M1[0,0] &gt;= M2[0,0] &gt;= M3[0,0] &gt;= M4[0,0]</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.Lu_Chipman_Decomposition">
 <code class="sig-name descname">Lu_Chipman_Decomposition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a depolarizer, a retarder, and a diattenuator whose product is the
-Mueller matrix</p>
+<dd><p>Return a depolarizer, a retarder, and a diattenuator whose ordered product is the
+Mueller matrix.</p>
+<p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
+polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – </p>
+<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The matrix to be decomposed</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
@@ -600,8 +727,6 @@ Mueller matrix</p>
 </p>
 </dd>
 </dl>
-<p>S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
-polar decomposition,” J. Opt. Soc. Am. A 13, 1106-1113 (1996)</p>
 </dd></dl>
 
 <dl class="method">
@@ -621,13 +746,15 @@ polar decomposition,” J. Opt. Soc. Am. A 13, 1106-1113 (1996)</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.MuellerLog">
 <code class="sig-name descname">MuellerLog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.MuellerLog" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns matrix logarithm (logarithmic decomposition).</p>
+<dd><p>Return matrix logarithm (logarithmic decomposition).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>L</strong> – The matrix logarithm of M</p>
+<dd class="field-odd"><p></p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p>4x4 np.array</p>
+<dd class="field-even"><p><p>4x4 np.array</p>
+<p>The matrix logarithm of M</p>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -635,10 +762,13 @@ polar decomposition,” J. Opt. Soc. Am. A 13, 1106-1113 (1996)</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.Reverse_Lu_Chipman_Decomposition">
 <code class="sig-name descname">Reverse_Lu_Chipman_Decomposition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Reverse_Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs the reverse Lu-Chipman decomposition.</p>
+<dd><p>Return a diattenuator, a retarder, and a depolarizer whose ordered product is the
+Mueller matrix.</p>
+<p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
+polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – </p>
+<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The matrix to be decomposed</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
@@ -654,7 +784,9 @@ polar decomposition,” J. Opt. Soc. Am. A 13, 1106-1113 (1996)</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.Symmetric_Decomposition">
 <code class="sig-name descname">Symmetric_Decomposition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Symmetric_Decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Perform the symmetric decomposition described by Ossikovski.</p>
+<p>See: R. Ossikovski, J. Opt. Soc. Am. A <strong>26</strong>, 1109-1118 (2009).</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – </p>
 </dd>
@@ -669,14 +801,12 @@ polar decomposition,” J. Opt. Soc. Am. A 13, 1106-1113 (1996)</p>
 </p>
 </dd>
 </dl>
-<p>Performs the symmetric decomposition described in
-R. Ossikovski, J. Opt. Soc. Am. A 26(5), 1109-1118 (2009)</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.Tmax">
 <code class="sig-name descname">Tmax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Tmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the maximum transmittance.</p>
+<dd><p>Return the maximum transmittance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><strong>Tmax</strong> – The maximum transmittance of the MuellerMatrix</p>
@@ -690,7 +820,7 @@ R. Ossikovski, J. Opt. Soc. Am. A 26(5), 1109-1118 (2009)</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.Tmin">
 <code class="sig-name descname">Tmin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Tmin" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the minimum transmittance.</p>
+<dd><p>Return the minimum transmittance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><strong>Tmax</strong> – The minimum transmittance of the MuellerMatrix</p>
@@ -704,7 +834,7 @@ R. Ossikovski, J. Opt. Soc. Am. A 26(5), 1109-1118 (2009)</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.depolarization_index">
 <code class="sig-name descname">depolarization_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.depolarization_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the depolarization index.</p>
+<dd><p>Return the depolarization index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><strong>PI</strong> – The depolarization index</p>
@@ -718,7 +848,7 @@ R. Ossikovski, J. Opt. Soc. Am. A 26(5), 1109-1118 (2009)</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.diattenuation">
 <code class="sig-name descname">diattenuation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.diattenuation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the diattenuation.</p>
+<dd><p>Return the diattenuation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><strong>diattenuation</strong> – The diattenuation</p>
@@ -748,7 +878,7 @@ scattering,” Opt. Eng. 34(6) 1599-1610 (1995).</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.extinction_ratio">
 <code class="sig-name descname">extinction_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.extinction_ratio" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the extinction ratio.</p>
+<dd><p>Return the extinction ratio.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><strong>ER</strong> – The extinction ratio</p>
@@ -776,7 +906,7 @@ scattering,” Opt. Eng. 34(6) 1599-1610 (1995).</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.linear_diattenuation">
 <code class="sig-name descname">linear_diattenuation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.linear_diattenuation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the linear diattenuation.</p>
+<dd><p>Return the linear diattenuation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><strong>diattenuation</strong> – The linear diattenuation</p>
@@ -843,7 +973,7 @@ J. Opt. Soc. Am. A 27(2), 188-199 (2010).</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.polarizance">
 <code class="sig-name descname">polarizance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.polarizance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the polarizance.</p>
+<dd><p>Return the polarizance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><strong>polarizance</strong> – The polarizance</p>
@@ -857,7 +987,7 @@ J. Opt. Soc. Am. A 27(2), 188-199 (2010).</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.polarization_dependent_loss">
 <code class="sig-name descname">polarization_dependent_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.polarization_dependent_loss" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the polarization dependent loss.</p>
+<dd><p>Return the polarization dependent loss.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><strong>pdl</strong> – The polarization dependent loss</p>
@@ -871,7 +1001,8 @@ J. Opt. Soc. Am. A 27(2), 188-199 (2010).</p>
 <dl class="method">
 <dt id="pySCATMECH.mueller.MuellerMatrix.rotate">
 <code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param">angle</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.rotate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mueller matrix rotated by an angle.</p>
+<dd><p>Return a Mueller matrix rotated by an angle.</p>
+<p>The angle is measured clockwise looking into the beam.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>angle</strong> (<em>float</em>) – The angle in radians</p>
@@ -918,6 +1049,54 @@ J. Opt. Soc. Am. A 27(2), 188-199 (2010).</p>
 Mueller matrices,’ Journal of Modern Optics 40, 471-481 (1993).</p>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.MuellerPolarizer">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerPolarizer</code><span class="sig-paren">(</span><em class="sig-param">diatten=0</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerPolarizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Mueller matrix for a homogeneous diattenuator with a
+given phase and axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – Angle (in radians) of axis (default is 0)</p></li>
+<li><p><strong>DOCP</strong> (<em>float</em>) – Degree of circular polarization of the axis.
+Cannot define both DOCP and jones.</p></li>
+<li><p><strong>jones</strong> (<em>2-element list of complex</em>) – Jones vector associated with axis
+Cannot define both DOCP and jones. (Default is [1,0])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>MuellerMatrix diattenuator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="pySCATMECH.mueller.MuellerRetarder">
+<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerRetarder</code><span class="sig-paren">(</span><em class="sig-param">phase=0</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerRetarder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Mueller matrix for a homogeneous retarder with a given
+phase and axis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>angle</strong> (<em>float</em>) – Angle (in radians) of axis (default is 0)</p></li>
+<li><p><strong>DOCP</strong> (<em>float</em>) – Degree of circular polarization of the axis.
+Cannot define both DOCP and jones.</p></li>
+<li><p><strong>jones</strong> (<em>2-element list of complex</em>) – Jones vector associated with axis
+Cannot define both DOCP and jones. (Default is [1,0])</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>jones</strong> – Jones matrix retarder</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>2x2 numpy array of complex</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1016,10 +1195,13 @@ args or state.)</p></li>
 <dl class="function">
 <dt id="pySCATMECH.mueller.Reverse_Lu_Chipman_Decomposition">
 <code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Reverse_Lu_Chipman_Decomposition</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Reverse_Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Performs the reverse Lu-Chipman decomposition.</p>
+<dd><p>Return a diattenuator, a retarder, and a depolarizer whose ordered product is the
+Mueller matrix.</p>
+<p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
+polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – </p>
+<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The matrix to be decomposed</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><ul class="simple">
@@ -1292,7 +1474,9 @@ value is zero for p-polarized light.</p>
 <dl class="function">
 <dt id="pySCATMECH.mueller.Symmetric_Decomposition">
 <code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Symmetric_Decomposition</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Symmetric_Decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Perform the symmetric decomposition described by Ossikovski.</p>
+<p>See: R. Ossikovski, J. Opt. Soc. Am. A <strong>26</strong>, 1109-1118 (2009).</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – </p>
 </dd>
@@ -1307,14 +1491,12 @@ value is zero for p-polarized light.</p>
 </p>
 </dd>
 </dl>
-<p>Performs the symmetric decomposition described in
-R. Ossikovski, J. Opt. Soc. Am. A 26(5), 1109-1118 (2009)</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="pySCATMECH.mueller.perpto">
 <code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">perpto</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.perpto" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a unit vector perpendicular to two vectors.</p>
+<dd><p>Return a unit vector perpendicular to two vectors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>b</strong> (<em>a</em><em>,</em>) – Two 3-vectors</p>
@@ -1331,7 +1513,7 @@ R. Ossikovski, J. Opt. Soc. Am. A 26(5), 1109-1118 (2009)</p>
 <dl class="function">
 <dt id="pySCATMECH.mueller.unit">
 <code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">unit</code><span class="sig-paren">(</span><em class="sig-param">a</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.unit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the unit matrix associated with a vector.</p>
+<dd><p>Return the unit matrix associated with a vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>a</strong> (<em>np.array</em>) – Unnormalized vector</p>
@@ -2568,7 +2750,14 @@ other solid angle classes.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -2579,7 +2768,6 @@ other solid angle classes.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

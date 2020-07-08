@@ -33,3 +33,8 @@ PySCATMECH contains nine modules:
 * scatterer - Tools for handling free-space scattering functions (SCATMECH::FreeSpaceScatterer)
 * integrate - Tools for integrating BRDF or DSC models
 
+## Installation
+
+To install pySCATMECH, run
+
+```pip install --index-url https://test.pypi.org/simple/ --no-deps pySCATMECH```
