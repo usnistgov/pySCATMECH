@@ -74,7 +74,7 @@ class Model:
                         if subvalue.imag==0:
                             subvalue = "%.16g" %subvalue.real
                         else:
-                            subvalue = "(%.16g,%.16g)" % (value.real,value.imag)
+                            subvalue = "(%.16g,%.16g)" % (subvalue.real,subvalue.imag)
                         
                     if type(subparameter)==type(None):
                         SCATPY.SetParameter(self.handle,

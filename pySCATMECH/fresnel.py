@@ -56,7 +56,7 @@ class OpticalFunction():
 
     def __call__(self, wavelength):
         """
-        Evaluates the optical constants n and k at wavelength.
+        Evaluate the optical constants n and k at wavelength.
         
         Parameters
         ----------
@@ -75,7 +75,7 @@ class OpticalFunction():
             
     def nkstr(self,wavelength=1):
         """
-        Evaluates the optical constants n and k at wavelength and returns a 
+        Evaluate the optical constants n and k at wavelength and returns a 
         string that can be used by SCATMECH::dielectric_function. 
 
         Parameters
@@ -99,7 +99,7 @@ class OpticalFunction():
     
     def writeToFile(self,filename,wavelengths):
         """
-        Writes the optical function to a file that can be used by SCATMECH 
+        Write the optical function to a file that can be used by SCATMECH 
         routines as a SCATMECH::dielectric_function.  
 
         Parameters
@@ -148,30 +148,28 @@ class Film():
 
     wavelength : float, optional
                  The wavelength the layer should be optimized for, if  
-                 `waves` is set (default is 1)
+                 `waves` is set 
 
     angle : float, optional
             Vacuum angle in radians the layer should be optimized for, if 
             `waves` is set (default is 0)
     """
-    def __init__(self,material,**kwargs):
+    def __init__(self, material, thickness=None, waves=None, wavelength=None, angle=0 ):
 
         if type(material) is OpticalFunction:
             self.material = material
         else:
             self.material = OpticalFunction(material)
             
-        if "thickness" in kwargs:
-            self.thickness = kwargs["thickness"]
+        if thickness is not None:
+            self.thickness = thickness
             return
-        if "waves" in kwargs:
-            wavelength = kwargs["wavelength"] if "wavelength" in kwargs else 1.
-            angle = kwargs["angle"] if "angle" in kwargs else 0
+        if waves is not None:
             n = self.material(wavelength)
             angle_inside = cmath.asin(cmath.sin(angle)/n)
-            t = wavelength/n.real*kwargs["waves"]/np.cos(angle_inside)
+            t = wavelength/n.real*waves/np.cos(angle_inside)
             self.thickness = t.real    
-    
+
     def __mul__(self,a):
         """Returns a Film with a thickness multiplied by `a`"""
         return Film(self.material,thickness = self.thickness*a)
@@ -226,7 +224,7 @@ class FilmStack(Model):
         
     def getStackCommand(self,wavelength):
         """
-        Gets the list of films suitable for a SCATMECH::Stack_StackModel
+        Get the list of films suitable for a SCATMECH::Stack_StackModel
 
         
         Parameters
@@ -251,7 +249,7 @@ class FilmStack(Model):
 
     def getModelDict(self):
         """
-        Returns a Model parameter dictionary. Used primarily internally so that
+        Return a Model parameter dictionary. Used primarily internally so that
         a FilmStack can be passed as a parameter to a Model for a stack.
         """
         dictionary = {None: "Stack_StackModel"}
@@ -264,7 +262,7 @@ class FilmStack(Model):
         
     def reflectionCoefficient(self, theta, wavelength, no, nt,type="12"):
         """
-        Returns the reflection coefficent.
+        Return the reflection coefficent.
 
         Parameters
         ----------
@@ -318,7 +316,7 @@ class FilmStack(Model):
     
     def transmissionCoefficient(self, theta, wavelength, no, nt,type="12"):
         """
-        Returns the transmission coefficient.
+        Return the transmission coefficient.
 
         Parameters
         ----------
@@ -372,7 +370,7 @@ class FilmStack(Model):
 
     def R(self, theta, wavelength, no, nt, type="12"):
         """
-        Returns the reflectance.
+        Return the reflectance.
 
         Parameters
         ----------
@@ -420,7 +418,7 @@ class FilmStack(Model):
 
     def T(self, theta, wavelength, no, nt, type="12"):
         """
-        Returns the transmittance.
+        Return the transmittance.
 
         Parameters
         ----------
@@ -471,7 +469,7 @@ class FilmStack(Model):
     
     def Rs(self,theta,wavelength,no,nt,type="12"):
         """
-        Returns the reflectance for s-polarized radiation.
+        Return the reflectance for s-polarized radiation.
 
         Parameters
         ----------
@@ -517,7 +515,7 @@ class FilmStack(Model):
 
     def Rp(self,theta,wavelength,no,nt,type="12"):
         """
-        Returns the reflectance for p-polarized radiation.
+        Return the reflectance for p-polarized radiation.
 
         Parameters
         ----------
@@ -563,7 +561,7 @@ class FilmStack(Model):
 
     def Ts(self,theta,wavelength,no,nt,type="12"):
         """
-        Returns the transmittance for s-polarized radiation.
+        Return the transmittance for s-polarized radiation.
 
         Parameters
         ----------
@@ -609,7 +607,7 @@ class FilmStack(Model):
 
     def Tp(self,theta,wavelength,no,nt,type="12"):
         """
-        Returns the transmittance for p-polarized radiation.
+        Return the transmittance for p-polarized radiation.
 
         Parameters
         ----------

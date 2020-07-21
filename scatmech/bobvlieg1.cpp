@@ -184,8 +184,13 @@ namespace SCATMECH {
                 reflect_s[j] = rsnormal;
                 reflect_p[j] = rpnormal;
             } else {               // Exact solution
-                reflect_s[j] = stack->rs12(alpha,lambda,vacuum,substrate);
-                reflect_p[j] = stack->rp12(alpha,lambda,vacuum,substrate);
+				COMPLEX rs = stack->rs12(alpha, lambda, vacuum, substrate);
+				COMPLEX rp = stack->rp12(alpha, lambda, vacuum, substrate);
+				// Added 14 Jul 2020, because reflection coefficients at large complex
+				// angles sometime yield numerical errors from thick dielectrics
+                reflect_s[j] = (rs == rs) ? rs : 0.;
+                reflect_p[j] = (rp == rp) ? rp : 0.;
+				
             }
 
             // Calculate U, V, d+, and d- for each angle and (l,m) combination...

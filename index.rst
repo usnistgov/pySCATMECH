@@ -28,7 +28,6 @@ The documentation for the
 specific models are available at `SCATMECH Polarized Light
 Scattering C++ Class Library <https://pages.nist.gov/SCATMECH/docs/index.htm>`_.
 
-To install, use ``pip install pySCATMECH`` at a command prompt.
 
 :Author: Thomas A. Germer
 :E-mail: thomas.germer@nist.gov
@@ -38,8 +37,10 @@ To install, use ``pip install pySCATMECH`` at a command prompt.
    | National Institute of Standards Technology
    | 100 Bureau Drive Stop 8443
    | Gaitherburg, MD 20899-8443
-:Current Version: 0.0.1a0 (8 April 2020)
-
+:Current Version: 0.0.2.1 (8 July 2020)
+:Requires: Python 3.6 or greater
+:To install: Use ``pip install pySCATMECH`` at a command prompt.
+	     
 .. toctree::
    :maxdepth: 2
    :caption: Examples

@@ -39,7 +39,7 @@ class BRDF_Model(Model):
     def MuellerBRDF(self,
                     thetai=0, thetas=0, phis=0, rotation=0, coords="psps"):
         """
-        Evaluates the Mueller matrix BRDF in a given geometry, and coordinate 
+        Evaluate the Mueller matrix BRDF in a given geometry, and coordinate 
         system.
 
         Parameters
@@ -73,7 +73,7 @@ class BRDF_Model(Model):
              inc=StokesVector([1,0,0,0]),
              sens=StokesVector([1,0,0,0])):
         """
-        Returns the BRDF in a given geometry.
+        Return the scalar BRDF in a given geometry.
 
         Parameters
         ----------

@@ -19,12 +19,9 @@
 
 using namespace std;
 
-
 namespace SCATMECH {
 
     using namespace BobVlieg_Supp;
-
-
 
     //
     // factorial_list is a lookup table for n!
@@ -1003,7 +1000,7 @@ namespace SCATMECH {
             COMPLEX _cost=cos(pi-thetas);
             COMPLEX rp = stack->rp12(pi-thetas,lambda,vacuum,substrate);
             COMPLEX rs = stack->rs12(pi-thetas,lambda,vacuum,substrate);
-            COMPLEX phase = exp(2.*cI*qq*_cost);
+			COMPLEX phase = exp(2.*cI*qq*_cost);
             COMPLEX rpphase = rp*phase;
             COMPLEX rsphase = rs*phase;
 
@@ -1046,7 +1043,7 @@ namespace SCATMECH {
             if (imag(cost)<0) cost = -cost;
             COMPLEX tp = stack->tp12(_thetas,lambda,vacuum,substrate);
             COMPLEX ts = stack->ts12(_thetas,lambda,vacuum,substrate);
-            COMPLEX phase = exp(cI*qq*(cost-substrate.n(lambda)*cos(pi-thetas)));
+			COMPLEX phase = exp(cI*qq*(cost-substrate.n(lambda)*cos(pi-thetas)));
             // The following factor accounts for the transmittance across the interface and
             // the Jacobian as the solid angle across the interface changes...
             double factor = abs(COMPLEX(cos(pi-thetas))/cost*COMPLEX(sqrt(cube(index))));

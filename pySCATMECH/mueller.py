@@ -296,17 +296,17 @@ class MuellerMatrix(np.ndarray):
 
     def valid(self):
         """
-        Tests if a matrix is a Stokes-Stokes mapping matrix.
+        Test if a matrix is a Stokes-Stokes mapping matrix.
+
+        Uses the condition described in C.R. Givens and A.B. Kostinski, 
+        'A simple necessary and sufficient condition on physically realizable 
+        Mueller matrices,' Journal of Modern Optics 40, 471-481 (1993).
 
         Returns 
         -------
             bool
             True if the matrix will always map a valid Stokes vector to a 
             valid Stokes vector; otherwise, False.
-
-        Uses the condition described in C.R. Givens and A.B. Kostinski, 
-        'A simple necessary and sufficient condition on physically realizable 
-        Mueller matrices,' Journal of Modern Optics 40, 471-481 (1993).
         """
         M = self + 1E-10*self[0,0]*MuellerDiagonal([1,0,0,0])
         G = MinkowskiG
@@ -335,13 +335,7 @@ class MuellerMatrix(np.ndarray):
 
     def physically_valid(self):
         """ 
-        Tests if a matrix is physically valid.
-
-        Returns 
-        -------
-            bool
-            True if the matrix is physically valid, that is, if it is a convex
-            sum of Jones-Mueller matrices.
+        Test if a matrix is physically valid.
 
         The function physically_valid() calculates the Mueller matrix coherency
         matrix, which is the coherency matrix for the four Jones-Mueller 
@@ -353,6 +347,12 @@ class MuellerMatrix(np.ndarray):
         See B.N. Simon, et al, "A complete characterization of pre-Mueller and 
         Mueller matrices in polarization optics," 
         J. Opt. Soc. Am. A 27(2), 188-199 (2010).
+
+        Returns 
+        -------
+            bool
+            True if the matrix is physically valid, that is, if it is a convex
+            sum of Jones-Mueller matrices.
         """
         h = MuellerToHermitian(self)
         Q, W = np.linalg.eig(h)
@@ -366,7 +366,7 @@ class MuellerMatrix(np.ndarray):
     
     def Closest_NonDepolarizing(self):
         """
-        Returns the largest matrix in the Cloude decomposition, which may be
+        Return the largest matrix in the Cloude decomposition, which may be
         interpreted as the closest non-depolarizing Mueller matrix.
 
         Returns
@@ -479,7 +479,7 @@ class StokesVector(np.ndarray):
     
     def rotate(self,angle):
         """
-        Returns a Stokes vector rotated by an angle.
+        Return a Stokes vector rotated by an angle.
 
         Parameters
         ----------
@@ -497,7 +497,7 @@ class StokesVector(np.ndarray):
 
     def eta(self):
         """
-        Returns the principal angle of the polarization ellipse
+        Return the principal angle of the polarization ellipse
 
         Returns
         -------
@@ -510,7 +510,7 @@ class StokesVector(np.ndarray):
 
     def intensity(self):
         """
-        Returns the intensity.
+        Return the intensity.
 
         Returns
         -------
@@ -522,7 +522,7 @@ class StokesVector(np.ndarray):
 
     def DOLP(self):
         """
-        Returns the degree of linear polarization.
+        Return the degree of linear polarization.
 
         Returns
         -------
@@ -534,7 +534,7 @@ class StokesVector(np.ndarray):
 
     def DOP(self):
         """
-        Returns the degree of polarization.
+        Return the degree of polarization.
 
         Returns
         -------
@@ -546,7 +546,7 @@ class StokesVector(np.ndarray):
     
     def DOCP(self):
         """
-        Returns the degree of circular polarization.
+        Return the degree of circular polarization.
 
         Returns
         -------
@@ -558,7 +558,7 @@ class StokesVector(np.ndarray):
 
     def ellipticity(self):
         """
-        Returns the ellipticity of the field (ratio of minor to major axes).
+        Return the ellipticity of the field (ratio of minor to major axes).
 
         Returns
         -------
@@ -571,7 +571,7 @@ class StokesVector(np.ndarray):
 
     def delta(self):
         """
-        Returns the phase difference between the two components.
+        Return the phase difference between the two components.
 
         Returns
         -------
@@ -585,7 +585,7 @@ class StokesVector(np.ndarray):
 
     def psi(self):
         """
-        Returns arc tangent of the amplitude ratio between the two components.
+        Return arc tangent of the amplitude ratio between the two components.
 
         Returns
         -------
@@ -600,7 +600,7 @@ class StokesVector(np.ndarray):
 
     def eccentricity(self):
         """
-        Returns the eccentricity.
+        Return the eccentricity.
 
         Returns
         -------
@@ -624,7 +624,7 @@ class StokesVector(np.ndarray):
 
     def pol_part(self):
         """
-        Returns the polarized part of the Stokes vector.
+        Return the polarized part of the Stokes vector.
 
         Returns
         -------
@@ -638,7 +638,7 @@ class StokesVector(np.ndarray):
 
     def unpol_part(self):
         """
-        Returns the unpolarized part of the Stokes vector.
+        Return the unpolarized part of the Stokes vector.
 
         Returns
         -------
@@ -669,7 +669,7 @@ class StokesVector(np.ndarray):
 
     def normalized(self):
         """
-        Returns normalized Stokes vector.
+        Return normalized Stokes vector.
 
         Returns
         -------
@@ -694,7 +694,7 @@ class StokesVector(np.ndarray):
                 str(self[3]) + ")" )
     
 def JonesMueller(jones): 
-    """Converts a Jones matrix to a Mueller matrix
+    """Convert a Jones matrix to a Mueller matrix
     
     Parameters
     ----------
@@ -717,7 +717,7 @@ def JonesMueller(jones):
     return MuellerMatrix((A @ np.kron(jones,np.conj(jones)) @ Ainv).real)
 
 def JonesStokes(jones):
-    """Converts a Jones vector to a Stokes vector
+    """Convert a Jones vector to a Stokes vector
     
     Parameters
     ----------
@@ -736,7 +736,7 @@ def JonesStokes(jones):
     
 def MuellerToHermitian(m):
     """
-    Converts a Mueller matrix into its equivalent Hermitian coherency matrix.
+    Convert a Mueller matrix into its equivalent Hermitian coherency matrix.
     
     Parameters
     ----------
@@ -773,7 +773,7 @@ def MuellerToHermitian(m):
 
 def HermitianToMueller(h):
     """
-    Converts a Hermitian coherency matrix to its equivalent Mueller matrix.
+    Convert a Hermitian coherency matrix to its equivalent Mueller matrix.
 
     Parameters
     ----------
@@ -809,7 +809,7 @@ def HermitianToMueller(h):
 
 def Cloude_Decomposition(M):
     """
-    Returns a list of four non-depolarizing Mueller matrices that sum to the 
+    Return a list of four non-depolarizing Mueller matrices that sum to the 
     Mueller matrix.
 
     Parameters
@@ -1314,8 +1314,8 @@ def MuellerLog(M):
 
     Returns
     -------
-         :4x4 np.array 
-        The matrix logarithm of M
+    4x4 numpy.array 
+        The matrix logarithm of M 
     """
     Q, W = np.linalg.eig(np.array(M))
     QQ = []
@@ -1336,7 +1336,7 @@ MuellerMatrix.MuellerLog = MuellerLog
 
 def MuellerExp(L):
     """
-    Returns matrix exponential.
+    Return matrix exponential.
 
     Returns
     -------
@@ -1360,7 +1360,7 @@ MinkowskiG = MuellerMatrix(np.diag([1,-1,-1,-1]))
 
 def LeviCivita(ijk):
     """
-    Returns the Levi-Civita symbol
+    Return the Levi-Civita symbol
     Argument: 3-element list of int
     """
     result = 1
@@ -1384,19 +1384,19 @@ PauliMatrices = [np.array([[1,0],
 
 def JonesZero():
     """
-    Returns a zero Jones matrix
+    Return a zero Jones matrix
     """
     return np.array([[0,0],[0,0]])
 
 def JonesUnit():
     """
-    Returns a unit Jones matrix
+    Return a unit Jones matrix
     """
     return np.array([[1,0],[0,1]])
 
 def JonesRotator(angle):
     """
-    Returns a Jones matrix that rotates the polarization by angle"
+    Return a Jones matrix that rotates the polarization by angle"
 
     Parameters
     ----------
@@ -1416,7 +1416,7 @@ def JonesRotator(angle):
 
 def MuellerRotator(angle):
     """
-    Returns a Mueller matrix that rotates the polarization by angle"
+    Return a Mueller matrix that rotates the polarization by angle"
 
     Parameters
     ----------
@@ -1439,7 +1439,7 @@ def MuellerRotator(angle):
 
 def JonesBasis(angle=0, DOCP=None, jones=None):
     """
-    Returns the basis vectors for a Jones Matrix using a Jones vector or a 
+    Return the basis vectors for a Jones Matrix using a Jones vector or a 
     degree of circular polarization and an angle. The returned vectors are 
     orthogonal to one another and of unit intensity. This function
     is primarily used by JonesRetarder and JonesDiattenuator
@@ -1485,7 +1485,7 @@ def JonesBasis(angle=0, DOCP=None, jones=None):
 
 def JonesRetarder(phase=None, angle=0, DOCP=None, jones=None):
     """
-    Returns the Jones matrix for a homogeneous retarder with a given phase 
+    Return the Jones matrix for a homogeneous retarder with a given phase 
     and axes. 
     
     Parameters
@@ -1515,7 +1515,7 @@ def JonesRetarder(phase=None, angle=0, DOCP=None, jones=None):
         
 def JonesDiattenuator(diatten=None, angle=0, DOCP=None, jones=None):
     """
-    Returns the Jones matrix for a homogeneous diattenuator with a given 
+    Return the Jones matrix for a homogeneous diattenuator with a given 
     phase and axes. 
     
     Parameters
@@ -1544,7 +1544,7 @@ def JonesDiattenuator(diatten=None, angle=0, DOCP=None, jones=None):
 
 def MuellerRetarder(phase=0, angle=0, DOCP=None, jones=None):
     """
-    Returns the Mueller matrix for a homogeneous retarder with a given 
+    Return the Mueller matrix for a homogeneous retarder with a given 
     phase and axis. 
     
     Parameters
@@ -1572,7 +1572,7 @@ def MuellerRetarder(phase=0, angle=0, DOCP=None, jones=None):
 
 def MuellerDiattenuator(diatten=0, angle=0, DOCP=None, jones=None):
     """
-    Returns the Mueller matrix for a homogeneous diattenuator with a 
+    Return the Mueller matrix for a homogeneous diattenuator with a 
     given phase and axis. 
     
     Parameters
@@ -1602,7 +1602,7 @@ MuellerPolarizer = MuellerDiattenuator
 
 def MuellerZero():
     """
-    Returns a zero Mueller matrix
+    Return a zero Mueller matrix
 
     Returns
     -------
@@ -1614,7 +1614,7 @@ def MuellerZero():
 
 def MuellerUnit(attenuation=1):
     """
-    Returns a unit Mueller matrix
+    Return a unit Mueller matrix
 
     Arguments
     --------
@@ -1626,7 +1626,7 @@ def MuellerUnit(attenuation=1):
 
 def MuellerDiagonal(a):
     """
-    Returns a diagonal Mueller matrix
+    Return a diagonal Mueller matrix
 
     Arguments
     ---------
@@ -1636,14 +1636,14 @@ def MuellerDiagonal(a):
 
 def StokesZero():
     """
-    Returns zero Stokes vector
+    Return zero Stokes vector
 
     """
     return StokesVector([0,0,0,0])
     
 def Polarization(*args, **kwargs):
     """
-    Returns a StokesVector with a given name
+    Return a StokesVector with a given name
    
     Parameters
     ----------
@@ -1741,7 +1741,7 @@ def Polarization(*args, **kwargs):
 
 def Sensitivity(*args, **kwargs):
     """
-    Returns a StokesVector with a given name that 
+    Return a StokesVector with a given name that 
     corresponds to a sensitivity.  
    
     Parameters

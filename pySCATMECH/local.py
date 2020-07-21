@@ -9,7 +9,7 @@ class Local_BRDF_Model(Model):
     """
     def __init__(self, *args, **kwargs):
         """
-        Creates and allocates a SCATMECH Local_BRDF_Model 
+        Create and allocate a SCATMECH Local_BRDF_Model 
         
         Parameters
         ----------
@@ -43,7 +43,7 @@ class Local_BRDF_Model(Model):
 
     def MuellerDSC(self, thetai=0, thetas=0, phis=0, rotation=0, coords="psps"):
         """
-        Evaluates the Mueller matrix differential scattering cross section 
+        Evaluate the Mueller matrix differential scattering cross section 
         in a given geometry, and coordinate system
 
         Parameters
@@ -77,7 +77,7 @@ class Local_BRDF_Model(Model):
     def DSC(self, thetai=0, thetas=0, phis=0, rotation=0, coords="psps",
             inc=StokesVector([1,0,0,0]),sens=StokesVector([1,0,0,0])):
         """
-        Returns the differential scattering cross section in a given geometry.
+        Return the differential scattering cross section in a given geometry.
 
         Parameters
         ----------
