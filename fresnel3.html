@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>FilmStack class &#8212; pySCATMECH 0.0.2.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Model Module" href="model.html" />
+    <link rel="prev" title="Film class" href="fresnel2.html" />
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Mark external (non-nist.gov) A tags with class "external"
+  //If the adress start with https and ends with nist.gov
+  var re_nist = new RegExp('^https?:\/\/((^\/)*\.)*nist\\.gov(\/|$)');
+  //Regex to find address that start with https
+  var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+  $("a").each(function(){
+    var url=$(this).attr('href');
+    if(re_nist.test(url) || !re_absolute_address.test(url)){
+      $(this).addClass('local');
+    }else{
+      //This a href appears to be external, so tag it
+      $(this).addClass('external');
+    }
+  });
+  // Add leaveNotice to external A elements
+  $('a.external').leaveNotice();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="model.html" title="Model Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fresnel2.html" title="Film class"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="fresnel.html" accesskey="U">Fresnel Module</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="filmstack-class">
+<h1>FilmStack class<a class="headerlink" href="#filmstack-class" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pySCATMECH.fresnel.FilmStack">
+<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.fresnel.</code><code class="sig-name descname">FilmStack</code><span class="sig-paren">(</span><em class="sig-param">films=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="model.html#pySCATMECH.model.Model" title="pySCATMECH.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.model.Model</span></code></a></p>
+<p>A class for handling stacks of films</p>
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.R">
+<code class="sig-name descname">R</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.R" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the reflectance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
+<li><p><strong>no</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the incident medium</p></li>
+<li><p><strong>nt</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the transmitted medium</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – If <cite>12</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle, evaluated as if
+the radiation were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>21</cite>, then the incident medium is the substrate and theta
+is the incident angle evaluated is evaluated as if the radiation
+were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>12i</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle in that medium.
+(The component of the wavevector parallel to the surface is
+2*pi*sin(theta)/no/lambda)
+If <cite>21i</cite>, then the incident medium is the substrate and theta
+is the incident angle in the substrate. (The component of the
+wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
+(Default is <cite>12</cite>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>refl</strong> – The Mueller matrix reflectance, which is the
+linear relationship between radiant fluxes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.Rp">
+<code class="sig-name descname">Rp</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the reflectance for p-polarized radiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
+<li><p><strong>no</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the incident medium</p></li>
+<li><p><strong>nt</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the transmitted medium</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – If <cite>12</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle, evaluated as if
+the radiation were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>21</cite>, then the incident medium is the substrate and theta
+is the incident angle evaluated is evaluated as if the radiation
+were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>12i</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle in that medium.
+(The component of the wavevector parallel to the surface is
+2*pi*sin(theta)/no/lambda)
+If <cite>21i</cite>, then the incident medium is the substrate and theta
+is the incident angle in the substrate. (The component of the
+wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
+(Default is <cite>12</cite>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>refl</strong> – The reflectance for p-polarization, which is the
+linear relationship between radiant fluxes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.Rs">
+<code class="sig-name descname">Rs</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the reflectance for s-polarized radiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
+<li><p><strong>no</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the incident medium</p></li>
+<li><p><strong>nt</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the transmitted medium</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – If <cite>12</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle, evaluated as if
+the radiation were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>21</cite>, then the incident medium is the substrate and theta
+is the incident angle evaluated is evaluated as if the radiation
+were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>12i</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle in that medium.
+(The component of the wavevector parallel to the surface is
+2*pi*sin(theta)/no/lambda)
+If <cite>21i</cite>, then the incident medium is the substrate and theta
+is the incident angle in the substrate. (The component of the
+wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
+(Default is <cite>12</cite>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>refl</strong> – The reflectance for s-polarization, which is the
+linear relationship between radiant fluxes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.T">
+<code class="sig-name descname">T</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.T" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the transmittance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
+<li><p><strong>no</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the incident medium</p></li>
+<li><p><strong>nt</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the transmitted medium</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – If <cite>12</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle, evaluated as if
+the radiation were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>21</cite>, then the incident medium is the substrate and theta
+is the incident angle evaluated is evaluated as if the radiation
+were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>12i</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle in that medium.
+(The component of the wavevector parallel to the surface is
+2*pi*sin(theta)/no/lambda)
+If <cite>21i</cite>, then the incident medium is the substrate and theta
+is the incident angle in the substrate. (The component of the
+wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
+(Default is <cite>12</cite>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>refl</strong> – The Mueller matrix transmittance, which is the
+linear relationship between radiant fluxes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.Tp">
+<code class="sig-name descname">Tp</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Tp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the transmittance for p-polarized radiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
+<li><p><strong>no</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the incident medium</p></li>
+<li><p><strong>nt</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the transmitted medium</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – If <cite>12</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle, evaluated as if
+the radiation were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>21</cite>, then the incident medium is the substrate and theta
+is the incident angle evaluated is evaluated as if the radiation
+were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>12i</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle in that medium.
+(The component of the wavevector parallel to the surface is
+2*pi*sin(theta)/no/lambda)
+If <cite>21i</cite>, then the incident medium is the substrate and theta
+is the incident angle in the substrate. (The component of the
+wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
+(Default is ‘12’)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>refl</strong> – The transmittance for p-polarization, which is the
+linear relationship between radiant fluxes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.Ts">
+<code class="sig-name descname">Ts</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the transmittance for s-polarized radiation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
+<li><p><strong>no</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the incident medium</p></li>
+<li><p><strong>nt</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the transmitted medium</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – If <cite>12</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle, evaluated as if
+the radiation were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>21</cite>, then the incident medium is the substrate and theta
+is the incident angle evaluated is evaluated as if the radiation
+were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>12i</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle in that medium.
+(The component of the wavevector parallel to the surface is
+2*pi*sin(theta)/no/lambda)
+If <cite>21i</cite>, then the incident medium is the substrate and theta
+is the incident angle in the substrate. (The component of the
+wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
+(Default is <cite>12</cite>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>refl</strong> – The transmittance for s-polarization, which is the
+linear relationship between radiant fluxes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.clean">
+<code class="sig-name descname">clean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.clean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the stack of all films.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.getModelDict">
+<code class="sig-name descname">getModelDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getModelDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a Model parameter dictionary. Used primarily internally so that
+a FilmStack can be passed as a parameter to a Model for a stack.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.getStackCommand">
+<code class="sig-name descname">getStackCommand</code><span class="sig-paren">(</span><em class="sig-param">wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getStackCommand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of films suitable for a SCATMECH::Stack_StackModel</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>wavelength</strong> (<em>float</em>) – The wavelength to evaluate the complex index at.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>command</strong> – List of films suitable for a SCATMECH::Stack_StackModel</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.grow">
+<code class="sig-name descname">grow</code><span class="sig-paren">(</span><em class="sig-param">film</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.grow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Grow a film on the stack.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>film</strong> (<a class="reference internal" href="fresnel2.html#pySCATMECH.fresnel.Film" title="pySCATMECH.fresnel.Film"><em>Film</em></a>) – The film to be grown</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.reflectionCoefficient">
+<code class="sig-name descname">reflectionCoefficient</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.reflectionCoefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the reflection coefficent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
+<li><p><strong>no</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the incident medium</p></li>
+<li><p><strong>nt</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the transmitted medium</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – If <cite>12</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle, evaluated as if
+the radiation were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>21</cite>, then the incident medium is the substrate and theta
+is the incident angle evaluated is evaluated as if the radiation
+were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>12i</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle in that medium.
+(The component of the wavevector parallel to the surface is
+2*pi*sin(theta)/no/lambda)
+If <cite>21i</cite>, then the incident medium is the substrate and theta
+is the incident angle in the substrate. (The component of the
+wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
+(Default is <cite>12</cite>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>coeff</strong> – The Jones matrix reflection coefficient, which is the
+linear relationship between the electric field amplitudes.
+coeff[0][0] is the s-polarized reflection coefficient.
+coeff[1][1] is the p-polarized reflection coefficient.
+coeff[1][0] = coeff[0][1] = 0</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of list of complex</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.fresnel.FilmStack.transmissionCoefficient">
+<code class="sig-name descname">transmissionCoefficient</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.transmissionCoefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the transmission coefficient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
+<li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
+<li><p><strong>no</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the incident medium</p></li>
+<li><p><strong>nt</strong> (<a class="reference internal" href="fresnel1.html#pySCATMECH.fresnel.OpticalFunction" title="pySCATMECH.fresnel.OpticalFunction"><em>OpticalFunction</em></a>) – Optical constants for the transmitted medium</p></li>
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – If <cite>12</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle, evaluated as if
+the radiation were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>21</cite>, then the incident medium is the substrate and theta
+is the incident angle evaluated is evaluated as if the radiation
+were in vacuum. (The component of the wavevector
+parallel to the surface is 2*pi*sin(theta)/lambda)
+If <cite>12i</cite>, then the incident medium is the medium above the
+substrate and theta is the incident angle in that medium.
+(The component of the wavevector parallel to the surface is
+2*pi*sin(theta)/no/lambda)
+If <cite>21i</cite>, then the incident medium is the substrate and theta
+is the incident angle in the substrate. (The component of the
+wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
+(Default is <cite>12</cite>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>coeff</strong> – The Jones matrix transmission coefficient, which is the
+linear relationship between the electric field amplitudes.
+coeff[0][0] is the s-polarized transmission coefficient.
+coeff[1][1] is the p-polarized transmission coefficient.
+coeff[1][0] = coeff[0][1] = 0</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of list of complex</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fresnel2.html"
+                        title="previous chapter">Film class</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="model.html"
+                        title="next chapter">Model Module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/fresnel3.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="model.html" title="Model Module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fresnel2.html" title="Film class"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="fresnel.html" >Fresnel Module</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

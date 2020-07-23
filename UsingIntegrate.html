@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Using the Integrate module &#8212; pySCATMECH 0.0.2.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using the Scatterer module" href="UsingScatterer.html" />
+    <link rel="prev" title="Using the Local module" href="UsingLocal.html" />
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Mark external (non-nist.gov) A tags with class "external"
+  //If the adress start with https and ends with nist.gov
+  var re_nist = new RegExp('^https?:\/\/((^\/)*\.)*nist\\.gov(\/|$)');
+  //Regex to find address that start with https
+  var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+  $("a").each(function(){
+    var url=$(this).attr('href');
+    if(re_nist.test(url) || !re_absolute_address.test(url)){
+      $(this).addClass('local');
+    }else{
+      //This a href appears to be external, so tag it
+      $(this).addClass('external');
+    }
+  });
+  // Add leaveNotice to external A elements
+  $('a.external').leaveNotice();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UsingScatterer.html" title="Using the Scatterer module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="UsingLocal.html" title="Using the Local module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Using-the-Integrate-module">
+<h1>Using the Integrate module<a class="headerlink" href="#Using-the-Integrate-module" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, we demonstrate how to use the pySCATMECH Integrate module. Its main purpose is to calculate integrated scatter from BRDF models or integrated cross section from local BRDF models over a complex geometry.</p>
+<p>In the following, we use some symbols and definitions:</p>
+<ul><li><p><span class="math notranslate nohighlight">\(f_\mathrm{r}\)</span> : bidirectional reflectance distibution function (BRDF)</p>
+</li><li><p><span class="math notranslate nohighlight">\(\mathrm{d}\sigma/\mathrm{d}\Omega\)</span> : differential scattering cross section (DSC)</p>
+</li><li><p><span class="math notranslate nohighlight">\(\theta\)</span> : polar angle</p>
+</li><li><p><span class="math notranslate nohighlight">\(\phi\)</span> : azimuth angle</p>
+</li><li><p><span class="math notranslate nohighlight">\(\Omega\)</span> : solid angle</p>
+</li><li><p><span class="math notranslate nohighlight">\(\rho\)</span> : reflectance</p>
+</li><li><p><span class="math notranslate nohighlight">\(\sigma\)</span> : cross section</p>
+</li><li><p><span class="math notranslate nohighlight">\(\theta_\mathrm{i}\)</span> : incident polar angle</p>
+</ul><p>When we perform numerical integration of the BRDF over a solid angle to obtain reflectance, we approximate <span class="math">\begin{equation}
+\rho = \int_\Omega f_\mathrm{r}(\theta_\mathrm{i},\theta,\phi)\;\cos\theta\sin\theta \; \mathrm{d}\theta \; \mathrm{d}\phi
+\end{equation}</span> with <span class="math">\begin{equation}
+\rho \approx \sum_j f_\mathrm{r}(\theta_\mathrm{i},\theta_j,\phi_j)\; w_j
+\end{equation}</span> where <span class="math notranslate nohighlight">\(\theta_j\)</span> and <span class="math notranslate nohighlight">\(\phi_j\)</span> are sampled polar and azimuth angles, and <span class="math notranslate nohighlight">\(w_j\)</span> are weighting factors.</p>
+<p>For local models that define the differential scattering cross section (DSC), we approximate the integrated cross section <span class="math notranslate nohighlight">\(\sigma\)</span> as <span class="math">\begin{equation}
+\sigma = \int_\Omega \frac{\mathrm{d}\sigma(\theta_\mathrm{i},\theta,\phi)}{\mathrm{d}\Omega}\;\sin\theta \; \mathrm{d}\theta \; \mathrm{d}\phi
+\end{equation}</span> with <span class="math">\begin{equation}
+\rho \approx \sum_j \frac{\mathrm{d}\sigma(\theta_\mathrm{i},\theta_j,\phi_j)}{\mathrm{d}\Omega}\; \frac{w_j}{\cos\theta_j}
+\end{equation}</span></p>
+<p>In this notebook, we will be demonstrating how to integrate the BRDF to obtain the reflectance or the DSC to obtain cross section.</p>
+<p>We always start by importing the libraries we need. We are going to do some graphing, so we need <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>, and since we are demonstrating it, we will need <code class="docutils literal notranslate"><span class="pre">pySCATMECH.integrate</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">pySCATMECH.integrate</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Defining-geometries">
+<h2>Defining geometries<a class="headerlink" href="#Defining-geometries" title="Permalink to this headline">¶</a></h2>
+<p>We can define various solid angles. Let’s start with a hemisphere:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hemi</span> <span class="o">=</span> <span class="n">Hemisphere</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Integrator</span></code> class will be used to perform integration. Its constructor takes a point spacing and a detector geometry.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Integrator.PlotSamplingPoints()</span></code> function plots the integration points in a manner in which the symbol diameter is proportional to the weighting factor. There are some optional parameters that we will discuss later.</p>
+<p>There are three different types of samplings available; <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">=</span> <span class="pre">1</span></code> is the default. For <code class="docutils literal notranslate"><span class="pre">type=</span></code>, points are spaced evenly in angle space. For <code class="docutils literal notranslate"><span class="pre">type=2</span></code>, points are spaced evenly in solid angle. For <code class="docutils literal notranslate"><span class="pre">type=3</span></code>, points are evenly spaced in projected solid angle.</p>
+<p>Here, we show the three different integration types for the hemispherical detector.</p>
+<p>Notice that pySCATMECH provides <code class="docutils literal notranslate"><span class="pre">deg</span></code>, which is <span class="math notranslate nohighlight">\(\pi/180\)</span>. Also, notice that the sampling weights become smaller where the density of points becomes greater.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">integrator1</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">hemi</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">integrator1</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+
+<span class="n">integrator2</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">hemi</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">integrator2</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+
+<span class="n">integrator3</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">hemi</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">integrator3</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with unevenly spaced points inside" src="_images/UsingIntegrate_7_0.svg" /></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with unevenly spaced points inside" src="_images/UsingIntegrate_7_1.svg" /></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with evenly spaced points inside" src="_images/UsingIntegrate_7_2.svg" /></div>
+</div>
+<p>Let’s build some more interesting detection geometries. We start by demonstrating some builtin shapes. One can collect radiation over a circular cone. Here, the cone is centered on <span class="math notranslate nohighlight">\(\theta=45^\circ\)</span> and <span class="math notranslate nohighlight">\(\phi=90^\circ\)</span> and has a half angle of <span class="math notranslate nohighlight">\(20^\circ\)</span>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cone</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">cone</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points in an ellipse inside of it" src="_images/UsingIntegrate_9_0.svg" /></div>
+</div>
+<p>Here, we have an elliptical cone. The half angle in the x direction is 20°, the half angle in the y direction is 45°.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cone</span> <span class="o">=</span> <span class="n">EllipticalCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">45</span><span class="o">*</span><span class="n">deg</span><span class="p">))</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">cone</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points in an ellipse inside of it" src="_images/UsingIntegrate_11_0.svg" /></div>
+</div>
+<p>We can rotate the previous elliptical cone by angle <span class="math notranslate nohighlight">\(\gamma\)</span>, in this case 45°.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cone</span> <span class="o">=</span> <span class="n">EllipticalCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">45</span><span class="o">*</span><span class="n">deg</span><span class="p">),</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">cone</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points in a tilted ellipse inside of it" src="_images/UsingIntegrate_13_0.svg" /></div>
+</div>
+<p>We can have a rectangular cone. In this case, it is centered on the surface normal (<span class="math notranslate nohighlight">\(\theta=0,\phi=0\)</span>) and has half angles of 20° and 45°.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cone</span> <span class="o">=</span> <span class="n">RectangularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">45</span><span class="o">*</span><span class="n">deg</span><span class="p">))</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">cone</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points in a rectangle inside of it" src="_images/UsingIntegrate_15_0.svg" /></div>
+</div>
+<p>And we can rotate that rectangular cone by <span class="math notranslate nohighlight">\(\gamma=45^\circ\)</span>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cone</span> <span class="o">=</span> <span class="n">RectangularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">45</span><span class="o">*</span><span class="n">deg</span><span class="p">),</span> <span class="n">gamma</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">cone</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points in a tilted rectangle inside of it" src="_images/UsingIntegrate_17_0.svg" /></div>
+</div>
+<p>We can also define arbitrary paths in projected cosine space with a list of <span class="math notranslate nohighlight">\((x,y)\)</span> pairs. The pairs must represent consecutive vertices around the perimeter. Pretty complicated geometries can be generated this way.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cone</span> <span class="o">=</span> <span class="n">ProjectedPolygon</span><span class="p">([(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),</span>
+                         <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span>
+                         <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.2</span><span class="p">),</span>
+                         <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="o">-</span><span class="mf">0.5</span><span class="p">),</span>
+                         <span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">),</span>
+                         <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.2</span><span class="p">)])</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">cone</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points in a bow tie inside of it" src="_images/UsingIntegrate_19_0.svg" /></div>
+</div>
+<p>We can also combine shapes with logical operations &amp; (and), | (or), and ~ (not). Thus, we can place holes to let radiation enter and exit the hemisphere.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hole1</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">70</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">hole2</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">70</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">180</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+
+<span class="n">detector</span> <span class="o">=</span>  <span class="n">Hemisphere</span><span class="p">()</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">hole1</span> <span class="o">|</span> <span class="n">hole2</span><span class="p">)</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">detector</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points filling it, except in two small circles" src="_images/UsingIntegrate_21_0.svg" /></div>
+</div>
+<p>Here is a more complex geometry, created by combining different elements.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circle</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">70</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">hole1</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">70</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">hole2</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">70</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">180</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">hole3</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">20</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">circle</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">hole1</span> <span class="o">|</span> <span class="n">hole2</span> <span class="o">|</span> <span class="n">hole3</span><span class="p">)</span> <span class="o">|</span> <span class="n">center</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">detector</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points filling it, except in two small notches and an annulus" src="_images/UsingIntegrate_23_0.svg" /></div>
+</div>
+<p>Yet another example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">slot</span> <span class="o">=</span> <span class="n">RectangularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="p">(</span><span class="mi">90</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">deg</span><span class="p">))</span>
+
+<span class="n">detector3</span> <span class="o">=</span> <span class="o">~</span><span class="n">slot</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">detector3</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points filling it, except along a horizontal strip" src="_images/UsingIntegrate_25_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="Integrate-reflectance">
+<h2>Integrate reflectance<a class="headerlink" href="#Integrate-reflectance" title="Permalink to this headline">¶</a></h2>
+<p>So, let’s integrate a BRDF model. We start by creating a model with a set of parameters. We are going to use <code class="docutils literal notranslate"><span class="pre">Microroughness_BRDF_Model</span></code> with a gaussian rough surface. Then, we integrate it over the hemisphere (with a port provided to let the incident radiation enter and specularly reflected radiation exit) using <code class="docutils literal notranslate"><span class="pre">Reflectance</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># The model parameters as a dictionary...</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lambda&#39;</span> <span class="p">:</span> <span class="mf">0.532</span><span class="p">,</span>
+              <span class="s1">&#39;substrate&#39;</span> <span class="p">:</span> <span class="mf">4.05</span><span class="o">+</span><span class="mf">0.05</span><span class="n">j</span><span class="p">,</span>
+              <span class="s1">&#39;type&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="s1">&#39;psd&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="kc">None</span> <span class="p">:</span> <span class="s1">&#39;Gaussian_PSD_Function&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;sigma&#39;</span> <span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+                       <span class="s1">&#39;length&#39;</span> <span class="p">:</span> <span class="mi">1</span>
+                       <span class="p">}</span>
+             <span class="p">}</span>
+
+<span class="c1"># Define the model and set its parameters...</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">BRDF_Model</span><span class="p">(</span><span class="s2">&quot;Microroughness_BRDF_Model&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">parameters</span><span class="p">)</span>
+
+<span class="c1"># Define the incident angle...</span>
+<span class="n">thetaIncident</span> <span class="o">=</span> <span class="mi">6</span><span class="o">*</span><span class="n">deg</span>
+
+<span class="c1"># The detector is the hemisphere with a hole cut out of it to let in the</span>
+<span class="c1"># incident light and to let out the specular reflection...</span>
+<span class="n">detector</span> <span class="o">=</span> <span class="n">Hemisphere</span><span class="p">()</span> <span class="o">&amp;</span> <span class="o">~</span><span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+
+<span class="c1"># Get the integration points and show them...</span>
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">detector</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+
+<span class="c1"># Calculate and print the reflectance ...</span>
+<span class="n">ref</span> <span class="o">=</span> <span class="n">integrator</span><span class="o">.</span><span class="n">Reflectance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">thetaIncident</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Integrated reflectance = </span><span class="si">%g</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">ref</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points filling it, except for a central circle" src="_images/UsingIntegrate_27_0.svg" /></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Integrated reflectance = 0.239009
+</pre></div></div>
+</div>
+<p>We can see what this looks like as a function of a parameter. In the following, we plot the integrated reflectance as a function of the root-mean-square (RMS) roughness. Notice that we space the points out logarithmically. Also, note how we can define the incident polarization.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Get the RMS roughnesses in logarithmic spacing...</span>
+<span class="n">sigmas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.0001</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="o">.</span><span class="mi">01</span><span class="p">),</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="c1"># Initialize a list of reflectances...</span>
+<span class="n">refs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># s-polarized incident radiation...</span>
+<span class="n">spol</span> <span class="o">=</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">sigma</span> <span class="ow">in</span> <span class="n">sigmas</span><span class="p">:</span>
+    <span class="c1"># Set the RMS roughness...</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">setParameter</span><span class="p">(</span><span class="s2">&quot;psd.sigma&quot;</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+    <span class="c1"># Calculate the reflectance...</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="n">integrator</span><span class="o">.</span><span class="n">Reflectance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">thetaIncident</span><span class="p">,</span> <span class="n">incpol</span><span class="o">=</span><span class="n">spol</span><span class="p">)</span>
+
+    <span class="c1"># Add it to the list..</span>
+    <span class="n">refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref</span><span class="p">)</span>
+
+<span class="c1"># Plot it...</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">sigmas</span><span class="p">,</span><span class="n">refs</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$\sigma$ (µm)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Reflectance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Reflectance versus RMS Roughness&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: A straight line" src="_images/UsingIntegrate_29_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="Integrate-cross-section">
+<h2>Integrate cross section<a class="headerlink" href="#Integrate-cross-section" title="Permalink to this headline">¶</a></h2>
+<p>Models that inherit <code class="docutils literal notranslate"><span class="pre">Local_BRDF_Model</span></code> calculate the differential scattering cross section (DSC) for individual particles or localized defects. We can use <code class="docutils literal notranslate"><span class="pre">IntegrateCrossSection</span></code> to obtain the scattering cross section. For this example, we use the <code class="docutils literal notranslate"><span class="pre">Bobbert_Vlieger_BRDF_Model</span></code>, which is an accurate theory for the scattering by a sphere above a surface.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">BVparameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lambda&#39;</span> <span class="p">:</span> <span class="mf">0.532</span><span class="p">,</span>
+              <span class="s1">&#39;substrate&#39;</span> <span class="p">:</span> <span class="s2">&quot;silicon&quot;</span><span class="p">,</span>
+              <span class="s1">&#39;type&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="s1">&#39;sphere&#39;</span> <span class="p">:</span> <span class="mf">1.59</span><span class="p">,</span>
+              <span class="s1">&#39;radius&#39;</span> <span class="p">:</span> <span class="mf">0.05</span><span class="p">,</span>
+              <span class="s1">&#39;spherecoat&#39;</span> <span class="p">:</span> <span class="s2">&quot;No_StackModel&quot;</span><span class="p">,</span>
+              <span class="s1">&#39;stack&#39;</span> <span class="p">:</span> <span class="p">{</span><span class="kc">None</span> <span class="p">:</span> <span class="s1">&#39;SingleFilm_StackModel&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;material&#39;</span> <span class="p">:</span> <span class="s1">&#39;(1.5,0)&#39;</span><span class="p">,</span>
+                        <span class="s1">&#39;thickness&#39;</span> <span class="p">:</span> <span class="s1">&#39;0.0016&#39;</span><span class="p">},</span>
+              <span class="s1">&#39;delta&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">}</span> <span class="c1"># use defaults for operational parameters</span>
+
+<span class="n">BVmodel</span> <span class="o">=</span> <span class="n">Local_BRDF_Model</span><span class="p">(</span><span class="s2">&quot;Bobbert_Vlieger_BRDF_Model&quot;</span><span class="p">,</span><span class="o">**</span><span class="n">BVparameters</span><span class="p">)</span>
+
+<span class="n">thetaIncident</span> <span class="o">=</span> <span class="mi">70</span><span class="o">*</span><span class="n">deg</span>
+
+<span class="n">circle</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">70</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">hole1</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">70</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">hole2</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">70</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">180</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">5</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">hole3</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+
+<span class="n">detector</span> <span class="o">=</span> <span class="n">circle</span> <span class="o">&amp;</span> <span class="o">~</span><span class="p">(</span><span class="n">hole1</span> <span class="o">|</span> <span class="n">hole2</span> <span class="o">|</span> <span class="n">hole3</span><span class="p">)</span>
+
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">detector</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">()</span>
+
+<span class="n">cs</span> <span class="o">=</span> <span class="n">integrator</span><span class="o">.</span><span class="n">CrossSection</span><span class="p">(</span><span class="n">BVmodel</span><span class="p">,</span><span class="n">thetaIncident</span><span class="p">,</span><span class="n">incpol</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cross section = </span><span class="si">%g</span><span class="s2"> µm^2&quot;</span> <span class="o">%</span> <span class="n">cs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with points filling it, except for a central circle" src="_images/UsingIntegrate_31_0.svg" /></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Cross section = 0.000183612 µm^2
+</pre></div></div>
+</div>
+<p>We can see what the cross section is as a function of sphere diameter.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">diameters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.05</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="mi">20</span><span class="p">))</span> <span class="c1">#logarithmic spacing</span>
+
+<span class="n">refp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">refs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">spol</span> <span class="o">=</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+<span class="n">ppol</span> <span class="o">=</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">diameters</span><span class="p">:</span>
+    <span class="n">BVmodel</span><span class="o">.</span><span class="n">setParameters</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="n">d</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">refs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">integrator</span><span class="o">.</span><span class="n">CrossSection</span><span class="p">(</span><span class="n">BVmodel</span><span class="p">,</span> <span class="n">thetaIncident</span><span class="p">,</span> <span class="n">incpol</span><span class="o">=</span><span class="n">spol</span><span class="p">)</span> <span class="p">)</span>
+    <span class="n">refp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">integrator</span><span class="o">.</span><span class="n">CrossSection</span><span class="p">(</span><span class="n">BVmodel</span><span class="p">,</span> <span class="n">thetaIncident</span><span class="p">,</span> <span class="n">incpol</span><span class="o">=</span><span class="n">ppol</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">diameters</span><span class="p">,</span><span class="n">refs</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">diameters</span><span class="p">,</span><span class="n">refp</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;p&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Diameter / $\mathrm{\mu m}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cross section / $\mathrm{\mu m}^2$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cross Section versus Diameter&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: Two curves" src="_images/UsingIntegrate_33_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="Visualizing-intensity">
+<h2>Visualizing intensity<a class="headerlink" href="#Visualizing-intensity" title="Permalink to this headline">¶</a></h2>
+<p>We can visualize the scatter distribution by using the <code class="docutils literal notranslate"><span class="pre">PlotSamplingPoints</span></code> with some arguments. The function <code class="docutils literal notranslate"><span class="pre">DSC</span></code> returns an array of differential scattering cross sections for each of the sampling points and we can pass that to the <code class="docutils literal notranslate"><span class="pre">color</span></code> argument of <code class="docutils literal notranslate"><span class="pre">PlotSamplingPoints</span></code>. Because the default symbol size for displaying the sample points leaves gaps between the symbols, we can expand their size to fill those gaps using the <code class="docutils literal notranslate"><span class="pre">expand</span></code> argument.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hemi</span> <span class="o">=</span> <span class="n">Hemisphere</span><span class="p">()</span>
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">hemi</span><span class="p">)</span>
+<span class="n">dsc</span> <span class="o">=</span> <span class="n">integrator</span><span class="o">.</span><span class="n">DSC</span><span class="p">(</span><span class="n">BVmodel</span><span class="p">,</span> <span class="n">thetaIncident</span><span class="p">,</span> <span class="n">incpol</span><span class="o">=</span><span class="n">ppol</span><span class="p">)</span>
+<span class="n">integrator</span><span class="o">.</span><span class="n">PlotSamplingPoints</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dsc</span><span class="p">),</span> <span class="n">expand</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: The unit circle with a complicated color mapping on it" src="_images/UsingIntegrate_35_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="Polarization">
+<h2>Polarization<a class="headerlink" href="#Polarization" title="Permalink to this headline">¶</a></h2>
+<p>This package is designed to simulate integrated scatter for directional incident irradiation. The incident polarization is therefore pretty straightward to define and has been illustrated above using Stokes vectors. The detector system, however, may also be polarization sensitive. We use the <code class="docutils literal notranslate"><span class="pre">sensitivity</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">SolidAngle</span></code> to define that sensitivity. The <code class="docutils literal notranslate"><span class="pre">Sensitivity</span></code> function differs from the <code class="docutils literal notranslate"><span class="pre">Polarization</span></code> function, because a factor of two is usually needed when a detector
+is sensitive to a single polarization and not the other.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">detector</span> <span class="o">=</span> <span class="n">CircularCone</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="mi">45</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">phi</span><span class="o">=</span><span class="mi">90</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">30</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">sensitivity</span><span class="o">=</span><span class="n">Sensitivity</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">))</span>
+<span class="n">integrator</span> <span class="o">=</span> <span class="n">Integrator</span><span class="p">(</span><span class="mi">1</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">detector</span><span class="p">)</span>
+
+<span class="n">diameters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">0.05</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span><span class="mi">20</span><span class="p">))</span> <span class="c1">#logarithmic spacing</span>
+
+<span class="n">ref</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">diameters</span><span class="p">:</span>
+    <span class="n">BVmodel</span><span class="o">.</span><span class="n">setParameters</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="n">d</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ref</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="n">integrator</span><span class="o">.</span><span class="n">CrossSection</span><span class="p">(</span><span class="n">BVmodel</span><span class="p">,</span> <span class="n">thetaIncident</span><span class="p">,</span> <span class="n">incpol</span><span class="o">=</span><span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">))</span> <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">diameters</span><span class="p">,</span> <span class="n">ref</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Diameter / $\mathrm{\mu m}$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cross section / $\mathrm{\mu m}^2$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cross Section versus Diameter&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: Single curve representing the cross section versus diameter." src="_images/UsingIntegrate_37_0.svg" /></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Using the Integrate module</a><ul>
+<li><a class="reference internal" href="#Defining-geometries">Defining geometries</a></li>
+<li><a class="reference internal" href="#Integrate-reflectance">Integrate reflectance</a></li>
+<li><a class="reference internal" href="#Integrate-cross-section">Integrate cross section</a></li>
+<li><a class="reference internal" href="#Visualizing-intensity">Visualizing intensity</a></li>
+<li><a class="reference internal" href="#Polarization">Polarization</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="UsingLocal.html"
+                        title="previous chapter">Using the Local module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="UsingScatterer.html"
+                        title="next chapter">Using the Scatterer module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/UsingIntegrate.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UsingScatterer.html" title="Using the Scatterer module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="UsingLocal.html" title="Using the Local module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

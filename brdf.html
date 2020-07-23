@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>BRDF Module &#8212; pySCATMECH 0.0.2.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Local Module" href="local.html" />
+    <link rel="prev" title="Model Module" href="model.html" />
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Mark external (non-nist.gov) A tags with class "external"
+  //If the adress start with https and ends with nist.gov
+  var re_nist = new RegExp('^https?:\/\/((^\/)*\.)*nist\\.gov(\/|$)');
+  //Regex to find address that start with https
+  var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+  $("a").each(function(){
+    var url=$(this).attr('href');
+    if(re_nist.test(url) || !re_absolute_address.test(url)){
+      $(this).addClass('local');
+    }else{
+      //This a href appears to be external, so tag it
+      $(this).addClass('external');
+    }
+  });
+  // Add leaveNotice to external A elements
+  $('a.external').leaveNotice();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="local.html" title="Local Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="model.html" title="Model Module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="brdf-module">
+<h1>BRDF Module<a class="headerlink" href="#brdf-module" title="Permalink to this headline">¶</a></h1>
+<p>The BRDF module provides access to the SCATMECH class <cite>BRDF_Model</cite>.  It defines the Python class
+<cite>BRDF_Model</cite> that has two member functions <cite>BRDF</cite> and <cite>MuellerBRDF</cite>.</p>
+<span class="target" id="module-pySCATMECH.brdf"></span><dl class="class">
+<dt id="pySCATMECH.brdf.BRDF_Model">
+<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.brdf.</code><code class="sig-name descname">BRDF_Model</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.brdf.BRDF_Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="model.html#pySCATMECH.model.Model" title="pySCATMECH.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.model.Model</span></code></a></p>
+<p>A class for handling BRDF Models.</p>
+<p>Arguments <a href="#id1"><span class="problematic" id="id2">*</span></a>args and <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs can contain parameters passed to the model.</p>
+<p>One form is to pass a dict of {“parameter” : value, … }.</p>
+<p>The keyword argument ‘wavelength’ is automatically changed to ‘lambda’,
+since <cite>lambda</cite> is a Python keyword.  However, as a str, it should be
+‘lambda’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of a SCATMECH model inheriting BRDF_Model</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="pySCATMECH.brdf.BRDF_Model.BRDF">
+<code class="sig-name descname">BRDF</code><span class="sig-paren">(</span><em class="sig-param">thetai=0</em>, <em class="sig-param">thetas=0</em>, <em class="sig-param">phis=0</em>, <em class="sig-param">rotation=0</em>, <em class="sig-param">coords='psps'</em>, <em class="sig-param">inc=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">sens=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.brdf.BRDF_Model.BRDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the scalar BRDF in a given geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thetai</strong> (<em>float</em>) – Polar angle of incidence in radians.</p></li>
+<li><p><strong>thetas</strong> (<em>float</em>) – Polar angle of viewing in radians.</p></li>
+<li><p><strong>phis</strong> (<em>float</em><em>, </em><em>optional</em>) – Azimuthal angle of viewing in radians.
+(Note: Specular occurs when thetai = thetas, phis = 0)
+(default is 0)</p></li>
+<li><p><strong>rotation</strong> (<em>float</em><em>, </em><em>optional</em>) – Sample rotation angle in radians. (Default is 0)</p></li>
+<li><p><strong>coords</strong> (<em>string</em><em>, </em><em>optional</em>) – The coordinate system for the Mueller matrix,
+either “psps”, “xyxy”, or “plane”. (Default is <cite>psps</cite>)</p></li>
+<li><p><strong>inc</strong> (<a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector"><em>StokesVector</em></a><em> or </em><em>4-list of float</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – Incident polarization as Stokes vector.
+(Default is unpolarized)</p></li>
+<li><p><strong>sens</strong> (<a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector"><em>StokesVector</em></a><em> or </em><em>4-list of float</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – Polarization sensitivity of the viewer as a Stokes vector.
+(Default is unpolarized)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>BRDF</strong> – The Mueller matrix BRDF for the given incident and viewing
+directions and polarizations.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.brdf.BRDF_Model.MuellerBRDF">
+<code class="sig-name descname">MuellerBRDF</code><span class="sig-paren">(</span><em class="sig-param">thetai=0</em>, <em class="sig-param">thetas=0</em>, <em class="sig-param">phis=0</em>, <em class="sig-param">rotation=0</em>, <em class="sig-param">coords='psps'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.brdf.BRDF_Model.MuellerBRDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the Mueller matrix BRDF in a given geometry, and coordinate
+system.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>thetai</strong> (<em>float</em>) – Polar angle of incidence in radians.</p></li>
+<li><p><strong>thetas</strong> (<em>float</em>) – Polar angle of viewing in radians.</p></li>
+<li><p><strong>phis</strong> (<em>float</em><em>, </em><em>optional</em>) – Azimuthal angle of viewing in radians.
+(Note: Specular occurs when thetai = thetas, phis = 0)
+(Default is 0)</p></li>
+<li><p><strong>rotation</strong> (<em>float</em><em>, </em><em>optional</em>) – Sample rotation angle in radians. (Default is 0)</p></li>
+<li><p><strong>coords</strong> (<em>string</em><em>, </em><em>optional</em>) – The coordinate system for the Mueller matrix,
+either “psps”, “xyxy”, or “plane.” (Default is “psps”)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>BRDF</strong> – The Mueller matrix BRDF</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="model.html"
+                        title="previous chapter">Model Module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="local.html"
+                        title="next chapter">Local Module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/brdf.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="local.html" title="Local Module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="model.html" title="Model Module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

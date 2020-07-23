@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>README.md &#8212; pySCATMECH 0.0.2.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="License" href="license.html" />
+    <link rel="prev" title="CrossRCW Module" href="crossrcw.html" />
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Mark external (non-nist.gov) A tags with class "external"
+  //If the adress start with https and ends with nist.gov
+  var re_nist = new RegExp('^https?:\/\/((^\/)*\.)*nist\\.gov(\/|$)');
+  //Regex to find address that start with https
+  var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+  $("a").each(function(){
+    var url=$(this).attr('href');
+    if(re_nist.test(url) || !re_absolute_address.test(url)){
+      $(this).addClass('local');
+    }else{
+      //This a href appears to be external, so tag it
+      $(this).addClass('external');
+    }
+  });
+  // Add leaveNotice to external A elements
+  $('a.external').leaveNotice();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="License"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="crossrcw.html" title="CrossRCW Module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="readme-md">
+<h1>README.md<a class="headerlink" href="#readme-md" title="Permalink to this headline">¶</a></h1>
+<p># pySCATMECH Package</p>
+<p>pySCATMECH is a Python interface to SCATMECH: Polarized Light Scattering C++
+Class Library.</p>
+<p>## SCATMECH</p>
+<p>SCATMECH is an object-oriented C++ class library developed to
+distribute models for light scattering applications. Included in the
+library are models for diffuse surface scattering that predict the
+bidirectional reflectance distribution function (BRDF), codes for
+calculating scattering by isolated particles, and codes for
+reflection, transmission, and diffraction from gratings. Emphasis has
+been given to those diffuse scatter models that are physics-based and
+which predict the polarization properties of the scattered light. The
+library also includes a number of classes that are useful for working
+with polarized light or the optics of thin films. The library is
+designed to enable expansion of new models.</p>
+<p>See [<a class="reference external" href="https://pages.nist.gov/SCATMECH/index.htm](https://pages.nist.gov/SCATMECH/index.htm">https://pages.nist.gov/SCATMECH/index.htm](https://pages.nist.gov/SCATMECH/index.htm</a>) for full SCATMECH documentation.</p>
+<p>## pySCATMECH Modules</p>
+<p>PySCATMECH contains nine modules:</p>
+<ul class="simple">
+<li><p>mueller - Tools for handling Mueller matrices, Stokes vectors, Jones matrices, and Jones vectors</p></li>
+<li><p>model - Tools for handling the SCATMECH::Model class, which handles generic models</p></li>
+<li><p>fresnel - Tools for handling optical functions, thin films, and reflection and transmission coefficients</p></li>
+<li><p>brdf - Tools for handling bidirectional reflectance distribution function (BRDF) models (SCATMECH::BRDF_Model)</p></li>
+<li><p>local - Tools for handling differential scattering cross-section (DSC) models of local defects on surfaces (SCATMECH::Local_BRDF_Model)</p></li>
+<li><p>rcw - Tools for handling rigorous couple wave (RCW) analysis of 1D periodic gratings (SCATMECH::RCW_Model)</p></li>
+<li><p>crossrcw - Tools for handling RCW analysis of 2D periodic gratings (SCATMECH::CrossRCW_Model)</p></li>
+<li><p>scatterer - Tools for handling free-space scattering functions (SCATMECH::FreeSpaceScatterer)</p></li>
+<li><p>integrate - Tools for integrating BRDF or DSC models</p></li>
+</ul>
+<p>## Installation</p>
+<p>To install pySCATMECH, run</p>
+<p><code class="docutils literal notranslate"><span class="pre">`pip</span> <span class="pre">install</span> <span class="pre">--index-url</span> <span class="pre">https://test.pypi.org/simple/</span> <span class="pre">--no-deps</span> <span class="pre">pySCATMECH`</span></code></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="crossrcw.html"
+                        title="previous chapter">CrossRCW Module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="license.html"
+                        title="next chapter">License</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/readme.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="license.html" title="License"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="crossrcw.html" title="CrossRCW Module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,307 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Integrator class &#8212; pySCATMECH 0.0.2.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Scatterer Module" href="scatterer.html" />
+    <link rel="prev" title="SolidAngle classes" href="integrate1.html" />
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Mark external (non-nist.gov) A tags with class "external"
+  //If the adress start with https and ends with nist.gov
+  var re_nist = new RegExp('^https?:\/\/((^\/)*\.)*nist\\.gov(\/|$)');
+  //Regex to find address that start with https
+  var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+  $("a").each(function(){
+    var url=$(this).attr('href');
+    if(re_nist.test(url) || !re_absolute_address.test(url)){
+      $(this).addClass('local');
+    }else{
+      //This a href appears to be external, so tag it
+      $(this).addClass('external');
+    }
+  });
+  // Add leaveNotice to external A elements
+  $('a.external').leaveNotice();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scatterer.html" title="Scatterer Module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="integrate1.html" title="SolidAngle classes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="integrate.html" accesskey="U">Integrate Module</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="integrator-class">
+<h1>Integrator class<a class="headerlink" href="#integrator-class" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pySCATMECH.integrate.Integrator">
+<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">Integrator</code><span class="sig-paren">(</span><em class="sig-param">gridsize</em>, <em class="sig-param">detector</em>, <em class="sig-param">type=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class designed to integrate scattering models.</p>
+<p>Class designed to integrate a BRDF_Model (to obtain reflectance) or
+a Local_BRDF_Model (to obtain scattering cross section).</p>
+<dl class="attribute">
+<dt>
+<code class="sig-name descname">x, y, z</code></dt>
+<dd><p>The x and y projected cosines</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray(float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pySCATMECH.integrate.Integrator.w">
+<code class="sig-name descname">w</code><a class="headerlink" href="#pySCATMECH.integrate.Integrator.w" title="Permalink to this definition">¶</a></dt>
+<dd><p>The weights</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray(float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pySCATMECH.integrate.Integrator.sens">
+<code class="sig-name descname">sens</code><a class="headerlink" href="#pySCATMECH.integrate.Integrator.sens" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Stokes sensitivities</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of StokesVectors</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pySCATMECH.integrate.Integrator.theta">
+<code class="sig-name descname">theta</code><a class="headerlink" href="#pySCATMECH.integrate.Integrator.theta" title="Permalink to this definition">¶</a></dt>
+<dd><p>The polar angles in radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray(float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pySCATMECH.integrate.Integrator.phi">
+<code class="sig-name descname">phi</code><a class="headerlink" href="#pySCATMECH.integrate.Integrator.phi" title="Permalink to this definition">¶</a></dt>
+<dd><p>The azimuthal angles in radians.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>ndarray(float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.integrate.Integrator.BRDF">
+<code class="sig-name descname">BRDF</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">thetai</em>, <em class="sig-param">incpol=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.BRDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the BRDF at each integration point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="code.html#pySCATMECH.brdf.BRDF_Model" title="pySCATMECH.brdf.BRDF_Model"><em>BRDF_Model</em></a>) – The BRDF model to be integrated</p></li>
+<li><p><strong>thetai</strong> (<em>float</em>) – The incident angle in radians</p></li>
+<li><p><strong>incpol</strong> (<a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector"><em>StokesVector</em></a>) – The incident Stokes vector</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>BRDF</strong> – An array of BRDF</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.integrate.Integrator.CrossSection">
+<code class="sig-name descname">CrossSection</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">thetai</em>, <em class="sig-param">incpol=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.CrossSection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrates a Local_BRDF_Model to obtain differential scattering
+cross section.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="local.html#pySCATMECH.local.Local_BRDF_Model" title="pySCATMECH.local.Local_BRDF_Model"><em>Local_BRDF_Model</em></a>) – The model to be integrated.</p></li>
+<li><p><strong>thetai</strong> (<em>float</em>) – The incident angle in radians</p></li>
+<li><p><strong>incpol</strong> (<a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector"><em>StokesVector</em></a>) – Incident Stokes vector</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>crosssection</strong> – The integrated cross section</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.integrate.Integrator.DSC">
+<code class="sig-name descname">DSC</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">thetai</em>, <em class="sig-param">incpol=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.DSC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the differential scattering cross section at each
+integration point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="local.html#pySCATMECH.local.Local_BRDF_Model" title="pySCATMECH.local.Local_BRDF_Model"><em>Local_BRDF_Model</em></a>) – The BRDF model to be integrated</p></li>
+<li><p><strong>thetai</strong> (<em>float</em>) – The incident angle in radians</p></li>
+<li><p><strong>incpol</strong> (<a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector"><em>StokesVector</em></a>) – Incident Stokes vector</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>DSC</strong> – An array of differential scattering cross-section.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.integrate.Integrator.PlotSamplingPoints">
+<code class="sig-name descname">PlotSamplingPoints</code><span class="sig-paren">(</span><em class="sig-param">figsize=5</em>, <em class="sig-param">expand=1</em>, <em class="sig-param">color='b'</em>, <em class="sig-param">circlecolor='r'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.PlotSamplingPoints" title="Permalink to this definition">¶</a></dt>
+<dd><p>Graphs the integration points on the projected hemisphere.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>figsize</strong> (<em>float</em><em>, </em><em>optional</em>) – Size of figure, which will be square (default is 5)</p></li>
+<li><p><strong>expand</strong> (<em>float</em><em>, </em><em>optional</em>) – Scaling of sampling point size (default is 1)</p></li>
+<li><p><strong>color</strong> (<em>str</em><em>, </em><em>optional</em>) – Color to use for the sampling points (default is ‘b’)</p></li>
+<li><p><strong>circlecolor</strong> (<em>str</em><em>, </em><em>optional</em>) – Color to use for the horizon (default is ‘r’)</p></li>
+<li><p><strong>Requires</strong> (<em>matplotlib</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="pySCATMECH.integrate.Integrator.Reflectance">
+<code class="sig-name descname">Reflectance</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">thetai</em>, <em class="sig-param">incpol=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.Reflectance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Integrates a BRDF_Model and returns reflectance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="code.html#pySCATMECH.brdf.BRDF_Model" title="pySCATMECH.brdf.BRDF_Model"><em>BRDF_Model</em></a>) – The model to be integrated.</p></li>
+<li><p><strong>thetai</strong> (<em>float</em>) – The incident angle in radians</p></li>
+<li><p><strong>incpol</strong> (<a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector"><em>StokesVector</em></a>) – The incident Stokes vector</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>reflectance</strong> – The integrated reflectance</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="integrate1.html"
+                        title="previous chapter">SolidAngle classes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="scatterer.html"
+                        title="next chapter">Scatterer Module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/integrate2.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="scatterer.html" title="Scatterer Module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="integrate1.html" title="SolidAngle classes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="integrate.html" >Integrate Module</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

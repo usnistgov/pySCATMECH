@@ -1,0 +1,718 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Using the BRDF module &#8212; pySCATMECH 0.0.2.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using the Local module" href="UsingLocal.html" />
+    <link rel="prev" title="Using the Fresnel module" href="UsingFresnel.html" />
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Mark external (non-nist.gov) A tags with class "external"
+  //If the adress start with https and ends with nist.gov
+  var re_nist = new RegExp('^https?:\/\/((^\/)*\.)*nist\\.gov(\/|$)');
+  //Regex to find address that start with https
+  var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+  $("a").each(function(){
+    var url=$(this).attr('href');
+    if(re_nist.test(url) || !re_absolute_address.test(url)){
+      $(this).addClass('local');
+    }else{
+      //This a href appears to be external, so tag it
+      $(this).addClass('external');
+    }
+  });
+  // Add leaveNotice to external A elements
+  $('a.external').leaveNotice();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UsingLocal.html" title="Using the Local module"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="UsingFresnel.html" title="Using the Fresnel module"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container,
+div.nbinput.container div.prompt,
+div.nbinput.container div.input_area,
+div.nbinput.container div[class*=highlight],
+div.nbinput.container div[class*=highlight] pre,
+div.nboutput.container,
+div.nboutput.container div.prompt,
+div.nboutput.container div.output_area,
+div.nboutput.container div[class*=highlight],
+div.nboutput.container div[class*=highlight] pre {
+    background: none;
+    border: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    background: #f5f5f5;
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Using-the-BRDF-module">
+<h1>Using the BRDF module<a class="headerlink" href="#Using-the-BRDF-module" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook, we demonstrate how to use the pySCATMECH BRDF module. This module defines the class <code class="docutils literal notranslate"><span class="pre">BRDF_Model</span></code>, which provides an interface to SCATMECH’s <code class="docutils literal notranslate"><span class="pre">BRDF_Model</span></code>, which in turn, is a base class for representing all models that predict the bidirectional reflectance distribution function (BRDF).</p>
+<p>First, we import the necessary libraries. We will be using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> for graphing.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pySCATMECH.brdf</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s create a <code class="docutils literal notranslate"><span class="pre">Correlated_Roughness_Stack_BRDF_Model</span></code> and print its default parameters.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">model</span> <span class="o">=</span> <span class="n">BRDF_Model</span><span class="p">(</span><span class="s1">&#39;Correlated_Roughness_Stack_BRDF_Model&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{None : &#39;Correlated_Roughness_Stack_BRDF_Model&#39;,
+&#39;lambda&#39; : &#39;0.532&#39;,
+&#39;substrate&#39; : &#39;(4.05,0.05)&#39;,
+&#39;type&#39; : &#39;0&#39;,
+&#39;psd&#39; : {None : &#39;ABC_PSD_Function&#39;,
+          &#39;A&#39; : &#39;0.01&#39;,
+          &#39;B&#39; : &#39;362&#39;,
+          &#39;C&#39; : &#39;2.5&#39;},
+&#39;stack&#39; : &#39;No_StackModel&#39;}
+</pre></div></div>
+</div>
+<p>We can create the model with parameters. Notice in the following how we can set parameters that are themselves models.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">psd</span> <span class="o">=</span> <span class="p">{</span><span class="kc">None</span> <span class="p">:</span> <span class="s2">&quot;ABC_PSD_Function&quot;</span><span class="p">,</span>
+       <span class="s2">&quot;A&quot;</span> <span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+       <span class="s2">&quot;B&quot;</span> <span class="p">:</span> <span class="mi">360</span><span class="p">,</span>
+       <span class="s2">&quot;C&quot;</span> <span class="p">:</span> <span class="mf">2.4</span><span class="p">}</span>
+
+<span class="n">stack</span> <span class="o">=</span> <span class="p">{</span><span class="kc">None</span> <span class="p">:</span> <span class="s1">&#39;SingleFilm_StackModel&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;material&#39;</span> <span class="p">:</span> <span class="mf">1.59</span><span class="p">,</span>
+         <span class="s1">&#39;thickness&#39;</span><span class="p">:</span> <span class="mf">0.05</span>
+        <span class="p">}</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;lambda&#39;</span> <span class="p">:</span> <span class="mf">0.532</span><span class="p">,</span>
+              <span class="s1">&#39;substrate&#39;</span> <span class="p">:</span> <span class="mf">4.05</span><span class="o">+</span><span class="mf">0.05</span><span class="n">j</span><span class="p">,</span>
+              <span class="s1">&#39;type&#39;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+              <span class="s1">&#39;stack&#39;</span> <span class="p">:</span> <span class="n">stack</span><span class="p">,</span>
+              <span class="s1">&#39;psd&#39;</span> <span class="p">:</span> <span class="n">psd</span><span class="p">}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">BRDF_Model</span><span class="p">(</span><span class="s1">&#39;Correlated_Roughness_Stack_BRDF_Model&#39;</span><span class="p">,</span><span class="n">parameters</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{None : &#39;Correlated_Roughness_Stack_BRDF_Model&#39;,
+&#39;lambda&#39; : &#39;0.532&#39;,
+&#39;substrate&#39; : &#39;(4.05,0.05)&#39;,
+&#39;type&#39; : &#39;0&#39;,
+&#39;psd&#39; : {None : &#39;ABC_PSD_Function&#39;,
+          &#39;A&#39; : &#39;0.01&#39;,
+          &#39;B&#39; : &#39;360&#39;,
+          &#39;C&#39; : &#39;2.4&#39;},
+&#39;stack&#39; : {None : &#39;SingleFilm_StackModel&#39;,
+            &#39;material&#39; : &#39;(1.59,0)&#39;,
+            &#39;thickness&#39; : &#39;0.05&#39;}}
+</pre></div></div>
+</div>
+<p>We can set parameters later using the <code class="docutils literal notranslate"><span class="pre">setParameters</span></code> function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;lambda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.600</span>
+<span class="n">psd</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.3</span>
+<span class="n">stack</span><span class="p">[</span><span class="s1">&#39;thickness&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">model</span><span class="o">.</span><span class="n">setParameters</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{None : &#39;Correlated_Roughness_Stack_BRDF_Model&#39;,
+&#39;lambda&#39; : &#39;0.6&#39;,
+&#39;substrate&#39; : &#39;(4.05,0.05)&#39;,
+&#39;type&#39; : &#39;0&#39;,
+&#39;psd&#39; : {None : &#39;ABC_PSD_Function&#39;,
+          &#39;A&#39; : &#39;0.01&#39;,
+          &#39;B&#39; : &#39;360&#39;,
+          &#39;C&#39; : &#39;2.3&#39;},
+&#39;stack&#39; : {None : &#39;SingleFilm_StackModel&#39;,
+            &#39;material&#39; : &#39;(1.59,0)&#39;,
+            &#39;thickness&#39; : &#39;0.1&#39;}}
+</pre></div></div>
+</div>
+<p>One can use keyword arguments to set parameters, and if the parameters are models, one can set them to models. Note that because <code class="docutils literal notranslate"><span class="pre">lambda</span></code> is a Python keyword, we use <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> in place of the parameter <code class="docutils literal notranslate"><span class="pre">lambda</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Needed to use OpticalFunction, Film, and FilmStack...</span>
+<span class="kn">from</span> <span class="nn">pySCATMECH.fresnel</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Define two materials...</span>
+<span class="n">SiO2</span> <span class="o">=</span> <span class="n">OpticalFunction</span><span class="p">(</span><span class="k">lambda</span> <span class="n">L</span><span class="p">:</span> <span class="mf">1.4580</span> <span class="o">+</span> <span class="mf">0.00354</span><span class="o">/</span><span class="n">L</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">))</span>
+<span class="n">Si</span> <span class="o">=</span> <span class="n">OpticalFunction</span><span class="p">(</span><span class="s1">&#39;silicon&#39;</span><span class="p">)</span>
+
+<span class="c1"># Define the power spectral density function...</span>
+<span class="n">psd</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="s2">&quot;ABC_PSD_Function&quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mi">360</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">2.4</span><span class="p">)</span>
+
+<span class="c1"># Define the stack...</span>
+<span class="n">stack</span> <span class="o">=</span>  <span class="n">FilmStack</span><span class="p">([</span><span class="n">Film</span><span class="p">(</span><span class="n">SiO2</span><span class="p">,</span><span class="n">thickness</span> <span class="o">=</span><span class="mf">0.05</span><span class="p">)])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">setParameters</span><span class="p">(</span><span class="n">wavelength</span> <span class="o">=</span> <span class="mf">0.600</span><span class="p">,</span> <span class="n">substrate</span><span class="o">=</span><span class="n">Si</span><span class="p">,</span> <span class="n">stack</span> <span class="o">=</span> <span class="n">stack</span><span class="p">,</span> <span class="n">psd</span> <span class="o">=</span> <span class="n">psd</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{None : &#39;Correlated_Roughness_Stack_BRDF_Model&#39;,
+&#39;lambda&#39; : &#39;0.6&#39;,
+&#39;substrate&#39; : &#39;silicon&#39;,
+&#39;type&#39; : &#39;0&#39;,
+&#39;psd&#39; : {None : &#39;ABC_PSD_Function&#39;,
+          &#39;A&#39; : &#39;0.01&#39;,
+          &#39;B&#39; : &#39;360&#39;,
+          &#39;C&#39; : &#39;2.4&#39;},
+&#39;stack&#39; : {None : &#39;Stack_StackModel&#39;,
+            &#39;stack&#39; : &#39;zm95qrx7RMFx.tmp 0.05&#39;}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">model</span><span class="o">.</span><span class="n">getParameters</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>Out[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{None: &#39;Correlated_Roughness_Stack_BRDF_Model&#39;,
+ &#39;lambda&#39;: &#39;0.6&#39;,
+ &#39;substrate&#39;: &#39;silicon&#39;,
+ &#39;type&#39;: &#39;0&#39;,
+ &#39;psd&#39;: &#39;ABC_PSD_Function&#39;,
+ &#39;psd.A&#39;: &#39;0.01&#39;,
+ &#39;psd.B&#39;: &#39;360&#39;,
+ &#39;psd.C&#39;: &#39;2.4&#39;,
+ &#39;stack&#39;: &#39;Stack_StackModel&#39;,
+ &#39;stack.stack&#39;: &#39;zm95qrx7RMFx.tmp 0.05&#39;}
+</pre></div></div>
+</div>
+<p>Let’s evaluate the BRDF! The BRDF, in general, is a Mueller matrix. (Note here that <code class="docutils literal notranslate"><span class="pre">deg</span></code> is defined in pySCATMECH to be <span class="math notranslate nohighlight">\(\pi/180\)</span>.) Let’s evaluate it for incident and scattering angles, <span class="math notranslate nohighlight">\(\theta_i=60^\circ\)</span> and <span class="math notranslate nohighlight">\(\theta_s=30^\circ\)</span>, respectively:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">MuellerBRDF</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="n">deg</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 4.21363211e-06  6.14518402e-07  0.00000000e+00  0.00000000e+00]
+ [ 6.14518402e-07  4.21363211e-06 -0.00000000e+00  0.00000000e+00]
+ [ 0.00000000e+00 -0.00000000e+00 -3.83310078e-06  1.63841420e-06]
+ [ 0.00000000e+00  0.00000000e+00 -1.63841420e-06 -3.83310078e-06]]
+</pre></div></div>
+</div>
+<p>We can determine it for an input Stokes vector of p-polarization and with polarization insensitivity:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mBRDF</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">MuellerBRDF</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<span class="n">inc</span> <span class="o">=</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
+<span class="n">sens</span> <span class="o">=</span> <span class="n">Sensitivity</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">)</span>
+<span class="n">sens</span> <span class="o">@</span> <span class="n">mBRDF</span> <span class="o">@</span> <span class="n">inc</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>Out[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.599113704481351e-06
+</pre></div></div>
+</div>
+<p>Another way of doing this is:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">model</span><span class="o">.</span><span class="n">BRDF</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">inc</span><span class="o">=</span><span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">),</span> <span class="n">sens</span><span class="o">=</span><span class="n">Sensitivity</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>Out[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3.599113704481351e-06
+</pre></div></div>
+</div>
+<p>The unpolarized BRDF is:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">model</span><span class="o">.</span><span class="n">BRDF</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>Out[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4.2136321066656146e-06
+</pre></div></div>
+</div>
+<p>Let’s plot the BRDF:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">thetaslist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">89</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">BRDFlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">BRDF</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">thetas</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">inc</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="n">sens</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">thetas</span> <span class="ow">in</span> <span class="n">thetaslist</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thetaslist</span><span class="p">,</span><span class="n">BRDFlist</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;BRDF (sr$^{-1}$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_\mathrm</span><span class="si">{r}</span><span class="s1">$ (degrees)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: BRDF as a function of angle with a sharp peak at 60 degrees" src="_images/UsingBRDF_21_0.svg" /></div>
+</div>
+<p>We can vary two angles:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">thetaslist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">89</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">thetai</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">60</span><span class="p">]:</span>
+    <span class="n">BRDFlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">BRDF</span><span class="p">(</span><span class="n">thetai</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span><span class="n">thetas</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span><span class="n">inc</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">sens</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">thetas</span> <span class="ow">in</span> <span class="n">thetaslist</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thetaslist</span><span class="p">,</span><span class="n">BRDFlist</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$\theta_i=</span><span class="si">%d</span><span class="s2">^\circ$&quot;</span> <span class="o">%</span> <span class="n">thetai</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;BRDF (sr$^{-1}$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_\mathrm</span><span class="si">{r}</span><span class="s1">$ (degrees)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: Three BRDFs as a function of angle with sharp peaks at 0, 30, and 60 degrees" src="_images/UsingBRDF_23_0.svg" /></div>
+</div>
+<p>We can even vary parameters. Also, note that sometimes it is useful to plot BRDF on a logarithmic scale.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">thetaslist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">89</span><span class="p">,</span><span class="mi">89</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]:</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="n">FilmStack</span><span class="p">([</span><span class="n">Film</span><span class="p">(</span><span class="n">SiO2</span><span class="p">,</span><span class="n">thickness</span> <span class="o">=</span> <span class="n">t</span><span class="p">)])</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">setParameters</span><span class="p">(</span><span class="n">stack</span><span class="o">=</span><span class="n">stack</span><span class="p">)</span>
+    <span class="n">BRDFlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">BRDF</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span><span class="n">thetas</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span><span class="n">inc</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">sens</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">thetas</span> <span class="ow">in</span> <span class="n">thetaslist</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thetaslist</span><span class="p">,</span><span class="n">BRDFlist</span><span class="p">,</span><span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$D = </span><span class="si">%g</span><span class="s2">$&quot;</span> <span class="o">%</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_\mathrm</span><span class="si">{r}</span><span class="s1">$ (degrees)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;BRDF (sr$^{-1}$)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="Graph showing results of preceding Python code: Five BRDFs as a function of angle with sharp peaks at 60 degrees" src="_images/UsingBRDF_25_0.svg" /></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="UsingFresnel.html"
+                        title="previous chapter">Using the Fresnel module</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="UsingLocal.html"
+                        title="next chapter">Using the Local module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/UsingBRDF.ipynb.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UsingLocal.html" title="Using the Local module"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="UsingFresnel.html" title="Using the Fresnel module"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>

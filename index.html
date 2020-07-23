@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>pySCATMECH : A Python Interface to the SCATMECH Library &#8212; pySCATMECH 0.0.2.1 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using the Mueller module" href="UsingMueller.html" />
+<link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+  <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
+
+
+<script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Mark external (non-nist.gov) A tags with class "external"
+  //If the adress start with https and ends with nist.gov
+  var re_nist = new RegExp('^https?:\/\/((^\/)*\.)*nist\\.gov(\/|$)');
+  //Regex to find address that start with https
+  var re_absolute_address = new RegExp('^((https?:)?\/\/)');
+  $("a").each(function(){
+    var url=$(this).attr('href');
+    if(re_nist.test(url) || !re_absolute_address.test(url)){
+      $(this).addClass('local');
+    }else{
+      //This a href appears to be external, so tag it
+      $(this).addClass('external');
+    }
+  });
+  // Add leaveNotice to external A elements
+  $('a.external').leaveNotice();
+});
+</script>
+<link rel="stylesheet" type="text/css" href="https://pages.nist.gov/leaveNotice/css/jquery.leaveNotice.css" />
+
+
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UsingMueller.html" title="Using the Mueller module"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" align="left">
+  <tr>
+    <td>
+       <img src="_static/head_otd.jpg" width="750" height="68" border="0" USEMAP="#nav_otd" alt="Sensor Science Division">
+    </td>
+  </tr>
+</table>
+<br clear=all>
+<MAP NAME="nav_otd">
+    <AREA SHAPE="RECT" COORDS="15, 5, 150, 20" HREF="http://physics.nist.gov" TARGET="TOP" ALT="Physical Measurement Laboratory Home">
+    <AREA SHAPE="RECT" COORDS="15, 20, 290, 50" HREF="http://www.nist.gov/pml/div685/index.cfm" TARGET="TOP" ALT="Sensor Science Division Home">
+    <AREA SHAPE="RECT" COORDS="590, 5, 725, 50" HREF="http://www.nist.gov" TARGET="TOP" ALT="NIST Home">
+ </MAP><div class="section" id="pyscatmech-a-python-interface-to-the-scatmech-library">
+<h1>pySCATMECH : A Python Interface to the SCATMECH Library<a class="headerlink" href="#pyscatmech-a-python-interface-to-the-scatmech-library" title="Permalink to this headline">¶</a></h1>
+<p>pySCATMECH is a Python interface to the SCATMECH library of scattering codes.
+The documentation for the
+specific models are available at <a class="reference external" href="https://pages.nist.gov/SCATMECH/docs/index.htm">SCATMECH Polarized Light
+Scattering C++ Class Library</a>.</p>
+<dl class="field-list">
+<dt class="field-odd">Author</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://www.nist.gov/people/thomas-germer">Thomas A. Germer</a></p>
+</dd>
+<dt class="field-even">E-mail</dt>
+<dd class="field-even"><p><a class="reference external" href="mailto:thomas&#46;germer&#37;&#52;&#48;nist&#46;gov">thomas<span>&#46;</span>germer<span>&#64;</span>nist<span>&#46;</span>gov</a></p>
+</dd>
+<dt class="field-odd">Telephone</dt>
+<dd class="field-odd"><p>301-975-2876</p>
+</dd>
+<dt class="field-even">Address</dt>
+<dd class="field-even"><div class="line-block">
+<div class="line"><a class="reference external" href="http://www.nist.gov/pml/div685/index.cfm">Sensor Science Division</a></div>
+<div class="line"><a class="reference external" href="http://www.nist.gov">National Institute of Standards Technology</a></div>
+<div class="line">100 Bureau Drive Stop 8443</div>
+<div class="line">Gaithersburg, MD 20899-8443</div>
+</div>
+</dd>
+<dt class="field-odd">Current Version</dt>
+<dd class="field-odd"><p>0.0.2.1 (Jul 23, 2020)</p>
+</dd>
+<dt class="field-even">Requires</dt>
+<dd class="field-even"><p>Python 3.6 or greater</p>
+</dd>
+<dt class="field-odd">To install</dt>
+<dd class="field-odd"><p>Use <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pySCATMECH</span></code> at a command prompt.</p>
+</dd>
+</dl>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="UsingMueller.html">Using the Mueller module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsingMueller.html#Mueller-matrices">Mueller matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingMueller.html#Stokes-Vectors">Stokes Vectors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingMueller.html#Mueller-matrix-decompositions">Mueller matrix decompositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingMueller.html#Other-parameters">Other parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UsingFresnel.html">Using the Fresnel module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsingFresnel.html#OpticalFunction-class">OpticalFunction class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingFresnel.html#Film-class">Film class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingFresnel.html#FilmStack-class">FilmStack class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UsingBRDF.html">Using the BRDF module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingLocal.html">Using the Local module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingIntegrate.html">Using the Integrate module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsingIntegrate.html#Defining-geometries">Defining geometries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingIntegrate.html#Integrate-reflectance">Integrate reflectance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingIntegrate.html#Integrate-cross-section">Integrate cross section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingIntegrate.html#Visualizing-intensity">Visualizing intensity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingIntegrate.html#Polarization">Polarization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UsingScatterer.html">Using the Scatterer module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsingScatterer.html#Mie-scattering">Mie scattering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingScatterer.html#Mie-scattering-with-a-coating">Mie scattering with a coating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingScatterer.html#Optically-active-sphere">Optically active sphere</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingScatterer.html#Ellipsoids">Ellipsoids</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UsingRCW.html">Using the RCW module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="UsingRCW.html#Single-line-grating">Single line grating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingRCW.html#Blazed-reflection-grating">Blazed reflection grating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingRCW.html#Sinusoidal-transmission-grating">Sinusoidal transmission grating</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="UsingCrossRCW.html">Using the CrossRCW module</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Modules</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mueller.html">Mueller Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mueller1.html">MuellerMatrix class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller2.html">StokesVector class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller3.html">Mueller matrix decompositions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html">Other polarization operations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fresnel.html">Fresnel Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fresnel1.html">OpticalFunction class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fresnel2.html">Film class</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fresnel3.html">FilmStack class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="brdf.html">BRDF Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="local.html">Local Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="integrate.html">Integrate Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrate1.html">SolidAngle classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integrate2.html">Integrator class</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Other</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="readme.html">README.md</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="for-more-information">
+<h1>For more information<a class="headerlink" href="#for-more-information" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><div class="line-block">
+<div class="line"><a class="reference external" href="https://www.nist.gov/people/thomas-germer">Technical Information and Questions</a></div>
+<div class="line"><a class="reference external" href="http://www.nist.gov/pml/div685/index.cfm">Sensor Science Division Home Page</a></div>
+<div class="line"><a class="reference external" href="mailto:fraser&#37;&#52;&#48;nist&#46;gov">Sensor Science Division Inquiries</a></div>
+<div class="line"><a class="reference external" href="https://www.nist.gov/people/thomas-germer">Website Comments</a></div>
+</div>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pySCATMECH : A Python Interface to the SCATMECH Library</a><ul>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#for-more-information">For more information</a></li>
+</ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="UsingMueller.html"
+                        title="next chapter">Using the Mueller module</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="UsingMueller.html" title="Using the Mueller module"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">pySCATMECH 0.0.2.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+    </div>
+  </body>
+</html>
