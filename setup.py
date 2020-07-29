@@ -175,7 +175,7 @@ module1 = Extension('SCATPY',
 #setuptools.setup(
 setup(
     name="pySCATMECH",
-    version="0.0.2.1",  # NOTE: If you change this, change it in index.rst AND conf.py too!
+    version="0.1.0",  # NOTE: If you change this, change it in index.rst AND conf.py too!
     author="Thomas A. Germer",
     author_email="thomas.germer@nist.gov",
     description="A Python interface to the SCATMECH library",
