@@ -38,6 +38,65 @@ private:
   std::string msg;
 };
 
+// Convert std::complex to Py_complex...
+static PyObject * PYCOMPLEX(COMPLEX& x)
+{
+  Py_complex result;
+  result.real = real(x);
+  result.imag = imag(x);
+  return PyComplex_FromCComplex(result);
+}
+
+// Convert a JonesMatrix to a PyObject...
+static PyObject * PyJones(const JonesMatrix& jones)
+{
+  // This had to be done manually (not using Py_Builder), because someone reported
+  // a segmentation fault using it with complex numbers.
+    COMPLEX ss = jones.SS(), sp = jones.SP(), ps = jones.PS(), pp = jones.PP();
+
+    PyObject *_ss = PYCOMPLEX(ss);
+    PyObject *_sp = PYCOMPLEX(sp);
+    PyObject *_ps = PYCOMPLEX(ps);
+    PyObject *_pp = PYCOMPLEX(pp);
+    
+    PyObject *inner1 = PyTuple_New(2);
+    PyTuple_SetItem(inner1, 0, _ss);
+    PyTuple_SetItem(inner1, 1, _ps);
+    PyObject *inner2 = PyTuple_New(2);
+    PyTuple_SetItem(inner2, 0, _sp);
+    PyTuple_SetItem(inner2, 1, _pp);
+
+    PyObject *result = PyTuple_New(2);
+    PyTuple_SetItem(result, 0, inner1);
+    PyTuple_SetItem(result, 1, inner2);
+
+    return result;
+}  
+
+// Convert a MuellerMatrix to a PyObject...
+static PyObject * PyMueller(const MuellerMatrix& m)
+{
+    PyObject *result = PyTuple_New(4);
+    for (int i=0;i<4;++i) {
+      PyObject *row = PyTuple_New(4);
+      for (int j=0;j<4;++j) {
+	PyTuple_SetItem(row, j, PyFloat_FromDouble(m[i][j]));
+      }
+      PyTuple_SetItem(result, i, row);
+    }
+    return result;
+}
+
+// Convert a Vector to a PyObject...
+static PyObject * PyVector(const Vector& v)
+{
+  PyObject *result = PyTuple_New(3);
+  PyTuple_SetItem(result, 0, PyFloat_FromDouble(v.x));
+  PyTuple_SetItem(result, 1, PyFloat_FromDouble(v.y));
+  PyTuple_SetItem(result, 2, PyFloat_FromDouble(v.z));
+  return result;
+}
+
 static PyObject * Get_Model(PyObject *self, PyObject *args)
 {
   try { 
@@ -277,8 +336,6 @@ static PyObject * Free_RCW_Model(PyObject *self, PyObject *args)
 static PyObject * Get_CrossRCW_Model(PyObject *self, PyObject *args)
 {
   try {
-    const char *modelname;
-
     Model_Ptr<CrossRCW_Model> newModel = std::string("CrossRCW_Model");
     mapCrossRCW_Model[++modelct] = newModel;
     mapModel[modelct] = mapCrossRCW_Model[modelct].get();
@@ -330,12 +387,7 @@ static PyObject * BRDF(PyObject *self, PyObject *args)
     
     MuellerMatrix mueller = mapBRDF_Model[handle]->Mueller(thetai,thetas,phis,rotation,_coords);
 
-    return Py_BuildValue("[[d,d,d,d],[d,d,d,d],[d,d,d,d],[d,d,d,d]]",
-		  mueller[0][0],mueller[0][1],mueller[0][2],mueller[0][3],
-		  mueller[1][0],mueller[1][1],mueller[1][2],mueller[1][3],
-		  mueller[2][0],mueller[2][1],mueller[2][2],mueller[2][3],
-		  mueller[3][0],mueller[3][1],mueller[3][2],mueller[3][3]);
-		  
+    return PyMueller(mueller);
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
@@ -362,18 +414,14 @@ static PyObject * LocalDSC(PyObject *self, PyObject *args)
     
     MuellerMatrix mueller = mapLocal_BRDF_Model[handle]->MuellerDSC(thetai,thetas,phis,rotation,_coords);
 
-    return Py_BuildValue("[[d,d,d,d],[d,d,d,d],[d,d,d,d],[d,d,d,d]]",
-		  mueller[0][0],mueller[0][1],mueller[0][2],mueller[0][3],
-		  mueller[1][0],mueller[1][1],mueller[1][2],mueller[1][3],
-		  mueller[2][0],mueller[2][1],mueller[2][2],mueller[2][3],
-		  mueller[3][0],mueller[3][1],mueller[3][2],mueller[3][3]);
-		  
+    return PyMueller(mueller);
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
     return NULL;
   }    
 }
+
 
 static PyObject * FSSjones(PyObject *self, PyObject *args)
 {
@@ -385,14 +433,13 @@ static PyObject * FSSjones(PyObject *self, PyObject *args)
         return NULL;
     
     Free_Space_Scatterer_Ptr &model = mapFSS_Model[handle];
+
     double lambda = model->get_lambda();
     double medium = model->get_medium().n(lambda);
     double k = 2.*pi/lambda*medium;  
     JonesMatrix jones = model->jones(Vector(kix,kiy,kiz),Vector(ksx,ksy,ksz))/k;
 
-    return Py_BuildValue("[[D,D],[D,D]]",
-			 jones.SS(),jones.SP(),jones.PS(),jones.PP());
-		  
+    return PyJones(jones);
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
@@ -414,11 +461,7 @@ static PyObject * FSSext(PyObject *self, PyObject *args)
 
     MuellerMatrix mueller = model->extinction(k);
 
-    return Py_BuildValue("[[d,d,d,d],[d,d,d,d],[d,d,d,d],[d,d,d,d]]",
-		  mueller[0][0],mueller[0][1],mueller[0][2],mueller[0][3],
-		  mueller[1][0],mueller[1][1],mueller[1][2],mueller[1][3],
-		  mueller[2][0],mueller[2][1],mueller[2][2],mueller[2][3],
-		  mueller[3][0],mueller[3][1],mueller[3][2],mueller[3][3]);
+    return PyMueller(mueller);
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
@@ -436,11 +479,7 @@ static PyObject * RCWDiffractionEfficiency(PyObject *self, PyObject *args)
 
     MuellerMatrix mueller = mapRCW_Model[handle]->GetIntensity(i);
 
-    return Py_BuildValue("[[d,d,d,d],[d,d,d,d],[d,d,d,d],[d,d,d,d]]",
-		  mueller[0][0],mueller[0][1],mueller[0][2],mueller[0][3],
-		  mueller[1][0],mueller[1][1],mueller[1][2],mueller[1][3],
-		  mueller[2][0],mueller[2][1],mueller[2][2],mueller[2][3],
-		  mueller[3][0],mueller[3][1],mueller[3][2],mueller[3][3]);
+    return PyMueller(mueller);
 		  
   }
   catch (std::exception& e) {
@@ -459,12 +498,7 @@ static PyObject * CrossRCWDiffractionEfficiency(PyObject *self, PyObject *args)
 
     MuellerMatrix mueller = mapCrossRCW_Model[handle]->GetIntensity(i,j);
 
-    return Py_BuildValue("[[d,d,d,d],[d,d,d,d],[d,d,d,d],[d,d,d,d]]",
-		  mueller[0][0],mueller[0][1],mueller[0][2],mueller[0][3],
-		  mueller[1][0],mueller[1][1],mueller[1][2],mueller[1][3],
-		  mueller[2][0],mueller[2][1],mueller[2][2],mueller[2][3],
-		  mueller[3][0],mueller[3][1],mueller[3][2],mueller[3][3]);
-		  
+    return PyMueller(mueller);
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
@@ -475,14 +509,14 @@ static PyObject * CrossRCWDiffractionEfficiency(PyObject *self, PyObject *args)
 static PyObject * RCWDirection(PyObject *self, PyObject *args)
 {
   try {
-    int handle,i,j;
+    int handle,i;
     
     if (!PyArg_ParseTuple(args, "ii", &handle, &i))
         return NULL;
 
     Vector direction = mapRCW_Model[handle]->GetDirection(i);
 
-    return Py_BuildValue("[d,d,d]", direction.x,direction.y,direction.z);
+    return PyVector(direction);
 		  
   }
   catch (std::exception& e) {
@@ -528,7 +562,7 @@ static PyObject * CrossRCWDirection(PyObject *self, PyObject *args)
 
     Vector direction = mapCrossRCW_Model[handle]->GetDirection(i,j);
 
-    return Py_BuildValue("[d,d,d]", direction.x,direction.y,direction.z);
+    return PyVector(direction);
 		  
   }
   catch (std::exception& e) {
@@ -697,9 +731,7 @@ static PyObject * ReflectionCoefficient(PyObject *self, PyObject *args)
     else if (stype==string("21i")) result = mapStackModel[handle]->r21i(theta,lambda,dielectric_function(n0),dielectric_function(nt));
     else throw SCATPY_exception("invalid type string: " + string(type));
 
-
-    return Py_BuildValue("[[D,D],[D,D]]",
-			 result[1],result[2],result[3],result[0]);
+    return PyJones(result);
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
@@ -729,8 +761,7 @@ static PyObject * TransmissionCoefficient(PyObject *self, PyObject *args)
     else if (stype==string("21i")) result = mapStackModel[handle]->t21i(theta,lambda,dielectric_function(n0),dielectric_function(nt));
     else throw SCATPY_exception("invalid type string: " + string(type));
     
-    return Py_BuildValue("[[D,D],[D,D]]",
-			 result[1],result[2],result[3],result[0]);
+    return PyJones(result);
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
@@ -747,7 +778,7 @@ static PyObject * GetOpticalConstant(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "ds", &lambda,&material)) return NULL;
 
     COMPLEX nk = dielectric_function(material).index(lambda);
-    return Py_BuildValue("D",nk);
+    return  PYCOMPLEX(nk);
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());

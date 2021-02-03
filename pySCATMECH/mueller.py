@@ -839,6 +839,16 @@ def Cloude_Decomposition(M):
 
 MuellerMatrix.Cloude_Decomposition = Cloude_Decomposition
 
+LeviCivita = np.array([[[ 0,  0,  0],
+                        [ 0,  0,  1],
+                        [ 0, -1,  0]],
+                       [[ 0,  0, -1],
+                        [ 0,  0,  0],
+                        [ 1,  0,  0]],
+                       [[ 0,  1,  0],
+                        [-1,  0,  0],
+                        [ 0,  0,  0]]])
+
 def Lu_Chipman_Decomposition(M):
     """
     Return a depolarizer, a retarder, and a diattenuator whose ordered product is the
@@ -875,21 +885,19 @@ def Lu_Chipman_Decomposition(M):
 
     # From L&C, Eq. (36), Darrow and Parrow are the diattenuation and
     # polarizance, respectively.
-    Darrow = M[0,1:4]/Tu 
-    Parrow = M[1:4,0]/Tu 
-    D = math.sqrt(Darrow[0]**2+Darrow[1]**2+Darrow[2]**2)
+    Darrow = np.array( M[0,1:4]/Tu )
+    Parrow = np.array( M[1:4,0]/Tu )
+    D = math.sqrt(np.sum(Darrow**2))
 
     # Thus, the diattenuator is given by L&C, Eq. (18),
     if D>1E-15:
         diattenuator = MuellerMatrix()
         diattenuator[0,0] = 1
-        for i in range(3):
-            diattenuator[i+1,0] = diattenuator[0,i+1] = Darrow[i]
+        diattenuator[1:4,0] = Darrow
+        diattenuator[0,1:4] = Darrow
         dd = math.sqrt(1-D**2)
-        for i in range(3):
-            for j in range(3):
-                 diattenuator[i+1,j+1] = dd if i==j else 0
-                 diattenuator[i+1,j+1] += (1-dd)*Darrow[i]*Darrow[j]/D**2
+        
+        diattenuator[1:4,1:4] = dd*np.identity(3) + ((1-dd)/D**2)*np.outer(Darrow,Darrow)
 
         del dd                    
     else:
@@ -904,7 +912,7 @@ def Lu_Chipman_Decomposition(M):
     inverse = np.linalg.inv
 
     # If the matrix is non-depolarizing, then use
-    if 1-M.depolarization_index() < 1E-8:
+    if abs(1-M.depolarization_index()) < 1E-8:
         depolarizer=MuellerUnit()
         # If the diattenuation is unity (or very close!)...
         if 1-D < 1E-8:
@@ -914,23 +922,17 @@ def Lu_Chipman_Decomposition(M):
             Rhat = unit(Rarrow) if normRarrow!=0 else perpto(Parrow,[0,0,1])   
             cosR = Parrow*Darrow/norm(Parrow)/norm(Darrow)
             sinR = sqrt(1-cosR**2) if abs(cosR)<1 else 0
-
+            
             # The retarder is determined from L&C, Eqs. (14) and (15)...
             retarder[0,0]=1
-            retarder[0,1]=retarder[0,2]=retarder[0,3]=0
-            retarder[1,0]=retarder[2,0]=retarder[3,0]=0
-            for i in range(1,4):
-                for j in range(1,4):
-                    retarder[i,j] = ((cosR if i==j else 0)
-                                     + Rhat[i-1]*Rhat[j-1]*(1-cosR))
-                    for k in range(1,4):
-                        retarder[i,j] += LeviCivita([i,j,k])*Rhat[k-1]*sinR
+            retarder[0,1:4]=0
+            retarder[1:4]=0
+            retarder[1:4,1:4] = cosR*np.identity(3) + (1-cosR)*np.outer(Rhat,Rhat) + sinR*LeviCivita @ Rhat
 
         else:
             # If the matrix does not have unit diattenutation, then
             # just use L&C, Eq. (35)...
             retarder = M*np.linalg.inv(diattenuator)
-
 
         return depolarizer, retarder, diattenuator
 
@@ -938,10 +940,7 @@ def Lu_Chipman_Decomposition(M):
     Mprime = M.dot(np.linalg.inv(diattenuator))
 
     # L&C, Eq. (48)...
-    mprime = np.diag([0.,0.,0.])
-    for i in range(3):
-        for j in range(3):
-            mprime[i,j] = Mprime[i+1,j+1]
+    mprime = Mprime[1:4,1:4]
 
     # Also from L&C, Eq. (48)...
     PDelta = Mprime[1:4,0]
@@ -978,13 +977,9 @@ def Lu_Chipman_Decomposition(M):
 
         # Thus, the depolarizer is given by L&C, Eq. (48)...
         depolarizer[0,0] = 1
-        depolarizer[0,1] = depolarizer[0,2] = depolarizer[0,3] = 0
-        depolarizer[1,0] = PDelta[0]
-        depolarizer[2,0] = PDelta[1]
-        depolarizer[3,0] = PDelta[2]
-        for i in range(1,4):
-            for j in range(1,4):
-                depolarizer[i,j] = mDelta[i-1,j-1]
+        depolarizer[0,1:4] = 0
+        depolarizer[1:4,0] = PDelta
+        depolarizer[1:4,1:4] = mDelta
 
         # And the retarder is determined by L&C, Eq. (53)...
         retarder = np.linalg.inv(depolarizer)*Mprime
@@ -1008,10 +1003,7 @@ def Lu_Chipman_Decomposition(M):
         # singular values are zero...
         if abs(lambda2/lambda1)>1E-15:
             # One of them is zero...
-            for i in range(3):
-                for j in range(3):
-                    # L&C, Eq. (B3)...
-                    mR[i,j] = (V[i,0]*U[j,0]+V[i,1]*U[j,1]+V[i,2]*U[j,2])
+            mR = np.outer(V[:,0],U[:,0])+np.outer(V[:,2],U[:,2])+np.outer(V[:,2],U[:,2])
         elif lambda1!=0:
             # Two of them are zero...
             v = V[:,0]
@@ -1028,25 +1020,19 @@ def Lu_Chipman_Decomposition(M):
             mR = np.diag([1.,1.,1.])
 
         # The full retarder Mueller matrix is...
-        for i in range(4):
-            for j in range(4):
-                if i==0 and j==0: retarder[i,j]=1
-                elif i==0 or j==0: retarder[i,j]=0
-                else: retarder[i,j] = mR[i-1,j-1]
+        retarder[0,0] = 1
+        retarder[1:4,0] = 0
+        retarder[0,1:4] = 0
+        retarder[1:4,1:4] = mR
 
         # The depolarizer is determined from...
         # (The matrix mR is always invertible.)
         mDelta = mprime.dot(np.linalg.inv(mR))
 
         depolarizer[0,0] = 1
-        depolarizer[0,1] = depolarizer[0,2] = depolarizer[0,3] = 0
-        depolarizer[1,0] = PDelta[0];
-        depolarizer[2,0] = PDelta[1];
-        depolarizer[3,0] = PDelta[2];
-        for i in range(1,4):
-            for j in range(1,4):
-                depolarizer[i,j] = mDelta[i-1,j-1];
-
+        depolarizer[0,1:4] = 0
+        depolarizer[1:4,0] = PDelta
+        depolarizer[1:4,1:4] = mDelta
 
     return depolarizer, retarder, diattenuator
 
@@ -1120,11 +1106,12 @@ class CharacterizedMueller():
         self.Mdepol = Mdepol
         self.Mret = Mret
         self.Mdiatten = Mdiatten
-        
-        self.DiattenuationVector = np.array(Mdiatten[0,1:4])
-        self.Diattenuation = math.sqrt(sum(self.DiattenuationVector**2))
-        self.CircularDiattenuation = self.DiattenuationVector[2] 
-        self.LinearDiattenuation = math.sqrt(sum(np.array(Mdiatten[0,1:3])**2))
+
+        dv = np.array(Mdiatten[0,1:]/Mdiatten[0,0])
+        self.DiattenuationVector = dv
+        self.Diattenuation = math.sqrt(sum(dv**2))
+        self.CircularDiattenuation = dv[2] 
+        self.LinearDiattenuation = math.sqrt(sum(dv[:2]**2))
         self.DiattenuationAngle = math.atan2(Mdiatten[2,0],Mdiatten[1,0])/2
         
         self.PolarizanceVector = np.array(Mdepol[1:4,0])
@@ -1357,21 +1344,6 @@ def MuellerExp(L):
 MuellerMatrix.MuellerExp = MuellerExp
 
 MinkowskiG = MuellerMatrix(np.diag([1,-1,-1,-1]))
-
-def LeviCivita(ijk):
-    """
-    Return the Levi-Civita symbol
-    Argument: 3-element list of int
-    """
-    result = 1
-    if max(ijk)-min(ijk)!=len(ijk)-1: return 0
-    for i in range(0,len(ijk)-1):
-        for j in range(len(ijk)-1,i,-1):
-            if ijk[j-1]==ijk[j]: return 0
-            if ijk[j-1]>ijk[j]:
-                ijk[j-1], ijk[j] = ijk[j], ijk[j-1]
-                result = -result
-    return result;
 
 PauliMatrices = [np.array([[1,0],
                            [0,1]]),

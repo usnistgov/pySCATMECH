@@ -53,6 +53,7 @@ Scattering C++ Class Library <https://pages.nist.gov/SCATMECH/docs/index.htm>`_.
    UsingScatterer
    UsingRCW
    UsingCrossRCW
+   SPIEManuscript2020
 	   
 .. toctree::
    :maxdepth: 2
