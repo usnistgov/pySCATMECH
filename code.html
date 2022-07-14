@@ -1,23 +1,22 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Documentation &#8212; pySCATMECH 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Documentation &#8212; pySCATMECH 0.1.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
 <link rel="stylesheet" href="https://pages.nist.gov/nist-header-footer/css/nist-combined.css">
@@ -59,7 +58,8 @@ $(document).ready(function(){
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Documentation</a></li> 
       </ul>
     </div>  
 
@@ -68,11 +68,11 @@ $(document).ready(function(){
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-pySCATMECH.mueller">
+  <section id="module-pySCATMECH.mueller">
 <span id="documentation"></span><h1>Documentation<a class="headerlink" href="#module-pySCATMECH.mueller" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="pySCATMECH.mueller.CharacterizedMueller">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">CharacterizedMueller</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">CharacterizedMueller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller" title="Permalink to this definition">¶</a></dt>
 <dd><p>Characterize the Mueller matrix according to</p>
 <p>N. Ghosh, M.F.G. Wood, and I.A. Vitkin,
 ‘Mueller matrix decomposition for extraction of individual polarization
@@ -84,9 +84,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The Mueller matrix to be characterized</p>
 </dd>
 </dl>
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.Mdepol">
-<code class="sig-name descname">Mdepol</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Mdepol" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.Mdepol">
+<span class="sig-name descname"><span class="pre">Mdepol</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Mdepol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Depolarizer in Lu-Chipman decomposition</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -95,9 +95,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.Mret">
-<code class="sig-name descname">Mret</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Mret" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.Mret">
+<span class="sig-name descname"><span class="pre">Mret</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Mret" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retarder in Lu-Chipman decomposition</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -106,9 +106,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.Mdiatten">
-<code class="sig-name descname">Mdiatten</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Mdiatten" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.Mdiatten">
+<span class="sig-name descname"><span class="pre">Mdiatten</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Mdiatten" title="Permalink to this definition">¶</a></dt>
 <dd><p>Diattenuator in Lu-Chipman decomposition</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -117,9 +117,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.DiattenuationVector">
-<code class="sig-name descname">DiattenuationVector</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.DiattenuationVector" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.DiattenuationVector">
+<span class="sig-name descname"><span class="pre">DiattenuationVector</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.DiattenuationVector" title="Permalink to this definition">¶</a></dt>
 <dd><p>The 3-element diattenuation vector</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -128,9 +128,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.Diattenuation">
-<code class="sig-name descname">Diattenuation</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Diattenuation" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.Diattenuation">
+<span class="sig-name descname"><span class="pre">Diattenuation</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Diattenuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Diattenuation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -139,9 +139,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.CircularDiattenuation">
-<code class="sig-name descname">CircularDiattenuation</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.CircularDiattenuation" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.CircularDiattenuation">
+<span class="sig-name descname"><span class="pre">CircularDiattenuation</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.CircularDiattenuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Circular diattenuation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -150,9 +150,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.LinearDiattenuation">
-<code class="sig-name descname">LinearDiattenuation</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.LinearDiattenuation" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.LinearDiattenuation">
+<span class="sig-name descname"><span class="pre">LinearDiattenuation</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.LinearDiattenuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linear diattenuation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -161,9 +161,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.DiattenuationAngle">
-<code class="sig-name descname">DiattenuationAngle</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.DiattenuationAngle" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.DiattenuationAngle">
+<span class="sig-name descname"><span class="pre">DiattenuationAngle</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.DiattenuationAngle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Angle of diattenuation in radians</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -172,9 +172,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.Polarizance">
-<code class="sig-name descname">Polarizance</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Polarizance" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.Polarizance">
+<span class="sig-name descname"><span class="pre">Polarizance</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Polarizance" title="Permalink to this definition">¶</a></dt>
 <dd><p>The 3-element polarizance vector</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -183,9 +183,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.DepolarizationCoefficient">
-<code class="sig-name descname">DepolarizationCoefficient</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.DepolarizationCoefficient" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.DepolarizationCoefficient">
+<span class="sig-name descname"><span class="pre">DepolarizationCoefficient</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.DepolarizationCoefficient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Depolarization coefficient
 (1 = nondepolarizing, 0 = depolarizing)</p>
 <dl class="field-list simple">
@@ -195,9 +195,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.LinearRetardance">
-<code class="sig-name descname">LinearRetardance</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.LinearRetardance" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.LinearRetardance">
+<span class="sig-name descname"><span class="pre">LinearRetardance</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.LinearRetardance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linear retardance in radians</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -206,9 +206,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.OpticalRotation">
-<code class="sig-name descname">OpticalRotation</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.OpticalRotation" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.OpticalRotation">
+<span class="sig-name descname"><span class="pre">OpticalRotation</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.OpticalRotation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Optical rotation in radians</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -217,9 +217,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.Retardance">
-<code class="sig-name descname">Retardance</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Retardance" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.Retardance">
+<span class="sig-name descname"><span class="pre">Retardance</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Retardance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total retardance in radians</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -228,9 +228,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.mueller.CharacterizedMueller.RetardanceAngle">
-<code class="sig-name descname">RetardanceAngle</code><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.RetardanceAngle" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller.RetardanceAngle">
+<span class="sig-name descname"><span class="pre">RetardanceAngle</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.RetardanceAngle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Angle of retardance in radians</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -241,9 +241,9 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.Cloude_Decomposition">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Cloude_Decomposition</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Cloude_Decomposition" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.Cloude_Decomposition">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">Cloude_Decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Cloude_Decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of four non-depolarizing Mueller matrices that sum to the
 Mueller matrix.</p>
 <dl class="field-list simple">
@@ -260,9 +260,9 @@ M1[0,0] &gt;= M2[0,0] &gt;= M3[0,0] &gt;= M4[0,0]</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.HermitianToMueller">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">HermitianToMueller</code><span class="sig-paren">(</span><em class="sig-param">h</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.HermitianToMueller" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.HermitianToMueller">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">HermitianToMueller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.HermitianToMueller" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a Hermitian coherency matrix to its equivalent Mueller matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -277,9 +277,9 @@ M1[0,0] &gt;= M2[0,0] &gt;= M3[0,0] &gt;= M4[0,0]</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.JonesBasis">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesBasis</code><span class="sig-paren">(</span><em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesBasis" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.JonesBasis">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">JonesBasis</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DOCP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesBasis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the basis vectors for a Jones Matrix using a Jones vector or a
 degree of circular polarization and an angle. The returned vectors are
 orthogonal to one another and of unit intensity. This function
@@ -304,9 +304,9 @@ and of unit intensity</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.JonesDiattenuator">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesDiattenuator</code><span class="sig-paren">(</span><em class="sig-param">diatten=None</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesDiattenuator" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.JonesDiattenuator">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">JonesDiattenuator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DOCP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesDiattenuator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Jones matrix for a homogeneous diattenuator with a given
 phase and axes.</p>
 <dl class="field-list simple">
@@ -328,9 +328,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.JonesMueller">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesMueller</code><span class="sig-paren">(</span><em class="sig-param">jones</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesMueller" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.JonesMueller">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">JonesMueller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jones</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesMueller" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a Jones matrix to a Mueller matrix</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -345,9 +345,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.JonesPolarizer">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesPolarizer</code><span class="sig-paren">(</span><em class="sig-param">diatten=None</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesPolarizer" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.JonesPolarizer">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">JonesPolarizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DOCP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesPolarizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Jones matrix for a homogeneous diattenuator with a given
 phase and axes.</p>
 <dl class="field-list simple">
@@ -369,9 +369,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.JonesRetarder">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesRetarder</code><span class="sig-paren">(</span><em class="sig-param">phase=None</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesRetarder" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.JonesRetarder">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">JonesRetarder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DOCP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesRetarder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Jones matrix for a homogeneous retarder with a given phase
 and axes.</p>
 <dl class="field-list simple">
@@ -393,9 +393,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.JonesRotator">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesRotator</code><span class="sig-paren">(</span><em class="sig-param">angle</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesRotator" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.JonesRotator">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">JonesRotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesRotator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a Jones matrix that rotates the polarization by angle”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -410,9 +410,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.JonesStokes">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesStokes</code><span class="sig-paren">(</span><em class="sig-param">jones</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesStokes" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.JonesStokes">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">JonesStokes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jones</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesStokes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a Jones vector to a Stokes vector</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -421,43 +421,21 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.JonesUnit">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesUnit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesUnit" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.JonesUnit">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">JonesUnit</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesUnit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a unit Jones matrix</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.JonesZero">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">JonesZero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesZero" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.JonesZero">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">JonesZero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.JonesZero" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a zero Jones matrix</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.Lu_Chipman_Decomposition">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Lu_Chipman_Decomposition</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a depolarizer, a retarder, and a diattenuator whose ordered product is the
-Mueller matrix.</p>
-<p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
-polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The matrix to be decomposed</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>depolarizer</strong> (<em>MuellerMatrix</em>)</p></li>
-<li><p><strong>retarder</strong> (<em>MuellerMatrix</em>)</p></li>
-<li><p><strong>diattenuator</strong> (<em>MuellerMatrix</em>) – M = depolarizer &#64; retarder &#64; diattenuator</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerDiagonal">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerDiagonal</code><span class="sig-paren">(</span><em class="sig-param">a</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerDiagonal" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerDiagonal">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerDiagonal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerDiagonal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a diagonal Mueller matrix</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -466,9 +444,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerDiattenuator">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerDiattenuator</code><span class="sig-paren">(</span><em class="sig-param">diatten=0</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerDiattenuator" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerDiattenuator">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerDiattenuator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DOCP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerDiattenuator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Mueller matrix for a homogeneous diattenuator with a
 given phase and axis.</p>
 <dl class="field-list simple">
@@ -481,18 +459,15 @@ Cannot define both DOCP and jones.</p></li>
 Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>MuellerMatrix diattenuator</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>MuellerMatrix diattenuator</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerExp">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerExp</code><span class="sig-paren">(</span><em class="sig-param">L</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerExp" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerExp">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerExp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerExp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return matrix exponential.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -504,9 +479,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerLog">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerLog</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerLog" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerLog">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerLog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return matrix logarithm (logarithmic decomposition).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -518,18 +493,18 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.mueller.MuellerMatrix">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerMatrix</code><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for handling Mueller matrices</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>4x4 list</em><em> or </em><em>array of float</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – Default is a zero Mueller matrix</p>
 </dd>
 </dl>
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.Closest_NonDepolarizing">
-<code class="sig-name descname">Closest_NonDepolarizing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Closest_NonDepolarizing" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.Closest_NonDepolarizing">
+<span class="sig-name descname"><span class="pre">Closest_NonDepolarizing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Closest_NonDepolarizing" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the largest matrix in the Cloude decomposition, which may be
 interpreted as the closest non-depolarizing Mueller matrix.</p>
 <dl class="field-list simple">
@@ -542,9 +517,9 @@ interpreted as the closest non-depolarizing Mueller matrix.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.Cloude_Decomposition">
-<code class="sig-name descname">Cloude_Decomposition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Cloude_Decomposition" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.Cloude_Decomposition">
+<span class="sig-name descname"><span class="pre">Cloude_Decomposition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Cloude_Decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a list of four non-depolarizing Mueller matrices that sum to the
 Mueller matrix.</p>
 <dl class="field-list simple">
@@ -561,31 +536,9 @@ M1[0,0] &gt;= M2[0,0] &gt;= M3[0,0] &gt;= M4[0,0]</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.Lu_Chipman_Decomposition">
-<code class="sig-name descname">Lu_Chipman_Decomposition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a depolarizer, a retarder, and a diattenuator whose ordered product is the
-Mueller matrix.</p>
-<p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
-polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996).</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The matrix to be decomposed</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><ul class="simple">
-<li><p><strong>depolarizer</strong> (<em>MuellerMatrix</em>)</p></li>
-<li><p><strong>retarder</strong> (<em>MuellerMatrix</em>)</p></li>
-<li><p><strong>diattenuator</strong> (<em>MuellerMatrix</em>) – M = depolarizer &#64; retarder &#64; diattenuator</p></li>
-</ul>
-</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.MuellerExp">
-<code class="sig-name descname">MuellerExp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.MuellerExp" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.MuellerExp">
+<span class="sig-name descname"><span class="pre">MuellerExp</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.MuellerExp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return matrix exponential.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -597,9 +550,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.MuellerLog">
-<code class="sig-name descname">MuellerLog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.MuellerLog" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.MuellerLog">
+<span class="sig-name descname"><span class="pre">MuellerLog</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.MuellerLog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return matrix logarithm (logarithmic decomposition).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -611,9 +564,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.Reverse_Lu_Chipman_Decomposition">
-<code class="sig-name descname">Reverse_Lu_Chipman_Decomposition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Reverse_Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.Reverse_Lu_Chipman_Decomposition">
+<span class="sig-name descname"><span class="pre">Reverse_Lu_Chipman_Decomposition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Reverse_Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a diattenuator, a retarder, and a depolarizer whose ordered product is the
 Mueller matrix.</p>
 <p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
@@ -633,9 +586,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.Symmetric_Decomposition">
-<code class="sig-name descname">Symmetric_Decomposition</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Symmetric_Decomposition" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.Symmetric_Decomposition">
+<span class="sig-name descname"><span class="pre">Symmetric_Decomposition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Symmetric_Decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform the symmetric decomposition described by Ossikovski.</p>
 <p>See: R. Ossikovski, J. Opt. Soc. Am. A <strong>26</strong>, 1109-1118 (2009).</p>
 <dl class="field-list simple">
@@ -655,9 +608,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.Tmax">
-<code class="sig-name descname">Tmax</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Tmax" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.Tmax">
+<span class="sig-name descname"><span class="pre">Tmax</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Tmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the maximum transmittance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -669,9 +622,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.Tmin">
-<code class="sig-name descname">Tmin</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Tmin" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.Tmin">
+<span class="sig-name descname"><span class="pre">Tmin</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Tmin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the minimum transmittance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -683,9 +636,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.depolarization_index">
-<code class="sig-name descname">depolarization_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.depolarization_index" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.depolarization_index">
+<span class="sig-name descname"><span class="pre">depolarization_index</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.depolarization_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the depolarization index.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -697,9 +650,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.diattenuation">
-<code class="sig-name descname">diattenuation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.diattenuation" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.diattenuation">
+<span class="sig-name descname"><span class="pre">diattenuation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.diattenuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the diattenuation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -711,9 +664,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.entropy">
-<code class="sig-name descname">entropy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.entropy" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.entropy">
+<span class="sig-name descname"><span class="pre">entropy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>The polarization entropy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -727,9 +680,9 @@ scattering,” Opt. Eng. 34(6) 1599-1610 (1995).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.extinction_ratio">
-<code class="sig-name descname">extinction_ratio</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.extinction_ratio" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.extinction_ratio">
+<span class="sig-name descname"><span class="pre">extinction_ratio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.extinction_ratio" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the extinction ratio.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -741,9 +694,9 @@ scattering,” Opt. Eng. 34(6) 1599-1610 (1995).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.inverse">
-<code class="sig-name descname">inverse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.inverse" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.inverse">
+<span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.inverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mueller matrix inverse.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -755,9 +708,9 @@ scattering,” Opt. Eng. 34(6) 1599-1610 (1995).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.linear_diattenuation">
-<code class="sig-name descname">linear_diattenuation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.linear_diattenuation" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.linear_diattenuation">
+<span class="sig-name descname"><span class="pre">linear_diattenuation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.linear_diattenuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the linear diattenuation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -769,9 +722,9 @@ scattering,” Opt. Eng. 34(6) 1599-1610 (1995).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.normalized">
-<code class="sig-name descname">normalized</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.normalized" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.normalized">
+<span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.normalized" title="Permalink to this definition">¶</a></dt>
 <dd><p>The normalized Mueller matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -783,9 +736,9 @@ scattering,” Opt. Eng. 34(6) 1599-1610 (1995).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.parity">
-<code class="sig-name descname">parity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.parity" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.parity">
+<span class="sig-name descname"><span class="pre">parity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.parity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mueller matrix with a parity conversion.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -797,9 +750,9 @@ scattering,” Opt. Eng. 34(6) 1599-1610 (1995).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.physically_valid">
-<code class="sig-name descname">physically_valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.physically_valid" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.physically_valid">
+<span class="sig-name descname"><span class="pre">physically_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.physically_valid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a matrix is physically valid.</p>
 <p>The function physically_valid() calculates the Mueller matrix coherency
 matrix, which is the coherency matrix for the four Jones-Mueller
@@ -822,9 +775,9 @@ J. Opt. Soc. Am. A 27(2), 188-199 (2010).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.polarizance">
-<code class="sig-name descname">polarizance</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.polarizance" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.polarizance">
+<span class="sig-name descname"><span class="pre">polarizance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.polarizance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the polarizance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -836,9 +789,9 @@ J. Opt. Soc. Am. A 27(2), 188-199 (2010).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.polarization_dependent_loss">
-<code class="sig-name descname">polarization_dependent_loss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.polarization_dependent_loss" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.polarization_dependent_loss">
+<span class="sig-name descname"><span class="pre">polarization_dependent_loss</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.polarization_dependent_loss" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the polarization dependent loss.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -850,9 +803,9 @@ J. Opt. Soc. Am. A 27(2), 188-199 (2010).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.rotate">
-<code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param">angle</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.rotate" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.rotate">
+<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a Mueller matrix rotated by an angle.</p>
 <p>The angle is measured clockwise looking into the beam.</p>
 <dl class="field-list simple">
@@ -868,9 +821,9 @@ J. Opt. Soc. Am. A 27(2), 188-199 (2010).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.transpose">
-<code class="sig-name descname">transpose</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.transpose" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.transpose">
+<span class="sig-name descname"><span class="pre">transpose</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.transpose" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mueller matrix transpose.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -882,9 +835,9 @@ J. Opt. Soc. Am. A 27(2), 188-199 (2010).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.MuellerMatrix.valid">
-<code class="sig-name descname">valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.valid" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.valid">
+<span class="sig-name descname"><span class="pre">valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.valid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Test if a matrix is a Stokes-Stokes mapping matrix.</p>
 <p>Uses the condition described in C.R. Givens and A.B. Kostinski,
 ‘A simple necessary and sufficient condition on physically realizable
@@ -903,9 +856,9 @@ Mueller matrices,’ Journal of Modern Optics 40, 471-481 (1993).</p>
 
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerPolarizer">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerPolarizer</code><span class="sig-paren">(</span><em class="sig-param">diatten=0</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerPolarizer" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerPolarizer">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerPolarizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">diatten</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DOCP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerPolarizer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Mueller matrix for a homogeneous diattenuator with a
 given phase and axis.</p>
 <dl class="field-list simple">
@@ -918,18 +871,15 @@ Cannot define both DOCP and jones.</p></li>
 Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>MuellerMatrix diattenuator</p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>MuellerMatrix diattenuator</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerRetarder">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerRetarder</code><span class="sig-paren">(</span><em class="sig-param">phase=0</em>, <em class="sig-param">angle=0</em>, <em class="sig-param">DOCP=None</em>, <em class="sig-param">jones=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerRetarder" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerRetarder">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerRetarder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phase</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DOCP</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jones</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerRetarder" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the Mueller matrix for a homogeneous retarder with a given
 phase and axis.</p>
 <dl class="field-list simple">
@@ -951,9 +901,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerRotator">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerRotator</code><span class="sig-paren">(</span><em class="sig-param">angle</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerRotator" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerRotator">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerRotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerRotator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a Mueller matrix that rotates the polarization by angle”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -968,9 +918,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerToHermitian">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerToHermitian</code><span class="sig-paren">(</span><em class="sig-param">m</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerToHermitian" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerToHermitian">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerToHermitian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerToHermitian" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a Mueller matrix into its equivalent Hermitian coherency matrix.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -985,9 +935,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerUnit">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerUnit</code><span class="sig-paren">(</span><em class="sig-param">attenuation=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerUnit" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerUnit">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">attenuation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerUnit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a unit Mueller matrix</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -996,9 +946,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.MuellerZero">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">MuellerZero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerZero" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerZero">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerZero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerZero" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a zero Mueller matrix</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1010,9 +960,9 @@ Cannot define both DOCP and jones. (Default is [1,0])</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.Polarization">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Polarization</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Polarization" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.Polarization">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">Polarization</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Polarization" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a StokesVector with a given name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1044,9 +994,9 @@ args or state.)</p></li>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.Reverse_Lu_Chipman_Decomposition">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Reverse_Lu_Chipman_Decomposition</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Reverse_Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.Reverse_Lu_Chipman_Decomposition">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">Reverse_Lu_Chipman_Decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Reverse_Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a diattenuator, a retarder, and a depolarizer whose ordered product is the
 Mueller matrix.</p>
 <p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
@@ -1066,9 +1016,9 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.Sensitivity">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Sensitivity</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Sensitivity" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.Sensitivity">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">Sensitivity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Sensitivity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a StokesVector with a given name that
 corresponds to a sensitivity.</p>
 <dl class="field-list simple">
@@ -1087,18 +1037,18 @@ any float for linear polarization at angle <cite>name</cite></p>
 </dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.mueller.StokesVector">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">StokesVector</code><a class="headerlink" href="#pySCATMECH.mueller.StokesVector" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">StokesVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for handling Stokes vectors</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>x</strong> (<em>4-element list</em><em> or </em><em>array of float</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – Default is zero Stokes vector</p>
 </dd>
 </dl>
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.DOCP">
-<code class="sig-name descname">DOCP</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOCP" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.DOCP">
+<span class="sig-name descname"><span class="pre">DOCP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOCP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the degree of circular polarization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1110,9 +1060,9 @@ any float for linear polarization at angle <cite>name</cite></p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.DOLP">
-<code class="sig-name descname">DOLP</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOLP" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.DOLP">
+<span class="sig-name descname"><span class="pre">DOLP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOLP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the degree of linear polarization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1124,9 +1074,9 @@ any float for linear polarization at angle <cite>name</cite></p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.DOP">
-<code class="sig-name descname">DOP</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOP" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.DOP">
+<span class="sig-name descname"><span class="pre">DOP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOP" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the degree of polarization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1138,9 +1088,9 @@ any float for linear polarization at angle <cite>name</cite></p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.JonesVector">
-<code class="sig-name descname">JonesVector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.JonesVector" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.JonesVector">
+<span class="sig-name descname"><span class="pre">JonesVector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.JonesVector" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a Jones vector associated with the polarized part of the
 Stokes vector.</p>
 <dl class="field-list simple">
@@ -1154,9 +1104,9 @@ the polarized part of the Stokes vector.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.delta">
-<code class="sig-name descname">delta</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.delta" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.delta">
+<span class="sig-name descname"><span class="pre">delta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.delta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the phase difference between the two components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1169,9 +1119,9 @@ in radians. Uses the polarized part of the Stokes vector.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.eccentricity">
-<code class="sig-name descname">eccentricity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.eccentricity" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.eccentricity">
+<span class="sig-name descname"><span class="pre">eccentricity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.eccentricity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the eccentricity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1183,9 +1133,9 @@ in radians. Uses the polarized part of the Stokes vector.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.ellipticity">
-<code class="sig-name descname">ellipticity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.ellipticity" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.ellipticity">
+<span class="sig-name descname"><span class="pre">ellipticity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.ellipticity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the ellipticity of the field (ratio of minor to major axes).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1198,9 +1148,9 @@ of the polarization ellipse.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.eta">
-<code class="sig-name descname">eta</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.eta" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.eta">
+<span class="sig-name descname"><span class="pre">eta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.eta" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the principal angle of the polarization ellipse</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1212,9 +1162,9 @@ of the polarization ellipse.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.intensity">
-<code class="sig-name descname">intensity</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.intensity" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.intensity">
+<span class="sig-name descname"><span class="pre">intensity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.intensity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the intensity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1226,9 +1176,9 @@ of the polarization ellipse.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.normalized">
-<code class="sig-name descname">normalized</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.normalized" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.normalized">
+<span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.normalized" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return normalized Stokes vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1240,9 +1190,9 @@ of the polarization ellipse.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.pol_part">
-<code class="sig-name descname">pol_part</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.pol_part" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.pol_part">
+<span class="sig-name descname"><span class="pre">pol_part</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.pol_part" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the polarized part of the Stokes vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1254,9 +1204,9 @@ of the polarization ellipse.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.psi">
-<code class="sig-name descname">psi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.psi" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.psi">
+<span class="sig-name descname"><span class="pre">psi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.psi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return arc tangent of the amplitude ratio between the two components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1270,9 +1220,9 @@ value is zero for p-polarized light.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.rotate">
-<code class="sig-name descname">rotate</code><span class="sig-paren">(</span><em class="sig-param">angle</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.rotate" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.rotate">
+<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.rotate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a Stokes vector rotated by an angle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1287,9 +1237,9 @@ value is zero for p-polarized light.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.unpol_part">
-<code class="sig-name descname">unpol_part</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.unpol_part" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.unpol_part">
+<span class="sig-name descname"><span class="pre">unpol_part</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.unpol_part" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the unpolarized part of the Stokes vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1301,9 +1251,9 @@ value is zero for p-polarized light.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.mueller.StokesVector.valid">
-<code class="sig-name descname">valid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.valid" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.valid">
+<span class="sig-name descname"><span class="pre">valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.valid" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks if the Stokes vector is valid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -1317,15 +1267,15 @@ value is zero for p-polarized light.</p>
 
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.StokesZero">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">StokesZero</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesZero" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.StokesZero">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">StokesZero</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesZero" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return zero Stokes vector</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.Symmetric_Decomposition">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">Symmetric_Decomposition</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Symmetric_Decomposition" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.Symmetric_Decomposition">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">Symmetric_Decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Symmetric_Decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform the symmetric decomposition described by Ossikovski.</p>
 <p>See: R. Ossikovski, J. Opt. Soc. Am. A <strong>26</strong>, 1109-1118 (2009).</p>
 <dl class="field-list simple">
@@ -1345,13 +1295,38 @@ value is zero for p-polarized light.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.perpto">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">perpto</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.perpto" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.Test_Lu_Chipman_Decomposition">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">Test_Lu_Chipman_Decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.Test_Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a depolarizer, a retarder, and a diattenuator whose ordered product is the
+Mueller matrix.</p>
+<p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
+polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The matrix to be decomposed</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>depolarizer</strong> (<em>MuellerMatrix</em>)</p></li>
+<li><p><strong>retarder</strong> (<em>MuellerMatrix</em>)</p></li>
+<li><p><strong>diattenuator</strong> (<em>MuellerMatrix</em>) – M = depolarizer &#64; retarder &#64; diattenuator</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.perpto">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">perpto</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.perpto" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a unit vector perpendicular to two vectors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>b</strong> (<em>a</em><em>,</em>) – Two 3-vectors</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>np.array</em>) – Two 3-vectors</p></li>
+<li><p><strong>b</strong> (<em>np.array</em>) – Two 3-vectors</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>c</strong> – A unit vector perpendicular to both a and b.</p>
@@ -1362,9 +1337,9 @@ value is zero for p-polarized light.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.mueller.unit">
-<code class="sig-prename descclassname">pySCATMECH.mueller.</code><code class="sig-name descname">unit</code><span class="sig-paren">(</span><em class="sig-param">a</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.unit" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.mueller.unit">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">unit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.unit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the unit matrix associated with a vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1379,9 +1354,9 @@ value is zero for p-polarized light.</p>
 </dl>
 </dd></dl>
 
-<span class="target" id="module-pySCATMECH.model"></span><dl class="function">
-<dt id="pySCATMECH.model.DialogGetModel">
-<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">DialogGetModel</code><span class="sig-paren">(</span><em class="sig-param">top</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.DialogGetModel" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-pySCATMECH.model"></span><dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.model.DialogGetModel">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.model.</span></span><span class="sig-name descname"><span class="pre">DialogGetModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">top</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.DialogGetModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Opens a dialog box with a selection of Models inheriting top and
 returns the choice.</p>
 <dl class="field-list simple">
@@ -1400,9 +1375,9 @@ returns the choice.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.model.DialogGetModelParameters">
-<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">DialogGetModelParameters</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.DialogGetModelParameters" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.model.DialogGetModelParameters">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.model.</span></span><span class="sig-name descname"><span class="pre">DialogGetModelParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.DialogGetModelParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Opens a dialog box with a selection of Models inheriting top and
 returns the choice.</p>
 <dl class="field-list simple">
@@ -1422,64 +1397,61 @@ returns the choice.</p>
 </dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.model.Model">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">Model</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.model.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Base class for Models.</p>
-<dl class="method">
-<dt id="pySCATMECH.model.Model.askParameters">
-<code class="sig-name descname">askParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.askParameters" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.model.Model.askParameters">
+<span class="sig-name descname"><span class="pre">askParameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.askParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Queries the user for parameter values.
 TODO FIX!</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.model.Model.getModelName">
-<code class="sig-name descname">getModelName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getModelName" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.model.Model.getModelName">
+<span class="sig-name descname"><span class="pre">getModelName</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getModelName" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the model’s name</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.model.Model.getParameter">
-<code class="sig-name descname">getParameter</code><span class="sig-paren">(</span><em class="sig-param">parameter</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getParameter" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.model.Model.getParameter">
+<span class="sig-name descname"><span class="pre">getParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a string corresponding to the value of a model parameter.
 Arguments:
 parameter: parameter name as a string
 Returns: parameter value</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.model.Model.getParameterDictionary">
-<code class="sig-name descname">getParameterDictionary</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getParameterDictionary" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.model.Model.getParameterDictionary">
+<span class="sig-name descname"><span class="pre">getParameterDictionary</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getParameterDictionary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary of dictionaries for each parameter that includes
 values, descriptions, and types.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.model.Model.getParameters">
-<code class="sig-name descname">getParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getParameters" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.model.Model.getParameters">
+<span class="sig-name descname"><span class="pre">getParameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.getParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets all of the parameters for the model.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>dict with str keys</p>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict with str keys</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.model.Model.printParameters">
-<code class="sig-name descname">printParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.printParameters" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.model.Model.printParameters">
+<span class="sig-name descname"><span class="pre">printParameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.printParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a printable string that includes all the parameters,
 their values, and their descriptions.
 Recommend surround with print()</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.model.Model.setParameter">
-<code class="sig-name descname">setParameter</code><span class="sig-paren">(</span><em class="sig-param">parameter</em>, <em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.setParameter" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.model.Model.setParameter">
+<span class="sig-name descname"><span class="pre">setParameter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.setParameter" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets a single parameter for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1492,9 +1464,9 @@ Subparameters must use <cite>parameter.subparameter</cite> notation.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.model.Model.setParameters">
-<code class="sig-name descname">setParameters</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.setParameters" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.model.Model.setParameters">
+<span class="sig-name descname"><span class="pre">setParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.Model.setParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sets one or more parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1507,55 +1479,52 @@ the parameters and values being the values.
 lambda is a Python keyword.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="model.html#pySCATMECH.model.Model" title="pySCATMECH.model.Model">Model</a></p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="model.html#pySCATMECH.model.Model" title="pySCATMECH.model.Model">Model</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.model.chooseModel">
-<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">chooseModel</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.chooseModel" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.model.chooseModel">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.model.</span></span><span class="sig-name descname"><span class="pre">chooseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.chooseModel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Presents user with a choice of models and returns the user’s choice, by
 name.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.model.chooseModelAndParameters">
-<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">chooseModelAndParameters</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.chooseModelAndParameters" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.model.chooseModelAndParameters">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.model.</span></span><span class="sig-name descname"><span class="pre">chooseModelAndParameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.chooseModelAndParameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Presents user with a choice of models and asks for parameters.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.model.createDictOfDict">
-<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">createDictOfDict</code><span class="sig-paren">(</span><em class="sig-param">theDict</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.createDictOfDict" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.model.createDictOfDict">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.model.</span></span><span class="sig-name descname"><span class="pre">createDictOfDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theDict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.createDictOfDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a dictionary of dictionaries for a simple dictionary
 with dot-delimited keys. The result[gparent][parent][child]
 theDict[“gparent.parent.child”]–&gt;result[“gparent”][“parent”][“child”]
 theDict[“gparent.parent”]–&gt; result[gparent][parent][None]</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.model.getModelDictionary">
-<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">getModelDictionary</code><span class="sig-paren">(</span><em class="sig-param">model='Model'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.getModelDictionary" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.model.getModelDictionary">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.model.</span></span><span class="sig-name descname"><span class="pre">getModelDictionary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Model'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.getModelDictionary" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a dictionary containing all the models inheriting model and their
 descriptions.</p>
 </dd></dl>
 
-<dl class="function">
-<dt id="pySCATMECH.model.strDictOfDict">
-<code class="sig-prename descclassname">pySCATMECH.model.</code><code class="sig-name descname">strDictOfDict</code><span class="sig-paren">(</span><em class="sig-param">thedict</em>, <em class="sig-param">indent=''</em>, <em class="sig-param">result=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.strDictOfDict" title="Permalink to this definition">¶</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="pySCATMECH.model.strDictOfDict">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.model.</span></span><span class="sig-name descname"><span class="pre">strDictOfDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thedict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">result</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.model.strDictOfDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prints a dictionary of dictionaries in a readable format</p>
 </dd></dl>
 
-<span class="target" id="module-pySCATMECH.brdf"></span><dl class="class">
-<dt id="pySCATMECH.brdf.BRDF_Model">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.brdf.</code><code class="sig-name descname">BRDF_Model</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.brdf.BRDF_Model" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-pySCATMECH.brdf"></span><dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.brdf.BRDF_Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.brdf.</span></span><span class="sig-name descname"><span class="pre">BRDF_Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.brdf.BRDF_Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for handling BRDF Models.</p>
 <p>Arguments <a href="#id1"><span class="problematic" id="id2">*</span></a>args and <a href="#id3"><span class="problematic" id="id4">**</span></a>kwargs can contain parameters passed to the model.</p>
 <p>One form is to pass a dict of {“parameter” : value, … }.</p>
@@ -1567,9 +1536,9 @@ since <cite>lambda</cite> is a Python keyword.  However, as a str, it should be
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – The name of a SCATMECH model inheriting BRDF_Model</p>
 </dd>
 </dl>
-<dl class="method">
-<dt id="pySCATMECH.brdf.BRDF_Model.BRDF">
-<code class="sig-name descname">BRDF</code><span class="sig-paren">(</span><em class="sig-param">thetai=0</em>, <em class="sig-param">thetas=0</em>, <em class="sig-param">phis=0</em>, <em class="sig-param">rotation=0</em>, <em class="sig-param">coords='psps'</em>, <em class="sig-param">inc=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">sens=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.brdf.BRDF_Model.BRDF" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.brdf.BRDF_Model.BRDF">
+<span class="sig-name descname"><span class="pre">BRDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thetai</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thetas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'psps'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sens</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.brdf.BRDF_Model.BRDF" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the scalar BRDF in a given geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1598,9 +1567,9 @@ directions and polarizations.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.brdf.BRDF_Model.MuellerBRDF">
-<code class="sig-name descname">MuellerBRDF</code><span class="sig-paren">(</span><em class="sig-param">thetai=0</em>, <em class="sig-param">thetas=0</em>, <em class="sig-param">phis=0</em>, <em class="sig-param">rotation=0</em>, <em class="sig-param">coords='psps'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.brdf.BRDF_Model.MuellerBRDF" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.brdf.BRDF_Model.MuellerBRDF">
+<span class="sig-name descname"><span class="pre">MuellerBRDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thetai</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thetas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'psps'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.brdf.BRDF_Model.MuellerBRDF" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the Mueller matrix BRDF in a given geometry, and coordinate
 system.</p>
 <dl class="field-list simple">
@@ -1627,14 +1596,14 @@ either “psps”, “xyxy”, or “plane.” (Default is “psps”)</p></li>
 
 </dd></dl>
 
-<span class="target" id="module-pySCATMECH.local"></span><dl class="class">
-<dt id="pySCATMECH.local.Local_BRDF_Model">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.local.</code><code class="sig-name descname">Local_BRDF_Model</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.local.Local_BRDF_Model" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-pySCATMECH.local"></span><dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.local.Local_BRDF_Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.local.</span></span><span class="sig-name descname"><span class="pre">Local_BRDF_Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.local.Local_BRDF_Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for handling local BRDF Models (ones that return differential
 scattering cross section of isolated particles</p>
-<dl class="method">
-<dt id="pySCATMECH.local.Local_BRDF_Model.DSC">
-<code class="sig-name descname">DSC</code><span class="sig-paren">(</span><em class="sig-param">thetai=0</em>, <em class="sig-param">thetas=0</em>, <em class="sig-param">phis=0</em>, <em class="sig-param">rotation=0</em>, <em class="sig-param">coords='psps'</em>, <em class="sig-param">inc=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">sens=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.local.Local_BRDF_Model.DSC" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.local.Local_BRDF_Model.DSC">
+<span class="sig-name descname"><span class="pre">DSC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thetai</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thetas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'psps'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sens</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.local.Local_BRDF_Model.DSC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the differential scattering cross section in a given geometry.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1660,9 +1629,9 @@ given incident and viewing directions and polarizations</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.local.Local_BRDF_Model.MuellerDSC">
-<code class="sig-name descname">MuellerDSC</code><span class="sig-paren">(</span><em class="sig-param">thetai=0</em>, <em class="sig-param">thetas=0</em>, <em class="sig-param">phis=0</em>, <em class="sig-param">rotation=0</em>, <em class="sig-param">coords='psps'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.local.Local_BRDF_Model.MuellerDSC" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.local.Local_BRDF_Model.MuellerDSC">
+<span class="sig-name descname"><span class="pre">MuellerDSC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">thetai</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thetas</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">coords</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'psps'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.local.Local_BRDF_Model.MuellerDSC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the Mueller matrix differential scattering cross section
 in a given geometry, and coordinate system</p>
 <dl class="field-list simple">
@@ -1688,13 +1657,13 @@ either “psps”, “xyxy”, or “plane”</p></li>
 
 </dd></dl>
 
-<span class="target" id="module-pySCATMECH.scatterer"></span><dl class="class">
-<dt id="pySCATMECH.scatterer.Free_Space_Scatterer">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.scatterer.</code><code class="sig-name descname">Free_Space_Scatterer</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.scatterer.Free_Space_Scatterer" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-pySCATMECH.scatterer"></span><dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.scatterer.Free_Space_Scatterer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.scatterer.</span></span><span class="sig-name descname"><span class="pre">Free_Space_Scatterer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.scatterer.Free_Space_Scatterer" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for handling free space scatterer models</p>
-<dl class="method">
-<dt id="pySCATMECH.scatterer.Free_Space_Scatterer.DifferentialScatteringCrossSection">
-<code class="sig-name descname">DifferentialScatteringCrossSection</code><span class="sig-paren">(</span><em class="sig-param">vi</em>, <em class="sig-param">vo</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.scatterer.Free_Space_Scatterer.DifferentialScatteringCrossSection" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.scatterer.Free_Space_Scatterer.DifferentialScatteringCrossSection">
+<span class="sig-name descname"><span class="pre">DifferentialScatteringCrossSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.scatterer.Free_Space_Scatterer.DifferentialScatteringCrossSection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Mueller matrix differential scattering cross section for
 a given geometry</p>
 <dl class="field-list simple">
@@ -1713,9 +1682,9 @@ a given geometry</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.scatterer.Free_Space_Scatterer.Extinction">
-<code class="sig-name descname">Extinction</code><span class="sig-paren">(</span><em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.scatterer.Free_Space_Scatterer.Extinction" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.scatterer.Free_Space_Scatterer.Extinction">
+<span class="sig-name descname"><span class="pre">Extinction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.scatterer.Free_Space_Scatterer.Extinction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Mueller matrix extinction cross section for
 a given geometry</p>
 <dl class="field-list simple">
@@ -1731,9 +1700,9 @@ a given geometry</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.scatterer.Free_Space_Scatterer.ScatteringMatrix">
-<code class="sig-name descname">ScatteringMatrix</code><span class="sig-paren">(</span><em class="sig-param">vi</em>, <em class="sig-param">vo</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.scatterer.Free_Space_Scatterer.ScatteringMatrix" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.scatterer.Free_Space_Scatterer.ScatteringMatrix">
+<span class="sig-name descname"><span class="pre">ScatteringMatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vo</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.scatterer.Free_Space_Scatterer.ScatteringMatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Mueller matrix differential scattering cross section for
 a given geometry</p>
 <dl class="field-list simple">
@@ -1747,20 +1716,38 @@ a given geometry</p>
 <dd class="field-even"><p><strong>s</strong> – Scattering matrix as a Jones matrix</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>2x2 list of complex</p>
+<dd class="field-odd"><p>numpy.array</p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
 
-<span class="target" id="module-pySCATMECH.rcw"></span><dl class="class">
-<dt id="pySCATMECH.rcw.RCW_Model">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.rcw.</code><code class="sig-name descname">RCW_Model</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-pySCATMECH.rcw"></span><dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.rcw.</span></span><span class="sig-name descname"><span class="pre">RCW_Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class handling rigorous coupled wave (RCW) analysis for 1D gratings.</p>
-<dl class="method">
-<dt id="pySCATMECH.rcw.RCW_Model.DiffractionEfficiency">
-<code class="sig-name descname">DiffractionEfficiency</code><span class="sig-paren">(</span><em class="sig-param">i</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.DiffractionEfficiency" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model.DiffractionAmplitude">
+<span class="sig-name descname"><span class="pre">DiffractionAmplitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.DiffractionAmplitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jones matrix diffraction amplitude for
+the i-th diffraction order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – Diffraction order</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>amplitude</strong> – The Jones matrix diffraction amplitude for order i</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JonesMatrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model.DiffractionEfficiency">
+<span class="sig-name descname"><span class="pre">DiffractionEfficiency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.DiffractionEfficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Mueller matrix diffraction efficiency for
 the i-th diffraction order.</p>
 <dl class="field-list simple">
@@ -1776,9 +1763,9 @@ the i-th diffraction order.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.rcw.RCW_Model.Direction">
-<code class="sig-name descname">Direction</code><span class="sig-paren">(</span><em class="sig-param">i</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.Direction" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model.Direction">
+<span class="sig-name descname"><span class="pre">Direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.Direction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a 3D unit vector [x,y,z] in the direction of
 propagation of the i-th diffraction order
 :param i: Diffraction order
@@ -1793,14 +1780,15 @@ propagation of the i-th diffraction order
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.rcw.RCW_Model.getEpsilon">
-<code class="sig-name descname">getEpsilon</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">z</em>, <em class="sig-param">direction='x'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.getEpsilon" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model.getEpsilon">
+<span class="sig-name descname"><span class="pre">getEpsilon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.getEpsilon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the grating dielectric constant at a specific location</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>z</strong> (<em>x</em><em>,</em>) – Location coordinates</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – Location coordinates</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – Location coordinates</p></li>
 <li><p><strong>direction</strong> (<em>str</em><em>, </em><em>optional</em>) – If the grating is anisotropic, then direction can be set
 to choose a particular field direction. Can be ‘x’, ‘y’, or
 ‘z’. (Default is ‘x’).</p></li>
@@ -1818,18 +1806,42 @@ and grating.</p>
 
 </dd></dl>
 
-<span class="target" id="module-pySCATMECH.crossrcw"></span><dl class="class">
-<dt id="pySCATMECH.crossrcw.CrossRCW_Model">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.crossrcw.</code><code class="sig-name descname">CrossRCW_Model</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-pySCATMECH.crossrcw"></span><dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.crossrcw.CrossRCW_Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.crossrcw.</span></span><span class="sig-name descname"><span class="pre">CrossRCW_Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class handling rigorous coupled wave (RCW) analysis for cross gratings.</p>
-<dl class="method">
-<dt id="pySCATMECH.crossrcw.CrossRCW_Model.DiffractionEfficiency">
-<code class="sig-name descname">DiffractionEfficiency</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">j</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.DiffractionEfficiency" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.crossrcw.CrossRCW_Model.DiffractionAmplitude">
+<span class="sig-name descname"><span class="pre">DiffractionAmplitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.DiffractionAmplitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jones matrix diffraction amplitude for the (i,j)-th
+diffraction order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Diffraction order</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Diffraction order</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>amplitude</strong> – Diffraction amplitude, as a Jones matrix, at order (i,j)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.crossrcw.CrossRCW_Model.DiffractionEfficiency">
+<span class="sig-name descname"><span class="pre">DiffractionEfficiency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.DiffractionEfficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Mueller matrix diffraction efficiency for the (i,j)-th
 diffraction order</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>j</strong> (<em>i</em><em>,</em>) – Diffraction order</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Diffraction order</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Diffraction order</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>efficiency</strong> – Diffraction efficiency, as a Mueller matrix, at order (i,j)</p>
@@ -1840,14 +1852,17 @@ diffraction order</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.crossrcw.CrossRCW_Model.Direction">
-<code class="sig-name descname">Direction</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">j</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.Direction" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.crossrcw.CrossRCW_Model.Direction">
+<span class="sig-name descname"><span class="pre">Direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.Direction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a 3D unit vector [x,y,z] in the direction of propagation of
 the (i,j)-th diffraction order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>j</strong> (<em>i</em><em>,</em>) – Diffraction order</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Diffraction order</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Diffraction order</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>direction</strong> – Directional cosines of diffracted direction</p>
@@ -1860,9 +1875,9 @@ the (i,j)-th diffraction order.</p>
 
 </dd></dl>
 
-<span class="target" id="module-pySCATMECH.fresnel"></span><dl class="class">
-<dt id="pySCATMECH.fresnel.Film">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.fresnel.</code><code class="sig-name descname">Film</code><span class="sig-paren">(</span><em class="sig-param">material</em>, <em class="sig-param">thickness=None</em>, <em class="sig-param">waves=None</em>, <em class="sig-param">wavelength=None</em>, <em class="sig-param">angle=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.Film" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-pySCATMECH.fresnel"></span><dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.Film">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.fresnel.</span></span><span class="sig-name descname"><span class="pre">Film</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waves</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.Film" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for handling an optical film.</p>
 <p>Film stores an OpticalFunction and a thickness. One feature is that
 multiplication by a scalar returns a Film with its thickness multiplied
@@ -1882,13 +1897,13 @@ by that scalar.</p>
 </dl>
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.fresnel.FilmStack">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.fresnel.</code><code class="sig-name descname">FilmStack</code><span class="sig-paren">(</span><em class="sig-param">films=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.fresnel.</span></span><span class="sig-name descname"><span class="pre">FilmStack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">films</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack" title="Permalink to this definition">¶</a></dt>
 <dd><p>A class for handling stacks of films</p>
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.R">
-<code class="sig-name descname">R</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.R" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.R">
+<span class="sig-name descname"><span class="pre">R</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.R" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the reflectance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1925,9 +1940,9 @@ linear relationship between radiant fluxes.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.Rp">
-<code class="sig-name descname">Rp</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rp" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.Rp">
+<span class="sig-name descname"><span class="pre">Rp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the reflectance for p-polarized radiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1964,9 +1979,9 @@ linear relationship between radiant fluxes.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.Rs">
-<code class="sig-name descname">Rs</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rs" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.Rs">
+<span class="sig-name descname"><span class="pre">Rs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the reflectance for s-polarized radiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2003,9 +2018,9 @@ linear relationship between radiant fluxes.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.T">
-<code class="sig-name descname">T</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.T" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.T">
+<span class="sig-name descname"><span class="pre">T</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.T" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the transmittance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2042,9 +2057,9 @@ linear relationship between radiant fluxes.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.Tp">
-<code class="sig-name descname">Tp</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Tp" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.Tp">
+<span class="sig-name descname"><span class="pre">Tp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Tp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the transmittance for p-polarized radiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2081,9 +2096,9 @@ linear relationship between radiant fluxes.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.Ts">
-<code class="sig-name descname">Ts</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Ts" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.Ts">
+<span class="sig-name descname"><span class="pre">Ts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Ts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the transmittance for s-polarized radiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2120,22 +2135,22 @@ linear relationship between radiant fluxes.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.clean">
-<code class="sig-name descname">clean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.clean" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.clean">
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.clean" title="Permalink to this definition">¶</a></dt>
 <dd><p>Clear the stack of all films.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.getModelDict">
-<code class="sig-name descname">getModelDict</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getModelDict" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.getModelDict">
+<span class="sig-name descname"><span class="pre">getModelDict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getModelDict" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a Model parameter dictionary. Used primarily internally so that
 a FilmStack can be passed as a parameter to a Model for a stack.</p>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.getStackCommand">
-<code class="sig-name descname">getStackCommand</code><span class="sig-paren">(</span><em class="sig-param">wavelength</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getStackCommand" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.getStackCommand">
+<span class="sig-name descname"><span class="pre">getStackCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getStackCommand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the list of films suitable for a SCATMECH::Stack_StackModel</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2150,9 +2165,9 @@ a FilmStack can be passed as a parameter to a Model for a stack.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.grow">
-<code class="sig-name descname">grow</code><span class="sig-paren">(</span><em class="sig-param">film</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.grow" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.grow">
+<span class="sig-name descname"><span class="pre">grow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.grow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Grow a film on the stack.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2161,9 +2176,9 @@ a FilmStack can be passed as a parameter to a Model for a stack.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.reflectionCoefficient">
-<code class="sig-name descname">reflectionCoefficient</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.reflectionCoefficient" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.reflectionCoefficient">
+<span class="sig-name descname"><span class="pre">reflectionCoefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.reflectionCoefficient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the reflection coefficent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2203,9 +2218,9 @@ coeff[1][0] = coeff[0][1] = 0</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.FilmStack.transmissionCoefficient">
-<code class="sig-name descname">transmissionCoefficient</code><span class="sig-paren">(</span><em class="sig-param">theta</em>, <em class="sig-param">wavelength</em>, <em class="sig-param">no</em>, <em class="sig-param">nt</em>, <em class="sig-param">type='12'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.transmissionCoefficient" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.transmissionCoefficient">
+<span class="sig-name descname"><span class="pre">transmissionCoefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.transmissionCoefficient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the transmission coefficient.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2247,9 +2262,9 @@ coeff[1][0] = coeff[0][1] = 0</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.fresnel.OpticalFunction">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.fresnel.</code><code class="sig-name descname">OpticalFunction</code><span class="sig-paren">(</span><em class="sig-param">name</em>, <em class="sig-param">iter=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.OpticalFunction" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.OpticalFunction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.fresnel.</span></span><span class="sig-name descname"><span class="pre">OpticalFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">iter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.OpticalFunction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for handling optical functions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2258,9 +2273,9 @@ coeff[1][0] = coeff[0][1] = 0</p>
 wavelengths, n, and k.</p>
 </dd>
 </dl>
-<dl class="method">
-<dt id="pySCATMECH.fresnel.OpticalFunction.nkstr">
-<code class="sig-name descname">nkstr</code><span class="sig-paren">(</span><em class="sig-param">wavelength=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.OpticalFunction.nkstr" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.OpticalFunction.nkstr">
+<span class="sig-name descname"><span class="pre">nkstr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.OpticalFunction.nkstr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate the optical constants n and k at wavelength and returns a
 string that can be used by SCATMECH::dielectric_function.</p>
 <dl class="field-list simple">
@@ -2278,9 +2293,9 @@ string that can be used by SCATMECH::dielectric_function.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.fresnel.OpticalFunction.writeToFile">
-<code class="sig-name descname">writeToFile</code><span class="sig-paren">(</span><em class="sig-param">filename</em>, <em class="sig-param">wavelengths</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.OpticalFunction.writeToFile" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.OpticalFunction.writeToFile">
+<span class="sig-name descname"><span class="pre">writeToFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelengths</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.OpticalFunction.writeToFile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Write the optical function to a file that can be used by SCATMECH
 routines as a SCATMECH::dielectric_function.</p>
 <dl class="field-list simple">
@@ -2303,19 +2318,19 @@ routines as a SCATMECH::dielectric_function.</p>
 
 </dd></dl>
 
-<span class="target" id="module-pySCATMECH.integrate"></span><dl class="attribute">
-<dt id="pySCATMECH.integrate.CircularCone">
-<code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">CircularCone</code><a class="headerlink" href="#pySCATMECH.integrate.CircularCone" title="Permalink to this definition">¶</a></dt>
+<span class="target" id="module-pySCATMECH.integrate"></span><dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.CircularCone">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">CircularCone</span></span><a class="headerlink" href="#pySCATMECH.integrate.CircularCone" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="integrate1.html#pySCATMECH.integrate.EllipticalCone" title="pySCATMECH.integrate.EllipticalCone"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.integrate.EllipticalCone</span></code></a></p>
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.integrate.EllipticalCone">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">EllipticalCone</code><span class="sig-paren">(</span><em class="sig-param">theta=0</em>, <em class="sig-param">phi=0</em>, <em class="sig-param">alpha=0</em>, <em class="sig-param">gamma=0</em>, <em class="sig-param">sensitivity=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">polphi=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.EllipticalCone">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">EllipticalCone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone" title="Permalink to this definition">¶</a></dt>
 <dd><p>A solid angle defined as an elliptical circular cone.</p>
-<dl class="method">
-<dt id="pySCATMECH.integrate.EllipticalCone.inside">
-<code class="sig-name descname">inside</code><span class="sig-paren">(</span><em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone.inside" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.EllipticalCone.inside">
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone.inside" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
@@ -2332,13 +2347,13 @@ routines as a SCATMECH::dielectric_function.</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.integrate.Hemisphere">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">Hemisphere</code><span class="sig-paren">(</span><em class="sig-param">sensitivity=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">polphi=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Hemisphere">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">Hemisphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere" title="Permalink to this definition">¶</a></dt>
 <dd><p>A solid angle defined by the entire hemisphere.</p>
-<dl class="method">
-<dt id="pySCATMECH.integrate.Hemisphere.inside">
-<code class="sig-name descname">inside</code><span class="sig-paren">(</span><em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere.inside" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Hemisphere.inside">
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere.inside" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
@@ -2355,15 +2370,15 @@ routines as a SCATMECH::dielectric_function.</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.integrate.Integrator">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">Integrator</code><span class="sig-paren">(</span><em class="sig-param">gridsize</em>, <em class="sig-param">detector</em>, <em class="sig-param">type=1</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">Integrator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">gridsize</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">detector</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class designed to integrate scattering models.</p>
 <p>Class designed to integrate a BRDF_Model (to obtain reflectance) or
 a Local_BRDF_Model (to obtain scattering cross section).</p>
-<dl class="attribute">
-<dt>
-<code class="sig-name descname">x, y, z</code></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">x,</span> <span class="pre">y,</span> <span class="pre">z</span></span></dt>
 <dd><p>The x and y projected cosines</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -2372,9 +2387,9 @@ a Local_BRDF_Model (to obtain scattering cross section).</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.integrate.Integrator.w">
-<code class="sig-name descname">w</code><a class="headerlink" href="#pySCATMECH.integrate.Integrator.w" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator.w">
+<span class="sig-name descname"><span class="pre">w</span></span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.w" title="Permalink to this definition">¶</a></dt>
 <dd><p>The weights</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -2383,9 +2398,9 @@ a Local_BRDF_Model (to obtain scattering cross section).</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.integrate.Integrator.sens">
-<code class="sig-name descname">sens</code><a class="headerlink" href="#pySCATMECH.integrate.Integrator.sens" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator.sens">
+<span class="sig-name descname"><span class="pre">sens</span></span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.sens" title="Permalink to this definition">¶</a></dt>
 <dd><p>The Stokes sensitivities</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -2394,9 +2409,9 @@ a Local_BRDF_Model (to obtain scattering cross section).</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.integrate.Integrator.theta">
-<code class="sig-name descname">theta</code><a class="headerlink" href="#pySCATMECH.integrate.Integrator.theta" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator.theta">
+<span class="sig-name descname"><span class="pre">theta</span></span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.theta" title="Permalink to this definition">¶</a></dt>
 <dd><p>The polar angles in radians.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -2405,9 +2420,9 @@ a Local_BRDF_Model (to obtain scattering cross section).</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.integrate.Integrator.phi">
-<code class="sig-name descname">phi</code><a class="headerlink" href="#pySCATMECH.integrate.Integrator.phi" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator.phi">
+<span class="sig-name descname"><span class="pre">phi</span></span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.phi" title="Permalink to this definition">¶</a></dt>
 <dd><p>The azimuthal angles in radians.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -2416,9 +2431,9 @@ a Local_BRDF_Model (to obtain scattering cross section).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.integrate.Integrator.BRDF">
-<code class="sig-name descname">BRDF</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">thetai</em>, <em class="sig-param">incpol=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.BRDF" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator.BRDF">
+<span class="sig-name descname"><span class="pre">BRDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thetai</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incpol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.BRDF" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the BRDF at each integration point.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2426,6 +2441,7 @@ a Local_BRDF_Model (to obtain scattering cross section).</p>
 <li><p><strong>model</strong> (<a class="reference internal" href="#pySCATMECH.brdf.BRDF_Model" title="pySCATMECH.brdf.BRDF_Model"><em>BRDF_Model</em></a>) – The BRDF model to be integrated</p></li>
 <li><p><strong>thetai</strong> (<em>float</em>) – The incident angle in radians</p></li>
 <li><p><strong>incpol</strong> (<a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector"><em>StokesVector</em></a>) – The incident Stokes vector</p></li>
+<li><p><strong>rotation</strong> (<em>float</em>) – The angle of rotation of the material in radians</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2437,9 +2453,9 @@ a Local_BRDF_Model (to obtain scattering cross section).</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.integrate.Integrator.CrossSection">
-<code class="sig-name descname">CrossSection</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">thetai</em>, <em class="sig-param">incpol=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.CrossSection" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator.CrossSection">
+<span class="sig-name descname"><span class="pre">CrossSection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thetai</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incpol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.CrossSection" title="Permalink to this definition">¶</a></dt>
 <dd><p>Integrates a Local_BRDF_Model to obtain differential scattering
 cross section.</p>
 <dl class="field-list simple">
@@ -2459,9 +2475,9 @@ cross section.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.integrate.Integrator.DSC">
-<code class="sig-name descname">DSC</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">thetai</em>, <em class="sig-param">incpol=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.DSC" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator.DSC">
+<span class="sig-name descname"><span class="pre">DSC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thetai</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incpol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.DSC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the differential scattering cross section at each
 integration point.</p>
 <dl class="field-list simple">
@@ -2470,6 +2486,7 @@ integration point.</p>
 <li><p><strong>model</strong> (<a class="reference internal" href="local.html#pySCATMECH.local.Local_BRDF_Model" title="pySCATMECH.local.Local_BRDF_Model"><em>Local_BRDF_Model</em></a>) – The BRDF model to be integrated</p></li>
 <li><p><strong>thetai</strong> (<em>float</em>) – The incident angle in radians</p></li>
 <li><p><strong>incpol</strong> (<a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector"><em>StokesVector</em></a>) – Incident Stokes vector</p></li>
+<li><p><strong>rotation</strong> (<em>float</em>) – The angle of rotation of the material in radians</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2481,9 +2498,9 @@ integration point.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.integrate.Integrator.PlotSamplingPoints">
-<code class="sig-name descname">PlotSamplingPoints</code><span class="sig-paren">(</span><em class="sig-param">figsize=5</em>, <em class="sig-param">expand=1</em>, <em class="sig-param">color='b'</em>, <em class="sig-param">circlecolor='r'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.PlotSamplingPoints" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator.PlotSamplingPoints">
+<span class="sig-name descname"><span class="pre">PlotSamplingPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">figsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'b'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">circlecolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'r'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.PlotSamplingPoints" title="Permalink to this definition">¶</a></dt>
 <dd><p>Graphs the integration points on the projected hemisphere.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2498,9 +2515,9 @@ integration point.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.integrate.Integrator.Reflectance">
-<code class="sig-name descname">Reflectance</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">thetai</em>, <em class="sig-param">incpol=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.Reflectance" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.Integrator.Reflectance">
+<span class="sig-name descname"><span class="pre">Reflectance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thetai</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">incpol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Integrator.Reflectance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Integrates a BRDF_Model and returns reflectance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2508,6 +2525,7 @@ integration point.</p>
 <li><p><strong>model</strong> (<a class="reference internal" href="#pySCATMECH.brdf.BRDF_Model" title="pySCATMECH.brdf.BRDF_Model"><em>BRDF_Model</em></a>) – The model to be integrated.</p></li>
 <li><p><strong>thetai</strong> (<em>float</em>) – The incident angle in radians</p></li>
 <li><p><strong>incpol</strong> (<a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector" title="pySCATMECH.mueller.StokesVector"><em>StokesVector</em></a>) – The incident Stokes vector</p></li>
+<li><p><strong>rotation</strong> (<em>float</em>) – The angle of rotation of the material in radians</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -2521,13 +2539,13 @@ integration point.</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.integrate.ProjectedPolygon">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">ProjectedPolygon</code><span class="sig-paren">(</span><em class="sig-param">boundary</em>, <em class="sig-param">sensitivity=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">polphi=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.ProjectedPolygon">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">ProjectedPolygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon" title="Permalink to this definition">¶</a></dt>
 <dd><p>A solid angle defined by an array of (x,y) points in projected cosine space.</p>
-<dl class="method">
-<dt id="pySCATMECH.integrate.ProjectedPolygon.inside">
-<code class="sig-name descname">inside</code><span class="sig-paren">(</span><em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon.inside" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.ProjectedPolygon.inside">
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon.inside" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
@@ -2544,13 +2562,13 @@ integration point.</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.integrate.RectangularCone">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">RectangularCone</code><span class="sig-paren">(</span><em class="sig-param">theta=0</em>, <em class="sig-param">phi=0</em>, <em class="sig-param">alpha=0</em>, <em class="sig-param">gamma=0</em>, <em class="sig-param">sensitivity=StokesVector(1</em>, <em class="sig-param">0</em>, <em class="sig-param">0</em>, <em class="sig-param">0)</em>, <em class="sig-param">polphi=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.RectangularCone">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">RectangularCone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone" title="Permalink to this definition">¶</a></dt>
 <dd><p>A solid angle defined by a rectangular collection cone.</p>
-<dl class="method">
-<dt id="pySCATMECH.integrate.RectangularCone.inside">
-<code class="sig-name descname">inside</code><span class="sig-paren">(</span><em class="sig-param">v</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone.inside" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.RectangularCone.inside">
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone.inside" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
@@ -2567,9 +2585,9 @@ integration point.</p>
 
 </dd></dl>
 
-<dl class="class">
-<dt id="pySCATMECH.integrate.SolidAngle">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">SolidAngle</code><a class="headerlink" href="#pySCATMECH.integrate.SolidAngle" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.SolidAngle">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">SolidAngle</span></span><a class="headerlink" href="#pySCATMECH.integrate.SolidAngle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Abstract class for a solid angle on a hemisphere.</p>
 <p>Inherited classes are expected to define inside(self,v) where
 v contains directional cosines and returns a tuple of
@@ -2580,15 +2598,16 @@ functionality, so that solid angles can be defined by combining
 other solid angle classes.</p>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="pySCATMECH.integrate.SquareCone">
-<code class="sig-prename descclassname">pySCATMECH.integrate.</code><code class="sig-name descname">SquareCone</code><a class="headerlink" href="#pySCATMECH.integrate.SquareCone" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pySCATMECH.integrate.SquareCone">
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">SquareCone</span></span><a class="headerlink" href="#pySCATMECH.integrate.SquareCone" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="integrate1.html#pySCATMECH.integrate.RectangularCone" title="pySCATMECH.integrate.RectangularCone"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.integrate.RectangularCone</span></code></a></p>
 </dd></dl>
 
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
@@ -2605,7 +2624,7 @@ other solid angle classes.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -2624,11 +2643,12 @@ other solid angle classes.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Documentation</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

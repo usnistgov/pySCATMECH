@@ -1,23 +1,24 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Using the Local module &#8212; pySCATMECH 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Using the Local module &#8212; pySCATMECH 0.1.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Using the Integrate module" href="UsingIntegrate.html" />
@@ -67,7 +68,8 @@ $(document).ready(function(){
         <li class="right" >
           <a href="UsingBRDF.html" title="Using the BRDF module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using the Local module</a></li> 
       </ul>
     </div>  
 
@@ -81,21 +83,35 @@ $(document).ready(function(){
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -196,7 +212,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -262,6 +278,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -271,11 +288,12 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -284,10 +302,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -299,17 +321,20 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<div class="section" id="Using-the-Local-module">
+<section id="Using-the-Local-module">
 <h1>Using the Local module<a class="headerlink" href="#Using-the-Local-module" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook, we demonstrate how to use the pySCATMECH Local module. Local models are those that calculate the differential scattering cross section (DSC) of individual local defects or particles. The bidirectional reflectance distribution function (BRDF) is then determined from</p>
 <div class="math notranslate nohighlight">
@@ -321,8 +346,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">pySCATMECH.local</span> <span class="kn">import</span> <span class="o">*</span>
 </pre></div>
 </div>
@@ -332,8 +356,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">spherecoat</span> <span class="o">=</span> <span class="p">{</span><span class="kc">None</span> <span class="p">:</span> <span class="s1">&#39;No_StackModel&#39;</span><span class="p">}</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spherecoat</span> <span class="o">=</span> <span class="p">{</span><span class="kc">None</span> <span class="p">:</span> <span class="s1">&#39;No_StackModel&#39;</span><span class="p">}</span>
 
 <span class="n">stack</span> <span class="o">=</span> <span class="p">{</span><span class="kc">None</span> <span class="p">:</span> <span class="s1">&#39;No_StackModel&#39;</span><span class="p">}</span>
 
@@ -380,8 +403,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Needed to use OpticalFunction, Film, and FilmStack...</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Needed to use OpticalFunction, Film, and FilmStack...</span>
 <span class="kn">from</span> <span class="nn">pySCATMECH.fresnel</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="c1"># Define two materials...</span>
@@ -443,8 +465,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mDSC</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">MuellerDSC</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mDSC</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">MuellerDSC</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="mi">30</span><span class="o">*</span><span class="n">deg</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mDSC</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -464,8 +485,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">thetaslist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">89</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thetaslist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">89</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">DSClist</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">DSC</span><span class="p">(</span><span class="mi">60</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">thetas</span><span class="o">*</span><span class="n">deg</span><span class="p">,</span> <span class="n">inc</span><span class="o">=</span><span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">),</span> <span class="n">sens</span><span class="o">=</span><span class="n">Sensitivity</span><span class="p">(</span><span class="s1">&#39;u&#39;</span><span class="p">))</span> <span class="k">for</span> <span class="n">thetas</span> <span class="ow">in</span> <span class="n">thetaslist</span><span class="p">]</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thetaslist</span><span class="p">,</span><span class="n">DSClist</span><span class="p">)</span>
@@ -487,8 +507,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">thetaslist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">89</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thetaslist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">89</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">D</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]:</span>
@@ -513,20 +532,25 @@ div.rendered_html tbody tr:hover {
 <div class="output_area docutils container">
 <img alt="Graph showing results of preceding Python code: Four differential scattering cross sections as a function of angle" src="_images/UsingLocal_9_0.svg" /></div>
 </div>
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="UsingBRDF.html"
-                        title="previous chapter">Using the BRDF module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="UsingIntegrate.html"
-                        title="next chapter">Using the Integrate module</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="UsingBRDF.html"
+                          title="previous chapter">Using the BRDF module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="UsingIntegrate.html"
+                          title="next chapter">Using the Integrate module</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -538,7 +562,7 @@ div.rendered_html tbody tr:hover {
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -563,11 +587,12 @@ div.rendered_html tbody tr:hover {
         <li class="right" >
           <a href="UsingBRDF.html" title="Using the BRDF module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using the Local module</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

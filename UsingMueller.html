@@ -1,23 +1,24 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Using the Mueller module &#8212; pySCATMECH 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Using the Mueller module &#8212; pySCATMECH 0.1.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Using the Fresnel module" href="UsingFresnel.html" />
@@ -67,7 +68,8 @@ $(document).ready(function(){
         <li class="right" >
           <a href="index.html" title="pySCATMECH : A Python Interface to the SCATMECH Library"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using the Mueller module</a></li> 
       </ul>
     </div>  
 
@@ -81,21 +83,35 @@ $(document).ready(function(){
 /* CSS for nbsphinx extension */
 
 /* remove conflicting styling from Sphinx themes */
-div.nbinput.container,
-div.nbinput.container div.prompt,
-div.nbinput.container div.input_area,
-div.nbinput.container div[class*=highlight],
-div.nbinput.container div[class*=highlight] pre,
-div.nboutput.container,
-div.nboutput.container div.prompt,
-div.nboutput.container div.output_area,
-div.nboutput.container div[class*=highlight],
-div.nboutput.container div[class*=highlight] pre {
-    background: none;
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
     border: none;
-    padding: 0 0;
+    padding: 0;
     margin: 0;
     box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
 }
 
 /* avoid gaps between output lines */
@@ -196,7 +212,7 @@ div.nboutput.container div.output_area {
 div.nbinput.container div.input_area {
     border: 1px solid #e0e0e0;
     border-radius: 2px;
-    background: #f5f5f5;
+    /*background: #f5f5f5;*/
 }
 
 /* override MathJax center alignment in output cells */
@@ -262,6 +278,7 @@ div.nboutput.container div.output_area.rendered_html,
 div.nboutput.container div.output_area > div.output_javascript,
 div.nboutput.container div.output_area:not(.rendered_html) > img{
     padding: 5px;
+    margin: 0;
 }
 
 /* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
@@ -271,11 +288,12 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
 /* Some additional styling taken form the Jupyter notebook CSS */
+.jp-RenderedHTMLCommon table,
 div.rendered_html table {
   border: none;
   border-collapse: collapse;
@@ -284,10 +302,14 @@ div.rendered_html table {
   font-size: 12px;
   table-layout: fixed;
 }
+.jp-RenderedHTMLCommon thead,
 div.rendered_html thead {
   border-bottom: 1px solid black;
   vertical-align: bottom;
 }
+.jp-RenderedHTMLCommon tr,
+.jp-RenderedHTMLCommon th,
+.jp-RenderedHTMLCommon td,
 div.rendered_html tr,
 div.rendered_html th,
 div.rendered_html td {
@@ -299,17 +321,20 @@ div.rendered_html td {
   max-width: none;
   border: none;
 }
+.jp-RenderedHTMLCommon th,
 div.rendered_html th {
   font-weight: bold;
 }
+.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
 div.rendered_html tbody tr:nth-child(odd) {
   background: #f5f5f5;
 }
+.jp-RenderedHTMLCommon tbody tr:hover,
 div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<div class="section" id="Using-the-Mueller-module">
+<section id="Using-the-Mueller-module">
 <h1>Using the Mueller module<a class="headerlink" href="#Using-the-Mueller-module" title="Permalink to this headline">¶</a></h1>
 <p>In this notebook, we demonstrate how to use the Mueller module, which defines the <code class="docutils literal notranslate"><span class="pre">MuellerMatrix</span></code> and <code class="docutils literal notranslate"><span class="pre">StokesVector</span></code> classes and various operations on them.</p>
 <p>The first thing, of course, is to import the package and some other packages that we will be using. We will be creating some random matrices and vectors, so we need <code class="docutils literal notranslate"><span class="pre">random</span></code>, and we will be graphing a few things, so we need <code class="docutils literal notranslate"><span class="pre">maptplotlib.pyplot</span></code>.</p>
@@ -317,22 +342,20 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">pySCATMECH.mueller</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pySCATMECH.mueller</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="Mueller-matrices">
+<section id="Mueller-matrices">
 <h2>Mueller matrices<a class="headerlink" href="#Mueller-matrices" title="Permalink to this headline">¶</a></h2>
 <p>The class <code class="docutils literal notranslate"><span class="pre">MuellerMatrix</span></code> is used for handling Mueller matrices. Here we show several ways one can create a unit Mueller matrix. The <code class="docutils literal notranslate"><span class="pre">JonesMueller()</span></code> function converts a 2 x 2 complex Jones matrix into a Mueller matrix. And <code class="docutils literal notranslate"><span class="pre">MuellerUnit()</span></code> returns a unit Mueller matrix.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">MuellerMatrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">MuellerMatrix</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
 <span class="n">m2</span> <span class="o">=</span> <span class="n">MuellerMatrix</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">m3</span> <span class="o">=</span> <span class="n">MuellerMatrix</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">m4</span> <span class="o">=</span> <span class="n">JonesMueller</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
@@ -357,8 +380,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">valid</span><span class="p">())</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">valid</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">m1</span><span class="o">.</span><span class="n">physically_valid</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -377,8 +399,7 @@ True
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Returns a random number with a normal distribution...</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns a random number with a normal distribution...</span>
 <span class="n">ran</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># Create 20 random matrices...</span>
@@ -398,7 +419,7 @@ True
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Number value() is True: 3
+Number value() is True: 4
 Number physically valid() is True: 0
 </pre></div></div>
 </div>
@@ -407,8 +428,7 @@ Number physically valid() is True: 0
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Returns a random complex number with a normal distribution...</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Returns a random complex number with a normal distribution...</span>
 <span class="n">ranc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span>
 
 <span class="c1"># Create 20 random Jones-Mueller matrices...</span>
@@ -434,8 +454,7 @@ Number physically valid() is True: 20
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">RandomMuellerMatrix</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RandomMuellerMatrix</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Creates a random Mueller matrix by averaging `n` Jones-Mueller matrices.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -446,8 +465,7 @@ Number physically valid() is True: 20
 <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m is a valid Stokes to Stokes mapper:&quot;</span><span class="p">,</span><span class="n">m</span><span class="o">.</span><span class="n">valid</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;m is the sum of Jones-Mueller matrices:&quot;</span><span class="p">,</span><span class="n">m</span><span class="o">.</span><span class="n">physically_valid</span><span class="p">())</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -455,24 +473,23 @@ Number physically valid() is True: 20
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[[ 1.284437   -0.25736779 -0.05547885 -0.13679632]
- [-0.32748817  0.36354969 -0.01517151 -0.32904496]
- [-0.475017    0.31009738 -0.26940431  0.21677521]
- [ 0.35935377 -0.59880225 -0.2934791  -0.08987754]]
+[[ 1.08257767 -0.19421841 -0.1948262  -0.04850484]
+ [-0.25597639 -0.01762253  0.58966241 -0.07226397]
+ [ 0.1703555   0.06471964  0.1406967  -0.09243564]
+ [ 0.00474758  0.20032642 -0.06680725 -0.21487867]]
 m is a valid Stokes to Stokes mapper: True
 m is the sum of Jones-Mueller matrices: True
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Stokes-Vectors">
+</section>
+<section id="Stokes-Vectors">
 <h2>Stokes Vectors<a class="headerlink" href="#Stokes-Vectors" title="Permalink to this headline">¶</a></h2>
 <p>The class <code class="docutils literal notranslate"><span class="pre">StokesVector</span></code> is used for handling Stokes vectors. We can create a Stokes vector a several ways. The <code class="docutils literal notranslate"><span class="pre">Polarization</span></code> function provides a means for generating arbitrary polarizations by name or parameter. (Note that SCATMECH’s convention for the signs of the Stokes vector elements differs from some others.)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unpolarized Stokes vector:&quot;</span><span class="p">,</span> <span class="n">StokesVector</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unpolarized Stokes vector:&quot;</span><span class="p">,</span> <span class="n">StokesVector</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span> <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Unpolarized Stokes vector:&quot;</span><span class="p">,</span> <span class="n">StokesVector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="p">)</span>
 
@@ -527,16 +544,14 @@ Partially polarized elliptical polarized radiation with intensity 3:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Only sensitive to p-polarization</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only sensitive to p-polarization</span>
 <span class="c1"># The following two statements are equivalent...</span>
 <span class="n">sens</span> <span class="o">=</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span> <span class="n">sensitivity</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">sens</span> <span class="o">=</span> <span class="n">Sensitivity</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Signal for p-polarization:&#39;</span><span class="p">,</span><span class="n">sens</span> <span class="o">@</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Signal for s-polarization:&#39;</span><span class="p">,</span><span class="n">sens</span> <span class="o">@</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">))</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -553,8 +568,7 @@ Signal for s-polarization: 0.0
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">sens</span> <span class="o">=</span> <span class="n">Sensitivity</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="n">DOP</span><span class="o">=.</span><span class="mi">8</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sens</span> <span class="o">=</span> <span class="n">Sensitivity</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">,</span><span class="n">DOP</span><span class="o">=</span><span class="mf">.8</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;sens = &#39;</span><span class="p">,</span> <span class="n">sens</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Signal for p-polarization:&#39;</span><span class="p">,</span><span class="n">sens</span> <span class="o">@</span> <span class="n">Polarization</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">))</span>
@@ -577,8 +591,7 @@ Signal for s-polarization: 0.19999999999999996
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">RandomStokesVector</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RandomStokesVector</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">ranc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">JonesStokes</span><span class="p">([</span><span class="n">ranc</span><span class="p">(),</span><span class="n">ranc</span><span class="p">()])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span><span class="o">/</span><span class="n">n</span>
 
@@ -602,8 +615,7 @@ Signal for s-polarization: 0.19999999999999996
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m1</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">m2</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">s1</span> <span class="o">=</span> <span class="n">RandomStokesVector</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">s2</span> <span class="o">=</span> <span class="n">RandomStokesVector</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -626,44 +638,47 @@ Signal for s-polarization: 0.19999999999999996
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 m1 =
- [[ 0.66059548  0.14669714 -0.26875735  0.43028076]
- [ 0.26233023 -0.06797005 -0.2084627   0.24337828]
- [-0.07924417 -0.20106661  0.14682182  0.06509527]
- [-0.30895286 -0.0989823   0.09745298 -0.26825315]]
+ [[ 0.66425849 -0.12774046 -0.34152013  0.17560971]
+ [-0.36745754  0.08589798  0.32650244 -0.15365229]
+ [ 0.16709461 -0.00776626  0.02120448 -0.03469014]
+ [ 0.07521512  0.04944892  0.02518614  0.00423142]]
 m2 =
- [[ 0.93327861 -0.33326546 -0.28706022 -0.11018106]
- [-0.09977349  0.08015536 -0.07818204  0.01478421]
- [-0.35911905  0.3312041   0.05370951 -0.08034761]
- [-0.11339564  0.18925746  0.068513    0.35004682]]
-s1 =  StokesVector(0.9505683835736402,0.10853056002503624,0.09290073684281941,-0.11760739600535688)
-s2 =  StokesVector(0.6127460150227229,0.28086965286228893,-0.1064214078164036,-0.09856398129983299)
-m1 * s1 =  StokesVector(0.5682903451369655,0.1939965718160836,-0.09116470681986164,-0.2638214139243789)
-m1 @ s1 =  StokesVector(0.5682903451369655,0.1939965718160836,-0.09116470681986164,-0.2638214139243789)
-m1.dot(s1) =  [ 0.56829035  0.19399657 -0.09116471 -0.26382141]
-m1 @ m2 =  [[ 0.64960707 -0.21597479 -0.18605476  0.10159612]
- [ 0.29887369 -0.11585631 -0.06451239  0.07203457]
- [-0.11400381  0.07124053  0.05081325  0.0167482 ]
- [-0.28304177  0.07653727  0.08328204 -0.0691539 ]]
-s1 @ m1 =  StokesVector(0.6853853243400841,0.1250306487081546,-0.2759181510676423,0.4730212225653833)
-s1 @ s2 =  0.6146451557391209
+ [[ 1.04944661  0.16150835  0.33502    -0.4016991 ]
+ [-0.01747189  0.00821044  0.00606205 -0.14556943]
+ [-0.41191462 -0.45214031 -0.41858679 -0.08506713]
+ [-0.10146526 -0.023632    0.16391044  0.12833522]]
+s1 =  StokesVector(1.7129184519133147,0.5115530003506463,0.8964179315765508,-0.005087377208128116)
+s2 =  StokesVector(0.6627656605682924,0.13575465063990294,-0.2008731151370446,-0.34407034654958674)
+m1 * s1 =  StokesVector(0.7654364438770493,-0.2920190904547184,0.3014311409057298,0.17668888604606559)
+m1 @ s1 =  StokesVector(0.7654364438770493,-0.2920190904547184,0.3014311409057298,0.17668888604606559)
+m1.dot(s1) =  [ 0.76543644 -0.29201909  0.30143114  0.17668889]
+m1 @ m2 =  [[ 0.82219453  0.25649949  0.39350559 -0.19664788]
+ [-0.50602862 -0.202636   -0.28443973  0.08760961]
+ [ 0.17027797  0.01815581  0.04137097 -0.07224699]
+ [ 0.0672664   0.0010662   0.01564932 -0.03901157]]
+s1 @ m1 =  StokesVector(1.0992505705817885,-0.18208099287056148,-0.3990928870417611,0.1910854323477397)
+s1 @ s2 =  1.0263933813868822
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Mueller-matrix-decompositions">
+</section>
+<section id="Mueller-matrix-decompositions">
 <h2>Mueller matrix decompositions<a class="headerlink" href="#Mueller-matrix-decompositions" title="Permalink to this headline">¶</a></h2>
 <p>So, now that we can create some physically valid Mueller matrices, we can explore some decompositions. The Cloude decomposition* decomposes a Mueller matrix into an incoherent, positive (convex) sum of Jones-Mueller matrices.</p>
 <p>*S. R. Cloude, “Group theory and polarization algebra,” Optik (Stuttgart) <strong>75</strong>, 26–36 (1986) and S. R. Cloude and E. Pottier, “A review of target decomposition theorems in radar polarimetry,” IEEE Trans. Geosci. and Remote Sensing 34, 498–518 (1996).</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">MCD</span> <span class="o">=</span> <span class="n">M</span><span class="o">.</span><span class="n">Cloude_Decomposition</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;M = </span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">Cloude decomposition =</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">MCD</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Purity1 = </span><span class="si">{</span><span class="p">(</span><span class="n">MCD</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">MCD</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Purity2 = </span><span class="si">{</span><span class="p">(</span><span class="n">MCD</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">MCD</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">MCD</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Purity3 = </span><span class="si">{</span><span class="p">(</span><span class="n">MCD</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">MCD</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="n">MCD</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">MCD</span><span class="p">[</span><span class="mi">3</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">M</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -673,33 +688,36 @@ s1 @ s2 =  0.6146451557391209
 <div class="highlight"><pre>
 M =
 
- [[ 0.90548729 -0.0373829   0.18125763 -0.22344992]
- [ 0.55226724  0.14287877  0.09360866 -0.15033385]
- [ 0.36939528 -0.1304307  -0.02074597 -0.23804891]
- [-0.27655387  0.1741668   0.01472994  0.06042446]]
+ [[ 0.87619267 -0.49295004 -0.07854003  0.3453243 ]
+ [ 0.18545068 -0.0581394   0.13476277  0.18688793]
+ [ 0.35025441 -0.55689877  0.18998062  0.01390393]
+ [ 0.17669189 -0.00926707 -0.15573466  0.27176939]]
 
 Cloude decomposition =
 
-[[ 0.54888317 -0.05847325  0.21492719 -0.48804954]
- [ 0.38654494  0.03683142  0.16470686 -0.36660558]
- [ 0.32550225 -0.1110486   0.17901842 -0.27393409]
- [-0.18010127  0.05655381  0.02202975  0.20547598]]
+[[ 0.64502243 -0.49063614  0.03237484  0.27709143]
+ [ 0.18716523 -0.07572105  0.22595981  0.27521197]
+ [ 0.48531462 -0.55895151  0.05147341  0.1340011 ]
+ [ 0.21906737 -0.14165338 -0.2117619   0.2838733 ]]
 
-[[ 0.30316969  0.02135276 -0.05677966  0.23533801]
- [ 0.20528849  0.11809163 -0.04405779  0.2431145 ]
- [ 0.05281867 -0.03133294 -0.18427634  0.02642547]
- [-0.11887249  0.13556021 -0.01315626 -0.1686091 ]]
+[[ 0.19935198 -0.01772609 -0.11721586  0.08341938]
+ [ 0.01078128  0.02387787 -0.09226315 -0.09880406]
+ [-0.1379275  -0.01489542  0.14717311 -0.12597954]
+ [-0.04327048  0.13509565  0.04791443 -0.00737246]]
 
-[[ 0.04811606 -0.00051087  0.02720342  0.03222277]
- [-0.03622335 -0.0108107  -0.02947536 -0.02937726]
- [-0.00544722  0.01160826 -0.01909698  0.00817231]
- [ 0.02089955 -0.01688783  0.00656473  0.02539798]]
+[[ 2.20708008e-02  1.27715609e-02  1.89641824e-03 -1.23940876e-02]
+ [-1.63699950e-02 -1.12347334e-02 -5.46113631e-05  1.75656536e-02]
+ [ 6.19177294e-03  1.39213799e-02 -1.23919103e-03  3.12974558e-03]
+ [ 3.74269822e-03  3.14426195e-03  1.29944409e-02 -1.43651712e-03]]
 
-[[ 0.00531838  0.00024846 -0.00409332 -0.00296116]
- [-0.00334285 -0.00123358  0.00243495  0.00253449]
- [-0.00347842  0.00034257  0.00360892  0.0012874 ]
- [ 0.00152034 -0.0010594  -0.00070828 -0.00184041]]
+[[ 0.00974746  0.00264064  0.00440457 -0.00279242]
+ [ 0.00387416  0.00493852  0.00112073 -0.00708564]
+ [-0.00332448  0.00302678 -0.00742671  0.00275262]
+ [-0.00284771 -0.00585361 -0.00488163 -0.00329493]]
 
+Purity1 = 0.5086443462922285
+Purity2 = 0.9133069003774383
+Purity3 = 0.9555008562935502
 </pre></div></div>
 </div>
 <p>Notice that if we create the random Mueller matrix from less than four Jones-Mueller matrices, the Cloude decomposition will have only as many non-zero matrices as there were Jones-Mueller matrices. In the following, we plot the average magnitude of each element of the Cloude decomposition as a function of how many Jones-Mueller matrices were added.</p>
@@ -707,8 +725,7 @@ Cloude decomposition =
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">jmax</span> <span class="o">=</span> <span class="mi">100</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jmax</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">imax</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">mCD00sums</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">imax</span><span class="p">):</span>
@@ -723,8 +740,7 @@ Cloude decomposition =
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Number of Jones-Mueller matrices averaged&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cloude decomposition&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -742,8 +758,7 @@ Cloude decomposition =
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">printMatrix</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printMatrix</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="s2">&quot;=</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 
@@ -807,8 +822,7 @@ Cloude decomposition =
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">diatten</span><span class="p">,</span> <span class="n">ret</span><span class="p">,</span> <span class="n">depol</span> <span class="o">=</span> <span class="n">Reverse_Lu_Chipman_Decomposition</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 <span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
 <span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;Diattenuator&quot;</span><span class="p">,</span><span class="n">diatten</span><span class="p">)</span>
@@ -869,8 +883,7 @@ Cloude decomposition =
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">diatten2</span><span class="p">,</span> <span class="n">ret2</span><span class="p">,</span> <span class="n">depol</span><span class="p">,</span> <span class="n">ret1</span><span class="p">,</span> <span class="n">diatten1</span> <span class="o">=</span> <span class="n">Symmetric_Decomposition</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 <span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
 <span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;diatten2&quot;</span><span class="p">,</span><span class="n">diatten2</span><span class="p">)</span>
@@ -880,8 +893,7 @@ Cloude decomposition =
 <span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;diatten1&quot;</span><span class="p">,</span><span class="n">diatten1</span><span class="p">)</span>
 <span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;The product Diattenuator2 . Retarder2 .  Depolarizer . Retarder1 . Diattenuator1&quot;</span><span class="p">,</span>
             <span class="n">diatten2</span> <span class="o">@</span> <span class="n">ret2</span> <span class="o">@</span> <span class="n">depol</span> <span class="o">@</span> <span class="n">ret1</span> <span class="o">@</span> <span class="n">diatten1</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -945,8 +957,7 @@ Cloude decomposition =
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">L</span> <span class="o">=</span> <span class="n">MuellerLog</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 <span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span><span class="n">M</span><span class="p">)</span>
 <span class="n">printMatrix</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">,</span><span class="n">L</span><span class="p">)</span>
@@ -982,16 +993,15 @@ Cloude decomposition =
  [-0.79068813 -0.20234881 -0.00674693 -0.5278771 ]]
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Other-parameters">
+</section>
+<section id="Other-parameters">
 <h2>Other parameters<a class="headerlink" href="#Other-parameters" title="Permalink to this headline">¶</a></h2>
 <p>One can obtain other parameters associated with a Mueller matrix.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="n">RandomMuellerMatrix</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tmax = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">Tmax</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tmin = &quot;</span><span class="p">,</span><span class="n">M</span><span class="o">.</span><span class="n">Tmin</span><span class="p">())</span>
@@ -1027,8 +1037,7 @@ extinction_ratio =  2.277412511045842
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">parametersM</span> <span class="o">=</span> <span class="n">CharacterizedMueller</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parametersM</span> <span class="o">=</span> <span class="n">CharacterizedMueller</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">parametersM</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1067,17 +1076,19 @@ Retardance = 2.257685308455342 rad (129.35583964318252deg)
 RetardanceAngle = -1.1735759557999075 rad (-67.24094920536635 deg)
 </pre></div></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">Using the Mueller module</a><ul>
 <li><a class="reference internal" href="#Mueller-matrices">Mueller matrices</a></li>
 <li><a class="reference internal" href="#Stokes-Vectors">Stokes Vectors</a></li>
@@ -1087,12 +1098,17 @@ RetardanceAngle = -1.1735759557999075 rad (-67.24094920536635 deg)
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">pySCATMECH : A Python Interface to the SCATMECH Library</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="UsingFresnel.html"
-                        title="next chapter">Using the Fresnel module</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">pySCATMECH : A Python Interface to the SCATMECH Library</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="UsingFresnel.html"
+                          title="next chapter">Using the Fresnel module</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1104,7 +1120,7 @@ RetardanceAngle = -1.1735759557999075 rad (-67.24094920536635 deg)
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -1129,11 +1145,12 @@ RetardanceAngle = -1.1735759557999075 rad (-67.24094920536635 deg)
         <li class="right" >
           <a href="index.html" title="pySCATMECH : A Python Interface to the SCATMECH Library"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Using the Mueller module</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

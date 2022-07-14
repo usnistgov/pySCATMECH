@@ -1,23 +1,22 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>Film class &#8212; pySCATMECH 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Film class &#8212; pySCATMECH 0.1.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="FilmStack class" href="fresnel3.html" />
@@ -67,8 +66,9 @@ $(document).ready(function(){
         <li class="right" >
           <a href="fresnel1.html" title="OpticalFunction class"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="fresnel.html" accesskey="U">Fresnel Module</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="fresnel.html" accesskey="U">Fresnel Module</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Film class</a></li> 
       </ul>
     </div>  
 
@@ -77,11 +77,11 @@ $(document).ready(function(){
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="film-class">
+  <section id="film-class">
 <h1>Film class<a class="headerlink" href="#film-class" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="pySCATMECH.fresnel.Film">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.fresnel.</code><code class="sig-name descname">Film</code><span class="sig-paren">(</span><em class="sig-param">material</em>, <em class="sig-param">thickness=None</em>, <em class="sig-param">waves=None</em>, <em class="sig-param">wavelength=None</em>, <em class="sig-param">angle=0</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.Film" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.fresnel.Film">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.fresnel.</span></span><span class="sig-name descname"><span class="pre">Film</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">material</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">thickness</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waves</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.Film" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class for handling an optical film.</p>
 <p>Film stores an OpticalFunction and a thickness. One feature is that
@@ -102,20 +102,25 @@ by that scalar.</p>
 </dl>
 </dd></dl>
 
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="fresnel1.html"
-                        title="previous chapter">OpticalFunction class</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="fresnel3.html"
-                        title="next chapter">FilmStack class</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="fresnel1.html"
+                          title="previous chapter">OpticalFunction class</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="fresnel3.html"
+                          title="next chapter">FilmStack class</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -127,7 +132,7 @@ by that scalar.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -152,12 +157,13 @@ by that scalar.</p>
         <li class="right" >
           <a href="fresnel1.html" title="OpticalFunction class"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="fresnel.html" >Fresnel Module</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="fresnel.html" >Fresnel Module</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Film class</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

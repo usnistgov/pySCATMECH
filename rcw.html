@@ -1,23 +1,22 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>RCW Module &#8212; pySCATMECH 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>RCW Module &#8212; pySCATMECH 0.1.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="CrossRCW Module" href="crossrcw.html" />
@@ -67,7 +66,8 @@ $(document).ready(function(){
         <li class="right" >
           <a href="scatterer.html" title="Scatterer Module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">RCW Module</a></li> 
       </ul>
     </div>  
 
@@ -76,15 +76,33 @@ $(document).ready(function(){
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-pySCATMECH.rcw">
+  <section id="module-pySCATMECH.rcw">
 <span id="rcw-module"></span><h1>RCW Module<a class="headerlink" href="#module-pySCATMECH.rcw" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="pySCATMECH.rcw.RCW_Model">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.rcw.</code><code class="sig-name descname">RCW_Model</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.rcw.</span></span><span class="sig-name descname"><span class="pre">RCW_Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class handling rigorous coupled wave (RCW) analysis for 1D gratings.</p>
-<dl class="method">
-<dt id="pySCATMECH.rcw.RCW_Model.DiffractionEfficiency">
-<code class="sig-name descname">DiffractionEfficiency</code><span class="sig-paren">(</span><em class="sig-param">i</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.DiffractionEfficiency" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model.DiffractionAmplitude">
+<span class="sig-name descname"><span class="pre">DiffractionAmplitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.DiffractionAmplitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jones matrix diffraction amplitude for
+the i-th diffraction order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – Diffraction order</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>amplitude</strong> – The Jones matrix diffraction amplitude for order i</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>JonesMatrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model.DiffractionEfficiency">
+<span class="sig-name descname"><span class="pre">DiffractionEfficiency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.DiffractionEfficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Mueller matrix diffraction efficiency for
 the i-th diffraction order.</p>
 <dl class="field-list simple">
@@ -100,9 +118,9 @@ the i-th diffraction order.</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.rcw.RCW_Model.Direction">
-<code class="sig-name descname">Direction</code><span class="sig-paren">(</span><em class="sig-param">i</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.Direction" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model.Direction">
+<span class="sig-name descname"><span class="pre">Direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.Direction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a 3D unit vector [x,y,z] in the direction of
 propagation of the i-th diffraction order
 :param i: Diffraction order
@@ -117,14 +135,15 @@ propagation of the i-th diffraction order
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.rcw.RCW_Model.getEpsilon">
-<code class="sig-name descname">getEpsilon</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">z</em>, <em class="sig-param">direction='x'</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.getEpsilon" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model.getEpsilon">
+<span class="sig-name descname"><span class="pre">getEpsilon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'x'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.getEpsilon" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the grating dielectric constant at a specific location</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>z</strong> (<em>x</em><em>,</em>) – Location coordinates</p></li>
+<li><p><strong>x</strong> (<em>float</em>) – Location coordinates</p></li>
+<li><p><strong>z</strong> (<em>float</em>) – Location coordinates</p></li>
 <li><p><strong>direction</strong> (<em>str</em><em>, </em><em>optional</em>) – If the grating is anisotropic, then direction can be set
 to choose a particular field direction. Can be ‘x’, ‘y’, or
 ‘z’. (Default is ‘x’).</p></li>
@@ -142,20 +161,25 @@ and grating.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="scatterer.html"
-                        title="previous chapter">Scatterer Module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="crossrcw.html"
-                        title="next chapter">CrossRCW Module</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="scatterer.html"
+                          title="previous chapter">Scatterer Module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="crossrcw.html"
+                          title="next chapter">CrossRCW Module</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -167,7 +191,7 @@ and grating.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -192,11 +216,12 @@ and grating.</p>
         <li class="right" >
           <a href="scatterer.html" title="Scatterer Module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">RCW Module</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>

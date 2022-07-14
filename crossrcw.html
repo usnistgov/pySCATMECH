@@ -1,23 +1,22 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>CrossRCW Module &#8212; pySCATMECH 0.1.1 documentation</title>
-    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>CrossRCW Module &#8212; pySCATMECH 0.1.3 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="README.md" href="readme.html" />
@@ -67,7 +66,8 @@ $(document).ready(function(){
         <li class="right" >
           <a href="rcw.html" title="RCW Module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CrossRCW Module</a></li> 
       </ul>
     </div>  
 
@@ -76,20 +76,44 @@ $(document).ready(function(){
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="module-pySCATMECH.crossrcw">
+  <section id="module-pySCATMECH.crossrcw">
 <span id="crossrcw-module"></span><h1>CrossRCW Module<a class="headerlink" href="#module-pySCATMECH.crossrcw" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
-<dt id="pySCATMECH.crossrcw.CrossRCW_Model">
-<em class="property">class </em><code class="sig-prename descclassname">pySCATMECH.crossrcw.</code><code class="sig-name descname">CrossRCW_Model</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model" title="Permalink to this definition">¶</a></dt>
+<dl class="py class">
+<dt class="sig sig-object py" id="pySCATMECH.crossrcw.CrossRCW_Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.crossrcw.</span></span><span class="sig-name descname"><span class="pre">CrossRCW_Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class handling rigorous coupled wave (RCW) analysis for cross gratings.</p>
-<dl class="method">
-<dt id="pySCATMECH.crossrcw.CrossRCW_Model.DiffractionEfficiency">
-<code class="sig-name descname">DiffractionEfficiency</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">j</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.DiffractionEfficiency" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.crossrcw.CrossRCW_Model.DiffractionAmplitude">
+<span class="sig-name descname"><span class="pre">DiffractionAmplitude</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.DiffractionAmplitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the Jones matrix diffraction amplitude for the (i,j)-th
+diffraction order</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Diffraction order</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Diffraction order</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>amplitude</strong> – Diffraction amplitude, as a Jones matrix, at order (i,j)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.crossrcw.CrossRCW_Model.DiffractionEfficiency">
+<span class="sig-name descname"><span class="pre">DiffractionEfficiency</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.DiffractionEfficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the Mueller matrix diffraction efficiency for the (i,j)-th
 diffraction order</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>j</strong> (<em>i</em><em>,</em>) – Diffraction order</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Diffraction order</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Diffraction order</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>efficiency</strong> – Diffraction efficiency, as a Mueller matrix, at order (i,j)</p>
@@ -100,14 +124,17 @@ diffraction order</p>
 </dl>
 </dd></dl>
 
-<dl class="method">
-<dt id="pySCATMECH.crossrcw.CrossRCW_Model.Direction">
-<code class="sig-name descname">Direction</code><span class="sig-paren">(</span><em class="sig-param">i</em>, <em class="sig-param">j</em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.Direction" title="Permalink to this definition">¶</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.crossrcw.CrossRCW_Model.Direction">
+<span class="sig-name descname"><span class="pre">Direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.crossrcw.CrossRCW_Model.Direction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a 3D unit vector [x,y,z] in the direction of propagation of
 the (i,j)-th diffraction order.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>j</strong> (<em>i</em><em>,</em>) – Diffraction order</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Diffraction order</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Diffraction order</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>direction</strong> – Directional cosines of diffracted direction</p>
@@ -120,20 +147,25 @@ the (i,j)-th diffraction order.</p>
 
 </dd></dl>
 
-</div>
+</section>
 
 
+            <div class="clearer"></div>
           </div>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="rcw.html"
-                        title="previous chapter">RCW Module</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="readme.html"
-                        title="next chapter">README.md</a></p>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="rcw.html"
+                          title="previous chapter">RCW Module</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="readme.html"
+                          title="next chapter">README.md</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -145,7 +177,7 @@ the (i,j)-th diffraction order.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
@@ -170,11 +202,12 @@ the (i,j)-th diffraction order.</p>
         <li class="right" >
           <a href="rcw.html" title="RCW Module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.1 documentation</a> &#187;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.3 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">CrossRCW Module</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.4.4.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
     </div>
   </body>
 </html>
