@@ -474,7 +474,7 @@ namespace SCATMECH {
             }
         }
 
-        return E;
+        return COMPLEX(0, -1) * E;
     }
 
 

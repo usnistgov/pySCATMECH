@@ -39,6 +39,26 @@ class RCW_Model(Model):
         """
         return MuellerMatrix(SCATPY.RCWDiffractionEfficiency(self.handle,i))
 
+    def DiffractionAmplitude(self, i):
+        """
+        Returns the Jones matrix diffraction amplitude for 
+        the i-th diffraction order.
+
+        Parameters
+        ----------
+
+        i : int
+            Diffraction order
+
+        Returns
+        -------
+
+        amplitude : JonesMatrix
+                     The Jones matrix diffraction amplitude for order i
+
+        """
+        return np.array(SCATPY.RCWDiffractionAmplitude(self.handle,i))
+
     def Direction(self, i):
         """
         Returns a 3D unit vector [x,y,z] in the direction of 

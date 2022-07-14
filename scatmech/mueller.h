@@ -37,7 +37,6 @@ namespace SCATMECH {
     class MuellerMatrix;
     class StokesVector;
 
-
     /**
      * @brief Class to handle Jones vectors
      *
@@ -415,10 +414,20 @@ namespace SCATMECH {
             /// Return the Hermitian transpose
             ///
             JonesMatrix hermitian() const {
-                return JonesMatrix(j[0],j[1],conj(j[3]),conj(j[2]));
+                return JonesMatrix(std::conj(j[0]), std::conj(j[1]), std::conj(j[3]), std::conj(j[2]));
             }
             friend JonesMatrix hermitian(const JonesMatrix& j) {
-                return JonesMatrix(j[0],j[1],conj(j[3]),conj(j[2]));
+                return JonesMatrix(std::conj(j[0]), std::conj(j[1]), std::conj(j[3]), std::conj(j[2]));
+            }
+
+            ///
+            /// Return the complex conjugate
+            ///
+            JonesMatrix conj() const {
+                return JonesMatrix(std::conj(j[0]), std::conj(j[1]), std::conj(j[2]), std::conj(j[3]));
+            }
+            friend JonesMatrix conj(const JonesMatrix& j) {
+                return JonesMatrix(std::conj(j[0]), std::conj(j[1]), std::conj(j[2]), std::conj(j[3]));
             }
 
             ///

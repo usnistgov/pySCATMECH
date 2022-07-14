@@ -76,7 +76,7 @@ class Free_Space_Scatterer(Model):
 
         Returns
         -------
-        s : 2x2 list of complex
+        s : numpy.array
               Scattering matrix as a Jones matrix
         """
         return np.array(SCATPY.FSSjones(self.handle,

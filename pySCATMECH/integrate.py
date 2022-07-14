@@ -557,7 +557,8 @@ class Integrator():
         plt.show()
     
     def Reflectance(self, model, thetai, 
-                    incpol = StokesVector(1,0,0,0)):
+                    incpol = StokesVector(1,0,0,0),
+                    rotation = 0):
         """
         Integrates a BRDF_Model and returns reflectance.
         
@@ -573,6 +574,9 @@ class Integrator():
         incpol : StokesVector
                  The incident Stokes vector
 
+        rotation: float
+                  The angle of rotation of the material in radians
+
         Returns
         -------
 
@@ -580,9 +584,10 @@ class Integrator():
                       The integrated reflectance
         """
         weights = self.w
-        return self.BRDF(model, thetai, incpol) @ weights
+        return self.BRDF(model, thetai,
+                         incpol=incpol, rotation=rotation) @ weights
 
-    def BRDF(self, model, thetai, incpol = StokesVector(1,0,0,0)):
+    def BRDF(self, model, thetai, incpol=StokesVector(1,0,0,0), rotation=0):
         """
         Returns the BRDF at each integration point.
 
@@ -598,6 +603,9 @@ class Integrator():
         incpol : StokesVector
                  The incident Stokes vector
 
+        rotation: float
+                  The angle of rotation of the material in radians
+
         Returns
         -------
 
@@ -605,6 +613,7 @@ class Integrator():
                An array of BRDF
         """
         return np.array([model.BRDF(thetai, theta, phi,
+                                    rotation=rotation,
                                     coords="xyxy", inc=incpol,
                                     sens=sens)
                          for theta,phi,sens in zip(self.theta,
@@ -612,7 +621,8 @@ class Integrator():
                                                    self.sens)])
 
     def CrossSection(self, model, thetai,
-                     incpol = StokesVector(1,0,0,0)):
+                     incpol = StokesVector(1,0,0,0),
+                     rotation = 0):
         """
         Integrates a Local_BRDF_Model to obtain differential scattering 
         cross section.
@@ -638,7 +648,7 @@ class Integrator():
         weights = self.w / self.z
         return self.DSC(model, thetai, incpol) @ weights
 
-    def DSC(self, model, thetai, incpol = StokesVector(1,0,0,0)):
+    def DSC(self, model, thetai, incpol = StokesVector(1,0,0,0), rotation = 0):
         """
         Returns the differential scattering cross section at each 
         integration point.
@@ -655,6 +665,9 @@ class Integrator():
         incpol : StokesVector
                  Incident Stokes vector
 
+        rotation: float
+                  The angle of rotation of the material in radians
+
         Returns
         -------
 
@@ -662,7 +675,7 @@ class Integrator():
               An array of differential scattering cross-section.
         """
         return np.array([model.DSC(thetai, theta, phi,
-                                   coords="xyxy",
+                                   coords="xyxy", rotation=rotation,
                                    inc=incpol, sens=sens)
                          for theta, phi, sens in zip(self.theta,
                                                      self.phi,

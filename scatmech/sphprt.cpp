@@ -219,8 +219,11 @@ namespace SCATMECH {
                 // The Jacobian accounts for the solid angle changing through the interface...
                 double jacobian = sqr(n)*cos(thetas)/cos_thetas_outside;
 
+                // This phase term accounts for the propagation from the sphere to the surface...
+                COMPLEX phase = exp(COMPLEX(0, 1) * k * distance * (cos_thetas_outside - n * cos(thetas)));
+
                 // The result...
-                return scatter*sqrt(jacobian);
+                return scatter*sqrt(jacobian)*phase;
             }
         } else { // is_backward() ...
 
@@ -285,8 +288,12 @@ namespace SCATMECH {
 
                 COMPLEX common=jacobian/sqr(k);
 
+                // This phase term accounts for the propagation from the sphere to the surface...
+                COMPLEX phasei = exp(COMPLEX(0, 1) * k * distance * (cos_thetai_at_part - n * cos(thetai)));
+                COMPLEX phases = exp(COMPLEX(0, 1) * k * distance * (cos_thetas_at_part - n * cos(thetas)));
+
                 // Return the whole value with factors common to all elements...
-                return scatter*sqrt(common);
+                return scatter*sqrt(common)*phasei*phases;
 
             } else { // is_transmission()
 
@@ -368,8 +375,10 @@ namespace SCATMECH {
                 // The transmission coefficient through the interface...
                 JonesMatrix ti = stack->t21i(thetai,lambda,substrate,vacuum)/(COMPLEX)sqrt(n);
 
+                COMPLEX phasei = exp(COMPLEX(0, 1) * k * distance * (cos_thetai_at_part - n * cos(thetai)));
+
                 // The total scatter...
-                JonesMatrix scatter = (scatter_direct+scatter_indirect)*ti/k;
+                JonesMatrix scatter = (scatter_direct+scatter_indirect)*ti/k*phasei;
 
                 return scatter;
 

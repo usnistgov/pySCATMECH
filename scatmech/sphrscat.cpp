@@ -34,13 +34,13 @@ namespace SCATMECH {
 		MuellerMatrix result;
 		result[0][0] = real(J.SS() + J.PP());
 		result[0][1] = real(J.SS() - J.PP());
-		result[0][2] = real(J.SP() + J.PS());
-		result[0][3] = imag(J.PS() - J.SP());
+		result[0][2] = real(J.PS() + J.SP());
+		result[0][3] = imag(J.SP() - J.PS());
 
 		result[1][0] = result[0][1];
 		result[1][1] = result[0][0];
-		result[1][2] = real(J.SP() - J.PS());
-		result[1][3] = -imag(J.SP() + J.PS());
+		result[1][2] = real(J.PS() - J.SP());
+		result[1][3] = -imag(J.PS() + J.SP());
 
 		result[2][0] = result[0][2];
 		result[2][1] = -result[1][2];

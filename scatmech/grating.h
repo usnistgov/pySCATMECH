@@ -67,7 +67,8 @@ namespace SCATMECH {
 
             // Return the dielectric constant at position x at level level.  The
             // electric field is direction = 0 (x), 1 (y), and 2 (z)...
-            COMPLEX eps(double x,int level,int direction);
+            virtual COMPLEX eps(double x,int level,int direction);
+
             // Return the magnetic constant at position x at level level.  The
             // magnetic field is direction = 0 (x), 1 (y), and 2 (z)...
             COMPLEX mu(double x,int level,int direction);
@@ -336,6 +337,7 @@ namespace SCATMECH {
             void setup();
         public:
             virtual COMPLEX fourierx(int order,int level,int recip=0);
+            virtual COMPLEX eps(double x, int level, int direction);
 
         private:
             DECLARE_MODEL();

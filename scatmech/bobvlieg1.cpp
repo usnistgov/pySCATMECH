@@ -189,8 +189,7 @@ namespace SCATMECH {
 				// Added 14 Jul 2020, because reflection coefficients at large complex
 				// angles sometime yield numerical errors from thick dielectrics
                 reflect_s[j] = (rs == rs) ? rs : 0.;
-                reflect_p[j] = (rp == rp) ? rp : 0.;
-				
+                reflect_p[j] = (rp == rp) ? rp : 0.;		
             }
 
             // Calculate U, V, d+, and d- for each angle and (l,m) combination...
@@ -859,7 +858,7 @@ Line10:
                 COMPLEX r = stack->r12(theta,lambda,vacuum,substrate)[pol];
                 r *= exp(2.*cI*qq*cos(theta));
                 double R = norm(r);
-                return 4.*pi/k*COMPLEX(0.,-1.)*(e/r)*R;
+                return 4.*pi/k*(e/r)*R;
             }
             break;
             case 1:
@@ -875,7 +874,7 @@ Line10:
                 e /= phase;
                 COMPLEX t = stack->t12(theta,lambda,vacuum,substrate)[pol];
                 double T = norm(t)*factor*index;
-                return 4.*pi/k/sqrt(cube(index))/factor*COMPLEX(0.,-1.)*(e/t)*T;
+                return 4.*pi/k/sqrt(cube(index))/factor*(e/t)*T;
             }
             break;
             case 2:
@@ -893,7 +892,7 @@ Line10:
 
                 r *= exp(-2.*cI*qq*index*cos(theta));
 
-                return 4.*pi/k/index*COMPLEX(0.,-1.)*(e/r)*R;
+                return 4.*pi/k/index*(e/r)*R;
             }
             break;
             case 3:
@@ -914,7 +913,7 @@ Line10:
                 e /= phase;
                 COMPLEX t = stack->t21i(theta,lambda,substrate,vacuum)[pol];
                 double T = norm(t)/index/factor;
-                return 4.*pi/k*sqrt(index)*factor*COMPLEX(0.,-1.)*(e/t)*T;
+                return 4.*pi/k*sqrt(index)*factor*(e/t)*T;
             }
             break;
             default:

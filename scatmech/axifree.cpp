@@ -233,13 +233,14 @@ namespace SCATMECH {
 
     JonesMatrix
     TMatrix_Axisymmetric_Scatterer::
-    jones(const Vector& kin,const Vector& kout)
+        jones(const Vector& kin, const Vector& kout)
     {
         SETUP();
 
-        double inphi = atan2(kin.y,kin.x);
-        double cosinphi=cos(inphi);
-        double sininphi=sin(inphi);
+        double inphi = 0;  atan2(kin.y, kin.x);
+        double cosinphi = cos(inphi);
+        double sininphi = sin(inphi);
+
         Vector _kin(kin.x*cosinphi+kin.y*sininphi,-kin.x*sininphi+kin.y*cosinphi,kin.z);
         Vector _kout(kout.x*cosinphi+kout.y*sininphi,-kout.x*sininphi+kout.y*cosinphi,kout.z);
 

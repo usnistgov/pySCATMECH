@@ -625,7 +625,7 @@ namespace SCATMECH {
                 COMPLEX r = stack->r12(theta,lambda,vacuum,substrate)[pol];
                 r *= exp(2.*cI*qq*cos(theta));
                 double R = norm(r);
-                return 4.*pi/k*COMPLEX(0.,-1.)*(e/r)*R;
+                return 4.*pi/k*(e/r)*R;
             }
             break;
             case 1:
@@ -641,7 +641,7 @@ namespace SCATMECH {
                 e /= phase;
                 COMPLEX t = stack->t12(theta,lambda,vacuum,substrate)[pol];
                 double T = norm(t)*factor*index;
-                return 4.*pi/k/sqrt(cube(index))/factor*COMPLEX(0.,-1.)*(e/t)*T;
+                return 4.*pi/k/sqrt(cube(index))/factor*(e/t)*T;
             }
             break;
             case 2:
@@ -659,7 +659,7 @@ namespace SCATMECH {
 
                 r *= exp(-2.*cI*qq*index*cos(theta));
 
-                return 4.*pi/k/index*COMPLEX(0.,-1.)*(e/r)*R;
+                return 4.*pi/k/index*(e/r)*R;
             }
             break;
             case 3:
@@ -680,7 +680,7 @@ namespace SCATMECH {
                 e /= phase;
                 COMPLEX t = stack->t21i(theta,lambda,substrate,vacuum)[pol];
                 double T = norm(t)/index/factor;
-                return 4.*pi/k*sqrt(index)*factor*COMPLEX(0.,-1.)*(e/t)*T;
+                return 4.*pi/k*sqrt(index)*factor*(e/t)*T;
             }
             break;
             default:

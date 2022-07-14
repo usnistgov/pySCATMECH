@@ -41,6 +41,27 @@ class CrossRCW_Model(Model):
         return MuellerMatrix(
             SCATPY.CrossRCWDiffractionEfficiency(self.handle, i, j))
 
+    def DiffractionAmplitude(self, i, j):
+        """
+        Returns the Jones matrix diffraction amplitude for the (i,j)-th 
+        diffraction order
+
+        Parameters
+        ----------
+
+        i, j : int
+               Diffraction order
+
+        Returns
+        -------
+
+        amplitude : numpy.array
+                     Diffraction amplitude, as a Jones matrix, at order (i,j)
+
+        """
+        return np.array(
+            SCATPY.CrossRCWDiffractionAmplitude(self.handle, i, j))
+
     def Direction(self,i,j):
         """
         Returns a 3D unit vector [x,y,z] in the direction of propagation of 

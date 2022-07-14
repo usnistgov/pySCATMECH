@@ -1,3 +1,4 @@
+import SCATPY
 import numpy as np
 import math
 import cmath
@@ -733,6 +734,8 @@ def JonesStokes(jones):
                              2*(cx[0]*x[1]).real,
                              2*(cx[0]*x[1]).imag])
     raise Exception("Jones vector must be a 2-element vector")
+
+
     
 def MuellerToHermitian(m):
     """
@@ -850,6 +853,10 @@ LeviCivita = np.array([[[ 0,  0,  0],
                         [ 0,  0,  0]]])
 
 def Lu_Chipman_Decomposition(M):
+    dep, ret, diatten = SCATPY.Lu_Chipman_Decomposition(*(M.flatten().tolist()))
+    return MuellerMatrix(dep),MuellerMatrix(ret),MuellerMatrix(diatten)
+    
+def Test_Lu_Chipman_Decomposition(M):
     """
     Return a depolarizer, a retarder, and a diattenuator whose ordered product is the
     Mueller matrix. 
