@@ -641,6 +641,7 @@ namespace SCATMECH {
         COMPLEX b = ((COMPLEX)maximum.epsilon(lambda) - (COMPLEX)minimum.epsilon(lambda)) / 2.;
         double h = (level + 0.5) * thick / nlevels;
         COMPLEX result = a + b * cos(2 * pi * h * tan(tilt * deg) / period + 2 * pi * x / period);
+        return result;
     }
 
     namespace {
