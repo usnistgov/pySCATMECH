@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Conference Article &#8212; pySCATMECH 0.1.3 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -27,7 +28,10 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
   <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
 
+<script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c">
+</script>
 
+  
 <script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -335,10 +339,10 @@ div.rendered_html tbody tr:hover {
 }
 </style>
 <section id="Conference-Article">
-<h1>Conference Article<a class="headerlink" href="#Conference-Article" title="Permalink to this headline">¶</a></h1>
+<h1>Conference Article<a class="headerlink" href="#Conference-Article" title="Permalink to this heading">¶</a></h1>
 <p>The following is a conference proceeding published in <em>Reflection, Scattering, and Diffraction from Surfaces VII</em>, SPIE Proc. <strong>11485</strong>, 11485-17 (2020). To download this as a Jupyter notebook, click on <em>Show Source</em> and save as “SPIEManuscript.ipynb”, i.e., without “.txt”.</p>
 <section id="pySCATMECH:-A-Python-interface-to-the-SCATMECH-library-of-scattering-codes">
-<h2>pySCATMECH: A Python interface to the SCATMECH library of scattering codes<a class="headerlink" href="#pySCATMECH:-A-Python-interface-to-the-SCATMECH-library-of-scattering-codes" title="Permalink to this headline">¶</a></h2>
+<h2>pySCATMECH: A Python interface to the SCATMECH library of scattering codes<a class="headerlink" href="#pySCATMECH:-A-Python-interface-to-the-SCATMECH-library-of-scattering-codes" title="Permalink to this heading">¶</a></h2>
 <p>Thomas A. Germer</p>
 <p>Sensor Science Division, National Institute of Standards and Technology, Gaithersburg, Maryland 20899 USA</p>
 <p><strong>Abstract:</strong> The first version of the SCATMECH polarized light scattering C++ class library was released in 2000. This software provides a large number of models for Mueller matrix bidirectional reflectance distribution function (BRDF), models for free-space scatterers, rigorous coupled wave (RCW) analysis of diffraction gratings, reflectance and transmittance of thin film coatings, and manipulation of polarimetric and optical properties. In 2004, the Modeled Integrated Scatter Tool (MIST) was
@@ -347,7 +351,7 @@ the example of an interference bandpass filter and calculations of scattering by
 <p>Keywords: BRDF, interference, modeling, scattering, simulations</p>
 </section>
 <section id="1.-Introduction">
-<h2>1. Introduction<a class="headerlink" href="#1.-Introduction" title="Permalink to this headline">¶</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#1.-Introduction" title="Permalink to this heading">¶</a></h2>
 <p>Modeling is an important step for interpreting light scattering data. In 2000, after collecting a number of scattering models, we published the SCATMECH C++ library of polarized light scattering codes.<a class="reference external" href="http://pages.nist.gov/SCATMECH">[1]</a> SCATMECH is a portmanteau of <em>scattering</em> and <em>mechanics</em>. One of the defining features of the SCATMECH library is that it encapsulated the concept of a model into an abstract class, so that different models for the same quantity can be treated uniformly
 under a common umbrella. All models have parameters, and in many cases, parameters can be models themselves. For example, a model for rough surface scattering in the smooth surface approximation requires scalar parameters (e.g., wavelength), the optical constants of the material, which are wavelength-dependent, and a power spectral density (PSD) function for the roughness. The PSD is defined by its own model structure, so that a wide variety of PSD functions can be used.</p>
 <p>The SCATMECH codes include models for the bidirectional reflectance distribution function (BRDF), for free-space scattering, and for rigourous coupled wave (RCW) analysis of gratings. Each of these models return their respective quantities (e.g., BRDF, differential cross section, or diffraction efficiency, respectively) as Mueller matrices, so that their full polarimetric properties are modeled. Thus, there is an entire module devoted to performing calculations in the Stokes-Mueller formalism,
@@ -363,7 +367,7 @@ Jupyter notebook, which will be made available alongside the regular manuscript 
 <p>*Certain commercial products are identified in this paper in order to specify the procedure adequately. Such identification is not intended to imply recommendation or endorsement by NIST, nor is it intended to imply that these products identified are necessarily the best available for the purpose.</p>
 </section>
 <section id="2.-First-things-first">
-<h2>2. First things first<a class="headerlink" href="#2.-First-things-first" title="Permalink to this headline">¶</a></h2>
+<h2>2. First things first<a class="headerlink" href="#2.-First-things-first" title="Permalink to this heading">¶</a></h2>
 <p>Before we start, we need to import the library. Since we will be using some features of the NumPy package and graphing using the PyPlot module of the Matplotlib package, we need to import them as well. Finally, the two symbols <code class="docutils literal notranslate"><span class="pre">pi</span></code> (for <span class="math notranslate nohighlight">\(\pi\)</span>) and <code class="docutils literal notranslate"><span class="pre">deg</span></code> (for <span class="math notranslate nohighlight">\(\pi/180\)</span>) will be very useful.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]:
@@ -379,7 +383,7 @@ Jupyter notebook, which will be made available alongside the regular manuscript 
 </div>
 </section>
 <section id="3.-Optical-functions">
-<h2>3. Optical functions<a class="headerlink" href="#3.-Optical-functions" title="Permalink to this headline">¶</a></h2>
+<h2>3. Optical functions<a class="headerlink" href="#3.-Optical-functions" title="Permalink to this heading">¶</a></h2>
 <p>We start our examples by creating some optical functions. If we already have tabulated data (i.e., optical constants <span class="math notranslate nohighlight">\(n\)</span> and <span class="math notranslate nohighlight">\(k\)</span> as functions of wavelength), we can pass the name of the file containing the data as a string to <code class="docutils literal notranslate"><span class="pre">fresnel.OpticalFunction</span></code>. In this example, we provide Sellmeier expressions for SiO<span class="math notranslate nohighlight">\(_2\)</span> (substrate), MgF (low index film), and ZrO<span class="math notranslate nohighlight">\(_2\)</span> (high index film) that we will use for our demonstration. <a class="reference external" href="https://doi.org/10.1364/JOSA.55.001205">[4]</a>
 <a class="reference external" href="https://doi.org/10.1364/AO.23.001980">[5]</a> <a class="reference external" href="https://doi.org/10.1364/AO.21.002978">[6]</a> Because the underlying SCATMECH code requires optical functions to be provided either as constants or as files, pySCATMECH will create temporary files containing the wavelengths tabulated in some range. Here, we only need to coarsely tabulate the data (20 points over the range 0.35 µm to 0.75 µm) in order to describe the materials.</p>
 <div class="nbinput nblast docutils container">
@@ -409,7 +413,7 @@ Jupyter notebook, which will be made available alongside the regular manuscript 
 </div>
 </section>
 <section id="4.-Interference-filter">
-<h2>4. Interference filter<a class="headerlink" href="#4.-Interference-filter" title="Permalink to this headline">¶</a></h2>
+<h2>4. Interference filter<a class="headerlink" href="#4.-Interference-filter" title="Permalink to this heading">¶</a></h2>
 <p>A simple high reflector interference coating consists of alternating high and low index films, each having a quarter-wave thickness at the optimum wavelength. A narrow band interference filter consists of a half-wave thickness layer sandwiched between two high reflectors. For our example, we choose a center wavelength of 0.500 µm and use two five-period high reflectors. We create each film with <code class="docutils literal notranslate"><span class="pre">fresnel.Film</span></code>. A <code class="docutils literal notranslate"><span class="pre">fresnel.FilmStack</span></code>, created with a list of <code class="docutils literal notranslate"><span class="pre">fresnel.Film</span></code>, has a member
 <code class="docutils literal notranslate"><span class="pre">Rs</span></code> that returns the reflectance for s-polarization. The example below calculates the reflectance at normal incidence from such a stack on SiO<span class="math notranslate nohighlight">\(_2\)</span> as a function of wavelength. The results are shown in Fig. 1. Notice that the device is only a bandpass filter in a narrow range of wavelengths.</p>
 <div class="nbinput docutils container">
@@ -441,7 +445,7 @@ Jupyter notebook, which will be made available alongside the regular manuscript 
 <p><strong>Figure 1</strong> Reflectance of the interference filter as a function of wavelength.</p>
 </section>
 <section id="5.-Scattering-models">
-<h2>5. Scattering models<a class="headerlink" href="#5.-Scattering-models" title="Permalink to this headline">¶</a></h2>
+<h2>5. Scattering models<a class="headerlink" href="#5.-Scattering-models" title="Permalink to this heading">¶</a></h2>
 <p>We are going to demonstrate scattering from the interference filter described above with three different scattering models, one for random bumps in the interface topography, one for a spherical particle above the stack, and one for small spherical voids randomly placed within the film structure. Figure 2 shows a schematic diagram of the scatterers in the film. Only five films are shown to simplify the figure. In order to compare apples-to-apples, we need to make sure the surface density of the
 defects and their respective volumes are the same. The volume of a sphere of radius <span class="math notranslate nohighlight">\(r\)</span> is <span class="math notranslate nohighlight">\(V_\mathrm{sph}=(4/3)\pi r^3\)</span>, while that of a parabolic dimple or mound of radius <span class="math notranslate nohighlight">\(r\)</span> and height <span class="math notranslate nohighlight">\(h\)</span> is <span class="math notranslate nohighlight">\(V_\mathrm{int} = \pi r^2 h/2\)</span>. For the dimples or mounds, we can specify (as a parameter) their density on each interface, so we should divide the density (here, <span class="math notranslate nohighlight">\(\rho\)</span>) by the number of interfaces.</p>
 <p><img alt="Figure 2" class="no-scaled-link" src="_images/SPIEFigureSchematic.png" style="width: 50%;" /></p>
@@ -476,7 +480,7 @@ The equivalent particle radius is 0.048935845514610804 µm.
 </pre></div></div>
 </div>
 <section id="5.1-Interface-roughness">
-<h3>5.1 Interface roughness<a class="headerlink" href="#5.1-Interface-roughness" title="Permalink to this headline">¶</a></h3>
+<h3>5.1 Interface roughness<a class="headerlink" href="#5.1-Interface-roughness" title="Permalink to this heading">¶</a></h3>
 <p>We use the model <code class="docutils literal notranslate"><span class="pre">Uncorrelated_Roughness_Stack_BRDF_Model</span></code> to model the scattering by surface roughness.<a class="reference external" href="https://doi.org/10.1364/JOSAA.12.000729">[7]</a> In this case, we are considering the surfaces to be uncorrelated with one another, but to have identical parabolic dimples or mounds spread between them. In the following, the power spectral density function is defined by <code class="docutils literal notranslate"><span class="pre">psd</span></code> as a <code class="docutils literal notranslate"><span class="pre">Parabolic_Dimple_PSD_Function</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [5]:
@@ -493,7 +497,7 @@ The equivalent particle radius is 0.048935845514610804 µm.
 <p>We should note that it would not be expected that the interfaces be uncorrelated, as shown in Fig. 2. If the surfaces are grown sequentially, a mound or dimple will propagate to some degree to the next interface. Another model <code class="docutils literal notranslate"><span class="pre">Growth_Roughness_Stack_BRDF_Model</span></code> would be a more realistic model. However, it is more complicated to use and it doesn’t allow for a constant volume comparison between scatterers.</p>
 </section>
 <section id="5.2-Particle-above-the-stack">
-<h3>5.2 Particle above the stack<a class="headerlink" href="#5.2-Particle-above-the-stack" title="Permalink to this headline">¶</a></h3>
+<h3>5.2 Particle above the stack<a class="headerlink" href="#5.2-Particle-above-the-stack" title="Permalink to this heading">¶</a></h3>
 <p>We use the theory of Bobbert and Vlieger (BV) to calculate the scatter from spheres above the top interface.[8][9] The BV theory, which is an accurate theory for scattering from a sphere above a substrate, has been extended to include substrates with films.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [6]:
@@ -507,7 +511,7 @@ The equivalent particle radius is 0.048935845514610804 µm.
 </div>
 </section>
 <section id="5.3-Volume-scattering-in-the-stack">
-<h3>5.3 Volume scattering in the stack<a class="headerlink" href="#5.3-Volume-scattering-in-the-stack" title="Permalink to this headline">¶</a></h3>
+<h3>5.3 Volume scattering in the stack<a class="headerlink" href="#5.3-Volume-scattering-in-the-stack" title="Permalink to this heading">¶</a></h3>
 <p>For scattering from spherical inclusions in a dielectric stack, we use the theory described in Refs. <a class="reference external" href="https://doi.org/10.1364/JOSAA.18.001279">[10]</a> and <a class="reference external" href="http://dx.doi.org/10.1117/12.304397">[11]</a>, which is implemented by <code class="docutils literal notranslate"><span class="pre">Rayleigh_Stack_BRDF_Model</span></code>. The <code class="docutils literal notranslate"><span class="pre">Rayleigh_Stack_BRDF_Model</span></code> applies to defects at a specific depth in the layer. Therefore, we need to average over the entire depth of the interference stack. Therefore, in the following, we create a new BRDF model, called
 <code class="docutils literal notranslate"><span class="pre">sumBRDF</span></code>, which has just the requirements needed for this manuscript, namely an <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function to initialize the class, a <code class="docutils literal notranslate"><span class="pre">BRDF</span></code> function that returns the BRDF, and a <code class="docutils literal notranslate"><span class="pre">setParameters</span></code> function that allows the parameters to be set once the model has been initialized. In this case, the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> function creates the <code class="docutils literal notranslate"><span class="pre">BRDF_Model</span></code> and determines the total thickness of the stack. The <code class="docutils literal notranslate"><span class="pre">BRDF</span></code> function averages the BRDF over the depth of the defect, passing the geometry and
 polarization parameters to the <code class="docutils literal notranslate"><span class="pre">Rayleigh_Stack_BRDF_Model</span></code>.</p>
@@ -545,7 +549,7 @@ polarization parameters to the <code class="docutils literal notranslate"><span 
 </section>
 </section>
 <section id="6.-BRDF-and-BTDF">
-<h2>6. BRDF and BTDF<a class="headerlink" href="#6.-BRDF-and-BTDF" title="Permalink to this headline">¶</a></h2>
+<h2>6. BRDF and BTDF<a class="headerlink" href="#6.-BRDF-and-BTDF" title="Permalink to this heading">¶</a></h2>
 <p>Now that we have set up the three models, we can see what the BRDF and bidirectional transmittance distribution function (BTDF) are. As for the SCATMECH library, the BRDF is accessed using the parameter <code class="docutils literal notranslate"><span class="pre">type=0</span></code>, while BTDF is accessed using <code class="docutils literal notranslate"><span class="pre">type=1</span></code>. Note that <code class="docutils literal notranslate"><span class="pre">type</span></code> is a standard function in Python that normally returns the data type of an object. Here <code class="docutils literal notranslate"><span class="pre">type</span></code> corresponds to the geometry of the measurement. Thus, some care should be taken to not overwrite the standard function. Also,
 note that the keyword <code class="docutils literal notranslate"><span class="pre">wavelength</span></code> is used in place of the parameter <code class="docutils literal notranslate"><span class="pre">lambda</span></code>, which SCATMECH uses for wavelength, since <code class="docutils literal notranslate"><span class="pre">lambda</span></code> is a dedicated keyword in Python.</p>
 <p>In the code below, note that incident polarizations are specified by Stokes vectors or by using specific named polarizations with <code class="docutils literal notranslate"><span class="pre">mueller.Polarization</span></code>. Similarly, detector sensitivities are specified by Stokes vectors or using named polarizations using <code class="docutils literal notranslate"><span class="pre">mueller.Sensitivity</span></code>. Using the functions ensures that the result is properly normalized.</p>
@@ -632,7 +636,7 @@ see the substrate at normal incidence.</p>
 <p>The structure observed at 0.49 µm is a result of angle tuning of the filter. At non-normal incidence, the pass wavelength of the filter shifts to shorter wavelength. Thus, there are peaks on each side of the normal viewing direction.</p>
 </section>
 <section id="7.-Integrated-Reflectance">
-<h2>7. Integrated Reflectance<a class="headerlink" href="#7.-Integrated-Reflectance" title="Permalink to this headline">¶</a></h2>
+<h2>7. Integrated Reflectance<a class="headerlink" href="#7.-Integrated-Reflectance" title="Permalink to this heading">¶</a></h2>
 <p>In many applications, one is interested in simulating integrated diffuse reflectance. Integration of the BRDF was the primary function of MIST. <a class="reference external" href="https://pages.nist.gov/ScatterMIST/docs/index.htm">[2]</a> However, in developing pySCATMECH, we wanted to ensure that this capability was maintained, if not improved. The <code class="docutils literal notranslate"><span class="pre">integrate</span></code> module of pySCATMECH provides the tools for performing BRDF integration. The first step to using this module is to define the solid angle over which radiation is
 collected. This is performed by combining a number of different shapes using boolean operations (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>, and <code class="docutils literal notranslate"><span class="pre">~</span></code>). For example, in the following, we define the collection angles by combining the full hemisphere and subtracting (using an “and not” operation) a circular cone (radius of 10°) about the surface normal. The step size at the surface normal is 2° in each direction. The <code class="docutils literal notranslate"><span class="pre">PlotSamplePoints</span></code> function shows integration points, using symbols sized to indicate the weighting function
 for integration.</p>
@@ -715,7 +719,7 @@ for integration.</p>
 <p>The results are shown in Fig. 5. For the roughness model and the volume scattering model, we can see a strong enhancement in the scattering function at the design wavelength for the filter. For the particle scattering, the effect of the filter bandpass is significantly less. Over the entire spectral range, the scattering is the least for the particles in transmission, which is not too surprising, given that the material is a high reflector at most wavelengths in the region shown.</p>
 </section>
 <section id="8.-Cross-section">
-<h2>8. Cross section<a class="headerlink" href="#8.-Cross-section" title="Permalink to this headline">¶</a></h2>
+<h2>8. Cross section<a class="headerlink" href="#8.-Cross-section" title="Permalink to this heading">¶</a></h2>
 <p>For isolated defects, the integrated cross section is a more appropriate quantity than BRDF to express the scattering function. In SCATMECH, models inheriting <code class="docutils literal notranslate"><span class="pre">Local_BRDF_Model</span></code> return the differential cross section for a given geometry, instead of the BRDF. <code class="docutils literal notranslate"><span class="pre">Local_BRDF_Model</span></code> uses a surface density (as above for <code class="docutils literal notranslate"><span class="pre">particleModel</span></code> and <code class="docutils literal notranslate"><span class="pre">volumeModel</span></code>) to determine the BRDF. MIST was able to calculate integrated cross section, but it did so by reverse-engineering that conversion. Thus, it was
 rather clumsy and confusing to use. In developing pySCATMECH, we make the calculation of the cross section more organic. Those models that inherit <code class="docutils literal notranslate"><span class="pre">Local_BRDF_Model</span></code> are created as such, so that their differential cross section functions can be accessed.</p>
 <p>In the following, we calculate the integrated cross section for scattering by a single sphere on top of the film stack as a function of sphere diameter at the three wavelengths studied above ($:nbsphinx-math:<a href="#id1"><span class="problematic" id="id2">`</span></a>lambda <a href="#id3"><span class="problematic" id="id4">`</span></a>= $ 0.49 µm, 0.50 µm, and 0.51 µm). Note that we are spreading the diameters out on a logarithmic scale.</p>
@@ -761,11 +765,11 @@ rather clumsy and confusing to use. In developing pySCATMECH, we make the calcul
 At larger diameter, the curves approach a <span class="math notranslate nohighlight">\(D^2\)</span> dependence, due to the geometric cross section being proportional to area.</p>
 </section>
 <section id="9.-Summary">
-<h2>9. Summary<a class="headerlink" href="#9.-Summary" title="Permalink to this headline">¶</a></h2>
+<h2>9. Summary<a class="headerlink" href="#9.-Summary" title="Permalink to this heading">¶</a></h2>
 <p>In this proceedings, we introduce pySCATMECH, a Python inteface to the SCATMECH library of scattering models. This manuscript is intended as an introduction and not a full tutorial. Further information can be found in the full documentation <a class="reference external" href="http://pages.nist.gov/pySCATMECH">[3]</a>. It is anticipated that pySCATMECH will evolve to some degree after its first release. This manuscript is available as a Jupyter notebook located in the documentation. <a class="reference external" href="http://github.com/usnistgov/pySCATMECH">[3]</a></p>
 </section>
 <section id="References">
-<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
+<h2>References<a class="headerlink" href="#References" title="Permalink to this heading">¶</a></h2>
 <p><a class="reference external" href="http://pages.nist.gov/SCATMECH">1. SCATMECH: Polarized Light Scattering C++ Class Library, available online at https://pages.nist.gov/SCATMECH/index.htm.</a></p>
 <p><a class="reference external" href="https://pages.nist.gov/ScatterMIST/docs/index.htm">2. Modeled Integrated Scatter Tool (MIST), available online at https://pages.nist.gov/ScatterMIST/docs/index.htm.</a></p>
 <p><a class="reference external" href="http://github.com/usnistgov/pySCATMECH">3. pySCATMECH, available online at http://github.com/usnistgov/pySCATMECH.</a></p>
@@ -838,7 +842,7 @@ At larger diameter, the curves approach a <span class="math notranslate nohighli
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -863,7 +867,7 @@ At larger diameter, the curves approach a <span class="math notranslate nohighli
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

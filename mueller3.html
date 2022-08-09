@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Mueller matrix decompositions &#8212; pySCATMECH 0.1.3 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -25,7 +26,10 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
   <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
 
+<script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c">
+</script>
 
+  
 <script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -78,7 +82,7 @@ $(document).ready(function(){
           <div class="body" role="main">
             
   <section id="module-pySCATMECH.mueller">
-<span id="mueller-matrix-decompositions"></span><h1>Mueller matrix decompositions<a class="headerlink" href="#module-pySCATMECH.mueller" title="Permalink to this headline">¶</a></h1>
+<span id="mueller-matrix-decompositions"></span><h1>Mueller matrix decompositions<a class="headerlink" href="#module-pySCATMECH.mueller" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.CharacterizedMueller">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">CharacterizedMueller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller" title="Permalink to this definition">¶</a></dt>
@@ -89,7 +93,7 @@ parameters from complex turbid media exhibiting multiple scattering, optical
 activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).</p>
 <p>A few other parameters are also calculated.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The Mueller matrix to be characterized</p>
 </dd>
 </dl>
@@ -98,7 +102,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">Mdepol</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Mdepol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Depolarizer in Lu-Chipman decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
 </dd>
 </dl>
@@ -109,7 +113,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">Mret</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Mret" title="Permalink to this definition">¶</a></dt>
 <dd><p>Retarder in Lu-Chipman decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
 </dd>
 </dl>
@@ -120,7 +124,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">Mdiatten</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Mdiatten" title="Permalink to this definition">¶</a></dt>
 <dd><p>Diattenuator in Lu-Chipman decomposition</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
 </dd>
 </dl>
@@ -131,7 +135,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">DiattenuationVector</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.DiattenuationVector" title="Permalink to this definition">¶</a></dt>
 <dd><p>The 3-element diattenuation vector</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>numpy.array</p>
 </dd>
 </dl>
@@ -142,7 +146,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">Diattenuation</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Diattenuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Diattenuation</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -153,7 +157,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">CircularDiattenuation</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.CircularDiattenuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Circular diattenuation</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -164,7 +168,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">LinearDiattenuation</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.LinearDiattenuation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linear diattenuation</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -175,7 +179,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">DiattenuationAngle</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.DiattenuationAngle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Angle of diattenuation in radians</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -186,7 +190,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">Polarizance</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Polarizance" title="Permalink to this definition">¶</a></dt>
 <dd><p>The 3-element polarizance vector</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>numpy.array</p>
 </dd>
 </dl>
@@ -198,7 +202,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <dd><p>Depolarization coefficient
 (1 = nondepolarizing, 0 = depolarizing)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -209,7 +213,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">LinearRetardance</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.LinearRetardance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Linear retardance in radians</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -220,7 +224,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">OpticalRotation</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.OpticalRotation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Optical rotation in radians</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -231,7 +235,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">Retardance</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.Retardance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Total retardance in radians</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -242,7 +246,7 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <span class="sig-name descname"><span class="pre">RetardanceAngle</span></span><a class="headerlink" href="#pySCATMECH.mueller.CharacterizedMueller.RetardanceAngle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Angle of retardance in radians</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -256,14 +260,14 @@ activity, and linear birefringence,’’ J. Biomedical Opt. 13, 044036 (2008).<
 <dd><p>Return a list of four non-depolarizing Mueller matrices that sum to the
 Mueller matrix.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – Mueller matrix to be decomposed</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>M1, M2, M3, M4</strong> – The decomposed Jones-Mueller matrices sorted so that
 M1[0,0] &gt;= M2[0,0] &gt;= M3[0,0] &gt;= M4[0,0]</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
 </dd>
 </dl>
@@ -274,10 +278,10 @@ M1[0,0] &gt;= M2[0,0] &gt;= M3[0,0] &gt;= M4[0,0]</p>
 <span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">MuellerLog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerLog" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return matrix logarithm (logarithmic decomposition).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The matrix logarithm of M</p>
 </dd>
-<dt class="field-even">Return type</dt>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
 <dd class="field-even"><p>4x4 numpy.array</p>
 </dd>
 </dl>
@@ -291,10 +295,10 @@ Mueller matrix.</p>
 <p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
 polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The matrix to be decomposed</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>diattenuator</strong> (<em>MuellerMatrix</em>)</p></li>
 <li><p><strong>retarder</strong> (<em>MuellerMatrix</em>)</p></li>
@@ -311,10 +315,10 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
 <dd><p>Perform the symmetric decomposition described by Ossikovski.</p>
 <p>See: R. Ossikovski, J. Opt. Soc. Am. A <strong>26</strong>, 1109-1118 (2009).</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – </p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p><strong>diatten2</strong> (<em>MuellerMatrix</em>)</p></li>
 <li><p><strong>ret2</strong> (<em>MuellerMatrix</em>)</p></li>
@@ -362,7 +366,7 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -388,7 +392,7 @@ polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>

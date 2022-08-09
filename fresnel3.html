@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>FilmStack class &#8212; pySCATMECH 0.1.3 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -25,7 +26,10 @@
   <script src="https://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
   <script src="https://pages.nist.gov/nist-header-footer/js/nist-header-footer.js" type="text/javascript" defer="defer"></script>
 
+<script async type="text/javascript" id="_fed_an_ua_tag" src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NIST&subagency=github&pua=UA-66610693-1&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c">
+</script>
 
+  
 <script type="text/javascript" src="https://pages.nist.gov/leaveNotice/js/jquery.leaveNotice-nist.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -78,18 +82,18 @@ $(document).ready(function(){
           <div class="body" role="main">
             
   <section id="filmstack-class">
-<h1>FilmStack class<a class="headerlink" href="#filmstack-class" title="Permalink to this headline">¶</a></h1>
+<h1>FilmStack class<a class="headerlink" href="#filmstack-class" title="Permalink to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.fresnel.</span></span><span class="sig-name descname"><span class="pre">FilmStack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">films</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="model.html#pySCATMECH.model.Model" title="pySCATMECH.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">pySCATMECH.model.Model</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="model.html#pySCATMECH.model.Model" title="pySCATMECH.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
 <p>A class for handling stacks of films</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.R">
 <span class="sig-name descname"><span class="pre">R</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.R" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the reflectance.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
@@ -113,11 +117,11 @@ wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
 (Default is <cite>12</cite>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>refl</strong> – The Mueller matrix reflectance, which is the
 linear relationship between radiant fluxes.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
 </dd>
 </dl>
@@ -128,7 +132,7 @@ linear relationship between radiant fluxes.</p>
 <span class="sig-name descname"><span class="pre">Rp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the reflectance for p-polarized radiation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
@@ -152,11 +156,11 @@ wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
 (Default is <cite>12</cite>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>refl</strong> – The reflectance for p-polarization, which is the
 linear relationship between radiant fluxes.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -167,7 +171,7 @@ linear relationship between radiant fluxes.</p>
 <span class="sig-name descname"><span class="pre">Rs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the reflectance for s-polarized radiation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
@@ -191,11 +195,11 @@ wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
 (Default is <cite>12</cite>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>refl</strong> – The reflectance for s-polarization, which is the
 linear relationship between radiant fluxes.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -206,7 +210,7 @@ linear relationship between radiant fluxes.</p>
 <span class="sig-name descname"><span class="pre">T</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.T" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the transmittance.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
@@ -230,11 +234,11 @@ wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
 (Default is <cite>12</cite>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>refl</strong> – The Mueller matrix transmittance, which is the
 linear relationship between radiant fluxes.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix">MuellerMatrix</a></p>
 </dd>
 </dl>
@@ -245,7 +249,7 @@ linear relationship between radiant fluxes.</p>
 <span class="sig-name descname"><span class="pre">Tp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Tp" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the transmittance for p-polarized radiation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
@@ -269,11 +273,11 @@ wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
 (Default is ‘12’)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>refl</strong> – The transmittance for p-polarization, which is the
 linear relationship between radiant fluxes.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -284,7 +288,7 @@ linear relationship between radiant fluxes.</p>
 <span class="sig-name descname"><span class="pre">Ts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Ts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the transmittance for s-polarized radiation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
@@ -308,11 +312,11 @@ wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
 (Default is <cite>12</cite>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>refl</strong> – The transmittance for s-polarization, which is the
 linear relationship between radiant fluxes.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -336,13 +340,13 @@ a FilmStack can be passed as a parameter to a Model for a stack.</p>
 <span class="sig-name descname"><span class="pre">getStackCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getStackCommand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get the list of films suitable for a SCATMECH::Stack_StackModel</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>wavelength</strong> (<em>float</em>) – The wavelength to evaluate the complex index at.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>command</strong> – List of films suitable for a SCATMECH::Stack_StackModel</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -353,7 +357,7 @@ a FilmStack can be passed as a parameter to a Model for a stack.</p>
 <span class="sig-name descname"><span class="pre">grow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.grow" title="Permalink to this definition">¶</a></dt>
 <dd><p>Grow a film on the stack.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>film</strong> (<a class="reference internal" href="fresnel2.html#pySCATMECH.fresnel.Film" title="pySCATMECH.fresnel.Film"><em>Film</em></a>) – The film to be grown</p>
 </dd>
 </dl>
@@ -364,7 +368,7 @@ a FilmStack can be passed as a parameter to a Model for a stack.</p>
 <span class="sig-name descname"><span class="pre">reflectionCoefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.reflectionCoefficient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the reflection coefficent.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
@@ -388,14 +392,14 @@ wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
 (Default is <cite>12</cite>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>coeff</strong> – The Jones matrix reflection coefficient, which is the
 linear relationship between the electric field amplitudes.
 coeff[0][0] is the s-polarized reflection coefficient.
 coeff[1][1] is the p-polarized reflection coefficient.
 coeff[1][0] = coeff[0][1] = 0</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of list of complex</p>
 </dd>
 </dl>
@@ -406,7 +410,7 @@ coeff[1][0] = coeff[0][1] = 0</p>
 <span class="sig-name descname"><span class="pre">transmissionCoefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.transmissionCoefficient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the transmission coefficient.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>theta</strong> (<em>float</em>) – Incident angle in radians</p></li>
 <li><p><strong>wavelength</strong> (<em>float</em>) – Wavelength in vacuum</p></li>
@@ -430,14 +434,14 @@ wavevector parallel to the surface is 2*pi*sin(theta)/n0/lambda)
 (Default is <cite>12</cite>)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>coeff</strong> – The Jones matrix transmission coefficient, which is the
 linear relationship between the electric field amplitudes.
 coeff[0][0] is the s-polarized transmission coefficient.
 coeff[1][1] is the p-polarized transmission coefficient.
 coeff[1][0] = coeff[0][1] = 0</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of list of complex</p>
 </dd>
 </dl>
@@ -480,7 +484,7 @@ coeff[1][0] = coeff[0][1] = 0</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -506,7 +510,7 @@ coeff[1][0] = coeff[0][1] = 0</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.4.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
     </div>
   </body>
 </html>
