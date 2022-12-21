@@ -116,11 +116,13 @@ namespace SCATMECH {
             return (0);
         }
 
-        if (costhetai>1.0) costhetai=1.;
-        if (costhetas>1.0) costhetas=1.;
+        if (costhetai > 1.0) costhetai = 1.;
+        if (costhetas > 1.0) costhetas = 1.;
+        if (costhetai < -1.0) costhetai = -1.;
+        if (costhetas < -1.0) costhetas = -1.;
 
-        thetai = acos(costhetai);
-        thetas = acos(costhetas);
+        thetai = (type==Type_DOWNUP || type==Type_DOWNDOWN) ? acos(costhetai) : acos(-costhetai);
+        thetas = (type==Type_DOWNUP || type==Type_UPUP) ? acos(costhetas) : acos(-costhetas);
 
         // Project kin and kout onto surface plane
         Vector kinperp  = norm_source - costhetai*norm_normal;
