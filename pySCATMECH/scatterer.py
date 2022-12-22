@@ -99,3 +99,45 @@ class Free_Space_Scatterer(Model):
             Mueller matrix extinction cross section
         """
         return MuellerMatrix(SCATPY.FSSext(self.handle,v[0],v[1],v[2]))
+
+    def DSC(self, thetai=0, thetas=0, phis=0, rotation=0, coords="psps",
+            inc=StokesVector([1,0,0,0]),sens=StokesVector([1,0,0,0])):
+        """
+        Return the differential scattering cross section in a given geometry.
+
+        Parameters
+        ----------
+        thetai : float
+            Polar angle of incidence in radians
+
+        thetas : float
+            Polar angle of viewing in radians 
+
+        phis : float
+            Azimuthal angle of viewing in radians 
+            (Note: Specular occurs when thetai = thetas, phis = 0)
+
+        rotation : float
+            Sample rotation angle in radians
+
+        coords : string
+            The coordinate system for the Mueller matrix, 
+            either "psps", "xyxy", or "plane"
+
+        inc : StokesVector
+            Incident polarization as Stokes vector
+
+        sens : StokesVector
+            Polarization sensitivity of the viewer as a Stokes vector 
+
+        Returns
+        -------
+        r : float
+            The Mueller matrix differential scattering cross section for the 
+            given incident and viewing directions and polarizations
+        """
+        vin = [-np.sin(thetai),0,-np.cos(thetai)]
+        vout = [np.cos(phis)*np.sin(thetas), np.sin(phis)*np.sin(thetas), np.cos(thetas)]
+        return float((StokesVector(sens) @ 
+                      self.DifferentialScatteringCrossSection(vin,vout)) @ 
+                            StokesVector(inc).rotate(phis))
