@@ -190,7 +190,7 @@ namespace SCATMECH {
                 s = sqrt3*sqr(side)/4.;
             }
         } else if (fabs(sqrt3*fx - fy)<eps) {
-            (-i/4.*sqrt3*(exp(i*fy*pi*side)*fy*pi*side - sin(fy*pi*side)))/sqr(fy*pi);
+            s = (-i/4.*sqrt3*(exp(i*fy*pi*side)*fy*pi*side - sin(fy*pi*side)))/sqr(fy*pi);
         } else {
             s = (sqrt3*fy*(cos(sqrt3*fx*side*pi)-cos(fy*side*pi)-i*sin(sqrt3*fx*side*pi)) +
                  3.*i*fx*sin(fy*side*pi))/(2.*(-3.*sqr(fx)*fy+cube(fy))*sqr(pi));
