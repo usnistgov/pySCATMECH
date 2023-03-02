@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>MuellerMatrix class &#8212; pySCATMECH 0.1.5 documentation</title>
+    <title>MuellerMatrix class &#8212; pySCATMECH 0.1.6 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -70,7 +70,7 @@ $(document).ready(function(){
         <li class="right" >
           <a href="mueller.html" title="Mueller Module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.6 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="mueller.html" accesskey="U">Mueller Module</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">MuellerMatrix class</a></li> 
       </ul>
@@ -158,10 +158,13 @@ M1[0,0] &gt;= M2[0,0] &gt;= M3[0,0] &gt;= M4[0,0]</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.MuellerMatrix.Reverse_Lu_Chipman_Decomposition">
 <span class="sig-name descname"><span class="pre">Reverse_Lu_Chipman_Decomposition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.MuellerMatrix.Reverse_Lu_Chipman_Decomposition" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return a diattenuator, a retarder, and a depolarizer whose ordered product is the
+<dd><p>Return a diattenuator, retarder, and depolarizer whose ordered product is the
 Mueller matrix.</p>
 <p>See: S.-Y. Lu and R.A. Chipman, “Interpretation of Mueller matrices based on
-polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996).</p>
+polar decomposition,” J. Opt. Soc. Am. A <strong>13</strong>, 1106-1113 (1996)
+and J. Morio and G. Goudail, “Influence of the order of diattenuator, retarder,
+and polarizer in polar decomposition of Mueller matrices,”
+Opt. Lett. <strong>29</strong>, 2234-2236 (2004).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>M</strong> (<a class="reference internal" href="#pySCATMECH.mueller.MuellerMatrix" title="pySCATMECH.mueller.MuellerMatrix"><em>MuellerMatrix</em></a>) – The matrix to be decomposed</p>
@@ -502,7 +505,7 @@ Mueller matrices,’ Journal of Modern Optics 40, 471-481 (1993).</p>
         <li class="right" >
           <a href="mueller.html" title="Mueller Module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.5 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.6 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="mueller.html" >Mueller Module</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">MuellerMatrix class</a></li> 
       </ul>
