@@ -854,7 +854,7 @@ LeviCivita = np.array([[[ 0,  0,  0],
 
 def Lu_Chipman_Decomposition(M):
     dep, ret, diatten = SCATPY.Lu_Chipman_Decomposition(*(M.flatten().tolist()))
-    return MuellerMatrix(dep),MuellerMatrix(ret),MuellerMatrix(diatten)
+    return MuellerMatrix(dep), MuellerMatrix(ret), MuellerMatrix(diatten)
     
 def Test_Lu_Chipman_Decomposition(M):
     """
@@ -886,25 +886,25 @@ def Test_Lu_Chipman_Decomposition(M):
 
     # If the transmittance is zero, then the decomposition is trivial.
     if (Tu==0):
-        return (MuellerMatrix(np.diag([1.,1.,1.,1.])),
-                MuellerMatrix(np.diag([1.,1.,1.,1.])),
+        return (MuellerMatrix(np.identity(4)),
+                MuellerMatrix(np.identity(4)),
                 MuellerMatrix())
 
     # From L&C, Eq. (36), Darrow and Parrow are the diattenuation and
     # polarizance, respectively.
-    Darrow = np.array( M[0,1:4]/Tu )
-    Parrow = np.array( M[1:4,0]/Tu )
-    D = math.sqrt(np.sum(Darrow**2))
+    Darrow = np.array( M[0,1:]/Tu )
+    Parrow = np.array( M[1:,0]/Tu )
+    D = (np.sum(Darrow**2))**0.5
 
     # Thus, the diattenuator is given by L&C, Eq. (18),
     if D>1E-15:
         diattenuator = MuellerMatrix()
         diattenuator[0,0] = 1
-        diattenuator[1:4,0] = Darrow
-        diattenuator[0,1:4] = Darrow
+        diattenuator[1:,0] = Darrow
+        diattenuator[0,1:] = Darrow
         dd = math.sqrt(1-D**2)
         
-        diattenuator[1:4,1:4] = dd*np.identity(3) + ((1-dd)/D**2)*np.outer(Darrow,Darrow)
+        diattenuator[1:,1:] = dd*np.identity(3) + ((1-dd)/D**2)*np.outer(Darrow,Darrow)
 
         del dd                    
     else:
@@ -1045,6 +1045,78 @@ def Test_Lu_Chipman_Decomposition(M):
 
 MuellerMatrix.Lu_Chipman_Decomposition = Lu_Chipman_Decomposition
 
+def Reverse_Lu_Chipman_Decomposition(M):
+    """
+    Return a diattenuator, retarder, and depolarizer whose ordered product is the
+    Mueller matrix. 
+
+    See: S.-Y. Lu and R.A. Chipman, "Interpretation of Mueller matrices based on 
+    polar decomposition," J. Opt. Soc. Am. A **13**, 1106-1113 (1996)
+    and J. Morio and G. Goudail, "Influence of the order of diattenuator, retarder, 
+    and polarizer in polar decomposition of Mueller matrices," 
+    Opt. Lett. **29**, 2234-2236 (2004).
+
+    Parameters
+    ----------
+       M : MuellerMatrix
+           The matrix to be decomposed
+
+    Returns
+    -------
+       diattenuator : MuellerMatrix
+       retarder : MuellerMatrix
+       depolarizer : MuellerMatrix
+            M = diattenuator @ retarder @ depolarizer
+    """
+    try:
+        diattenuator = MuellerMatrix()
+        retarder = MuellerMatrix()
+        depolarizer = MuellerMatrix()
+
+        Darrow = np.linalg.inv(M[1:,1:]).T @ M[0,1:]
+        D2 = Darrow @ Darrow
+        D = np.sqrt(D2)
+    
+        diattenuator0 = MuellerMatrix()
+        diattenuator0[0,0] = 1
+        diattenuator0[1:,0] = Darrow
+        diattenuator0[0,1:] = Darrow
+        dd = np.sqrt(1 - D2)
+
+        diattenuator0[1:,1:] = dd * np.identity(3) + ((1 - dd) / D2) * np.outer(Darrow, Darrow)
+
+        Mprime = np.linalg.inv(diattenuator0) @ M
+        Tu = Mprime[0,0]
+        diattenuator = diattenuator0 * Tu
+
+        U, S, VT = np.linalg.svd(np.array(Mprime[1:,1:]) / Tu)  
+
+        mR = U @ VT
+        mDelta = VT.T @ np.diag(S) @ VT
+        if np.linalg.det(mR) < 0:
+            mR = -mR
+            mDelta = -mDelta
+
+        Parrow = np.linalg.inv(mR) @ Mprime[1:,0] / Tu
+
+        retarder[0,0] = 1
+        retarder[0,1:] = 0
+        retarder[1:,0] = 0
+        retarder[1:,1:] = mR
+
+        depolarizer[0,0] = 1
+        depolarizer[0,1:] = 0
+        depolarizer[1:,0] = Parrow
+        depolarizer[1:,1:] = mDelta
+
+        return diattenuator, retarder, depolarizer
+    except:
+        pass
+    raise Exception("Reverse Lu-Chipman Decomposition not possible")
+
+MuellerMatrix.Reverse_Lu_Chipman_Decomposition = (
+                                    Reverse_Lu_Chipman_Decomposition)
+
 class CharacterizedMueller():
     """
     Characterize the Mueller matrix according to 
@@ -1163,33 +1235,6 @@ class CharacterizedMueller():
              + " rad (" + str(self.RetardanceAngle/deg) + " deg)")
         return s
     
-
-def Reverse_Lu_Chipman_Decomposition(M):
-    """
-    Return a diattenuator, a retarder, and a depolarizer whose ordered product is the
-    Mueller matrix. 
-
-    See: S.-Y. Lu and R.A. Chipman, "Interpretation of Mueller matrices based on 
-    polar decomposition," J. Opt. Soc. Am. A **13**, 1106-1113 (1996).
-
-    Parameters
-    ----------
-       M : MuellerMatrix
-           The matrix to be decomposed
-
-    Returns
-    -------
-       diattenuator : MuellerMatrix
-       retarder : MuellerMatrix
-       depolarizer : MuellerMatrix
-             M = diattenuator @ retarder @ depolarizer
-
-    """
-    depolarizer, retarder, diattenuator = Lu_Chipman_Decomposition(M.T)
-    return diattenuator.T, retarder.T, depolarizer.T
-
-MuellerMatrix.Reverse_Lu_Chipman_Decomposition = (
-                                    Reverse_Lu_Chipman_Decomposition)
 
 def Symmetric_Decomposition(M):
     """
@@ -1589,7 +1634,7 @@ def MuellerZero():
     m : MuellerMatrix
         Zero matrix
     """
-    return MuellerMatrix([[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]])
+    return MuellerMatrix(np.zeros((4, 4)))
 
 def MuellerUnit(attenuation=1):
     """
@@ -1600,8 +1645,7 @@ def MuellerUnit(attenuation=1):
     attenuation : float, optional
                   Default is 1
     """
-    a = attenuation
-    return MuellerMatrix([[a,0,0,0],[0,a,0,0],[0,0,a,0],[0,0,0,a]])
+    return MuellerMatrix(attenuation * np.identity(4))
 
 def MuellerDiagonal(a):
     """
@@ -1611,14 +1655,14 @@ def MuellerDiagonal(a):
     ---------
     a : 4 element list or array of float 
     """
-    return MuellerMatrix([[a[0],0,0,0],[0,a[1],0,0],[0,0,a[2],0],[0,0,0,a[3]]])
+    return MuellerMatrix(np.diag(a))
 
 def StokesZero():
     """
     Return zero Stokes vector
 
     """
-    return StokesVector([0,0,0,0])
+    return StokesVector(np.zeros(4))
     
 def Polarization(*args, **kwargs):
     """
