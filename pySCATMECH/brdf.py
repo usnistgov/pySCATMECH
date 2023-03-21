@@ -67,6 +67,38 @@ class BRDF_Model(Model):
                                          thetai, thetas, phis,
                                          rotation, coords))
 
+    def JonesBRDF(self,
+                  thetai=0, thetas=0, phis=0, rotation=0, coords="psps"):
+        """
+        Evaluate the Jones matrix BRDF in a given geometry, and coordinate 
+        system. The result, when typecast to a Mueller matrix, is the Mueller
+        matrix BRDF, but maintains phase, if the model has phase information.
+
+        Parameters
+        ----------
+        thetai : float
+            Polar angle of incidence in radians.
+        thetas : float
+            Polar angle of viewing in radians.
+        phis: float, optional
+            Azimuthal angle of viewing in radians.
+            (Note: Specular occurs when thetai = thetas, phis = 0)
+            (Default is 0)
+        rotation : float, optional
+            Sample rotation angle in radians. (Default is 0)
+        coords : string, optional
+            The coordinate system for the Mueller matrix, 
+            either "psps", "xyxy", or "plane." (Default is "psps")
+
+        Returns
+        -------
+        BRDF : MuellerMatrix 
+            The Mueller matrix BRDF
+        """
+        return SCATPY.BRDFJones(self.handle,
+                                thetai, thetas, phis,
+                                rotation, coords)
+
     def BRDF(self,
              thetai=0, thetas=0, phis =0, rotation=0,
              coords="psps",
