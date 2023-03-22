@@ -25,7 +25,7 @@ html_show_copyright = False
 author = 'Thomas A. Germer'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.7'
+release = '0.1.8'
 version = release
 
 # -- General configuration ---------------------------------------------------

@@ -1,6 +1,7 @@
 import SCATPY
 from pySCATMECH.model import *
 from pySCATMECH.mueller import *
+import numpy as np
 
 class Local_BRDF_Model(Model):
     """
@@ -72,6 +73,40 @@ class Local_BRDF_Model(Model):
         """
         return MuellerMatrix(
             SCATPY.LocalDSC(self.handle, thetai, thetas, phis,
+                            rotation, coords))
+
+    def JonesDSC(self, thetai=0, thetas=0, phis=0, rotation=0, coords="psps"):
+        """
+        Evaluate the Mueller matrix differential scattering cross section 
+        in a given geometry, and coordinate system. The result, when typecast
+        to a Mueller matrix, is the Mueller matrix DSC, but maintains phase, 
+        if the model has phase information.
+
+        Parameters
+        ----------
+        thetai : float
+            Polar angle of incidence in radians
+
+        thetas : float
+            Polar angle of viewing in radians 
+
+        phis: float
+            Azimuthal angle of viewing in radians 
+            (Note: Specular occurs when thetai = thetas, phis = 0)
+
+        rotation : float
+            Sample rotation angle in radians
+
+        coords : string
+            The coordinate system for the Mueller matrix, 
+            either "psps", "xyxy", or "plane"
+
+        Returns
+        -------
+        r : numpy.array of complex (2x2)
+            The Jones matrix differential scattering cross section
+        """
+        return np.array(SCATPY.LocalDSCJones(self.handle, thetai, thetas, phis,
                             rotation, coords))
 
     def DSC(self, thetai=0, thetas=0, phis=0, rotation=0, coords="psps",

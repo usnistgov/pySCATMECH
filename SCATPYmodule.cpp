@@ -510,6 +510,33 @@ static PyObject * LocalDSC(PyObject *self, PyObject *args)
   }    
 }
 
+static PyObject * LocalDSCJones(PyObject *self, PyObject *args)
+{
+  try {
+    int handle;
+    double thetai,thetas,phis;
+    double rotation=0;
+    const char *coords = "psps";
+    
+    if (!PyArg_ParseTuple(args, "iddd|ds", &handle, &thetai, &thetas, &phis, &rotation, &coords))
+        return NULL;
+
+    BRDF_Model::Coordinate_System _coords;
+    if (std::string(coords)=="psps") _coords = BRDF_Model::psps;
+    else if (std::string(coords)=="xyxy") _coords = BRDF_Model::xyxy;
+    else if (std::string(coords)=="plane") _coords = BRDF_Model::plane;
+    else return NULL;
+    
+    JonesMatrix jones = mapLocal_BRDF_Model[handle]->JonesDSC(thetai,thetas,phis,rotation,_coords);
+
+    return PyJones(jones);
+  }
+  catch (std::exception& e) {
+    PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
+    return NULL;
+  }    
+}
+
 
 static PyObject * FSSjones(PyObject *self, PyObject *args)
 {
@@ -1007,6 +1034,7 @@ static PyMethodDef SCATPYMethods[] = {
      {"BRDFJones",  BRDFJones, METH_VARARGS, "Returns the Jones matrix BRDF for a specified geometry"},
      {"VectoredBRDFJones", VectoredBRDFJones,  METH_VARARGS, "Returns the Jones matrix BRDF for a specified geometry (expressed as vectors"},
      {"LocalDSC",  LocalDSC, METH_VARARGS, "Returns the Mueller matrix differential scattering cross section for a specified geometry"},
+     {"LocalDSCJones",  LocalDSCJones, METH_VARARGS, "Returns the Jones matrix differential scattering cross section for a specified geometry"},
      {"FSSjones", FSSjones, METH_VARARGS, "Returns the jones scattering matrix for a specified geometry"},
      {"FSSext", FSSext, METH_VARARGS, "Returns the Mueller matrix extinction cross section"},
      {"RCWDiffractionEfficiency", RCWDiffractionEfficiency, METH_VARARGS, "Returns the Mueller matrix diffraction efficiency for a specific diffraction order (RCW_Model)"},

@@ -1,6 +1,7 @@
 import SCATPY
 from pySCATMECH.model import *
 from pySCATMECH.mueller import *
+import numpy as np
 
 class BRDF_Model(Model):
     """
@@ -92,12 +93,12 @@ class BRDF_Model(Model):
 
         Returns
         -------
-        BRDF : MuellerMatrix 
-            The Mueller matrix BRDF
+        BRDF : numpy.array of complex (2x2)
+            The Jones matrix BRDF
         """
-        return SCATPY.BRDFJones(self.handle,
-                                thetai, thetas, phis,
-                                rotation, coords)
+        return np.array(SCATPY.BRDFJones(self.handle,
+                                         thetai, thetas, phis,
+                                         rotation, coords))
 
     def BRDF(self,
              thetai=0, thetas=0, phis =0, rotation=0,
