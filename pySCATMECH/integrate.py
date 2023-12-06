@@ -521,7 +521,7 @@ class Integrator():
         self.sens = [t[3] for t in dtemp]
     
     def PlotSamplingPoints(self, figsize=5,
-             expand=1, color='b', circlecolor='r'):
+             expand=1, color='b', circlecolor='r', return_data = False):
         """
         Graphs the integration points on the projected hemisphere.
     
@@ -549,12 +549,17 @@ class Integrator():
         circlex = np.cos(thetas)
         circley = np.sin(thetas)
     
+        # Changed by Johannes
         plt.figure(figsize = (figsize, figsize))
         ax = plt.subplot(111)
         ax.scatter(self.x, self.y,
                    s = self.w * 300 * figsize**2 * expand, c=color) 
         ax.plot(circlex, circley, c = circlecolor)
+        
         plt.show()
+        # Added by Johannes
+        if return_data: 
+            return self.x, self.y, self.w * 300 * figsize**2 * expand, circlex, circley
     
     def Reflectance(self, model, thetai, 
                     incpol = StokesVector(1,0,0,0),
