@@ -396,6 +396,33 @@ static PyObject * BRDF(PyObject *self, PyObject *args)
   }    
 }
 
+static PyObject * BRDFJones(PyObject *self, PyObject *args)
+{
+  try {
+    int handle;
+    double thetai,thetas,phis;
+    double rotation=0;
+    const char *coords = "psps";
+    
+    if (!PyArg_ParseTuple(args, "iddd|ds", &handle, &thetai, &thetas, &phis, &rotation, &coords))
+        return NULL;
+
+    BRDF_Model::Coordinate_System _coords;
+    if (std::string(coords)=="psps") _coords = BRDF_Model::psps;
+    else if (std::string(coords)=="xyxy") _coords = BRDF_Model::xyxy;
+    else if (std::string(coords)=="plane") _coords = BRDF_Model::plane;
+    else return NULL;
+    
+    JonesMatrix jones = mapBRDF_Model[handle]->Jones(thetai,thetas,phis,rotation,_coords);
+
+    return PyJones(jones);
+  }
+  catch (std::exception& e) {
+    PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
+    return NULL;
+  }    
+}
+
 static PyObject * VectoredBRDF(PyObject *self, PyObject *args)
 {
   try {
@@ -426,6 +453,36 @@ static PyObject * VectoredBRDF(PyObject *self, PyObject *args)
   }    
 }
 
+static PyObject * VectoredBRDFJones(PyObject *self, PyObject *args)
+{
+  try {
+    int handle;
+    Vector source, viewer, normal, xaxis;
+    const char *coords = "plane";
+    
+    if (!PyArg_ParseTuple(args, "idddddddddddd|s", &handle,
+			  &source.x, &source.y, &source.z,
+			  &viewer.x, &viewer.y, &viewer.z,
+			  &normal.x, &normal.y, &normal.z,
+			  &xaxis.x, &xaxis.y, &xaxis.z, &coords))
+        return NULL;
+
+    BRDF_Model::Coordinate_System _coords;
+    if (std::string(coords)=="psps") _coords = BRDF_Model::psps;
+    else if (std::string(coords)=="xyxy") _coords = BRDF_Model::xyxy;
+    else if (std::string(coords)=="plane") _coords = BRDF_Model::plane;
+    else return NULL;
+    
+    JonesMatrix jones = mapBRDF_Model[handle]->Jones(source,viewer,normal,xaxis,_coords);
+
+    return PyJones(jones);
+  }
+  catch (std::exception& e) {
+    PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
+    return NULL;
+  }    
+}
+
 static PyObject * LocalDSC(PyObject *self, PyObject *args)
 {
   try {
@@ -446,6 +503,33 @@ static PyObject * LocalDSC(PyObject *self, PyObject *args)
     MuellerMatrix mueller = mapLocal_BRDF_Model[handle]->MuellerDSC(thetai,thetas,phis,rotation,_coords);
 
     return PyMueller(mueller);
+  }
+  catch (std::exception& e) {
+    PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
+    return NULL;
+  }    
+}
+
+static PyObject * LocalDSCJones(PyObject *self, PyObject *args)
+{
+  try {
+    int handle;
+    double thetai,thetas,phis;
+    double rotation=0;
+    const char *coords = "psps";
+    
+    if (!PyArg_ParseTuple(args, "iddd|ds", &handle, &thetai, &thetas, &phis, &rotation, &coords))
+        return NULL;
+
+    BRDF_Model::Coordinate_System _coords;
+    if (std::string(coords)=="psps") _coords = BRDF_Model::psps;
+    else if (std::string(coords)=="xyxy") _coords = BRDF_Model::xyxy;
+    else if (std::string(coords)=="plane") _coords = BRDF_Model::plane;
+    else return NULL;
+    
+    JonesMatrix jones = mapLocal_BRDF_Model[handle]->JonesDSC(thetai,thetas,phis,rotation,_coords);
+
+    return PyJones(jones);
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
@@ -946,8 +1030,11 @@ static PyMethodDef SCATPYMethods[] = {
      {"Get_CrossRCW_Model",  Get_CrossRCW_Model, METH_VARARGS, "Gets an instance of a CrossRCW_Model."},
      {"Free_CrossRCW_Model",  Free_CrossRCW_Model, METH_VARARGS, "Frees an instance of a CrossRCW_Model."},
      {"BRDF",  BRDF, METH_VARARGS, "Returns the Mueller matrix BRDF for a specified geometry"},
-     {"VectoredBRDF", VectoredBRDF,  METH_VARARGS, "Returns the Mueller matrix BRDF for a specified geometry (expressed as vecotors"},
+     {"VectoredBRDF", VectoredBRDF,  METH_VARARGS, "Returns the Mueller matrix BRDF for a specified geometry (expressed as vectors"},
+     {"BRDFJones",  BRDFJones, METH_VARARGS, "Returns the Jones matrix BRDF for a specified geometry"},
+     {"VectoredBRDFJones", VectoredBRDFJones,  METH_VARARGS, "Returns the Jones matrix BRDF for a specified geometry (expressed as vectors"},
      {"LocalDSC",  LocalDSC, METH_VARARGS, "Returns the Mueller matrix differential scattering cross section for a specified geometry"},
+     {"LocalDSCJones",  LocalDSCJones, METH_VARARGS, "Returns the Jones matrix differential scattering cross section for a specified geometry"},
      {"FSSjones", FSSjones, METH_VARARGS, "Returns the jones scattering matrix for a specified geometry"},
      {"FSSext", FSSext, METH_VARARGS, "Returns the Mueller matrix extinction cross section"},
      {"RCWDiffractionEfficiency", RCWDiffractionEfficiency, METH_VARARGS, "Returns the Mueller matrix diffraction efficiency for a specific diffraction order (RCW_Model)"},
