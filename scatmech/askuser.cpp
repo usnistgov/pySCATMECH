@@ -29,7 +29,7 @@ namespace SCATMECH {
     string
     Get_SCATMECH_Version()
     {
-        return std::string("SCATMECH 7.21 (Build: ") + std::string(__DATE__) + std::string(")");
+        return std::string("SCATMECH 7.23 (Build: ") + std::string(__DATE__) + std::string(")");
     }
 
     optical_constant default_substrate(4.15,0.05);
@@ -108,8 +108,8 @@ namespace SCATMECH {
                 string directory = pname.substr(0,end);
                 if (directory[directory.size()-1] != delim) directory += delim;
 				string filename=directory+name;
-				ifstream file(filename.c_str());
-                if (file) return filename;
+				ifstream _file(filename.c_str());
+                if (_file) return filename;
                 begin = end+1;
             }
             throw SCATMECH_exception("Cannot open file \"" + name + "\"");
@@ -134,7 +134,7 @@ namespace SCATMECH {
     streambuf_with_comments::
     clear_comment()
     {
-        char c;
+        int c;
         do {
             c = istr->sbumpc();
         } while (c!='\n');
@@ -149,7 +149,7 @@ namespace SCATMECH {
             clear_comment();
             c='\n';
         }
-        istr->sputbackc(c);
+        istr->sputbackc((char)c);
         return c;
     }
 
@@ -239,10 +239,10 @@ namespace SCATMECH {
     {
         int c = strbuf->sbumpc();
         if (echo) {
-            echostream.put(c);
+            echostream.put((char)c);
             echostream.flush();
         }
-        strbuf->sputbackc(c);
+        strbuf->sputbackc((char)c);
         return c;
     }
 
@@ -252,7 +252,7 @@ namespace SCATMECH {
     {
         int c = strbuf->sbumpc();
         if (echo) {
-            echostream.put(c);
+            echostream.put((char)c);
             echostream.flush();
         }
         return c;
@@ -280,14 +280,14 @@ namespace SCATMECH {
     string
     getstrline(istream& str)
     {
-        char c;
+        int c;
         string result;
         while ((c=str.get())!='\n') {
             if (str.eof()) {
                 //if (result.size()>0) str.clear();
                 return result;
             }
-            result += c;
+            result += (char)c;
         }
         //if (result.size()>0) str.clear();
         return result;
@@ -309,8 +309,8 @@ namespace SCATMECH {
         ws(*this);
         if (peek()==quote) {
             get();
-            char c;
-            while ((c=get())!=quote&&!fail()) result += c;
+            int c;
+            while ((c=get())!=quote&&!fail()) result += (char)c;
             if (fail()) throw SCATMECH_exception("Failed to find closing quotation mark");
         } else *this >> result;
         return result;

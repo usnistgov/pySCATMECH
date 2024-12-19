@@ -213,10 +213,10 @@ namespace SCATMECH {
                 double x;
                 std::string mat1,mat2;
 
-                bool operator>(const bounds& b) {
+                bool operator>(const bounds& b) const {
                     return x>b.x;
                 }
-                bool operator<(const bounds& b) {
+                bool operator<(const bounds& b) const {
                     return x<b.x;
                 }
             };

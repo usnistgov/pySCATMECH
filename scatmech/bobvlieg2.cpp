@@ -187,7 +187,6 @@ namespace SCATMECH {
             if (j <= 170 && j>=0) return factorial_list[j];
 
             throw SCATMECH_exception("Fact("+to_string(j)+") out of range.");
-            return 0.;
         }
 
         //
@@ -198,7 +197,6 @@ namespace SCATMECH {
         {
             if (j <= 170 && j>=0) return sqrtfactorial_list[j];
             throw SCATMECH_exception("sqrtFact("+to_string(j)+") out of range.");
-            return 0.;
         }
 
         //
@@ -375,7 +373,6 @@ namespace SCATMECH {
             COMPLEX f0 = 2.*nu/x;
             COMPLEX C0 = f0;
             COMPLEX D0 = 0.;
-            int j=0;
             COMPLEX xx = x*x;
             COMPLEX fj;
             for (int j=1; true; ++j) {
@@ -666,11 +663,11 @@ namespace SCATMECH {
     //
     COMPLEX
     Bobbert_Vlieger_BRDF_Model::
-    VIp(int l,int m,int f,double thetai) const
+    VIp(int l,int m,int f,double _thetai) const
     {
         COMPLEX result;
-        COMPLEX costheta2=cos(thetai/2.);
-        COMPLEX sintheta2=sin(thetai/2.);
+        COMPLEX costheta2=cos(_thetai/2.);
+        COMPLEX sintheta2=sin(_thetai/2.);
         if (f==efield) {
             // Eq. (2.14a) of BV&G
             result =  1./k*ipow(l-1)*lvector[l]*mpow(m-1)*
@@ -689,15 +686,15 @@ namespace SCATMECH {
     //
     COMPLEX
     Bobbert_Vlieger_BRDF_Model::
-    VIRp(int l,int m,int f,double thetai) const
+    VIRp(int l,int m,int f,double _thetai) const
     {
         COMPLEX result;
-        COMPLEX cost = cos(thetai);
+        COMPLEX cost = cos(_thetai);
         COMPLEX phase = exp(2.*cI*qq*cost);
-        COMPLEX _rp = stack->rp12(thetai,lambda,vacuum,substrate);
+        COMPLEX _rp = stack->rp12(_thetai,lambda,vacuum,substrate);
         COMPLEX temp = phase*_rp;
-        COMPLEX costheta2=cos(thetai/2.);
-        COMPLEX sintheta2=sin(thetai/2.);
+        COMPLEX costheta2=cos(_thetai/2.);
+        COMPLEX sintheta2=sin(_thetai/2.);
 
         if (f==efield) {
             // Eq. (2.15a) of BV&G
@@ -719,18 +716,18 @@ namespace SCATMECH {
     //
     COMPLEX
     Bobbert_Vlieger_BRDF_Model::
-    VITp(int l,int m,int f,double thetai) const
+    VITp(int l,int m,int f,double _thetai) const
     {
-        COMPLEX sint = sin(thetai)*substrate.n(lambda);
+        COMPLEX sint = sin(_thetai)*substrate.n(lambda);
         COMPLEX cost = sqrt(1.-sqr(sint));
         if (imag(cost)<0) cost = -cost;
-        COMPLEX _thetai = arcsine(sint);
-        if (imag(_thetai)>0) _thetai = conj(_thetai);
+        COMPLEX _Thetai = arcsine(sint);
+        if (imag(_Thetai)>0) _Thetai = conj(_Thetai);
         COMPLEX sintheta2=sqrt(1.-cost)/sqrt(2.);
         if (real(sintheta2)<0) sintheta2 = -sintheta2;
         COMPLEX costheta2=sint/2./sintheta2;
-        COMPLEX _tp = stack->tp12(_thetai,lambda,vacuum,substrate);
-        COMPLEX phase = exp(cI*qq*(cost-substrate.n(lambda)*cos(thetai)));
+        COMPLEX _tp = stack->tp12(_Thetai,lambda,vacuum,substrate);
+        COMPLEX phase = exp(cI*qq*(cost-substrate.n(lambda)*cos(_thetai)));
 
         COMPLEX result;
         if (f==efield) {
@@ -753,11 +750,11 @@ namespace SCATMECH {
     //
     COMPLEX
     Bobbert_Vlieger_BRDF_Model::
-    VIs(int l,int m,int f,double thetai) const
+    VIs(int l,int m,int f,double _thetai) const
     {
         COMPLEX result;
-        COMPLEX costheta2=cos(thetai/2.);
-        COMPLEX sintheta2=sin(thetai/2.);
+        COMPLEX costheta2=cos(_thetai/2.);
+        COMPLEX sintheta2=sin(_thetai/2.);
 
         if (f==efield) {
             // Eq. (2.16a) of BV&G
@@ -779,14 +776,14 @@ namespace SCATMECH {
     //
     COMPLEX
     Bobbert_Vlieger_BRDF_Model::
-    VIRs(int l,int m,int f,double thetai) const
+    VIRs(int l,int m,int f,double _thetai) const
     {
         COMPLEX result;
-        COMPLEX cost = cos(thetai);
+        COMPLEX cost = cos(_thetai);
         COMPLEX phase = exp(2.*cI*qq*cost);
-        COMPLEX _rs = stack->rs12(thetai,lambda,vacuum,substrate);
-        COMPLEX costheta2=cos(thetai/2.);
-        COMPLEX sintheta2=sin(thetai/2.);
+        COMPLEX _rs = stack->rs12(_thetai,lambda,vacuum,substrate);
+        COMPLEX costheta2=cos(_thetai/2.);
+        COMPLEX sintheta2=sin(_thetai/2.);
 
         if (f==efield) {
             // Eq. (2.17a) of BV&G
@@ -808,18 +805,18 @@ namespace SCATMECH {
     //
     COMPLEX
     Bobbert_Vlieger_BRDF_Model::
-    VITs(int l,int m,int f,double thetai) const
+    VITs(int l,int m,int f,double _thetai) const
     {
-        COMPLEX sint = sin(thetai)*substrate.n(lambda);
+        COMPLEX sint = sin(_thetai)*substrate.n(lambda);
         COMPLEX cost = sqrt(1.-sqr(sint));
         if (imag(cost)<0) cost = -cost;
-        COMPLEX _thetai = arcsine(sint);
-        if (imag(_thetai)>0) _thetai = conj(_thetai);
+        COMPLEX _Thetai = arcsine(sint);
+        if (imag(_Thetai)>0) _Thetai = conj(_Thetai);
         COMPLEX sintheta2=sqrt(1.-cost)/sqrt(2.);
         if (real(sintheta2)<0) sintheta2 = -sintheta2;
         COMPLEX costheta2=sint/2./sintheta2;
-        COMPLEX _ts = stack->ts12(_thetai,lambda,vacuum,substrate);
-        COMPLEX phase = exp(cI*qq*(cost-substrate.n(lambda)*cos(thetai)));
+        COMPLEX _ts = stack->ts12(_Thetai,lambda,vacuum,substrate);
+        COMPLEX phase = exp(cI*qq*(cost-substrate.n(lambda)*cos(_thetai)));
 
         COMPLEX result;
         if (f==efield) {
@@ -841,7 +838,7 @@ namespace SCATMECH {
     //
     void
     Bobbert_Vlieger_BRDF_Model::
-    iterative_improvement(ScatterTMatrix& Ainv, ScatterTMatrix& A, vector<COMPLEX>& b, vector<COMPLEX>& x)
+    iterative_improvement(ScatterTMatrix& _Ainv, ScatterTMatrix& _A, vector<COMPLEX>& b, vector<COMPLEX>& x)
     {
         vector<COMPLEX> temp1(sqrsize);
         int m,l,f,l_,f_;
@@ -860,7 +857,7 @@ namespace SCATMECH {
                             int ll = 2*(LMAX-l)+f;
                             int ll_ = 2*(LMAX-l_)+f_;
 
-                            temp1[i_]+=A[mm][ll_][ll]*x[i];
+                            temp1[i_]+=_A[mm][ll_][ll]*x[i];
                         }
                     }
                     temp1[i_]-=b[i_];
@@ -877,7 +874,7 @@ namespace SCATMECH {
                             int ll = 2*(LMAX-l)+f;
                             int ll_ = 2*(LMAX-l_)+f_;
 
-                            temp2+=Ainv[mm][ll_][ll]*temp1[i];
+                            temp2+=_Ainv[mm][ll_][ll]*temp1[i];
                         }
                     }
                     x[i_]-=temp2;
@@ -892,35 +889,33 @@ namespace SCATMECH {
     //
     void
     Bobbert_Vlieger_BRDF_Model::
-    calculate_W(double thetai)
+    calculate_W(double _thetai)
     {
-        int i,m,l,f,l_,f_;
-
         // First calculate the V vector of the incident wave...
         if (is_down_to_up()||is_down_to_down()) {
-            for (l=1; l<=LMAX; ++l) {
-                for (m=-l; m<=l; ++m) {
-                    for (f=0; f<=1; ++f) {
-                        i=index(l,m,f);
-                        Vp[i]=VIp(l,m,f,thetai)+VIRp(l,m,f,thetai);
-                        Vs[i]=VIs(l,m,f,thetai)+VIRs(l,m,f,thetai);
+            for (int l=1; l<=LMAX; ++l) {
+                for (int m=-l; m<=l; ++m) {
+                    for (int f=0; f<=1; ++f) {
+                        int i=index(l,m,f);
+                        Vp[i]=VIp(l,m,f,_thetai)+VIRp(l,m,f,_thetai);
+                        Vs[i]=VIs(l,m,f,_thetai)+VIRs(l,m,f,_thetai);
                     }
                 }
             }
         } else { // is_backward()
-            COMPLEX sint = sin(thetai)*substrate.n(lambda);
+            COMPLEX sint = sin(_thetai)*substrate.n(lambda);
             COMPLEX cost = sqrt(1.-sqr(sint));
             // The following factor accounts for the backwards transmission coefficient, compared
             // to the forward transmission coefficient, and the Poynting vector across the
             // interface...
-            double factor = abs(COMPLEX(cos(thetai))/cost*COMPLEX(sqrt(substrate.n(lambda))));
+            double factor = abs(COMPLEX(cos(_thetai))/cost*COMPLEX(sqrt(substrate.n(lambda))));
 
-            for (l=1; l<=LMAX; ++l) {
-                for (m=-l; m<=l; ++m) {
-                    for (f=0; f<=1; ++f) {
-                        i=index(l,m,f);
-                        Vp[i]=VITp(l,m,f,thetai)*factor;
-                        Vs[i]=VITs(l,m,f,thetai)*factor;
+            for (int l=1; l<=LMAX; ++l) {
+                for (int m=-l; m<=l; ++m) {
+                    for (int f=0; f<=1; ++f) {
+                        int i=index(l,m,f);
+                        Vp[i]=VITp(l,m,f,_thetai)*factor;
+                        Vs[i]=VITs(l,m,f,_thetai)*factor;
                     }
                 }
             }
@@ -928,15 +923,15 @@ namespace SCATMECH {
 
 
         // Then multiply the incident vector V by the scattering matrix
-        for (m=-LMAX; m<=LMAX; ++m) {
+        for (int m=-LMAX; m<=LMAX; ++m) {
             int beginl = (m==0) ? 1 : abs(m);
-            for (l_=beginl; l_<=LMAX; ++l_) {
-                for (f_=0; f_<=1; ++f_) {
+            for (int l_=beginl; l_<=LMAX; ++l_) {
+                for (int f_=0; f_<=1; ++f_) {
                     int i_ = index(l_,m,f_);
                     Wp[i_]=0;
                     Ws[i_]=0;
-                    for (l=beginl; l<=LMAX; ++l) {
-                        for (f=0; f<=1; ++f) {
+                    for (int l=beginl; l<=LMAX; ++l) {
+                        for (int f=0; f<=1; ++f) {
                             int i = index(l,m,f);
                             int mm = LMAX+m;
                             int ll = 2*(LMAX-l)+f;
@@ -953,22 +948,22 @@ namespace SCATMECH {
         // Iteratively improve the solution, since the matrix
         // inversion isn't perfect...
         if (order<0) {
-            for (i=0; i<improve; ++i) {
+            for (int i=0; i<improve; ++i) {
                 iterative_improvement(ScatMatrix,ScatMatrixInverse,Vp,Wp);
                 iterative_improvement(ScatMatrix,ScatMatrixInverse,Vs,Ws);
             }
         }
 
         // Then multiply the reflection matrix A and the vector W to get VSR...
-        for (m=-LMAX; m<=LMAX; ++m) {
+        for (int m=-LMAX; m<=LMAX; ++m) {
             int beginl = (m==0) ? 1 : abs(m);
-            for (l_=beginl; l_<=LMAX; ++l_) {
-                for (f_=0; f_<=1; ++f_) {
+            for (int l_=beginl; l_<=LMAX; ++l_) {
+                for (int f_=0; f_<=1; ++f_) {
                     int i_ = index(l_,m,f_);
                     VSRp[i_]=0;
                     VSRs[i_]=0;
-                    for (l=beginl; l<=LMAX; ++l) {
-                        for (f=0; f<=1; ++f) {
+                    for (int l=beginl; l<=LMAX; ++l) {
+                        for (int f=0; f<=1; ++f) {
                             int i = index(l,m,f);
                             int mm = LMAX+m;
                             int ll = 2*(LMAX-l)+f;
@@ -981,7 +976,7 @@ namespace SCATMECH {
                 }
             }
         }
-    }
+    }   
 
     //
     // The vector Z is that part of the scattering function which depends
@@ -990,16 +985,16 @@ namespace SCATMECH {
     //
     void
     Bobbert_Vlieger_BRDF_Model::
-    calculate_Z(double thetas)
+    calculate_Z(double _thetas)
     {
         if (is_down_to_up()||is_up_to_up()) {
-            double d_cost = cos(thetas);
+            double d_cost = cos(_thetas);
             COMPLEX cost= d_cost;
             double sint = real(sqrt(1.-sqr(cost)));
 
-            COMPLEX _cost=cos(pi-thetas);
-            COMPLEX rp = stack->rp12(pi-thetas,lambda,vacuum,substrate);
-            COMPLEX rs = stack->rs12(pi-thetas,lambda,vacuum,substrate);
+            COMPLEX _cost=cos(pi-_thetas);
+            COMPLEX rp = stack->rp12(pi-_thetas,lambda,vacuum,substrate);
+            COMPLEX rs = stack->rs12(pi-_thetas,lambda,vacuum,substrate);
 			COMPLEX phase = exp(2.*cI*qq*_cost);
             COMPLEX rpphase = rp*phase;
             COMPLEX rsphase = rs*phase;
@@ -1036,17 +1031,17 @@ namespace SCATMECH {
             }
         } else { // is_down_to_down()||is_up_to_down()
             double index = substrate.n(lambda);
-            COMPLEX sint = (COMPLEX)(sin(pi-thetas)*index);
-            COMPLEX _thetas = arcsine(sint);
-            if (imag(_thetas)>0) _thetas = conj(_thetas);
+            COMPLEX sint = (COMPLEX)(sin(pi-_thetas)*index);
+            COMPLEX _Thetas = arcsine(sint);
+            if (imag(_Thetas)>0) _Thetas = conj(_Thetas);
             COMPLEX cost= sqrt(1.-sqr(sint));
             if (imag(cost)<0) cost = -cost;
-            COMPLEX tp = stack->tp12(_thetas,lambda,vacuum,substrate);
-            COMPLEX ts = stack->ts12(_thetas,lambda,vacuum,substrate);
-			COMPLEX phase = exp(cI*qq*(cost-substrate.n(lambda)*cos(pi-thetas)));
+            COMPLEX tp = stack->tp12(_Thetas,lambda,vacuum,substrate);
+            COMPLEX ts = stack->ts12(_Thetas,lambda,vacuum,substrate);
+			COMPLEX phase = exp(cI*qq*(cost-substrate.n(lambda)*cos(pi-_thetas)));
             // The following factor accounts for the transmittance across the interface and
             // the Jacobian as the solid angle across the interface changes...
-            double factor = abs(COMPLEX(cos(pi-thetas))/cost*COMPLEX(sqrt(cube(index))));
+            double factor = abs(COMPLEX(cos(pi-_thetas))/cost*COMPLEX(sqrt(cube(index))));
             if (imag(cost)!=0.) phase = -phase;
             COMPLEX tpphase = tp*phase*factor;
             COMPLEX tsphase = ts*phase*factor;
@@ -1089,11 +1084,11 @@ namespace SCATMECH {
     //
     void
     Bobbert_Vlieger_BRDF_Model::
-    calculate_eIP(double phis)
+    calculate_eIP(double _phis)
     {
         vector<COMPLEX> expmphi(2*LMAX+2);
 
-        COMPLEX expphi=exp(cI*phis);
+        COMPLEX expphi=exp(cI*_phis);
         expmphi[LMAX]=1.;
 
         for (int m=1; m<=LMAX; ++m) {

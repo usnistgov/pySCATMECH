@@ -415,7 +415,7 @@ namespace SCATMECH {
 			double lambdamax = start2 > end2 ? start2 : end2;
 			for (int i=0;i<steps;++i) {
 				double f = (i+0.5)/steps;
-				Table::VECTOR n,k;
+				Table::VECTOR nn,kk;
 				for (int j=0;j<nlambda;++j) {
 					double x = double(j)/(nlambda-1.);
 					double f1 = (1-f);
@@ -425,12 +425,12 @@ namespace SCATMECH {
 					COMPLEX e2 = end.epsilon(lambda);
 					COMPLEX eps = e1*f1+e2*f2;
 					COMPLEX nk = sqrt(eps);
-					n.push_back(Table::PAIR(lambda,real(nk)));
-					k.push_back(Table::PAIR(lambda,imag(nk)));
+					nn.push_back(Table::PAIR(lambda,real(nk)));
+					kk.push_back(Table::PAIR(lambda,imag(nk)));
 				}
 				dielectric_function eps;
-				eps.set_n(n);
-				eps.set_k(k);
+				eps.set_n(nn);
+				eps.set_k(kk);
 				grow(eps,thickness/steps);
 			}
 		}

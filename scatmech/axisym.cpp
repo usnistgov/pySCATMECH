@@ -375,8 +375,8 @@ namespace SCATMECH {
     f(double theta) const
     {
         if (theta>theta0) {
-            double theta1=atan(B/vertical);
-            double sqrtantheta = sqr(tan(theta));
+            //double theta1=atan(B/vertical);
+            //double sqrtantheta = sqr(tan(theta));
             double a2 = sqr(vertical);
             double b2 = sqr(B);
             double c2 = sqr(indent);
@@ -512,7 +512,7 @@ namespace SCATMECH {
     }
 
 
-    void Register(const Axisymmetric_Shape* x)
+    void Register(const Axisymmetric_Shape*)
     {
         static bool regd=false;
         if (!regd) {

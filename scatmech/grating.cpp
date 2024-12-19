@@ -726,6 +726,9 @@ namespace SCATMECH {
         vars["mediumtk"] = medium_t.k(lambda);
 
         i=0;
+
+        STRING newpstring("(");
+
         while (1) {
             file >> stemp;
             if (stemp=="END") break;
@@ -742,14 +745,22 @@ namespace SCATMECH {
             varsmap::iterator p = override.find(stemp);
             if (p!=override.end()) v = p->second;
 
+            newpstring += format("%16g,", v);
+
             vars.insert(a,varsmap::value_type(stemp,v));
             parameters[stemp]=v;
 
             i++;
         }
+        newpstring[newpstring.length()-1] = ')';
+        cerr << newpstring << endl;
+        pstring = newpstring;
+
         if (i!=pe.NResult())
             error("Number of values in pstring (" + to_string(pe.NResult()) +
                   ") greater than number of parameters (" + to_string(i) + ")");
+
+        
 
         //*****************************************************************
         //*

@@ -58,11 +58,11 @@ namespace SCATMECH {
             int beginl = (m==0) ? 1 : abs(m);
             for (int l=beginl; l<=LMAX; ++l) {
                 for (int f=0; f<=1; ++f) {
-                    int i = index(l,m,f);
+                    //int i = index(l,m,f);
                     int ll = 2*(LMAX-l)+f;
                     for (int l_=beginl; l_<=LMAX; ++l_) {
                         for (int f_=0; f_<=1; ++f_) {
-                            int i_ = index(l_,m,f_);
+                            //int i_ = index(l_,m,f_);
                             int ll_ = 2*(LMAX-l_)+f_;
                             T[mm][ll_][ll]=0;
                         }
@@ -92,20 +92,6 @@ namespace SCATMECH {
     }
 
     //
-    // The complex arccosine is not part of the standard C++ library (!)...
-    //
-    static COMPLEX arccosine(const COMPLEX& a)
-    {
-        double x=real(a);
-        double y=imag(a);
-
-        return pi/2. - arg(sqrt(1. - sqr(x + cI*y)) +
-                           cI*(x + cI*y)) +
-               cI*log(abs(sqrt(1. - sqr(x + cI*y)) +
-                          cI*(x + cI*y)));
-    }
-
-    //
     // setup() is called whenever the model needs to be "recalculated"
     //
     void
@@ -115,7 +101,7 @@ namespace SCATMECH {
         Free_Space_Scatterer::setup();
 
         Shape->Write("shape.dat");
-        double length = Shape->Get_Base_Length();
+        //double length = Shape->Get_Base_Length();
 
         k = 2.0*pi/lambda;
         double q = k * Shape->Get_MaxRadius();
@@ -233,7 +219,7 @@ namespace SCATMECH {
 
     JonesMatrix
     TMatrix_Axisymmetric_Scatterer::
-        jones(const Vector& kin, const Vector& kout)
+    jones(const Vector& kin, const Vector& kout)
     {
         SETUP();
 
@@ -269,18 +255,18 @@ namespace SCATMECH {
 
         JonesMatrix scatter = JonesMatrix(pp,ss,ps,sp)*k*COMPLEX(0,1);
 
-        Vector sr = perpto(_kout,Vector(0,0,-1));
-        Vector si = perpto(-_kin,Vector(0,0,1));
-        Vector pr = perpto(_kout,sr);
-        Vector pi = perpto(-_kin,si);
+        Vector _sr = perpto(_kout,Vector(0,0,-1));
+        Vector _si = perpto(-_kin,Vector(0,0,1));
+        Vector _pr = perpto(_kout,_sr);
+        Vector _pi = perpto(-_kin,_si);
 
-        Vector ai = perpto(-_kin,_kout);
-        Vector ar = ai;
-        Vector bi = -perpto(-_kin,ai);
-        Vector br = -perpto(_kout,ar);
+        Vector _ai = perpto(-_kin,_kout);
+        Vector _ar = _ai;
+        Vector _bi = -perpto(-_kin,_ai);
+        Vector _br = -perpto(_kout,_ar);
 
-        JonesMatrix rotatein = GetJonesRotator(bi,ai,si,pi).transpose();
-        JonesMatrix rotateout = GetJonesRotator(br,ar,sr,pr);
+        JonesMatrix rotatein = GetJonesRotator(_bi,_ai,_si,_pi).transpose();
+        JonesMatrix rotateout = GetJonesRotator(_br,_ar,_sr,_pr);
 
 		return rotateout*scatter*rotatein;
     }
@@ -351,13 +337,11 @@ namespace SCATMECH {
     TMatrix_Axisymmetric_Scatterer::
     calculate_W(double thetai)
     {
-        int i,m,l,f,l_,f_;
-
         // First calculate the V vector of the incident wave...
-        for (l=1; l<=LMAX; ++l) {
-            for (m=-l; m<=l; ++m) {
-                for (f=0; f<=1; ++f) {
-                    i=index(l,m,f);
+        for (int l=1; l<=LMAX; ++l) {
+            for (int m=-l; m<=l; ++m) {
+                for (int f=0; f<=1; ++f) {
+                    int i=index(l,m,f);
                     Vp[i]=VIp(l,m,f,thetai);
                     Vs[i]=VIs(l,m,f,thetai);
                 }
@@ -365,15 +349,15 @@ namespace SCATMECH {
         }
 
         // Then multiply the incident vector V by the scattering matrix
-        for (m=-MMAX; m<=MMAX; ++m) {
+        for (int m=-MMAX; m<=MMAX; ++m) {
             int beginl = (m==0) ? 1 : abs(m);
-            for (l_=beginl; l_<=LMAX; ++l_) {
-                for (f_=0; f_<=1; ++f_) {
+            for (int l_=beginl; l_<=LMAX; ++l_) {
+                for (int f_=0; f_<=1; ++f_) {
                     int i_ = index(l_,m,f_);
                     Wp[i_]=0;
                     Ws[i_]=0;
-                    for (l=beginl; l<=LMAX; ++l) {
-                        for (f=0; f<=1; ++f) {
+                    for (int l=beginl; l<=LMAX; ++l) {
+                        for (int f=0; f<=1; ++f) {
                             int i = index(l,m,f);
                             int mm = LMAX+m;
                             int ll = 2*(LMAX-l)+f;

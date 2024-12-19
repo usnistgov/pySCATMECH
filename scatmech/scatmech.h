@@ -56,25 +56,13 @@ namespace SCATMECH {
     // The following are useful for error handling...
     //
 
-    class SCATMECH_exception : public std::exception
+    class SCATMECH_exception : public std::runtime_error
     {
         public:
 
-            SCATMECH_exception(const std::string m)
-            {
-                message = "SCATMECH: ";
-                message += std::string(m);
-            }
-
-            ~SCATMECH_exception() throw() {}
-
-            virtual const char *what() const throw()
-            {
-                return message.c_str();
-            }
-
-        private:
-            std::string message;
+            SCATMECH_exception(const std::string m) :
+                std::runtime_error(std::string("SCATMECH: ") + m)
+            {}
     };
 
     template <class T>

@@ -105,3 +105,50 @@ class RCW_Model(Model):
         else: d=0
 
         return SCATPY.GetGratingEpsilon(self.handle,x,z,d)
+
+
+    def getGratingDefinition(self):
+        """
+        Returns the grating definition.
+
+
+        Returns
+        -------
+
+        Dictionary containing the following keys:
+
+        "position"    : list of lists of x-positions of the transitions for 
+                        each of the layers in the grating.
+        "materialx"   : list of lists of the dielectric constants (xx element)
+                        in each of the layers of the grating.
+        "materialy"   : list of lists of the dielectric constants (yy element) 
+                        in each of the layers of the grating.
+        "materialz"   : list of lists of the dielectric constants (zz element) 
+                        in each of the layers of the grating.
+        "materialmux" : list of lists of the magnetic susceptibility (xx 
+                        element) in each of the layers of the grating.
+        "materialmuy" : list of lists of the magnetic susceptibility (yy 
+                        element) in each of the layers of the grating.
+        "materialmuz" : list of lists of the magnetic susceptibility (zz 
+                        element) in each of the layers of the grating.
+        "thickness"   : list of thicknesses of each layer of the grating.
+        "heights"     : list of the heights of each interface of the grating.
+
+        If the grating is a Generic_Grating, then an additional key "segments" 
+        contains a list of line segments for each of the boundaries, each 
+        element a dict containing keys "x1", "y1", "x2", "y2", "mat1", and
+        "mat2".
+
+        """
+
+        definition =  SCATPY.GetGratingDefinition(self.handle)
+
+        definition['heights'] = [0]
+        accum = 0
+        for thickness in definition['thickness']:
+            accum = accum - thickness
+            definition['heights'].append(accum)
+
+        return definition
+            
+    

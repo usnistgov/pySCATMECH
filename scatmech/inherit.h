@@ -86,6 +86,9 @@ namespace SCATMECH {
                 ///< model this parameter belongs
             );
 
+            /// Destructor
+            virtual ~ModelParameterBase() {}
+
             /// Set a parameter's value.
             virtual void set_parameter(
                 Model* model,               ///< Pointer to the specific object
@@ -114,7 +117,7 @@ namespace SCATMECH {
             /// for a normal parameter, and a pointer the parent class'
             /// inheritance if it is a Model_Ptr parameter...
             virtual const Inheritance* get_inheritance(
-                const Model* model=NULL ///< Pointer to the specific object
+                const Model* /* model = NULL */ ///< Pointer to the specific object
             ) const {
                 return (Inheritance*)0;
             }
@@ -358,9 +361,9 @@ namespace SCATMECH {
 
             /// Return a pointer to the named progeny class.
             Model* get_named_model(
-                const STRING& name   ///< Name of class to create instance of
+                const STRING& _name   ///< Name of class to create instance of
             ) const {
-                return get_named_model(name,false);
+                return get_named_model(_name,false);
             }
 
             /// Returns parent's Inheritance.
@@ -535,7 +538,7 @@ namespace SCATMECH {
             Model_Ptr& operator=(Model* m) {
                 if (model) delete model;
                 if (m) {
-                    const Inheritance& i = m->get_inheritance();
+                    // const Inheritance& i = m->get_inheritance();
                     model = static_cast<_Model*>(m);
                 }
                 else model = 0;
@@ -554,7 +557,7 @@ namespace SCATMECH {
             /// The assignment to the trivial class Get_Model_Ptr
             /// gets an instance of the class using the
             /// Inheritance functionality.
-            Model_Ptr& operator=(const Get_Model_Ptr& gm) {
+            Model_Ptr& operator=(const Get_Model_Ptr& /* gm */) {
                 GetPtr();
                 return *this;
             }
@@ -639,6 +642,8 @@ namespace SCATMECH {
             /// It is expected that the programmer will typecast the
             /// result to a pointer to the approprate model.
             virtual Model* clone(const Model& model) const = 0;
+
+            virtual ~Model_Maker_Base() {}
     };
 
     ///
@@ -655,6 +660,8 @@ namespace SCATMECH {
             Model* clone(const Model& model) const {
                 return new _Model(static_cast<const _Model&>(model));
             }
+
+            virtual ~Model_Maker<_Model>() {}
     };
 
     ///
@@ -666,9 +673,10 @@ namespace SCATMECH {
             Model* make() const {
                 return static_cast<Model*>(0);
             }
-            Model* clone(const Model& model) const {
+            Model* clone(const Model& /* model */) const {
                 return static_cast<Model*>(0);
             }
+            virtual ~Model_Maker<void>() {}
     };
 
     inline Model* Inheritance::make() const {

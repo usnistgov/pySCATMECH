@@ -423,7 +423,7 @@ namespace SCATMECH {
                     if (_subparameter.size()==0) {
                         result = *param;
                     } else {
-                        if (param->get_inheritance()!=NULL) {
+                        if (param->get_inheritance(NULL)!=NULL) {
                             Model* m =(Model*)(param->get_ptr(this));
                             result = m->get_parameter_info(_subparameter);
                         } else {

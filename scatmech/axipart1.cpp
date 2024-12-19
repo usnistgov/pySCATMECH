@@ -68,11 +68,11 @@ namespace SCATMECH {
             int beginl = (m==0) ? 1 : abs(m);
             for (int l=beginl; l<=LMAX; ++l) {
                 for (int f=0; f<=1; ++f) {
-                    int i = index(l,m,f);
+                    //int i = index(l,m,f);
                     int ll = 2*(LMAX-l)+f;
                     for (int l_=beginl; l_<=LMAX; ++l_) {
                         for (int f_=0; f_<=1; ++f_) {
-                            int i_ = index(l_,m,f_);
+                            //int i_ = index(l_,m,f_);
                             int ll_ = 2*(LMAX-l_)+f_;
                             T[mm][ll_][ll]=0;
                         }
@@ -208,16 +208,16 @@ namespace SCATMECH {
                         int ii_ = index(l_,m);
 
                         // Integration by Gaussian method [see Eq. (4.2) of BV&G]
-                        for (int k=0; k<npts; ++k) {
-                            double weight = Gauss_Laguerre_Integration::weights[ipt][k];
-                            Aee += weight*(reflect_p[k]*Vmatrix[k][ii]*dminusmatrix[k][ii_]
-                                           +reflect_s[k]*Umatrix[k][ii]*dplusmatrix[k][ii_]);
-                            Ahe += weight*(reflect_p[k]*Vmatrix[k][ii]*dplusmatrix[k][ii_]
-                                           +reflect_s[k]*Umatrix[k][ii]*dminusmatrix[k][ii_]);
-                            Aeh += weight*(reflect_p[k]*Umatrix[k][ii]*dminusmatrix[k][ii_]
-                                           +reflect_s[k]*Vmatrix[k][ii]*dplusmatrix[k][ii_]);
-                            Ahh += weight*(reflect_p[k]*Umatrix[k][ii]*dplusmatrix[k][ii_]
-                                           +reflect_s[k]*Vmatrix[k][ii]*dminusmatrix[k][ii_]);
+                        for (int kk=0; kk<npts; ++kk) {
+                            double weight = Gauss_Laguerre_Integration::weights[ipt][kk];
+                            Aee += weight*(reflect_p[kk]*Vmatrix[kk][ii]*dminusmatrix[kk][ii_]
+                                           +reflect_s[kk]*Umatrix[kk][ii]*dplusmatrix[kk][ii_]);
+                            Ahe += weight*(reflect_p[kk]*Vmatrix[kk][ii]*dplusmatrix[kk][ii_]
+                                           +reflect_s[kk]*Umatrix[kk][ii]*dminusmatrix[kk][ii_]);
+                            Aeh += weight*(reflect_p[kk]*Umatrix[kk][ii]*dminusmatrix[kk][ii_]
+                                           +reflect_s[kk]*Vmatrix[kk][ii]*dplusmatrix[kk][ii_]);
+                            Ahh += weight*(reflect_p[kk]*Umatrix[kk][ii]*dplusmatrix[kk][ii_]
+                                           +reflect_s[kk]*Vmatrix[kk][ii]*dminusmatrix[kk][ii_]);
                         }
 
                         // Constant value in front of Eq. (8.17) of BV...
@@ -345,7 +345,7 @@ namespace SCATMECH {
         // write it to a file...
         //
         if (order!=0) {
-            int retvalue=1;
+            //int retvalue=1;
             old_LMAX=0;
 
             if (old_LMAX<LMAX) {
@@ -364,17 +364,17 @@ namespace SCATMECH {
             int beginl = (m==0) ? 1 : abs(m);
             for (l=beginl; l<=LMAX; ++l) {
                 for (f=0; f<=1; ++f) {
-                    int i = index(l,m,f);
+                    //int i = index(l,m,f);
                     int ll = 2*(LMAX-l)+f;
                     for (l_=beginl; l_<=LMAX; ++l_) {
                         for (f_=0; f_<=1; ++f_) {
-                            int i_ = index(l_,m,f_);
+                            //int i_ = index(l_,m,f_);
                             int ll_ = 2*(LMAX-l_)+f_;
                             ScatMatrixInverse[mm][ll_][ll]=0.;
                             if (order!=0) {
                                 for (l__=beginl; l__<=LMAX; ++l__) {
                                     for (f__=0; f__<=1; ++f__) {
-                                        int i__ = index(l__,m,f__);
+                                        //int i__ = index(l__,m,f__);
                                         int ll__ = 2*(LMAX-l__)+f__;
 
                                         ScatMatrixInverse[mm][ll_][ll] += BMatrix[mm][ll_][ll__]*ScatMatrix[mm][ll__][ll];
@@ -394,11 +394,11 @@ namespace SCATMECH {
             int beginl = (m==0) ? 1 : abs(m);
             for (l=beginl; l<=LMAX; ++l) {
                 for (f=0; f<=1; ++f) {
-                    int i = index(l,m,f);
+                    //int i = index(l,m,f);
                     int ll = 2*(LMAX-l)+f;
                     for (l_=beginl; l_<=LMAX; ++l_) {
                         for (f_=0; f_<=1; ++f_) {
-                            int i_ = index(l_,m,f_);
+                            //int i_ = index(l_,m,f_);
                             int ll_ = 2*(LMAX-l_)+f_;
                             ScatMatrixInverse[mm][ll_][ll]=(double)(ll_==ll)-ScatMatrixInverse[mm][ll_][ll];
                         }
@@ -416,16 +416,16 @@ namespace SCATMECH {
             int beginl = (m==0) ? 1 : abs(m);
             for (l=beginl; l<=LMAX; ++l) {
                 for (f=0; f<=1; ++f) {
-                    int i = index(l,m,f);
+                    //int i = index(l,m,f);
                     int ll = 2*(LMAX-l)+f;
                     for (l_=beginl; l_<=LMAX; ++l_) {
                         for (f_=0; f_<=1; ++f_) {
-                            int i_ = index(l_,m,f_);
+                            //int i_ = index(l_,m,f_);
                             int ll_ = 2*(LMAX-l_)+f_;
                             ScatMatrix[mm][ll_][ll] =0.;
                             for (l__=beginl; l__<=LMAX; ++l__) {
                                 for (f__=0; f__<=1; ++f__) {
-                                    int i__ = index(l__,m,f__);
+                                    //int i__ = index(l__,m,f__);
                                     int ll__ = 2*(LMAX-l__)+f__;
 
                                     ScatMatrix[mm][ll_][ll] += BMatrix[mm][ll_][ll__]*ScatMatrixInverse[mm][ll__][ll];
@@ -442,11 +442,11 @@ namespace SCATMECH {
             int beginl = (m==0) ? 1 : abs(m);
             for (l=beginl; l<=LMAX; ++l) {
                 for (f=0; f<=1; ++f) {
-                    int i = index(l,m,f);
+                    //int i = index(l,m,f);
                     int ll = 2*(LMAX-l)+f;
                     for (l_=beginl; l_<=LMAX; ++l_) {
                         for (f_=0; f_<=1; ++f_) {
-                            int i_ = index(l_,m,f_);
+                            //int i_ = index(l_,m,f_);
                             int ll_ = 2*(LMAX-l_)+f_;
                             ScatMatrixInverse[mm][ll_][ll]=ScatMatrix[mm][ll_][ll];
                         }
@@ -472,36 +472,36 @@ namespace SCATMECH {
     //
     void
     Axisymmetric_Particle_BRDF_Model::
-    set_geometry(double thetai,double thetas,double phis)
+    set_geometry(double _thetai,double _thetas,double _phis)
     {
         SETUP();
 
-        if (abs(thetai)<1E-6) thetai=1E-6;
-        if (abs(thetas)<1E-6) thetas=1E-6;
+        if (abs(_thetai)<1E-6) _thetai = 1E-6;
+        if (abs(_thetas)<1E-6) _thetas = 1E-6;
 
-        if (thetai<0) {
-            thetai=-thetai;
-            phis = pi+phis;
+        if (thetai < 0) {
+            _thetai = -_thetai;
+            _phis = pi + _phis;
         }
 
-        if (thetas<0) {
-            thetas=-thetas;
-            phis=pi+phis;
+        if (_thetas < 0) {
+            _thetas = -_thetas;
+            _phis = pi + _phis;
         }
 
-        if (thetai!=old_thetai) {
-            calculate_W(thetai);
-            old_thetai=thetai;
+        if (_thetai != old_thetai) {
+            calculate_W(_thetai);
+            old_thetai = _thetai;
         }
 
-        if (thetas!=old_thetas) {
-            calculate_Z(pi-thetas);
-            old_thetas=thetas;
+        if (_thetas != old_thetas) {
+            calculate_Z(pi - _thetas);
+            old_thetas = _thetas;
         }
 
-        if (phis!=old_phis) {
-            calculate_eIP(phis);
-            old_phis=phis;
+        if (_phis != old_phis) {
+            calculate_eIP(_phis);
+            old_phis = _phis;
         }
     }
 
@@ -509,9 +509,9 @@ namespace SCATMECH {
     // differential scattering cross-section...
     COMPLEX
     Axisymmetric_Particle_BRDF_Model::
-    Epp(double thetai,double thetas,double phis)
+    Epp(double _thetai,double _thetas,double _phis)
     {
-        set_geometry(thetai,thetas,phis);
+        set_geometry(_thetai, _thetas, _phis);
         return E(Wp,Zp);
     }
 
@@ -519,9 +519,9 @@ namespace SCATMECH {
     // differential scattering cross-section...
     COMPLEX
     Axisymmetric_Particle_BRDF_Model::
-    Eps(double thetai,double thetas,double phis)
+    Eps(double _thetai,double _thetas,double _phis)
     {
-        set_geometry(thetai,thetas,phis);
+        set_geometry(_thetai, _thetas, _phis);
         return E(Wp,Zs);
     }
 
@@ -529,9 +529,9 @@ namespace SCATMECH {
     // differential scattering cross-section...
     COMPLEX
     Axisymmetric_Particle_BRDF_Model::
-    Esp(double thetai,double thetas,double phis)
+    Esp(double _thetai,double _thetas,double _phis)
     {
-        set_geometry(thetai,thetas,phis);
+        set_geometry(_thetai, _thetas, _phis);
         return E(Ws,Zp);
     }
 
@@ -539,9 +539,9 @@ namespace SCATMECH {
     // differential scattering cross-section...
     COMPLEX
     Axisymmetric_Particle_BRDF_Model::
-    Ess(double thetai,double thetas,double phis)
+    Ess(double _thetai,double _thetas,double _phis)
     {
-        set_geometry(thetai,thetas,phis);
+        set_geometry(_thetai, _thetas, _phis);
         return E(Ws,Zs);
     }
 
@@ -581,112 +581,78 @@ namespace SCATMECH {
         MMAX = 0;
     }
 
-    COMPLEX
+    MuellerMatrix
     Axisymmetric_Particle_BRDF_Model::
-    PartialExtinctionS(double theta)
-    {
-        return PartialExtinction(theta,1);
-    }
-
-    COMPLEX
-    Axisymmetric_Particle_BRDF_Model::
-    PartialExtinctionP(double theta)
-    {
-        return PartialExtinction(theta,0);
-    }
-
-    COMPLEX
-    Axisymmetric_Particle_BRDF_Model::
-    PartialExtinction(double theta,int pol)
+    Specular(double _theta)
     {
         SETUP();
 
-        // This function returns the partial extinction cross section for
-        // an incident angle of theta and polarization pol, where the "partial"
-        // means the following: when type=0 or type=2, the reflectance changes
-        // by a factor exp(-sigma*density/cos(theta)) and for type=1 or type=3, the
-        // transmittance changes by a factor exp(-sigma*density/cos(theta). The total
-        // extinction cross section is the sum of these values for type=0 and type=1,
-        // for light incident downward, or the sum of these values for type=2 and type=3,
-        // for light incident upward. The value of the partial extinction cross
-        // section can be negative, which is an indication that the reflectance
-        // or transmittance is increased by the presence of the particle.
-        //
-
-        pol = pol ? 1 : 0;
-        vector<COMPLEX>& W = pol ? Ws : Wp;
-        vector<COMPLEX>& Z = pol ? Zs : Zp;
+        // This function returns the Mueller matrix specular reflectance (for type==0 or 
+        // type==2) or the regular transmittance (for type==1 or type==3) for an incident 
+        // angle of theta (in radians). The result is derived from the optical theorem 
+        // and is only valid when density is suffiently low that multiple scattering 
+        // between spheres can be neglected.
 
         switch (type) {
-            case 0:
-            {
-                set_geometry(theta,theta,0.);
-                COMPLEX e = E(W,Z);
-                COMPLEX r = stack->r12(theta,lambda,vacuum,substrate)[pol];
-                r *= exp(2.*cI*qq*cos(theta));
-                double R = norm(r);
-                return 4.*pi/k*(e/r)*R;
-            }
-            break;
-            case 1:
-            {
-                double index = substrate.n(lambda);
-                double sint = sin(theta)/index;
-                if (sint>=1. || substrate.k(lambda)!=0) return 0.;
-                double thetat = asin(sint);
-                set_geometry(theta,thetat,0.);
-                COMPLEX e = E(W,Z);
-                COMPLEX phase =  exp(cI*qq*(cos(theta)-index*cos(thetat)));
-                double factor = cos(thetat)/cos(theta);
-                e /= phase;
-                COMPLEX t = stack->t12(theta,lambda,vacuum,substrate)[pol];
-                double T = norm(t)*factor*index;
-                return 4.*pi/k/sqrt(cube(index))/factor*(e/t)*T;
-            }
-            break;
-            case 2:
-            {
-                set_geometry(theta,theta,0.);
-                COMPLEX e = E(W,Z);
-                double index = substrate.n(lambda);
+        case 0:
+        {
+            JonesMatrix X = JonesDSC(_theta, _theta, 0., 0.);
+            JonesMatrix r = stack->r12(_theta, lambda, vacuum, substrate);
+            r *= exp(2. * cI * qq * cos(_theta));
+            MuellerMatrix sigma = (4. * pi / k) * ReCrossMueller(X, r);
 
-                COMPLEX sint = sin(theta)*index;
-                COMPLEX cost = sqrt(1.-sqr(sint));
-                if (imag(cost)<0) cost = -cost;
-
-                COMPLEX r = stack->r21i(theta,lambda,substrate,vacuum)[pol];
-                double R = norm(r);
-
-                r *= exp(-2.*cI*qq*index*cos(theta));
-
-                return 4.*pi/k/index*(e/r)*R;
-            }
-            break;
-            case 3:
-            {
-                double index = substrate.n(lambda);
-                double sint = sin(theta)*index;
-                COMPLEX cost = sqrt(1.-sqr(sint));
-                if (imag(cost)<0) cost = -cost;
-                if (sint>=1.) return 0.;
-                double thetat = asin(sint);
-
-                set_geometry(theta,thetat,0.);
-                COMPLEX e = E(W,Z);
-
-                double factor = cos(theta)/real(cost);
-                COMPLEX phase = exp(cI*qq*(cost-index*cos(theta)));
-
-                e /= phase;
-                COMPLEX t = stack->t21i(theta,lambda,substrate,vacuum)[pol];
-                double T = norm(t)/index/factor;
-                return 4.*pi/k*sqrt(index)*factor*(e/t)*T;
-            }
-            break;
-            default:
-                error("Invalid type = " + to_string(type));
+            return MuellerMatrix(r) - sigma * (density / cos(_theta));
         }
-        return 0;
+        break;
+        case 1:
+        {
+            double index = substrate.n(lambda);
+            double sint = sin(_theta) / index;
+            if (sint >= 1. || substrate.k(lambda) != 0) return MuellerZero();
+            double thetat = asin(sint);
+            JonesMatrix X = JonesDSC(_theta, thetat, 0., 0.);
+            COMPLEX phase = exp(cI * qq * (cos(_theta) - index * cos(thetat)));
+            //double factor = cos(thetat)/cos(_theta);
+            JonesMatrix t = stack->t12(_theta, lambda, vacuum, substrate);
+            t *= phase;
+            MuellerMatrix sigma = (4. * pi / k / sqrt(index)) * ReCrossMueller(X, t);
+
+            return MuellerMatrix(t) * (cos(thetat) / cos(_theta) * index) - sigma * (density / cos(_theta));
+        }
+        break;
+        case 2:
+        {
+            double index = substrate.n(lambda);
+            JonesMatrix X = JonesDSC(_theta, _theta, 0., 0.);
+            JonesMatrix r = stack->r21i(_theta, lambda, substrate, vacuum);
+            r *= exp(-2. * cI * index * qq * cos(_theta));
+            MuellerMatrix sigma = (4. * pi / k / index) * ReCrossMueller(X, r);
+
+            return MuellerMatrix(r) - sigma * (density / cos(_theta));
+        }
+        break;
+        case 3:
+        {
+            double index = substrate.n(lambda);
+            double sint = sin(_theta) * index;
+            COMPLEX cost = sqrt(1. - sqr(sint));
+            if (imag(cost) < 0) cost = -cost;
+            if (sint >= 1.) return MuellerZero();
+            double thetat = asin(sint);
+            JonesMatrix X = JonesDSC(_theta, thetat, 0., 0.);
+            COMPLEX phase = exp(cI * qq * (cost - index * cos(_theta)));
+            //double factor = cos(thetat)/cos(_theta);
+            JonesMatrix t = stack->t21i(_theta, lambda, substrate, vacuum);
+            t *= phase;
+            MuellerMatrix sigma = (4. * pi / k / sqrt(index)) * ReCrossMueller(X, t);
+
+            return MuellerMatrix(t) * (cos(_theta) / index / cos(thetat)) - sigma * (density / cos(_theta));
+        }
+        break;
+        default:
+            error("Invalid type = " + to_string(type));
+        }
+        return MuellerZero();
     }
 
     DEFINE_MODEL(Axisymmetric_Particle_BRDF_Model,Local_BRDF_Model,

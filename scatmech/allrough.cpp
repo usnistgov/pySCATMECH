@@ -108,11 +108,10 @@ namespace SCATMECH {
         Bragg_Frequency(fx,fy);
         double qpow = pow(4*sqr(pi)*(sqr(fx)+sqr(fy)),exponent/2.);
         double nu = pow(relaxation,exponent-1.);
-        double fourpisqr = 4.*sqr(pi);
+        //double fourpisqr = 4.*sqr(pi);
         double PSDsub = psd->psd(fx,fy);
         double FTsub = sqrt(PSDsub);
         double PSDint0 = intrinsic->psd(fx,fy);
-        double FTint0 = sqrt(PSDint0);
 
         vector<double> a(N);
         vector<double> PSDint(N);

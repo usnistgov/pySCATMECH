@@ -34,14 +34,8 @@ namespace SCATMECH {
 
         public:
 
-            COMPLEX PartialExtinctionS(double theta) {
-                SETUP();
-                return model.PartialExtinctionS(theta);
-            }
-
-            COMPLEX PartialExtinctionP(double theta) {
-                SETUP();
-                return model.PartialExtinctionP(theta);
+            MuellerMatrix Specular(double theta) {
+                return model.Specular(theta);
             }
 
         protected:
@@ -67,14 +61,9 @@ namespace SCATMECH {
             DECLARE_PARAMETER(int,improve);
 
         public:
-            COMPLEX PartialExtinctionS(double theta) {
-                SETUP();
-                return model.PartialExtinctionS(theta);
-            }
 
-            COMPLEX PartialExtinctionP(double theta) {
-                SETUP();
-                return model.PartialExtinctionP(theta);
+            MuellerMatrix Specular(double theta) {
+                return model.Specular(theta);
             }
 
         protected:

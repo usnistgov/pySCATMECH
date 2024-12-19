@@ -59,17 +59,9 @@ namespace SCATMECH {
 
         public:
             Bobbert_Vlieger_BRDF_Model();
-
-            // The real part of the following are the partial extinction cross
-            // sections for S or P polarization, respectively, where the "partial"
-            // means that when type=0, the downward reflectance is reduced by the
-            // result, when type=1, the downward transmittance is reduced by the result,
-            // when type=2, the upward reflectance is reduced by the result, and
-            // when type=3, the upward transmittance is reduced by the result.
-            // The total extinction cross section can be obtained by summing these
-            // values for type=0 and type=1 or for type=2 and type=3.
-            COMPLEX PartialExtinctionS(double theta);
-            COMPLEX PartialExtinctionP(double theta);
+            
+            // The Mueller matrix specular reflectance or regular transmittance...
+            MuellerMatrix Specular(double theta);
 
         protected:
             void setup();
@@ -134,8 +126,6 @@ namespace SCATMECH {
             void    calculate_W(double thetai);
             void    calculate_Z(double thetas);
             void    calculate_eIP(double phis);
-
-            COMPLEX	PartialExtinction(double theta,int pol);
 
             void    iterative_improvement(ScatterTMatrix& Ainv, ScatterTMatrix& A,
                                           std::vector<COMPLEX>& b,std::vector<COMPLEX>& x);

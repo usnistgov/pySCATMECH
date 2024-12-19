@@ -14,6 +14,8 @@ using namespace std;
 
 using namespace SCATMECH;
 
+#define HERE() cerr<<"I am here: " << __LINE__ << endl;
+
 std::map<int,Model*> mapModel;
 std::map<int,BRDF_Model_Ptr> mapBRDF_Model; 
 std::map<int,Local_BRDF_Model_Ptr> mapLocal_BRDF_Model;
@@ -25,22 +27,15 @@ std::map<int,Model_Ptr<Model> > mapLone_Model;
 	       
 int modelct = 0;
 
-class SCATPY_exception: public std::exception
+class SCATPY_exception: public std::runtime_error
 {
 public:
-  SCATPY_exception(const std::string& _msg) : msg(_msg) {}
-#ifndef _MSC_VER
-  virtual ~SCATPY_exception() _GLIBCXX_USE_NOEXCEPT {}
-#endif
-  virtual const char *what() const throw() {
-    return msg.c_str();
-  }
-private:
-  std::string msg;
+  SCATPY_exception(const std::string& _msg) : std::runtime_error(_msg) {}
 };
 
+
 // Convert std::complex to Py_complex...
-static PyObject * PYCOMPLEX(COMPLEX& x)
+static PyObject * PYCOMPLEX(const COMPLEX& x)
 {
   Py_complex result;
   result.real = real(x);
@@ -688,7 +683,7 @@ static PyObject * GetGratingEpsilon(PyObject *self, PyObject *args)
         return NULL;
 
     COMPLEX eps;
-
+    
     const Grating_Ptr &grating = mapRCW_Model[handle]->get_grating(); 
 
     int level = grating->get_level(z);
@@ -704,6 +699,144 @@ static PyObject * GetGratingEpsilon(PyObject *self, PyObject *args)
     else eps = grating->eps(x,level,direction);
 
     return PyComplex_FromDoubles(real(eps),imag(eps));
+  }
+  catch (std::exception& e) {
+    PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
+    return NULL;
+  }    
+}
+
+static PyObject * GetGratingDefinition(PyObject *self, PyObject *args)
+{
+  try {
+
+    int handle;
+    if (!PyArg_ParseTuple(args, "i", &handle))
+        return NULL;
+
+    Model_Ptr<RCW_Model> &model = mapRCW_Model[handle];
+    const Grating_Ptr &grating = model->get_grating();
+
+    typedef std::vector<std::vector<double> > vvdouble;
+    typedef std::vector<std::vector<COMPLEX> > vvcomplex;
+    typedef std::vector<double> vdouble;
+    typedef std::vector<COMPLEX> vcomplex;
+
+    grating->set_lambda(model->get_lambda());
+    
+    const vvdouble & cposition = grating->get_position();
+    const vvcomplex & cmaterialx = grating->get_materialx();
+    const vvcomplex & cmaterialy = grating->get_materialy();
+    const vvcomplex & cmaterialz = grating->get_materialz();
+    const vvcomplex & cmaterialmux = grating->get_materialmux();
+    const vvcomplex & cmaterialmuy = grating->get_materialmuy();
+    const vvcomplex & cmaterialmuz = grating->get_materialmuz();
+    const vdouble & cthickness = grating->get_thickness();
+
+    PyObject *position = PyList_New(0);
+    for (vvdouble::const_iterator p=cposition.begin(); p!=cposition.end(); ++p) {
+      PyObject *A = PyList_New(0);
+      for (vdouble::const_iterator q=p->begin(); q!=p->end(); ++q) {
+	PyList_Append(A, PyFloat_FromDouble(*q));
+      }
+      PyList_Append(position, A);
+    }
+
+    PyObject *materialx = PyList_New(0);
+    for (vvcomplex::const_iterator p=cmaterialx.begin(); p!=cmaterialx.end(); ++p) {
+      PyObject *A = PyList_New(0);
+      for (vcomplex::const_iterator q=p->begin(); q!=p->end(); ++q) {
+	PyList_Append(A, PYCOMPLEX(*q));
+      }
+      PyList_Append(materialx, A);
+    }
+    
+    PyObject *materialy = PyList_New(0);
+    for (vvcomplex::const_iterator p=cmaterialy.begin(); p!=cmaterialy.end(); ++p) {
+      PyObject *A = PyList_New(0);
+      for (vcomplex::const_iterator q=p->begin(); q!=p->end(); ++q) {
+	PyList_Append(A, PYCOMPLEX(*q));
+      }
+      PyList_Append(materialy, A);
+    }
+    
+    PyObject *materialz = PyList_New(0);
+    for (vvcomplex::const_iterator p=cmaterialz.begin(); p!=cmaterialz.end(); ++p) {
+      PyObject *A = PyList_New(0);
+      for (vcomplex::const_iterator q=p->begin(); q!=p->end(); ++q) {
+	PyList_Append(A, PYCOMPLEX(*q));
+      }
+      PyList_Append(materialz, A);
+    }
+
+    PyObject *materialmux = PyList_New(0);
+    for (vvcomplex::const_iterator p=cmaterialmux.begin(); p!=cmaterialmux.end(); ++p) {
+      PyObject *A = PyList_New(0);
+      for (vcomplex::const_iterator q=p->begin(); q!=p->end(); ++q) {
+	PyList_Append(A, PYCOMPLEX(*q));
+      }
+      PyList_Append(materialmux, A);
+    }
+    
+    PyObject *materialmuy = PyList_New(0);
+    for (vvcomplex::const_iterator p=cmaterialmuy.begin(); p!=cmaterialmuy.end(); ++p) {
+      PyObject *A = PyList_New(0);
+      for (vcomplex::const_iterator q=p->begin(); q!=p->end(); ++q) {
+	PyList_Append(A, PYCOMPLEX(*q));
+      }
+      PyList_Append(materialmuy, A);
+    }
+    
+    PyObject *materialmuz = PyList_New(0);
+    for (vvcomplex::const_iterator p=cmaterialmuz.begin(); p!=cmaterialmuz.end(); ++p) {
+      PyObject *A = PyList_New(0);
+      for (vcomplex::const_iterator q=p->begin(); q!=p->end(); ++q) {
+	PyList_Append(A, PYCOMPLEX(*q));
+      }
+      PyList_Append(materialmuz, A);
+    }
+     
+    PyObject *thickness = PyList_New(0);
+    for (vdouble::const_iterator p=cthickness.begin(); p!=cthickness.end(); ++p) {
+      PyList_Append(thickness, PyFloat_FromDouble(*p));
+    }
+    
+    PyObject *dict = PyDict_New();
+
+    PyDict_SetItemString(dict, "position", position);
+    PyDict_SetItemString(dict, "materialx", materialx);
+    PyDict_SetItemString(dict, "materialy", materialy);
+    PyDict_SetItemString(dict, "materialz", materialz);
+    PyDict_SetItemString(dict, "materialmux", materialx);
+    PyDict_SetItemString(dict, "materialmuy", materialy);
+    PyDict_SetItemString(dict, "materialmuz", materialz);
+    PyDict_SetItemString(dict, "thickness", thickness);
+    PyDict_SetItemString(dict, "medium_i", PYCOMPLEX(grating->get_medium_i().epsilon(grating->get_lambda())));
+    PyDict_SetItemString(dict, "medium_t", PYCOMPLEX(grating->get_medium_t().epsilon(grating->get_lambda())));
+    PyDict_SetItemString(dict, "period", PyFloat_FromDouble(grating->get_period()));
+
+    cerr << ">>>>>>>" << grating->get_inheritance().get_name() << endl;
+    if (grating->get_inheritance().get_name() == "Generic_Grating") {
+      Generic_Grating* _grating = dynamic_cast<Generic_Grating*>(grating.get());
+
+      Generic_Grating::segmentvector segs = _grating->Get_Boundaries();
+
+      PyObject *seglist = PyList_New(0);
+      
+      for (Generic_Grating::segmentvector::iterator v = segs.begin(); v != segs.end(); ++v) {	
+	PyObject *segment = PyDict_New();
+	PyDict_SetItemString(segment, "x1", PyFloat_FromDouble(real(v->vertex1)));
+	PyDict_SetItemString(segment, "y1", PyFloat_FromDouble(imag(v->vertex1)));
+	PyDict_SetItemString(segment, "x2", PyFloat_FromDouble(real(v->vertex2)));
+	PyDict_SetItemString(segment, "y2", PyFloat_FromDouble(imag(v->vertex2)));
+	PyDict_SetItemString(segment, "mat1", PyUnicode_FromString(v->mat1.c_str()));
+	PyDict_SetItemString(segment, "mat2", PyUnicode_FromString(v->mat2.c_str()));
+	PyList_Append(seglist, segment);
+      }
+      PyDict_SetItemString(dict, "segments", seglist);      
+    }
+    
+    return dict;
   }
   catch (std::exception& e) {
     PyErr_SetString(PyExc_Exception,(format("At %s, ",__func__) + e.what()).c_str());
@@ -1027,6 +1160,7 @@ static PyMethodDef SCATPYMethods[] = {
      {"Get_RCW_Model",  Get_RCW_Model, METH_VARARGS, "Gets an instance of a RCW_Model."},
      {"Free_RCW_Model",  Free_RCW_Model, METH_VARARGS, "Frees an instance of a RCW_Model."},
      {"GetGratingEpsilon", GetGratingEpsilon, METH_VARARGS, "Gets epsilon at x,z"},
+     {"GetGratingDefinition", GetGratingDefinition, METH_VARARGS, "Gets the grating definition in terms of transitions, dielectric constants, and thicknesses"},
      {"Get_CrossRCW_Model",  Get_CrossRCW_Model, METH_VARARGS, "Gets an instance of a CrossRCW_Model."},
      {"Free_CrossRCW_Model",  Free_CrossRCW_Model, METH_VARARGS, "Frees an instance of a CrossRCW_Model."},
      {"BRDF",  BRDF, METH_VARARGS, "Returns the Mueller matrix BRDF for a specified geometry"},

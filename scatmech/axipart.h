@@ -47,8 +47,10 @@ namespace SCATMECH {
         public:
             Axisymmetric_Particle_BRDF_Model();
 
-            COMPLEX PartialExtinctionS(double theta);
-            COMPLEX PartialExtinctionP(double theta);
+            MuellerMatrix Specular(double theta);
+
+            //COMPLEX PartialExtinctionS(double theta);
+            //COMPLEX PartialExtinctionP(double theta);
 
         protected:
             void setup();
@@ -114,7 +116,6 @@ namespace SCATMECH {
             void    calculate_Z(double thetas);
             void    calculate_eIP(double phis);
 
-            COMPLEX	PartialExtinction(double theta,int pol);
 
             void    iterative_improvement(ScatterTMatrix& Ainv, ScatterTMatrix& A,
                                           std::vector<COMPLEX>& b,std::vector<COMPLEX>& x);

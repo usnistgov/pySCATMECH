@@ -165,13 +165,13 @@ namespace SCATMECH {
             // Convert to BRDF_Model::psps
 			Vector ki = (type==0||type==1) ? Vector(sin(thetai),0.,-cos(thetai)) : Vector(sin(thetai),0.,cos(thetai));
 			Vector ko = (type==0||type==3) ? Vector(sin(thetas)*cos(phis),sin(thetas)*sin(phis),cos(thetas)) : Vector(sin(thetas)*cos(phis),sin(thetas)*sin(phis),-cos(thetas));
-			Vector xi,yi,xo,yo,si,pi,so,po;
-			GetBasisVectorsSP(ko,so,po);
-			GetBasisVectorsSP(ki,si,pi);
-			GetBasisVectorsXY(ko,xo,yo);
-			GetBasisVectorsXY(ki,xi,yi);
-			JonesMatrix ri = GetJonesRotator(yi,xi,si,pi);
-			JonesMatrix ro = GetJonesRotator(so,po,yo,xo);
+			Vector _xi,_yi,_xo,_yo,_si,_pi,_so,_po;
+			GetBasisVectorsSP(ko,_so,_po);
+			GetBasisVectorsSP(ki,_si,_pi);
+			GetBasisVectorsXY(ko,_xo,_yo);
+			GetBasisVectorsXY(ki,_xi,_yi);
+			JonesMatrix ri = GetJonesRotator(_yi,_xi,_si,_pi);
+			JonesMatrix ro = GetJonesRotator(_so,_po,_yo,_xo);
 			J = ro*J*ri;
 
         } else if (from==plane) {

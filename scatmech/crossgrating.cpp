@@ -475,11 +475,11 @@ namespace SCATMECH {
             regd=true;
 
             Register_Model(CrossGrating);
+            Register_Model(Gridded_CrossGrating);
             Register_Model(OneD_CrossGrating);
             Register_Model(Overlaid_CrossGrating);
             Register_Model(Overlaid_1D_CrossGrating);
             Register_Model(Null_CrossGrating);
-            Register_Model(Gridded_CrossGrating);
             Register_Model(Cylinder_CrossGrating);
 			Register_Model(Rectangle_CrossGrating);
 			Register_Model(Sphere_CrossGrating);

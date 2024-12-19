@@ -10,12 +10,16 @@ print("platform.system() = ",platform.system())
 if platform.system() == 'Windows':
     extra_compile_args = []
     extra_link_args =[]
-if platform.system() == 'Linux':
+elif platform.system() == 'Linux':
     extra_compile_args = ['-Wno-deprecated-declarations']
     extra_link_args =[]
 elif 'CYGWIN' in platform.system():
     extra_compile_args = ['-Wno-deprecated-declarations']
     extra_link_args =[]
+else:
+    extra_compile_args = []
+    extra_link_args =[]
+    
 
 scatmech_source = ['scatmech/allrough.cpp',
                    'scatmech/crossgrating2.cpp',
@@ -94,7 +98,8 @@ scatmech_source = ['scatmech/allrough.cpp',
                    'scatmech/miescat.cpp',
                    'scatmech/raystack.cpp',
                    'scatmech/scateval.cpp',
-                   'scatmech/transmit.cpp']
+                   'scatmech/transmit.cpp',
+                   'scatmech/gaussianbeam.cpp']
 
 scatmech_headers  = ['scatmech/allrough.h',
                      'scatmech/crossrcw.h',
@@ -160,7 +165,8 @@ scatmech_headers  = ['scatmech/allrough.h',
                      'scatmech/phasefunction.h',
                      'scatmech/rough.h',
                      'scatmech/sphrscat.h',
-                     'scatmech/vector3d.h']
+                     'scatmech/vector3d.h',
+                     'scatmech/gaussianbeam.h']
                      
 
 module1 = Extension('SCATPY',
@@ -175,7 +181,7 @@ module1 = Extension('SCATPY',
 #setuptools.setup(
 setup(
     name="pySCATMECH",
-    version="0.1.8",  # NOTE: If you change this, change it in index.rst AND conf.py too!
+    version="0.1.9",  # NOTE: If you change this, change it in index.rst AND conf.py too!
     author="Thomas A. Germer",
     author_email="thomas.germer@nist.gov",
     description="A Python interface to the SCATMECH library",

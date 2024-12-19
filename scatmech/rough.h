@@ -28,7 +28,7 @@ namespace SCATMECH {
                 return psd(sqrt(fx*fx+fy*fy));
             }
         protected:
-            virtual double psd(double f) {
+            virtual double psd(double /* f */) {
                 error("Attempt to evaluate f(double)");
                 return 0;
             }
@@ -42,7 +42,7 @@ namespace SCATMECH {
         public PSD_Function
     {
         public:
-            double psd(double f) {
+            double psd(double /* f */) {
                 return 1.;
             }
             DECLARE_MODEL();
