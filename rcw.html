@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>RCW Module &#8212; pySCATMECH 0.1.8 documentation</title>
+    <title>RCW Module &#8212; pySCATMECH 0.1.9 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/nature.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -70,7 +70,7 @@ $(document).ready(function(){
         <li class="right" >
           <a href="scatterer.html" title="Scatterer Module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">RCW Module</a></li> 
       </ul>
     </div>  
@@ -163,6 +163,33 @@ and grating.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="pySCATMECH.rcw.RCW_Model.getGratingDefinition">
+<span class="sig-name descname"><span class="pre">getGratingDefinition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.rcw.RCW_Model.getGratingDefinition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the grating definition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>Dictionary containing the following keys</em></p></li>
+<li><p><strong>”position”</strong> (<em>list of lists of x-positions of the transitions for</em>) – each of the layers in the grating.</p></li>
+<li><p><strong>”materialx”</strong> (<em>list of lists of the dielectric constants (xx element)</em>) – in each of the layers of the grating.</p></li>
+<li><p><strong>”materialy”</strong> (<em>list of lists of the dielectric constants (yy element)</em>) – in each of the layers of the grating.</p></li>
+<li><p><strong>”materialz”</strong> (<em>list of lists of the dielectric constants (zz element)</em>) – in each of the layers of the grating.</p></li>
+<li><p><strong>”materialmux”</strong> (<em>list of lists of the magnetic susceptibility (xx</em>) – element) in each of the layers of the grating.</p></li>
+<li><p><strong>”materialmuy”</strong> (<em>list of lists of the magnetic susceptibility (yy</em>) – element) in each of the layers of the grating.</p></li>
+<li><p><strong>”materialmuz”</strong> (<em>list of lists of the magnetic susceptibility (zz</em>) – element) in each of the layers of the grating.</p></li>
+<li><p><strong>”thickness”</strong> (<em>list of thicknesses of each layer of the grating.</em>)</p></li>
+<li><p><strong>”heights”</strong> (<em>list of the heights of each interface of the grating.</em>)</p></li>
+<li><p><em>If the grating is a Generic_Grating, then an additional key “segments”</em></p></li>
+<li><p><em>contains a list of line segments for each of the boundaries, each</em></p></li>
+<li><p><em>element a dict containing keys “x1”, “y1”, “x2”, “y2”, “mat1”, and</em></p></li>
+<li><p><em>”mat2”.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -220,7 +247,7 @@ and grating.</p>
         <li class="right" >
           <a href="scatterer.html" title="Scatterer Module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.8 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">RCW Module</a></li> 
       </ul>
     </div>
