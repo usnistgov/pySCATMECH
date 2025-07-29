@@ -98,8 +98,7 @@ scatmech_source = ['scatmech/allrough.cpp',
                    'scatmech/miescat.cpp',
                    'scatmech/raystack.cpp',
                    'scatmech/scateval.cpp',
-                   'scatmech/transmit.cpp',
-                   'scatmech/gaussianbeam.cpp']
+                   'scatmech/transmit.cpp']
 
 scatmech_headers  = ['scatmech/allrough.h',
                      'scatmech/crossrcw.h',
@@ -165,8 +164,7 @@ scatmech_headers  = ['scatmech/allrough.h',
                      'scatmech/phasefunction.h',
                      'scatmech/rough.h',
                      'scatmech/sphrscat.h',
-                     'scatmech/vector3d.h',
-                     'scatmech/gaussianbeam.h']
+                     'scatmech/vector3d.h']
                      
 
 module1 = Extension('SCATPY',
