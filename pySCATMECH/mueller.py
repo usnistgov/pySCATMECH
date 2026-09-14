@@ -609,7 +609,7 @@ class StokesVector(np.ndarray):
         eccentricity : float
                        The eccentricity
         """
-        return np.sqrt(1-self.e()**2)
+        return np.sqrt(1-self.ellipticity()**2)
 
     def valid(self):
         """
