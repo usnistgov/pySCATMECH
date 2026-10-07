@@ -1,22 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>FilmStack class &#8212; pySCATMECH 0.1.9 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <title>FilmStack class &#8212; pySCATMECH 0.1.10 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <script src="_static/documentation_options.js?v=bafade30"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -55,7 +52,7 @@ $(document).ready(function(){
 
 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -70,7 +67,7 @@ $(document).ready(function(){
         <li class="right" >
           <a href="fresnel2.html" title="Film class"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="fresnel.html" accesskey="U">Fresnel Module</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">FilmStack class</a></li> 
       </ul>
@@ -82,15 +79,15 @@ $(document).ready(function(){
           <div class="body" role="main">
             
   <section id="filmstack-class">
-<h1>FilmStack class<a class="headerlink" href="#filmstack-class" title="Permalink to this heading">¶</a></h1>
+<h1>FilmStack class<a class="headerlink" href="#filmstack-class" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.fresnel.</span></span><span class="sig-name descname"><span class="pre">FilmStack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">films</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack" title="Permalink to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pySCATMECH.fresnel.</span></span><span class="sig-name descname"><span class="pre">FilmStack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">films</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="model.html#pySCATMECH.model.Model" title="pySCATMECH.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
 <p>A class for handling stacks of films</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.R">
-<span class="sig-name descname"><span class="pre">R</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.R" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">R</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.R" title="Link to this definition">¶</a></dt>
 <dd><p>Return the reflectance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -129,7 +126,7 @@ linear relationship between radiant fluxes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.Rp">
-<span class="sig-name descname"><span class="pre">Rp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rp" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Rp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rp" title="Link to this definition">¶</a></dt>
 <dd><p>Return the reflectance for p-polarized radiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -168,7 +165,7 @@ linear relationship between radiant fluxes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.Rs">
-<span class="sig-name descname"><span class="pre">Rs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rs" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Rs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Rs" title="Link to this definition">¶</a></dt>
 <dd><p>Return the reflectance for s-polarized radiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -207,7 +204,7 @@ linear relationship between radiant fluxes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.T">
-<span class="sig-name descname"><span class="pre">T</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.T" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">T</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.T" title="Link to this definition">¶</a></dt>
 <dd><p>Return the transmittance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -246,7 +243,7 @@ linear relationship between radiant fluxes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.Tp">
-<span class="sig-name descname"><span class="pre">Tp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Tp" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Tp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Tp" title="Link to this definition">¶</a></dt>
 <dd><p>Return the transmittance for p-polarized radiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -285,7 +282,7 @@ linear relationship between radiant fluxes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.Ts">
-<span class="sig-name descname"><span class="pre">Ts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Ts" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">Ts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.Ts" title="Link to this definition">¶</a></dt>
 <dd><p>Return the transmittance for s-polarized radiation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -324,20 +321,20 @@ linear relationship between radiant fluxes.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.clean">
-<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.clean" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">clean</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.clean" title="Link to this definition">¶</a></dt>
 <dd><p>Clear the stack of all films.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.getModelDict">
-<span class="sig-name descname"><span class="pre">getModelDict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getModelDict" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">getModelDict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getModelDict" title="Link to this definition">¶</a></dt>
 <dd><p>Return a Model parameter dictionary. Used primarily internally so that
 a FilmStack can be passed as a parameter to a Model for a stack.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.getStackCommand">
-<span class="sig-name descname"><span class="pre">getStackCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getStackCommand" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">getStackCommand</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.getStackCommand" title="Link to this definition">¶</a></dt>
 <dd><p>Get the list of films suitable for a SCATMECH::Stack_StackModel</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -354,7 +351,7 @@ a FilmStack can be passed as a parameter to a Model for a stack.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.grow">
-<span class="sig-name descname"><span class="pre">grow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.grow" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">grow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">film</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.grow" title="Link to this definition">¶</a></dt>
 <dd><p>Grow a film on the stack.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -365,7 +362,7 @@ a FilmStack can be passed as a parameter to a Model for a stack.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.reflectionCoefficient">
-<span class="sig-name descname"><span class="pre">reflectionCoefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.reflectionCoefficient" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">reflectionCoefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.reflectionCoefficient" title="Link to this definition">¶</a></dt>
 <dd><p>Return the reflection coefficent.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -407,7 +404,7 @@ coeff[1][0] = coeff[0][1] = 0</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.fresnel.FilmStack.transmissionCoefficient">
-<span class="sig-name descname"><span class="pre">transmissionCoefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.transmissionCoefficient" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">transmissionCoefficient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wavelength</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'12'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.fresnel.FilmStack.transmissionCoefficient" title="Link to this definition">¶</a></dt>
 <dd><p>Return the transmission coefficient.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -456,8 +453,32 @@ coeff[1][0] = coeff[0][1] = 0</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">FilmStack class</a><ul>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack"><code class="docutils literal notranslate"><span class="pre">FilmStack</span></code></a><ul>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.R"><code class="docutils literal notranslate"><span class="pre">FilmStack.R()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.Rp"><code class="docutils literal notranslate"><span class="pre">FilmStack.Rp()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.Rs"><code class="docutils literal notranslate"><span class="pre">FilmStack.Rs()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.T"><code class="docutils literal notranslate"><span class="pre">FilmStack.T()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.Tp"><code class="docutils literal notranslate"><span class="pre">FilmStack.Tp()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.Ts"><code class="docutils literal notranslate"><span class="pre">FilmStack.Ts()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.clean"><code class="docutils literal notranslate"><span class="pre">FilmStack.clean()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.getModelDict"><code class="docutils literal notranslate"><span class="pre">FilmStack.getModelDict()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.getStackCommand"><code class="docutils literal notranslate"><span class="pre">FilmStack.getStackCommand()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.grow"><code class="docutils literal notranslate"><span class="pre">FilmStack.grow()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.reflectionCoefficient"><code class="docutils literal notranslate"><span class="pre">FilmStack.reflectionCoefficient()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.fresnel.FilmStack.transmissionCoefficient"><code class="docutils literal notranslate"><span class="pre">FilmStack.transmissionCoefficient()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="fresnel2.html"
@@ -475,7 +496,7 @@ coeff[1][0] = coeff[0][1] = 0</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -483,13 +504,13 @@ coeff[1][0] = coeff[0][1] = 0</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -504,13 +525,13 @@ coeff[1][0] = coeff[0][1] = 0</p>
         <li class="right" >
           <a href="fresnel2.html" title="Film class"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="fresnel.html" >Fresnel Module</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">FilmStack class</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     </div>
   </body>
 </html>

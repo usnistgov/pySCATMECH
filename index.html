@@ -1,22 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>pySCATMECH : A Python Interface to the SCATMECH Library &#8212; pySCATMECH 0.1.9 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <title>pySCATMECH : A Python Interface to the SCATMECH Library &#8212; pySCATMECH 0.1.10 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <script src="_static/documentation_options.js?v=bafade30"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -54,7 +51,7 @@ $(document).ready(function(){
 
 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -66,7 +63,7 @@ $(document).ready(function(){
         <li class="right" >
           <a href="UsingMueller.html" title="Using the Mueller module"
              accesskey="N">next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">pySCATMECH 0.1.10 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">pySCATMECH : A Python Interface to the SCATMECH Library</a></li> 
       </ul>
     </div>  
@@ -89,7 +86,7 @@ $(document).ready(function(){
     <AREA SHAPE="RECT" COORDS="15, 20, 290, 50" HREF="http://www.nist.gov/pml/div685/index.cfm" TARGET="TOP" ALT="Sensor Science Division Home">
     <AREA SHAPE="RECT" COORDS="590, 5, 725, 50" HREF="http://www.nist.gov" TARGET="TOP" ALT="NIST Home">
  </MAP><section id="pyscatmech-a-python-interface-to-the-scatmech-library">
-<h1>pySCATMECH : A Python Interface to the SCATMECH Library<a class="headerlink" href="#pyscatmech-a-python-interface-to-the-scatmech-library" title="Permalink to this heading">¶</a></h1>
+<h1>pySCATMECH : A Python Interface to the SCATMECH Library<a class="headerlink" href="#pyscatmech-a-python-interface-to-the-scatmech-library" title="Link to this heading">¶</a></h1>
 <p>pySCATMECH is a Python interface to the SCATMECH library of scattering codes.
 The documentation for the
 specific models are available at <a class="reference external" href="https://pages.nist.gov/SCATMECH/docs/index.htm">SCATMECH Polarized Light
@@ -113,7 +110,7 @@ Scattering C++ Class Library</a>.</p>
 </div>
 </dd>
 <dt class="field-odd">Current Version<span class="colon">:</span></dt>
-<dd class="field-odd"><p>0.1.9 (Dec 19, 2024)</p>
+<dd class="field-odd"><p>0.1.10 (Oct 07, 2026)</p>
 </dd>
 <dt class="field-even">Requires<span class="colon">:</span></dt>
 <dd class="field-even"><p>Python 3.6 or greater</p>
@@ -194,17 +191,42 @@ Scattering C++ Class Library</a>.</p>
 <li class="toctree-l2"><a class="reference internal" href="fresnel3.html">FilmStack class</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="brdf.html">BRDF Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="local.html">Local Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model.html">Model Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model.html#pySCATMECH.model.DialogGetModel"><code class="docutils literal notranslate"><span class="pre">DialogGetModel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#pySCATMECH.model.DialogGetModelParameters"><code class="docutils literal notranslate"><span class="pre">DialogGetModelParameters()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#pySCATMECH.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#pySCATMECH.model.chooseModel"><code class="docutils literal notranslate"><span class="pre">chooseModel()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#pySCATMECH.model.chooseModelAndParameters"><code class="docutils literal notranslate"><span class="pre">chooseModelAndParameters()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#pySCATMECH.model.createDictOfDict"><code class="docutils literal notranslate"><span class="pre">createDictOfDict()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#pySCATMECH.model.getModelDictionary"><code class="docutils literal notranslate"><span class="pre">getModelDictionary()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="model.html#pySCATMECH.model.strDictOfDict"><code class="docutils literal notranslate"><span class="pre">strDictOfDict()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="brdf.html">BRDF Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="brdf.html#pySCATMECH.brdf.BRDF_Model"><code class="docutils literal notranslate"><span class="pre">BRDF_Model</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="local.html">Local Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="local.html#pySCATMECH.local.Local_BRDF_Model"><code class="docutils literal notranslate"><span class="pre">Local_BRDF_Model</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="integrate.html">Integrate Module</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="integrate1.html">SolidAngle classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="integrate2.html">Integrator class</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scatterer.html">Scatterer Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="scatterer.html#pySCATMECH.scatterer.Free_Space_Scatterer"><code class="docutils literal notranslate"><span class="pre">Free_Space_Scatterer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rcw.html">RCW Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rcw.html#pySCATMECH.rcw.RCW_Model"><code class="docutils literal notranslate"><span class="pre">RCW_Model</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="crossrcw.html">CrossRCW Module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="crossrcw.html#pySCATMECH.crossrcw.CrossRCW_Model"><code class="docutils literal notranslate"><span class="pre">CrossRCW_Model</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -216,7 +238,7 @@ Scattering C++ Class Library</a>.</p>
 </div>
 </section>
 <section id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading">¶</a></h1>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
@@ -224,7 +246,7 @@ Scattering C++ Class Library</a>.</p>
 </ul>
 </section>
 <section id="for-more-information">
-<h1>For more information<a class="headerlink" href="#for-more-information" title="Permalink to this heading">¶</a></h1>
+<h1>For more information<a class="headerlink" href="#for-more-information" title="Link to this heading">¶</a></h1>
 <blockquote>
 <div><div class="line-block">
 <div class="line"><a class="reference external" href="https://www.nist.gov/people/thomas-germer">Technical Information and Questions</a></div>
@@ -240,7 +262,7 @@ Scattering C++ Class Library</a>.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="#">Table of Contents</a></h3>
@@ -265,7 +287,7 @@ Scattering C++ Class Library</a>.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -273,13 +295,13 @@ Scattering C++ Class Library</a>.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -291,12 +313,12 @@ Scattering C++ Class Library</a>.</p>
         <li class="right" >
           <a href="UsingMueller.html" title="Using the Mueller module"
              >next</a> |</li>
-        <li class="nav-item nav-item-0"><a href="#">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="#">pySCATMECH 0.1.10 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">pySCATMECH : A Python Interface to the SCATMECH Library</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     </div>
   </body>
 </html>

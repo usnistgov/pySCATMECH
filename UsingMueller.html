@@ -1,25 +1,23 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Using the Mueller module &#8212; pySCATMECH 0.1.9 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <title>Using the Mueller module &#8212; pySCATMECH 0.1.10 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <script src="_static/documentation_options.js?v=bafade30"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Using the Fresnel module" href="UsingFresnel.html" />
@@ -57,7 +55,7 @@ $(document).ready(function(){
 
 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -72,7 +70,7 @@ $(document).ready(function(){
         <li class="right" >
           <a href="index.html" title="pySCATMECH : A Python Interface to the SCATMECH Library"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Using the Mueller module</a></li> 
       </ul>
     </div>  
@@ -82,278 +80,22 @@ $(document).ready(function(){
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  
-<style>
-/* CSS for nbsphinx extension */
-
-/* remove conflicting styling from Sphinx themes */
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt *,
-div.nbinput.container div.input_area pre,
-div.nboutput.container div.output_area pre,
-div.nbinput.container div.input_area .highlight,
-div.nboutput.container div.output_area .highlight {
-    border: none;
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-}
-
-div.nbinput.container > div[class*=highlight],
-div.nboutput.container > div[class*=highlight] {
-    margin: 0;
-}
-
-div.nbinput.container div.prompt *,
-div.nboutput.container div.prompt * {
-    background: none;
-}
-
-div.nboutput.container div.output_area .highlight,
-div.nboutput.container div.output_area pre {
-    background: unset;
-}
-
-div.nboutput.container div.output_area div.highlight {
-    color: unset;  /* override Pygments text color */
-}
-
-/* avoid gaps between output lines */
-div.nboutput.container div[class*=highlight] pre {
-    line-height: normal;
-}
-
-/* input/output containers */
-div.nbinput.container,
-div.nboutput.container {
-    display: -webkit-flex;
-    display: flex;
-    align-items: flex-start;
-    margin: 0;
-    width: 100%;
-}
-@media (max-width: 540px) {
-    div.nbinput.container,
-    div.nboutput.container {
-        flex-direction: column;
-    }
-}
-
-/* input container */
-div.nbinput.container {
-    padding-top: 5px;
-}
-
-/* last container */
-div.nblast.container {
-    padding-bottom: 5px;
-}
-
-/* input prompt */
-div.nbinput.container div.prompt pre {
-    color: #307FC1;
-}
-
-/* output prompt */
-div.nboutput.container div.prompt pre {
-    color: #BF5B3D;
-}
-
-/* all prompts */
-div.nbinput.container div.prompt,
-div.nboutput.container div.prompt {
-    width: 4.5ex;
-    padding-top: 5px;
-    position: relative;
-    user-select: none;
-}
-
-div.nbinput.container div.prompt > div,
-div.nboutput.container div.prompt > div {
-    position: absolute;
-    right: 0;
-    margin-right: 0.3ex;
-}
-
-@media (max-width: 540px) {
-    div.nbinput.container div.prompt,
-    div.nboutput.container div.prompt {
-        width: unset;
-        text-align: left;
-        padding: 0.4em;
-    }
-    div.nboutput.container div.prompt.empty {
-        padding: 0;
-    }
-
-    div.nbinput.container div.prompt > div,
-    div.nboutput.container div.prompt > div {
-        position: unset;
-    }
-}
-
-/* disable scrollbars on prompts */
-div.nbinput.container div.prompt pre,
-div.nboutput.container div.prompt pre {
-    overflow: hidden;
-}
-
-/* input/output area */
-div.nbinput.container div.input_area,
-div.nboutput.container div.output_area {
-    -webkit-flex: 1;
-    flex: 1;
-    overflow: auto;
-}
-@media (max-width: 540px) {
-    div.nbinput.container div.input_area,
-    div.nboutput.container div.output_area {
-        width: 100%;
-    }
-}
-
-/* input area */
-div.nbinput.container div.input_area {
-    border: 1px solid #e0e0e0;
-    border-radius: 2px;
-    /*background: #f5f5f5;*/
-}
-
-/* override MathJax center alignment in output cells */
-div.nboutput.container div[class*=MathJax] {
-    text-align: left !important;
-}
-
-/* override sphinx.ext.imgmath center alignment in output cells */
-div.nboutput.container div.math p {
-    text-align: left;
-}
-
-/* standard error */
-div.nboutput.container div.output_area.stderr {
-    background: #fdd;
-}
-
-/* ANSI colors */
-.ansi-black-fg { color: #3E424D; }
-.ansi-black-bg { background-color: #3E424D; }
-.ansi-black-intense-fg { color: #282C36; }
-.ansi-black-intense-bg { background-color: #282C36; }
-.ansi-red-fg { color: #E75C58; }
-.ansi-red-bg { background-color: #E75C58; }
-.ansi-red-intense-fg { color: #B22B31; }
-.ansi-red-intense-bg { background-color: #B22B31; }
-.ansi-green-fg { color: #00A250; }
-.ansi-green-bg { background-color: #00A250; }
-.ansi-green-intense-fg { color: #007427; }
-.ansi-green-intense-bg { background-color: #007427; }
-.ansi-yellow-fg { color: #DDB62B; }
-.ansi-yellow-bg { background-color: #DDB62B; }
-.ansi-yellow-intense-fg { color: #B27D12; }
-.ansi-yellow-intense-bg { background-color: #B27D12; }
-.ansi-blue-fg { color: #208FFB; }
-.ansi-blue-bg { background-color: #208FFB; }
-.ansi-blue-intense-fg { color: #0065CA; }
-.ansi-blue-intense-bg { background-color: #0065CA; }
-.ansi-magenta-fg { color: #D160C4; }
-.ansi-magenta-bg { background-color: #D160C4; }
-.ansi-magenta-intense-fg { color: #A03196; }
-.ansi-magenta-intense-bg { background-color: #A03196; }
-.ansi-cyan-fg { color: #60C6C8; }
-.ansi-cyan-bg { background-color: #60C6C8; }
-.ansi-cyan-intense-fg { color: #258F8F; }
-.ansi-cyan-intense-bg { background-color: #258F8F; }
-.ansi-white-fg { color: #C5C1B4; }
-.ansi-white-bg { background-color: #C5C1B4; }
-.ansi-white-intense-fg { color: #A1A6B2; }
-.ansi-white-intense-bg { background-color: #A1A6B2; }
-
-.ansi-default-inverse-fg { color: #FFFFFF; }
-.ansi-default-inverse-bg { background-color: #000000; }
-
-.ansi-bold { font-weight: bold; }
-.ansi-underline { text-decoration: underline; }
-
-
-div.nbinput.container div.input_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight] > pre,
-div.nboutput.container div.output_area div[class*=highlight].math,
-div.nboutput.container div.output_area.rendered_html,
-div.nboutput.container div.output_area > div.output_javascript,
-div.nboutput.container div.output_area:not(.rendered_html) > img{
-    padding: 5px;
-    margin: 0;
-}
-
-/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
-div.nbinput.container div.input_area > div[class^='highlight'],
-div.nboutput.container div.output_area > div[class^='highlight']{
-    overflow-y: hidden;
-}
-
-/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt .copybtn {
-    display: none;
-}
-
-/* Some additional styling taken form the Jupyter notebook CSS */
-.jp-RenderedHTMLCommon table,
-div.rendered_html table {
-  border: none;
-  border-collapse: collapse;
-  border-spacing: 0;
-  color: black;
-  font-size: 12px;
-  table-layout: fixed;
-}
-.jp-RenderedHTMLCommon thead,
-div.rendered_html thead {
-  border-bottom: 1px solid black;
-  vertical-align: bottom;
-}
-.jp-RenderedHTMLCommon tr,
-.jp-RenderedHTMLCommon th,
-.jp-RenderedHTMLCommon td,
-div.rendered_html tr,
-div.rendered_html th,
-div.rendered_html td {
-  text-align: right;
-  vertical-align: middle;
-  padding: 0.5em 0.5em;
-  line-height: normal;
-  white-space: normal;
-  max-width: none;
-  border: none;
-}
-.jp-RenderedHTMLCommon th,
-div.rendered_html th {
-  font-weight: bold;
-}
-.jp-RenderedHTMLCommon tbody tr:nth-child(odd),
-div.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.jp-RenderedHTMLCommon tbody tr:hover,
-div.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
-</style>
-<section id="Using-the-Mueller-module">
-<h1>Using the Mueller module<a class="headerlink" href="#Using-the-Mueller-module" title="Permalink to this heading">¶</a></h1>
+  <section id="Using-the-Mueller-module">
+<h1>Using the Mueller module<a class="headerlink" href="#Using-the-Mueller-module" title="Link to this heading">¶</a></h1>
 <p>In this notebook, we demonstrate how to use the Mueller module, which defines the <code class="docutils literal notranslate"><span class="pre">MuellerMatrix</span></code> and <code class="docutils literal notranslate"><span class="pre">StokesVector</span></code> classes and various operations on them.</p>
 <p>The first thing, of course, is to import the package and some other packages that we will be using. We will be creating some random matrices and vectors, so we need <code class="docutils literal notranslate"><span class="pre">random</span></code>, and we will be graphing a few things, so we need <code class="docutils literal notranslate"><span class="pre">maptplotlib.pyplot</span></code>.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pySCATMECH.mueller</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">import</span> <span class="nn">random</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pySCATMECH.mueller</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
 <section id="Mueller-matrices">
-<h2>Mueller matrices<a class="headerlink" href="#Mueller-matrices" title="Permalink to this heading">¶</a></h2>
+<h2>Mueller matrices<a class="headerlink" href="#Mueller-matrices" title="Link to this heading">¶</a></h2>
 <p>The class <code class="docutils literal notranslate"><span class="pre">MuellerMatrix</span></code> is used for handling Mueller matrices. Here we show several ways one can create a unit Mueller matrix. The <code class="docutils literal notranslate"><span class="pre">JonesMueller()</span></code> function converts a 2 x 2 complex Jones matrix into a Mueller matrix. And <code class="docutils literal notranslate"><span class="pre">MuellerUnit()</span></code> returns a unit Mueller matrix.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [2]:
@@ -423,7 +165,7 @@ True
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Number valid() is True: 1
+Number valid() is True: 2
 Number physically valid() is True: 0
 </pre></div></div>
 </div>
@@ -458,8 +200,8 @@ Number physically valid() is True: 20
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RandomMuellerMatrix</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">RandomMuellerMatrix</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Creates a random Mueller matrix by averaging `n` Jones-Mueller matrices.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ranc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
@@ -477,17 +219,17 @@ Number physically valid() is True: 20
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[[ 0.79126519  0.51754966  0.04396498 -0.09197144]
- [-0.21857972 -0.10891561  0.03399935  0.04409256]
- [ 0.24109773  0.27199561  0.06684414 -0.02241909]
- [ 0.31260027  0.21946993  0.16903187 -0.02210762]]
+[[ 1.28323389 -0.26513625  0.36131103 -0.28698016]
+ [-0.72764078 -0.01640131 -0.10701278  0.49417   ]
+ [-0.10501052  0.13393989 -0.07835965  0.16946087]
+ [-0.4069613   0.35911699 -0.08553465 -0.34998481]]
 m is a valid Stokes to Stokes mapper: True
 m is the sum of Jones-Mueller matrices: True
 </pre></div></div>
 </div>
 </section>
 <section id="Stokes-Vectors">
-<h2>Stokes Vectors<a class="headerlink" href="#Stokes-Vectors" title="Permalink to this heading">¶</a></h2>
+<h2>Stokes Vectors<a class="headerlink" href="#Stokes-Vectors" title="Link to this heading">¶</a></h2>
 <p>The class <code class="docutils literal notranslate"><span class="pre">StokesVector</span></code> is used for handling Stokes vectors. We can create a Stokes vector a several ways. The <code class="docutils literal notranslate"><span class="pre">Polarization</span></code> function provides a means for generating arbitrary polarizations by name or parameter. (Note that SCATMECH’s convention for the signs of the Stokes vector elements differs from some others.)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [7]:
@@ -595,7 +337,7 @@ Signal for s-polarization: 0.19999999999999996
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">RandomStokesVector</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">RandomStokesVector</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="n">ranc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="p">:</span> <span class="p">(</span><span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">JonesStokes</span><span class="p">([</span><span class="n">ranc</span><span class="p">(),</span><span class="n">ranc</span><span class="p">()])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span><span class="o">/</span><span class="n">n</span>
 
@@ -612,7 +354,8 @@ Signal for s-polarization: 0.19999999999999996
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="Graph showing results of preceding Python code: Noisy curve starting at 1 and decaying to a level of between about 0.1 and 0.2." src="_images/UsingMueller_20_0.svg" /></div>
+<img alt="Graph showing results of preceding Python code: Noisy curve starting at 1 and decaying to a level of between about 0.1 and 0.2." src="_images/UsingMueller_20_0.svg" />
+</div>
 </div>
 <p>We can multiply Mueller matrices and Stokes vectors. You can use the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> or <code class="docutils literal notranslate"><span class="pre">*</span></code> operators or the <code class="docutils literal notranslate"><span class="pre">dot()</span></code> function to multiply the objects. If a Stokes vector multiplies a Mueller matrix from the left, it is assumed to be transposed first. The product of two Stokes vectors is the inner product, a scalar.</p>
 <div class="nbinput docutils container">
@@ -642,31 +385,31 @@ Signal for s-polarization: 0.19999999999999996
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 m1 =
- [[ 0.94335668 -0.16250793  0.46915549 -0.14212114]
- [-0.23542067  0.62314123 -0.18648852 -0.05825565]
- [-0.01326436 -0.06702373  0.02740091 -0.4182326 ]
- [ 0.37937625 -0.06489837  0.54109253  0.07621696]]
+ [[ 1.28145296  0.40015939 -0.4992118  -0.14314473]
+ [ 0.05749294 -0.24778426 -0.3446974   0.08787843]
+ [-0.24565227 -0.45028237  0.0932674   0.70494889]
+ [-0.49834943 -0.2347083   0.34938319 -0.21881784]]
 m2 =
- [[ 0.90393586  0.42883859  0.05893816 -0.0398583 ]
- [-0.03255312 -0.05484299  0.28021642  0.20824843]
- [ 0.17437584  0.3752689  -0.03803409  0.08744445]
- [ 0.35288836  0.34723155  0.26526746 -0.43082467]]
-s1 =  StokesVector(1.2205852882966242,-0.07508395251618234,0.8002605801487375,-0.2529729329906206)
-s2 =  StokesVector(1.5964694635032322,-0.2407997868272278,0.5994372371241194,-0.8510075390636394)
-m1 * s1 =  StokesVector(1.5750484699343372,-0.46864121761363126,0.11657152710872415,0.8816680960253582)
-m1 @ s1 =  StokesVector(1.5750484699343372,-0.46864121761363126,0.11657152710872415,0.8816680960253582)
-m1.dot(s1) =  [ 1.57504847 -0.46864122  0.11657153  0.8816681 ]
-m1 @ m2 =  [[ 0.88968056  0.54017069 -0.0454817   0.03081172]
- [-0.28616721 -0.22534394  0.15237873  0.14794223]
- [-0.15261965 -0.13695333 -0.13154859  0.16915209]
- [ 0.46629398  0.39577053  0.00381207 -0.01415688]]
-s1 @ m1 =  StokesVector(1.062536738150666,-0.2823616179668839,0.4716926877767631,-0.5230727916610801)
-s1 @ s2 =  2.661695204424655
+ [[ 0.96038749 -0.30848946 -0.05546277 -0.18159292]
+ [ 0.17580533  0.06952891 -0.13647563 -0.15666024]
+ [-0.0438392   0.19094767 -0.01840033 -0.17607025]
+ [ 0.13757819 -0.11759067 -0.21381157 -0.15232209]]
+s1 =  StokesVector(1.0190196924659323,0.17358299413985184,-0.153212887414287,-0.6044752306015782)
+s2 =  StokesVector(0.6759089887255842,-0.04631392936823076,-0.1074054309153328,0.2609135193116403)
+m1 * s1 =  StokesVector(1.5382997904552291,0.015267048423181835,-0.7688997705782583,-0.46982929674491997)
+m1 @ s1 =  StokesVector(1.5382997904552291,0.015267048423181835,-0.7688997705782583,-0.46982929674491997)
+m1.dot(s1) =  [ 1.53829979  0.01526705 -0.76889977 -0.4698293 ]
+m1 @ m2 =  [[ 1.30323299 -0.44598293 -0.08589327 -0.1856914 ]
+ [ 0.03885512 -0.11111699  0.01818092  0.07568276]
+ [-0.22218658 -0.02061273 -0.07736525 -0.00865084]
+ [-0.56529277  0.22986138  0.10002882  0.09908099]]
+s1 @ m1 =  StokesVector(1.654682573779921,0.5756235873331745,-0.7940235123273994,-0.10635039177957724)
+s1 @ s2 =  0.5394653957375258
 </pre></div></div>
 </div>
 </section>
 <section id="Mueller-matrix-decompositions">
-<h2>Mueller matrix decompositions<a class="headerlink" href="#Mueller-matrix-decompositions" title="Permalink to this heading">¶</a></h2>
+<h2>Mueller matrix decompositions<a class="headerlink" href="#Mueller-matrix-decompositions" title="Link to this heading">¶</a></h2>
 <p>So, now that we can create some physically valid Mueller matrices, we can explore some decompositions. The Cloude decomposition* decomposes a Mueller matrix into an incoherent, positive (convex) sum of Jones-Mueller matrices.</p>
 <p>*S. R. Cloude, “Group theory and polarization algebra,” Optik (Stuttgart) <strong>75</strong>, 26–36 (1986) and S. R. Cloude and E. Pottier, “A review of target decomposition theorems in radar polarimetry,” IEEE Trans. Geosci. and Remote Sensing 34, 498–518 (1996).</p>
 <div class="nbinput docutils container">
@@ -692,36 +435,36 @@ s1 @ s2 =  2.661695204424655
 <div class="highlight"><pre>
 M =
 
- [[ 0.97198146  0.30841196 -0.13263167  0.11331983]
- [-0.01312405  0.05122653  0.24274521  0.03582365]
- [-0.14679568  0.04987054 -0.08064983 -0.34434852]
- [-0.09716448 -0.16663341 -0.09086824  0.40486368]]
+ [[ 1.02712606  0.24708561  0.18604943 -0.13882923]
+ [ 0.11783069 -0.13114489  0.00733771 -0.41007545]
+ [-0.24025617 -0.30528404 -0.44848285 -0.26780404]
+ [-0.01768136 -0.08545351  0.3241625   0.49145767]]
 
 Cloude decomposition =
 
-[[ 0.49815716  0.23393238 -0.05659197  0.11395561]
- [-0.07926307 -0.06762069  0.42302718  0.00239692]
- [-0.22600176 -0.30168327 -0.00377822 -0.37053662]
- [-0.11641932 -0.36930565 -0.03852329  0.2300661 ]]
+[[ 0.6593466   0.21296485  0.24369376 -0.07308104]
+ [ 0.09097609 -0.21197083  0.29743157 -0.44669441]
+ [-0.31647037 -0.46167366 -0.45952551 -0.02244221]
+ [-0.04063707 -0.33456876  0.29054059  0.36049647]]
 
-[[ 0.31877226  0.15566403 -0.09501666  0.02225629]
- [ 0.10148151  0.03766427 -0.2769091   0.00788727]
- [ 0.13742785  0.28393391 -0.01393898 -0.07703643]
- [ 0.06760094  0.10027555 -0.0040224   0.2497188 ]]
+[[ 0.31692691  0.05339781 -0.04086342 -0.0599766 ]
+ [ 0.04500486  0.0605896  -0.30040937  0.02080571]
+ [ 0.07767677  0.15715523  0.00126309 -0.27140126]
+ [ 0.00769554  0.25847009  0.06121081  0.14774978]]
 
-[[ 0.15220157 -0.07995128  0.01814329 -0.02246167]
- [-0.03555445  0.08268129  0.09841471  0.02611275]
- [-0.05939849  0.06973868 -0.06428279  0.10233195]
- [-0.04933165  0.10311127 -0.04950611 -0.07273397]]
+[[ 0.03834791 -0.01948503 -0.02043505 -0.01413236]
+ [-0.02173739  0.02761011  0.00608893  0.01211207]
+ [-0.00652854 -0.00492739  0.00165363  0.02211763]
+ [ 0.02195097 -0.00816398 -0.02917813 -0.00611662]]
 
-[[ 0.00285046 -0.00123317  0.00083367 -0.0004304 ]
- [ 0.00021197 -0.00149834 -0.00178758 -0.00057329]
- [ 0.00117673 -0.00211878  0.00135016  0.00089258]
- [ 0.00098556 -0.00071458  0.00118356 -0.00218725]]
+[[ 0.01250464  0.00020798  0.00365415  0.00836077]
+ [ 0.00358713 -0.00737377  0.00422658  0.00370119]
+ [ 0.00506597  0.00416177  0.00812594  0.0039218 ]
+ [-0.00669081 -0.00119087  0.00158923 -0.01067196]]
 
-Purity1 = 0.18455587955678526
-Purity2 = 0.527300463403825
-Purity3 = 0.9882694784032228
+Purity1 = 0.3333764978293949
+Purity2 = 0.8758201248560172
+Purity3 = 0.9513023946571003
 </pre></div></div>
 </div>
 <p>Notice that if we create the random Mueller matrix from less than four Jones-Mueller matrices, the Cloude decomposition will have only as many non-zero matrices as there were Jones-Mueller matrices. In the following, we plot the average magnitude of each element of the Cloude decomposition as a function of how many Jones-Mueller matrices were added.</p>
@@ -751,7 +494,8 @@ Purity3 = 0.9882694784032228
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="Graph showing results of preceding Python code: Four curves starting, one starting at 1 and decaying to about 0.35 and threestarting at 0 and rising to levels around about 0.25." src="_images/UsingMueller_26_0.svg" /></div>
+<img alt="Graph showing results of preceding Python code: Four curves starting, one starting at 1 and decaying to about 0.35 and threestarting at 0 and rising to levels around about 0.25." src="_images/UsingMueller_26_0.svg" />
+</div>
 </div>
 <p>The Lu-Chipman decomposition* decomposes a given Mueller matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> into the ordered product of three matrices:</p>
 <div class="math notranslate nohighlight">
@@ -762,7 +506,7 @@ Purity3 = 0.9882694784032228
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">printMatrix</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">printMatrix</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="n">M</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="s2">&quot;=</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 
@@ -784,38 +528,38 @@ Purity3 = 0.9882694784032228
 
  M =
 
-[[ 0.84442092  0.1075449   0.06352588  0.05409045]
- [ 0.21973306  0.44426721 -0.13529821  0.11410266]
- [ 0.23420748  0.03277545 -0.11947241 -0.13426277]
- [ 0.08729154  0.07995964 -0.03015655 -0.0153505 ]]
+[[ 0.88954684  0.23888139  0.16943653  0.02040468]
+ [ 0.07104176 -0.0251821  -0.07050726  0.03410431]
+ [-0.05471386  0.00584935 -0.01888548  0.2424316 ]
+ [ 0.31609872 -0.27383741  0.23642338 -0.09410258]]
 
  Depolarizer =
 
-[[1.         0.         0.         0.        ]
- [0.20185409 0.54228623 0.00714284 0.07993953]
- [0.30106685 0.00714284 0.24083235 0.04079128]
- [0.09770437 0.07993953 0.04079128 0.03708036]]
+[[ 1.          0.          0.          0.        ]
+ [ 0.11411239  0.12151473  0.02632313  0.00212206]
+ [-0.07348516  0.02632313  0.28365022 -0.06254756]
+ [ 0.43746819  0.00212206 -0.06254756  0.49389818]]
 
  Retarder =
 
-[[ 1.00000000e+00  2.10335221e-17 -1.89193279e-17  0.00000000e+00]
- [ 1.11022302e-16  8.54280664e-01 -3.97300271e-01  3.35197020e-01]
- [ 4.44089210e-16 -1.03253526e-01 -7.61690669e-01 -6.39660874e-01]
- [ 0.00000000e+00  5.09453881e-01  5.11839642e-01 -6.91720264e-01]]
+[[ 1.00000000e+00 -2.23074597e-17 -7.76017705e-17  0.00000000e+00]
+ [ 1.80411242e-16 -4.43233125e-01 -8.90443784e-01  1.03219501e-01]
+ [ 2.77555756e-17 -6.39502098e-02  1.46264922e-01  9.87176247e-01]
+ [-1.11022302e-16 -8.94122345e-01  4.30948304e-01 -1.21773525e-01]]
 
  Diattenuator =
 
-[[0.84442092 0.1075449  0.06352588 0.05409045]
- [0.1075449  0.84027184 0.00407193 0.00346713]
- [0.06352588 0.00407193 0.8357836  0.00204801]
- [0.05409045 0.00346713 0.00204801 0.83512216]]
+[[0.88954684 0.23888139 0.16943653 0.02040468]
+ [0.23888139 0.87270425 0.02340621 0.00281873]
+ [0.16943653 0.02340621 0.85630664 0.0019993 ]
+ [0.02040468 0.00281873 0.0019993  0.83994559]]
 
  The product Depolarizer . Retarder .  Diattenuator =
 
-[[ 0.84442092  0.1075449   0.06352588  0.05409045]
- [ 0.21973306  0.44426721 -0.13529821  0.11410266]
- [ 0.23420748  0.03277545 -0.11947241 -0.13426277]
- [ 0.08729154  0.07995964 -0.03015655 -0.0153505 ]]
+[[ 0.88954684  0.23888139  0.16943653  0.02040468]
+ [ 0.07104176 -0.0251821  -0.07050726  0.03410431]
+ [-0.05471386  0.00584935 -0.01888548  0.2424316 ]
+ [ 0.31609872 -0.27383741  0.23642338 -0.09410258]]
 </pre></div></div>
 </div>
 <p>The reverse Lu-Chipman decomposition is similar to the Lu-Chipman decomposition, except that the order of the elements us reversed. That is,</p>
@@ -844,38 +588,38 @@ Purity3 = 0.9882694784032228
 
  M =
 
-[[ 0.79050245  0.31080475  0.13624337 -0.2012983 ]
- [-0.22657717 -0.64638751 -0.16880211 -0.25056315]
- [ 0.19461597  0.0578249   0.53578195 -0.31627667]
- [ 0.17512845  0.33887398 -0.24140583 -0.45722454]]
+[[ 1.15123767  0.3107208  -0.57876437 -0.64228501]
+ [ 0.35535777  0.28835753  0.18200003 -0.42906417]
+ [-0.58624544  0.1265506   0.47964119  0.5311281 ]
+ [ 0.67839879  0.39424397 -0.65209766 -0.31396265]]
 
  Diattenuator =
 
-[[ 0.87059006 -0.230308    0.2884748   0.30995087]
- [-0.230308    0.75822452 -0.04163903 -0.04473893]
- [ 0.2884748  -0.04163903  0.77713682  0.05603824]
- [ 0.30995087 -0.04473893  0.05603824  0.78519151]]
+[[ 1.62591528  0.67840419 -0.80182587  1.04263937]
+ [ 0.67840419  0.87347861 -0.2365849   0.30763878]
+ [-0.80182587 -0.2365849   0.95293688 -0.36360732]
+ [ 1.04263937  0.30763878 -0.36360732  1.14612025]]
 
  Retarder =
 
 [[ 1.          0.          0.          0.        ]
- [ 0.         -0.87883829 -0.22590361 -0.4202509 ]
- [ 0.          0.01769794  0.86476707 -0.50186123]
- [ 0.          0.4767914  -0.44849244 -0.75599239]]
+ [ 0.          0.48543149  0.57491682 -0.65865539]
+ [ 0.          0.50980515  0.42589059  0.74747302]
+ [ 0.          0.71024994 -0.69863285 -0.08635485]]
 
  Depolarizer =
 
 [[ 1.          0.          0.          0.        ]
- [-0.07088282  0.91237903  0.01709567  0.05714633]
- [-0.01846463  0.01709567  0.82188915  0.01194215]
- [ 0.18385422  0.05714633  0.01194215  0.79183899]]
+ [-0.25119832  0.58690123  0.05365634  0.03589699]
+ [ 0.02999515  0.05365634  0.88123486  0.01328619]
+ [ 0.25366908  0.03589699  0.01328619  0.57822047]]
 
  The product Diattenuator . Retarder .  Depolarizer =
 
-[[ 0.79050245  0.31080475  0.13624337 -0.2012983 ]
- [-0.22657717 -0.64638751 -0.16880211 -0.25056315]
- [ 0.19461597  0.0578249   0.53578195 -0.31627667]
- [ 0.17512845  0.33887398 -0.24140583 -0.45722454]]
+[[ 1.15123767  0.3107208  -0.57876437 -0.64228501]
+ [ 0.35535777  0.28835753  0.18200003 -0.42906417]
+ [-0.58624544  0.1265506   0.47964119  0.5311281 ]
+ [ 0.67839879  0.39424397 -0.65209766 -0.31396265]]
 </pre></div></div>
 </div>
 <p>The symmetric decomposition, introduced by Ossikovski,* is a decomposition that treats the ordering of the Mueller matrix product as symmetric. That is, the Mueller matrix <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is decomposed into</p>
@@ -908,52 +652,52 @@ Purity3 = 0.9882694784032228
 
  M =
 
-[[ 1.31346355 -0.70433204 -0.05792289 -0.42159147]
- [-0.59531681  0.30343934 -0.47341912  0.52095325]
- [ 0.31783609 -0.24582591 -0.39663839  0.37667674]
- [ 0.27500732 -0.26594446  0.04012768 -0.18661019]]
+[[ 1.55151702  0.03609571  0.79076626  0.99870727]
+ [-0.45333709 -0.1206727   0.04826892 -0.39460121]
+ [ 0.37397408 -0.32658845  0.2094163   0.42084963]
+ [ 1.34688134  0.09494389  0.84251601  0.91920683]]
 
  diatten2 =
 
-[[ 1.         -0.42564353  0.31261478  0.10704983]
- [-0.42564353  0.94073622 -0.0722223  -0.02473135]
- [ 0.31261478 -0.0722223   0.8954451   0.01816399]
- [ 0.10704983 -0.02473135  0.01816399  0.84862125]]
+[[ 1.         -0.41806846  0.15200294  0.80658326]
+ [-0.41806846  0.51508519 -0.04574149 -0.24272107]
+ [ 0.15200294 -0.04574149  0.4059088   0.08824946]
+ [ 0.80658326 -0.24272107  0.08824946  0.85756188]]
 
  ret2 =
 
 [[ 1.          0.          0.          0.        ]
- [ 0.          0.70579373 -0.26909955  0.6553172 ]
- [ 0.          0.69389627  0.44894296 -0.56299039]
- [ 0.         -0.14269958  0.85207726  0.5035883 ]]
+ [ 0.         -0.33430761 -0.29479283  0.89517351]
+ [ 0.         -0.76521911  0.63935971 -0.07522554]
+ [ 0.         -0.55016192 -0.71015234 -0.43932393]]
 
  depol =
 
-[[1.31231491 0.         0.         0.        ]
- [0.         1.31231491 0.         0.        ]
- [0.         0.         0.24752227 0.        ]
- [0.         0.         0.         0.24752227]]
+[[1.44369712 0.         0.         0.        ]
+ [0.         1.44369712 0.         0.        ]
+ [0.         0.         0.99000645 0.        ]
+ [0.         0.         0.         0.99000645]]
 
  ret1 =
 
 [[ 1.          0.          0.          0.        ]
- [ 0.         -0.01944212 -0.73046083  0.6826778 ]
- [ 0.         -0.9627385   0.19788894  0.18432186]
- [ 0.         -0.26973428 -0.65365659 -0.70709015]]
+ [ 0.          0.39884236 -0.54904816 -0.73448682]
+ [ 0.         -0.79377392 -0.60776703  0.02328524]
+ [ 0.         -0.45918159  0.57372934 -0.67822335]]
 
  diatten1 =
 
-[[ 1.         -0.50453294 -0.15004366 -0.31959462]
- [-0.50453294  0.93027935  0.04234118  0.09018718]
- [-0.15004366  0.04234118  0.80049588  0.02682087]
- [-0.31959462  0.09018718  0.02682087  0.84503274]]
+[[ 1.         -0.1887404   0.45505762  0.12958454]
+ [-0.1887404   0.87967413 -0.04616312 -0.01314565]
+ [ 0.45505762 -0.04616312  0.97182783  0.03169447]
+ [ 0.12958454 -0.01314565  0.03169447  0.86955292]]
 
  The product Diattenuator2 . Retarder2 .  Depolarizer . Retarder1 . Diattenuator1 =
 
-[[ 1.31346355 -0.70433204 -0.05792289 -0.42159147]
- [-0.59531681  0.30343934 -0.47341912  0.52095325]
- [ 0.31783609 -0.24582591 -0.39663839  0.37667674]
- [ 0.27500732 -0.26594446  0.04012768 -0.18661019]]
+[[ 1.55151702  0.03609571  0.79076626  0.99870727]
+ [-0.45333709 -0.1206727   0.04826892 -0.39460121]
+ [ 0.37397408 -0.32658845  0.2094163   0.42084963]
+ [ 1.34688134  0.09494389  0.84251601  0.91920683]]
 </pre></div></div>
 </div>
 <p>The differential decomposition is simply the matrix logarithm of the Mueller matrix.</p>
@@ -977,29 +721,29 @@ Purity3 = 0.9882694784032228
 
  M =
 
-[[ 0.90254645  0.27385362  0.30832524 -0.28841948]
- [-0.32530387 -0.31270702 -0.36702936 -0.22067358]
- [-0.10609641 -0.01203455 -0.22551256  0.15574008]
- [-0.40125467 -0.27026781 -0.04613747  0.37130898]]
+[[ 1.42807254  0.19183427 -0.19322453  0.1932571 ]
+ [-0.55595764 -0.26641233  0.54768937 -0.26053033]
+ [ 0.54269769  0.34867879 -0.19276603  0.26581507]
+ [-0.1217463   0.19896928 -0.07335943 -0.31574191]]
 
  L =
 
-[[-0.28858548  0.16185659  0.85000633 -0.74234137]
- [-1.10744528 -2.89640883 -6.81363824  0.49688726]
- [ 0.53841303  1.40068116  0.37418308  0.5630028 ]
- [-1.01346942 -0.95694393 -2.34927816 -0.91739108]]
+[[ 0.37971771  0.08513869 -0.12618294  0.4902034 ]
+ [-1.10520971 -1.74282749  0.97318479 -3.03750829]
+ [ 0.88603772 -0.01086403 -2.00943351  2.01419761]
+ [ 1.07487994  1.62658763 -2.24127411  0.6971408 ]]
 
  MuellerExp(L) =
 
-[[ 0.90254645  0.27385362  0.30832524 -0.28841948]
- [-0.32530387 -0.31270702 -0.36702936 -0.22067358]
- [-0.10609641 -0.01203455 -0.22551256  0.15574008]
- [-0.40125467 -0.27026781 -0.04613747  0.37130898]]
+[[ 1.42807254  0.19183427 -0.19322453  0.1932571 ]
+ [-0.55595764 -0.26641233  0.54768937 -0.26053033]
+ [ 0.54269769  0.34867879 -0.19276603  0.26581507]
+ [-0.1217463   0.19896928 -0.07335943 -0.31574191]]
 </pre></div></div>
 </div>
 </section>
 <section id="Other-parameters">
-<h2>Other parameters<a class="headerlink" href="#Other-parameters" title="Permalink to this heading">¶</a></h2>
+<h2>Other parameters<a class="headerlink" href="#Other-parameters" title="Link to this heading">¶</a></h2>
 <p>One can obtain other parameters associated with a Mueller matrix.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>In [18]:
@@ -1023,14 +767,14 @@ Purity3 = 0.9882694784032228
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Tmax =  1.1130487259621076
-Tmin =  0.3550748776407327
-diattenuation =  0.5162874886428319
-linear diattenuation =  0.5008220205047619
-polarization dependent loss =  4.961942308101194
-polarizance =  0.5633462437213892
-depolarization index =  0.6589112048969448
-extinction_ratio =  3.1346873463920426
+Tmax =  1.8534996529463224
+Tmin =  0.907896368081053
+diattenuation =  0.3424366797318185
+linear diattenuation =  0.23506164760130002
+polarization dependent loss =  3.099562302828938
+polarizance =  0.4764573850052099
+depolarization index =  0.5618222211547547
+extinction_ratio =  2.041532181546132
 </pre></div></div>
 </div>
 <p>There is also a class <code class="docutils literal notranslate"><span class="pre">CharacterizedMueller</span></code> that performs a Lu-Chipman decomposition and extracts parameters from them. This is treated as a separate class, because initialization performs the decomposition, assigning values to the parameters. Note that the parameters differ from those shown above, due to differences in definition.</p>
@@ -1053,31 +797,31 @@ extinction_ratio =  3.1346873463920426
 <div class="highlight"><pre>
 Mdepol =
 [[ 1.          0.          0.          0.        ]
- [-0.08476877  0.27377418 -0.03728996  0.09656993]
- [-0.20204637 -0.03728996  0.44373316 -0.09981802]
- [-0.26307903  0.09656993 -0.09981802  0.59248849]]
+ [ 0.08919002  0.65147165  0.18793015  0.12235724]
+ [ 0.15367016  0.18793015  0.27412491  0.07061781]
+ [-0.42568498  0.12235724  0.07061781  0.16796685]]
 Mret =
-[[ 1.00000000e+00 -9.45424294e-17 -7.28583860e-17 -5.55111512e-17]
- [ 0.00000000e+00 -5.62772927e-01 -5.92775720e-01 -5.76110734e-01]
- [-1.24900090e-16 -3.11903969e-01  7.97714968e-01 -5.16107299e-01]
- [ 5.55111512e-17  7.65508031e-01 -1.10759990e-01 -6.33821488e-01]]
+[[ 1.00000000e+00  3.64291930e-17 -7.80625564e-18  0.00000000e+00]
+ [ 0.00000000e+00 -9.59824678e-01  2.67785067e-01  8.38316440e-02]
+ [ 1.11022302e-16  1.66217040e-01  3.01895801e-01  9.38738952e-01]
+ [ 4.44089210e-16  2.26071852e-01  9.14959061e-01 -3.34277482e-01]]
 Mdiatten =
-[[ 0.7340618  -0.34245359  0.13371808  0.09206573]
- [-0.34245359  0.71472066 -0.03360347 -0.0231362 ]
- [ 0.13371808 -0.03360347  0.64178295  0.00903401]
- [ 0.09206573 -0.0231362   0.00903401  0.63488175]]
-DiattenuationVector = [-0.46651875  0.18216188  0.12541959]
-Diattenuation = 0.516287488642832
-CircularDiattenuation = 0.12541959458812751
-LinearDiattenuation = 0.5008220205047619
-DiattenuationAngle = 1.384664060309693 rad (79.33540669919348 deg)
-PolarizanceVector = [-0.08476877 -0.20204637 -0.26307903]
-Polarizance = 0.342372684079807
-DepolarizationCoefficient = 0.4366652735461514
-LinearRetardance = 2.2572802432682404 rad (129.33263111753394 deg)
-OpticalRotation = 0.4371035715152117 rad (25.04418985791638 deg)
-Retardance = 2.345409580619083 rad (134.38207019902185deg)
-RetardanceAngle = 0.7135526418560333 rad (40.88355483876068 deg)
+[[ 1.38069801  0.30891112 -0.09952924 -0.34381571]
+ [ 0.30891112  1.33285666 -0.01148118 -0.03966081]
+ [-0.09952924 -0.01148118  1.30092143  0.01277847]
+ [-0.34381571 -0.03966081  0.01277847  1.34136445]]
+DiattenuationVector = [ 0.22373547 -0.07208618 -0.24901587]
+Diattenuation = 0.3424366797318185
+CircularDiattenuation = -0.24901586586543895
+LinearDiattenuation = 0.23506164760130002
+DiattenuationAngle = -0.1558458439490496 rad (-8.92930911293498 deg)
+PolarizanceVector = [ 0.08919002  0.15367016 -0.42568498]
+Polarizance = 0.4612776611868638
+DepolarizationCoefficient = 0.36452113612237175
+LinearRetardance = 1.9116348343603011 rad (109.52860797903546 deg)
+OpticalRotation = 0.07658314337500824 rad (4.387890897233243 deg)
+Retardance = 3.0532823583229534 rad (174.94019279365594deg)
+RetardanceAngle = 0.6642819505002977 rad (38.06055217038532 deg)
 </pre></div></div>
 </div>
 </section>
@@ -1088,7 +832,7 @@ RetardanceAngle = 0.7135526418560333 rad (40.88355483876068 deg)
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h3><a href="index.html">Table of Contents</a></h3>
@@ -1120,7 +864,7 @@ RetardanceAngle = 0.7135526418560333 rad (40.88355483876068 deg)
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -1128,13 +872,13 @@ RetardanceAngle = 0.7135526418560333 rad (40.88355483876068 deg)
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -1149,12 +893,12 @@ RetardanceAngle = 0.7135526418560333 rad (40.88355483876068 deg)
         <li class="right" >
           <a href="index.html" title="pySCATMECH : A Python Interface to the SCATMECH Library"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Using the Mueller module</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     </div>
   </body>
 </html>

@@ -1,22 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>SolidAngle classes &#8212; pySCATMECH 0.1.9 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <title>SolidAngle classes &#8212; pySCATMECH 0.1.10 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <script src="_static/documentation_options.js?v=bafade30"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -55,7 +52,7 @@ $(document).ready(function(){
 
 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -70,7 +67,7 @@ $(document).ready(function(){
         <li class="right" >
           <a href="integrate.html" title="Integrate Module"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="integrate.html" accesskey="U">Integrate Module</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">SolidAngle classes</a></li> 
       </ul>
@@ -82,24 +79,24 @@ $(document).ready(function(){
           <div class="body" role="main">
             
   <section id="module-pySCATMECH.integrate">
-<span id="solidangle-classes"></span><h1>SolidAngle classes<a class="headerlink" href="#module-pySCATMECH.integrate" title="Permalink to this heading">¶</a></h1>
+<span id="solidangle-classes"></span><h1>SolidAngle classes<a class="headerlink" href="#module-pySCATMECH.integrate" title="Link to this heading">¶</a></h1>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.CircularCone">
-<span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">CircularCone</span></span><a class="headerlink" href="#pySCATMECH.integrate.CircularCone" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">CircularCone</span></span><a class="headerlink" href="#pySCATMECH.integrate.CircularCone" title="Link to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="#pySCATMECH.integrate.EllipticalCone" title="pySCATMECH.integrate.EllipticalCone"><code class="xref py py-class docutils literal notranslate"><span class="pre">EllipticalCone</span></code></a></p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.EllipticalCone">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">EllipticalCone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone" title="Permalink to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">EllipticalCone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pySCATMECH.integrate.SolidAngle" title="pySCATMECH.integrate.SolidAngle"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolidAngle</span></code></a></p>
 <p>A solid angle defined as an elliptical circular cone.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.EllipticalCone.inside">
-<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone.inside" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.EllipticalCone.inside" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
+<dd class="field-odd"><p><strong>v</strong> (<em>tuple</em><em> of </em><em>float</em>) – Direction represented as directional cosines</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -115,15 +112,15 @@ $(document).ready(function(){
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.Hemisphere">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">Hemisphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere" title="Permalink to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">Hemisphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pySCATMECH.integrate.SolidAngle" title="pySCATMECH.integrate.SolidAngle"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolidAngle</span></code></a></p>
 <p>A solid angle defined by the entire hemisphere.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.Hemisphere.inside">
-<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere.inside" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.Hemisphere.inside" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
+<dd class="field-odd"><p><strong>v</strong> (<em>tuple</em><em> of </em><em>float</em>) – Direction represented as directional cosines</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -139,15 +136,15 @@ $(document).ready(function(){
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.ProjectedPolygon">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">ProjectedPolygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon" title="Permalink to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">ProjectedPolygon</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">boundary</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pySCATMECH.integrate.SolidAngle" title="pySCATMECH.integrate.SolidAngle"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolidAngle</span></code></a></p>
 <p>A solid angle defined by an array of (x,y) points in projected cosine space.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.ProjectedPolygon.inside">
-<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon.inside" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.ProjectedPolygon.inside" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
+<dd class="field-odd"><p><strong>v</strong> (<em>tuple</em><em> of </em><em>float</em>) – Direction represented as directional cosines</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -163,15 +160,15 @@ $(document).ready(function(){
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.RectangularCone">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">RectangularCone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone" title="Permalink to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">RectangularCone</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">theta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">alpha</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gamma</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitivity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">StokesVector(1,</span> <span class="pre">0,</span> <span class="pre">0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">polphi</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#pySCATMECH.integrate.SolidAngle" title="pySCATMECH.integrate.SolidAngle"><code class="xref py py-class docutils literal notranslate"><span class="pre">SolidAngle</span></code></a></p>
 <p>A solid angle defined by a rectangular collection cone.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.RectangularCone.inside">
-<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone.inside" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">inside</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.integrate.RectangularCone.inside" title="Link to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>v</strong> (<em>tuple of float</em>) – Direction represented as directional cosines</p>
+<dd class="field-odd"><p><strong>v</strong> (<em>tuple</em><em> of </em><em>float</em>) – Direction represented as directional cosines</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
@@ -187,7 +184,7 @@ $(document).ready(function(){
 
 <dl class="py class">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.SolidAngle">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">SolidAngle</span></span><a class="headerlink" href="#pySCATMECH.integrate.SolidAngle" title="Permalink to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">SolidAngle</span></span><a class="headerlink" href="#pySCATMECH.integrate.SolidAngle" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Abstract class for a solid angle on a hemisphere.</p>
 <p>Inherited classes are expected to define inside(self,v) where
@@ -201,7 +198,7 @@ other solid angle classes.</p>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="pySCATMECH.integrate.SquareCone">
-<span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">SquareCone</span></span><a class="headerlink" href="#pySCATMECH.integrate.SquareCone" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">pySCATMECH.integrate.</span></span><span class="sig-name descname"><span class="pre">SquareCone</span></span><a class="headerlink" href="#pySCATMECH.integrate.SquareCone" title="Link to this definition">¶</a></dt>
 <dd><p>alias of <a class="reference internal" href="#pySCATMECH.integrate.RectangularCone" title="pySCATMECH.integrate.RectangularCone"><code class="xref py py-class docutils literal notranslate"><span class="pre">RectangularCone</span></code></a></p>
 </dd></dl>
 
@@ -212,8 +209,36 @@ other solid angle classes.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">SolidAngle classes</a><ul>
+<li><a class="reference internal" href="#pySCATMECH.integrate.CircularCone"><code class="docutils literal notranslate"><span class="pre">CircularCone</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.integrate.EllipticalCone"><code class="docutils literal notranslate"><span class="pre">EllipticalCone</span></code></a><ul>
+<li><a class="reference internal" href="#pySCATMECH.integrate.EllipticalCone.inside"><code class="docutils literal notranslate"><span class="pre">EllipticalCone.inside()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pySCATMECH.integrate.Hemisphere"><code class="docutils literal notranslate"><span class="pre">Hemisphere</span></code></a><ul>
+<li><a class="reference internal" href="#pySCATMECH.integrate.Hemisphere.inside"><code class="docutils literal notranslate"><span class="pre">Hemisphere.inside()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pySCATMECH.integrate.ProjectedPolygon"><code class="docutils literal notranslate"><span class="pre">ProjectedPolygon</span></code></a><ul>
+<li><a class="reference internal" href="#pySCATMECH.integrate.ProjectedPolygon.inside"><code class="docutils literal notranslate"><span class="pre">ProjectedPolygon.inside()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pySCATMECH.integrate.RectangularCone"><code class="docutils literal notranslate"><span class="pre">RectangularCone</span></code></a><ul>
+<li><a class="reference internal" href="#pySCATMECH.integrate.RectangularCone.inside"><code class="docutils literal notranslate"><span class="pre">RectangularCone.inside()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pySCATMECH.integrate.SolidAngle"><code class="docutils literal notranslate"><span class="pre">SolidAngle</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.integrate.SquareCone"><code class="docutils literal notranslate"><span class="pre">SquareCone</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="integrate.html"
@@ -231,7 +256,7 @@ other solid angle classes.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -239,13 +264,13 @@ other solid angle classes.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -260,13 +285,13 @@ other solid angle classes.</p>
         <li class="right" >
           <a href="integrate.html" title="Integrate Module"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="integrate.html" >Integrate Module</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">SolidAngle classes</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     </div>
   </body>
 </html>

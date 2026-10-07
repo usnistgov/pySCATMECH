@@ -1,22 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Mueller Module &#8212; pySCATMECH 0.1.9 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <title>Mueller Module &#8212; pySCATMECH 0.1.10 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <script src="_static/documentation_options.js?v=bafade30"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -55,7 +52,7 @@ $(document).ready(function(){
 
 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -70,7 +67,7 @@ $(document).ready(function(){
         <li class="right" >
           <a href="SPIEManuscript2020.html" title="Conference Article"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Mueller Module</a></li> 
       </ul>
     </div>  
@@ -81,16 +78,52 @@ $(document).ready(function(){
           <div class="body" role="main">
             
   <section id="mueller-module">
-<h1>Mueller Module<a class="headerlink" href="#mueller-module" title="Permalink to this heading">¶</a></h1>
+<h1>Mueller Module<a class="headerlink" href="#mueller-module" title="Link to this heading">¶</a></h1>
 <p>The <cite>pySCATMECH.mueller</cite> module provides functionality for Mueller matrices, Stokes vectors,
 Jones matrices, and Jones vectors.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Subtopics</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="mueller1.html">MuellerMatrix class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mueller2.html">StokesVector class</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mueller3.html">Mueller matrix decompositions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mueller4.html">Other polarization operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mueller1.html">MuellerMatrix class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mueller1.html#pySCATMECH.mueller.MuellerMatrix"><code class="docutils literal notranslate"><span class="pre">MuellerMatrix</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mueller2.html">StokesVector class</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mueller2.html#pySCATMECH.mueller.StokesVector"><code class="docutils literal notranslate"><span class="pre">StokesVector</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mueller3.html">Mueller matrix decompositions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mueller3.html#pySCATMECH.mueller.CharacterizedMueller"><code class="docutils literal notranslate"><span class="pre">CharacterizedMueller</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller3.html#pySCATMECH.mueller.Cloude_Decomposition"><code class="docutils literal notranslate"><span class="pre">Cloude_Decomposition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller3.html#pySCATMECH.mueller.MuellerLog"><code class="docutils literal notranslate"><span class="pre">MuellerLog()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller3.html#pySCATMECH.mueller.Reverse_Lu_Chipman_Decomposition"><code class="docutils literal notranslate"><span class="pre">Reverse_Lu_Chipman_Decomposition()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller3.html#pySCATMECH.mueller.Symmetric_Decomposition"><code class="docutils literal notranslate"><span class="pre">Symmetric_Decomposition()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mueller4.html">Other polarization operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.HermitianToMueller"><code class="docutils literal notranslate"><span class="pre">HermitianToMueller()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.JonesDiattenuator"><code class="docutils literal notranslate"><span class="pre">JonesDiattenuator()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.JonesMueller"><code class="docutils literal notranslate"><span class="pre">JonesMueller()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.JonesPolarizer"><code class="docutils literal notranslate"><span class="pre">JonesPolarizer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.JonesRetarder"><code class="docutils literal notranslate"><span class="pre">JonesRetarder()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.JonesRotator"><code class="docutils literal notranslate"><span class="pre">JonesRotator()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.JonesStokes"><code class="docutils literal notranslate"><span class="pre">JonesStokes()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.JonesUnit"><code class="docutils literal notranslate"><span class="pre">JonesUnit()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.JonesZero"><code class="docutils literal notranslate"><span class="pre">JonesZero()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.MuellerDiagonal"><code class="docutils literal notranslate"><span class="pre">MuellerDiagonal()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.MuellerDiattenuator"><code class="docutils literal notranslate"><span class="pre">MuellerDiattenuator()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.MuellerExp"><code class="docutils literal notranslate"><span class="pre">MuellerExp()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.MuellerPolarizer"><code class="docutils literal notranslate"><span class="pre">MuellerPolarizer()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.MuellerRetarder"><code class="docutils literal notranslate"><span class="pre">MuellerRetarder()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.MuellerRotator"><code class="docutils literal notranslate"><span class="pre">MuellerRotator()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.MuellerToHermitian"><code class="docutils literal notranslate"><span class="pre">MuellerToHermitian()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.MuellerUnit"><code class="docutils literal notranslate"><span class="pre">MuellerUnit()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.MuellerZero"><code class="docutils literal notranslate"><span class="pre">MuellerZero()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.Polarization"><code class="docutils literal notranslate"><span class="pre">Polarization()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.Sensitivity"><code class="docutils literal notranslate"><span class="pre">Sensitivity()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="mueller4.html#pySCATMECH.mueller.StokesZero"><code class="docutils literal notranslate"><span class="pre">StokesZero()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>
@@ -100,7 +133,7 @@ Jones matrices, and Jones vectors.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
   <div>
     <h4>Previous topic</h4>
@@ -119,7 +152,7 @@ Jones matrices, and Jones vectors.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -127,13 +160,13 @@ Jones matrices, and Jones vectors.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -148,12 +181,12 @@ Jones matrices, and Jones vectors.</p>
         <li class="right" >
           <a href="SPIEManuscript2020.html" title="Conference Article"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Mueller Module</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     </div>
   </body>
 </html>

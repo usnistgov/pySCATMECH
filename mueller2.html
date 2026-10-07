@@ -1,22 +1,19 @@
-
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en" data-content_root="./">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>StokesVector class &#8212; pySCATMECH 0.1.9 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/nature.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <title>StokesVector class &#8212; pySCATMECH 0.1.10 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/nature.css?v=279e0f84" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <script src="_static/documentation_options.js?v=bafade30"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -55,7 +52,7 @@ $(document).ready(function(){
 
 
   </head><body>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -70,7 +67,7 @@ $(document).ready(function(){
         <li class="right" >
           <a href="mueller1.html" title="MuellerMatrix class"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="mueller.html" accesskey="U">Mueller Module</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">StokesVector class</a></li> 
       </ul>
@@ -82,20 +79,20 @@ $(document).ready(function(){
           <div class="body" role="main">
             
   <section id="stokesvector-class">
-<h1>StokesVector class<a class="headerlink" href="#stokesvector-class" title="Permalink to this heading">¶</a></h1>
+<h1>StokesVector class<a class="headerlink" href="#stokesvector-class" title="Link to this heading">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">StokesVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector" title="Permalink to this definition">¶</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pySCATMECH.mueller.</span></span><span class="sig-name descname"><span class="pre">StokesVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector" title="Link to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code></p>
 <p>A class for handling Stokes vectors</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> (<em>4-element list</em><em> or </em><em>array of float</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – Default is zero Stokes vector</p>
+<dd class="field-odd"><p><strong>x</strong> (<em>4-element list</em><em> or </em><em>array</em><em> of </em><em>float</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – Default is zero Stokes vector</p>
 </dd>
 </dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.DOCP">
-<span class="sig-name descname"><span class="pre">DOCP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOCP" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">DOCP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOCP" title="Link to this definition">¶</a></dt>
 <dd><p>Return the degree of circular polarization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -109,7 +106,7 @@ $(document).ready(function(){
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.DOLP">
-<span class="sig-name descname"><span class="pre">DOLP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOLP" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">DOLP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOLP" title="Link to this definition">¶</a></dt>
 <dd><p>Return the degree of linear polarization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -123,7 +120,7 @@ $(document).ready(function(){
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.DOP">
-<span class="sig-name descname"><span class="pre">DOP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOP" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">DOP</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.DOP" title="Link to this definition">¶</a></dt>
 <dd><p>Return the degree of polarization.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -137,7 +134,7 @@ $(document).ready(function(){
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.JonesVector">
-<span class="sig-name descname"><span class="pre">JonesVector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.JonesVector" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">JonesVector</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.JonesVector" title="Link to this definition">¶</a></dt>
 <dd><p>Return a Jones vector associated with the polarized part of the
 Stokes vector.</p>
 <dl class="field-list simple">
@@ -153,7 +150,7 @@ the polarized part of the Stokes vector.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.delta">
-<span class="sig-name descname"><span class="pre">delta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.delta" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">delta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.delta" title="Link to this definition">¶</a></dt>
 <dd><p>Return the phase difference between the two components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -168,7 +165,7 @@ in radians. Uses the polarized part of the Stokes vector.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.eccentricity">
-<span class="sig-name descname"><span class="pre">eccentricity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.eccentricity" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">eccentricity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.eccentricity" title="Link to this definition">¶</a></dt>
 <dd><p>Return the eccentricity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -182,7 +179,7 @@ in radians. Uses the polarized part of the Stokes vector.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.ellipticity">
-<span class="sig-name descname"><span class="pre">ellipticity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.ellipticity" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">ellipticity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.ellipticity" title="Link to this definition">¶</a></dt>
 <dd><p>Return the ellipticity of the field (ratio of minor to major axes).</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -197,7 +194,7 @@ of the polarization ellipse.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.eta">
-<span class="sig-name descname"><span class="pre">eta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.eta" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">eta</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.eta" title="Link to this definition">¶</a></dt>
 <dd><p>Return the principal angle of the polarization ellipse</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -211,7 +208,7 @@ of the polarization ellipse.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.intensity">
-<span class="sig-name descname"><span class="pre">intensity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.intensity" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">intensity</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.intensity" title="Link to this definition">¶</a></dt>
 <dd><p>Return the intensity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -225,7 +222,7 @@ of the polarization ellipse.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.normalized">
-<span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.normalized" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">normalized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.normalized" title="Link to this definition">¶</a></dt>
 <dd><p>Return normalized Stokes vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -239,7 +236,7 @@ of the polarization ellipse.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.pol_part">
-<span class="sig-name descname"><span class="pre">pol_part</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.pol_part" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">pol_part</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.pol_part" title="Link to this definition">¶</a></dt>
 <dd><p>Return the polarized part of the Stokes vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -253,7 +250,7 @@ of the polarization ellipse.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.psi">
-<span class="sig-name descname"><span class="pre">psi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.psi" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">psi</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.psi" title="Link to this definition">¶</a></dt>
 <dd><p>Return arc tangent of the amplitude ratio between the two components.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -269,7 +266,7 @@ value is zero for p-polarized light.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.rotate">
-<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.rotate" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.rotate" title="Link to this definition">¶</a></dt>
 <dd><p>Return a Stokes vector rotated by an angle.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -286,7 +283,7 @@ value is zero for p-polarized light.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.unpol_part">
-<span class="sig-name descname"><span class="pre">unpol_part</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.unpol_part" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">unpol_part</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.unpol_part" title="Link to this definition">¶</a></dt>
 <dd><p>Return the unpolarized part of the Stokes vector.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -300,7 +297,7 @@ value is zero for p-polarized light.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pySCATMECH.mueller.StokesVector.valid">
-<span class="sig-name descname"><span class="pre">valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.valid" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pySCATMECH.mueller.StokesVector.valid" title="Link to this definition">¶</a></dt>
 <dd><p>Checks if the Stokes vector is valid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -321,8 +318,35 @@ value is zero for p-polarized light.</p>
           </div>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
         <div class="sphinxsidebarwrapper">
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">StokesVector class</a><ul>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector"><code class="docutils literal notranslate"><span class="pre">StokesVector</span></code></a><ul>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.DOCP"><code class="docutils literal notranslate"><span class="pre">StokesVector.DOCP()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.DOLP"><code class="docutils literal notranslate"><span class="pre">StokesVector.DOLP()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.DOP"><code class="docutils literal notranslate"><span class="pre">StokesVector.DOP()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.JonesVector"><code class="docutils literal notranslate"><span class="pre">StokesVector.JonesVector()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.delta"><code class="docutils literal notranslate"><span class="pre">StokesVector.delta()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.eccentricity"><code class="docutils literal notranslate"><span class="pre">StokesVector.eccentricity()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.ellipticity"><code class="docutils literal notranslate"><span class="pre">StokesVector.ellipticity()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.eta"><code class="docutils literal notranslate"><span class="pre">StokesVector.eta()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.intensity"><code class="docutils literal notranslate"><span class="pre">StokesVector.intensity()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.normalized"><code class="docutils literal notranslate"><span class="pre">StokesVector.normalized()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.pol_part"><code class="docutils literal notranslate"><span class="pre">StokesVector.pol_part()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.psi"><code class="docutils literal notranslate"><span class="pre">StokesVector.psi()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.rotate"><code class="docutils literal notranslate"><span class="pre">StokesVector.rotate()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.unpol_part"><code class="docutils literal notranslate"><span class="pre">StokesVector.unpol_part()</span></code></a></li>
+<li><a class="reference internal" href="#pySCATMECH.mueller.StokesVector.valid"><code class="docutils literal notranslate"><span class="pre">StokesVector.valid()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </div>
   <div>
     <h4>Previous topic</h4>
     <p class="topless"><a href="mueller1.html"
@@ -340,7 +364,7 @@ value is zero for p-polarized light.</p>
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
-<div id="searchbox" style="display: none" role="search">
+<search id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
@@ -348,13 +372,13 @@ value is zero for p-polarized light.</p>
       <input type="submit" value="Go" />
     </form>
     </div>
-</div>
+</search>
 <script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
+    <div class="related" role="navigation" aria-label="Related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
@@ -369,13 +393,13 @@ value is zero for p-polarized light.</p>
         <li class="right" >
           <a href="mueller1.html" title="MuellerMatrix class"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.9 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pySCATMECH 0.1.10 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="mueller.html" >Mueller Module</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">StokesVector class</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.1.1.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
     </div>
   </body>
 </html>
