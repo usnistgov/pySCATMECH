@@ -137,7 +137,7 @@ namespace SCATMECH {
         int c;
         do {
             c = istr->sbumpc();
-        } while (c!='\n');
+        } while (c != '\n' && c != EOF);
     }
 
     int

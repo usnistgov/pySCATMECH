@@ -430,7 +430,7 @@ namespace SCATMECH {
             varsmap::iterator a = vars.find(stemp);
             if (a!=vars.end()) error("Duplicate parameter label: " + stemp);
 
-            if (i>pe.NResult())
+            if (i>=pe.NResult())
                 error("Number of values in pstring (" + to_string(pe.NResult()) +
                       ") less than number of parameters (>" + to_string(i) + ")");
             double v = pe.Result(i);

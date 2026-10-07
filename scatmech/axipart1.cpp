@@ -220,7 +220,9 @@ namespace SCATMECH {
                                            +reflect_s[kk]*Vmatrix[kk][ii]*dminusmatrix[kk][ii_]);
                         }
 
+
                         // Constant value in front of Eq. (8.17) of BV...
+                        if (lmax >= 111) error("lmax exceeds hardcoded table limits");
                         COMPLEX aa = expx*mpow(m-1)*ipow(l_-1)*lvector[l_];
 
                         Aee *= aa;

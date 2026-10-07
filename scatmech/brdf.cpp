@@ -125,23 +125,35 @@ namespace SCATMECH {
         thetas = (type==Type_DOWNUP || type==Type_UPUP) ? acos(costhetas) : acos(-costhetas);
 
         // Project kin and kout onto surface plane
-        Vector kinperp  = norm_source - costhetai*norm_normal;
-        Vector koutperp = norm_viewer - costhetas*norm_normal;
+        //Vector kinperp  = norm_source - costhetai*norm_normal;
+        //Vector koutperp = norm_viewer - costhetas*norm_normal;
 
         // Make them unit vectors...
-        Vector kinperphat = unit(kinperp);
+        //Vector kinperphat = unit(kinperp);
 
         // Get a vector perpendicular to kinperphat and normal...
-        Vector yhat = perpto(kinperphat,norm_normal);
+        //Vector yhat = perpto(kinperphat,norm_normal);
+        Vector yhat = perpto(norm_normal, norm_xaxis);
 
-        double cosphis = -norm_viewer*kinperphat;
-        double sinphis = -norm_viewer*yhat;
+        //OLD:
+        //double cosphis = -norm_viewer*kinperphat;
+        //double sinphis = -norm_viewer*yhat;
+        //NEW
+        double cosphis = norm_viewer * norm_xaxis;
+        double sinphis = norm_viewer * yhat;
+        double cosphii = norm_source * norm_xaxis;
+        double sinphii = norm_source * yhat;
 
-        phis = atan2(sinphis,cosphis);
+        phis = atan2(sinphis, cosphis);
+        double phii = atan2(sinphii, cosphii);
 
-        Vector norm_yaxis = perpto(norm_normal,norm_xaxis);
+        rotation = pi - phii; 
+        phis = phis + rotation;
 
-        rotation = atan2(-norm_yaxis*norm_source,norm_xaxis*norm_source);
+        //Vector norm_yaxis = perpto(norm_normal,norm_xaxis);
+
+        //rotation = atan2(-norm_yaxis*norm_source,norm_xaxis*norm_source);
+        
 
         if (thetai!=last_thetai || rotation!=last_rotation) set_recalc(recalc_on_incident_change);
         if (thetas!=last_thetas || phis!=last_phis || rotation!=last_rotation) set_recalc(recalc_on_scatter_change);

@@ -78,6 +78,11 @@ void ZernikeExpansion_BRDF_Model::setup()
 			// If there was a failure, then throw an exception
 			if (sline.fail()) error("Error reading a line in coefficient file");
 
+			// Validate matrix indices are within the 4x4 bounds
+			if (i < 1 || i > 4 || j < 1 || j > 4) {
+				error("Matrix indices i and j out of bounds in coefficient file");
+			}
+
 			// Push the coefficient onto the list of coefficients
 			coeff.push_back(Coefficient(i,j,n,m,k,l,p,c));
 		}

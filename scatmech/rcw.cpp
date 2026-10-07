@@ -143,6 +143,7 @@ namespace SCATMECH {
         Model::setup();
 
         if (order<0) error("order < 0");
+        if (order > 10000) error("order > 10000");
 
         if (grating->get_lambda()!=lambda) grating->set_lambda(lambda);
 
@@ -2661,6 +2662,8 @@ namespace SCATMECH {
         }
 
         if (order<0) error("order < 0");
+        if (order > 10000) error("order > 10000");
+
         if (grating->get_medium_t().index(lambda)!=substrate.index(lambda)) error("grating->medium_t != substrate");
 
         if (order!=RCW.get_order()) RCW.set_order(order);

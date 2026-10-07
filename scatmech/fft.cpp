@@ -12,6 +12,7 @@
 //******************************************************************************
 #include "matrixmath.h"
 #include "fft.h"
+#include "scatmech.h"
 #include <iostream>
 
 using namespace std;
@@ -30,6 +31,7 @@ namespace SCATMECH {
     void fft1d(std::valarray<COMPLEX>& data,int isign)
     {
         int n=data.size();
+        if (n == 0) throw SCATMECH_exception("Attempting FFT of array of size 0");
 
         // If this size has not been done before, we need to create a work array.
         // This only needs to be done once for each size...
@@ -51,6 +53,7 @@ namespace SCATMECH {
     void fft1d(CFARRAY data,int N,int isign)
     {
         int n=N;
+        if (n == 0) throw SCATMECH_exception("Attempting FFT of array of size 0");
 
         // If this size has not been done before, we need to create a work array.
         // This only needs to be done once for each size...
@@ -428,6 +431,9 @@ L115:
             int NL,NF,J,NQ,NR,NTRY,IB,I,IP,LD,L2,IDO,IDOT,IPM,I1,II,L1,K1;
             double TPI,ARGH,FI,ARGLD,ARG;
             //C***FIRST EXECUTABLE STATEMENT  CFFTI1
+
+            if (N == 0) throw SCATMECH_exception("Attempting FFT of array of size 0");
+
             NL = N;
             NF = 0;
             J = 0;

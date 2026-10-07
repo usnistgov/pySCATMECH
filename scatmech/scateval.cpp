@@ -90,6 +90,10 @@ namespace SCATMECH {
             if (next==')') --level;
             if (next=='(') ++level;
 
+            if (level > 100) {
+                error("Maximum parentheses nesting depth exceeded");
+            }
+
             if (level>0) contents += next;
         }
         // Return the results of what was in the parentheses...
@@ -184,7 +188,7 @@ namespace SCATMECH {
             while (lower_prec(precs[prec])) operate();
             op_stack.push(input.get());
             prec_stack.push(precs[prec]);
-        } else error("Undefined operator: " + next);
+        } else error(std::string("Undefined operator: ") + next);
         input >> ws;
     }
 

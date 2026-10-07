@@ -120,6 +120,8 @@ namespace SCATMECH {
     {
         Grating::setup();
 
+        if (nlevels < 2) error("Cannot use Corner_Rounded_Grating with less than 2 levels");
+
         const char no_straight_section[]=
             "No straight section of sidewall";
         const char no_flat_section_top[]=

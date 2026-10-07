@@ -23,6 +23,11 @@ using namespace std;
 
 namespace SCATMECH {
 
+    // Performs safe modulo...
+    inline int safe_mod(int a, int b) {
+        return ((a % b) + b) % b;
+    }
+
     namespace {
         void print(CFARRAY a, int n1, int n2, ostream& os,int option=0)
         {
@@ -46,6 +51,11 @@ namespace SCATMECH {
 
 	void Gridded_CrossGrating::FourierFactorize()
 	{
+
+        if (grid1 < 2 * order1 + 1 || grid2 < 2 * order2 + 1) {
+            error("Grid size must be strictly greater than twice the order to satisfy Nyquist sampling.");
+        }
+
 		if (isotropic) {
 			FourierFactorize(eps, eps, eps, EPS0, EPS11, EPS12, EPS2, EPS3);
 		} else {
@@ -145,13 +155,13 @@ namespace SCATMECH {
 			for (j = 1; j <= N2; ++j) {
 				for (i = 1; i <= N1; ++i) tempN1(i) = eps3(i, j, level); // This is eps3
 				fft1d(tempN1, N1, -1);
-				for (i = 1; i <= M1a; ++i) epsFT0a(i, j) = tempN1((i - M1 + N1) % N1 + 1) / (double)N1;
+				for (i = 1; i <= M1a; ++i) epsFT0a(i, j) = tempN1(safe_mod((i - M1 + N1) , N1) + 1) / (double)N1;
 
 				for (i = 1; i <= N1; ++i) tempN1(i) = 1. / eps1(i, j, level); // This is eps1
 				fft1d(tempN1, N1, -1);
 				for (i = 1; i <= M1a; ++i) {
-					epsFT11a(i, j) = tempN1((i - M1 + N1) % N1 + 1) / (double)N1;
-					epsFT2a(i, j) = tempN1((i - M1 + N1) % N1 + 1) / (double)N1;
+					epsFT11a(i, j) = tempN1(safe_mod((i - M1 + N1) , N1) + 1) / (double)N1;
+					epsFT2a(i, j) = tempN1(safe_mod((i - M1 + N1) , N1) + 1) / (double)N1;
 				}
 				if (isotropic) {
 					for (i = 1; i <= M1a; ++i) {
@@ -161,7 +171,7 @@ namespace SCATMECH {
 					for (i = 1; i <= N1; ++i) tempN1(i) = 1. / eps2(i, j, level); // This is eps2
 					fft1d(tempN1, N1, -1);
 					for (i = 1; i <= M1a; ++i) {
-						epsFT12a(i, j) = tempN1((i - M1 + N1) % N1 + 1) / (double)N1;
+						epsFT12a(i, j) = tempN1(safe_mod((i - M1 + N1) , N1) + 1) / (double)N1;
 					}
 				}
 			}
@@ -170,19 +180,19 @@ namespace SCATMECH {
             for (j=1; j<=N1; ++j) {
                 for (i=1; i<=N2; ++i) tempN2(i) = 1./eps2(j,i,level); // This is eps2
                 fft1d(tempN2,N2,-1);
-                for (i=1; i<=M2a; ++i) epsFT3a(i,j) = tempN2((i-M2+N2)%N2+1)/(double)N2; 
+                for (i=1; i<=M2a; ++i) epsFT3a(i,j) = tempN2(safe_mod((i-M2+N2),N2)+1)/(double)N2; 
             }
 
             // For types 0 and 1, finish the FT along the other dimension...
             for (i=1; i<=M1a; ++i) {
                 for (j=1; j<=N2; ++j) tempN2(j) = epsFT0a(i,j); 
                 fft1d(tempN2,N2,-1);
-                for (j=1; j<=M2a; ++j) epsFT0(i,j) = tempN2((j-M2+N2)%N2+1)/(double)N2; 
+                for (j=1; j<=M2a; ++j) epsFT0(i,j) = tempN2(safe_mod((j-M2+N2),N2)+1)/(double)N2; 
 
                 for (j=1; j<=N2; ++j) tempN2(j) = epsFT11a(i,j); 
                 fft1d(tempN2,N2,-1);
 				for (j = 1; j <= M2a; ++j) {
-					epsFT11(i, j) = tempN2((j - M2 + N2) % N2 + 1) / (double)N2;
+					epsFT11(i, j) = tempN2(safe_mod((j - M2 + N2) , N2) + 1) / (double)N2;
 				}
 				if (isotropic) {
 					for (j = 1; j <= M2a; ++j) {
@@ -192,7 +202,7 @@ namespace SCATMECH {
 					for (j = 1; j <= N2; ++j) tempN2(j) = epsFT12a(i, j);
 					fft1d(tempN2, N2, -1);
 					for (j = 1; j <= M2a; ++j) {
-						epsFT12(i, j) = tempN2((j - M2 + N2) % N2 + 1) / (double)N2;
+						epsFT12(i, j) = tempN2(safe_mod((j - M2 + N2) , N2) + 1) / (double)N2;
 					}
 				}
             }
@@ -232,7 +242,7 @@ namespace SCATMECH {
                 for (j=1; j<=M1; ++j) {
                     for (l=1; l<=N2; ++l) tempN2(l) = epsFT2b(i,j,l); 
                     fft1d(tempN2,N2,-1);
-                    for (l=1; l<=M2a; ++l) epsFT2(i,j,l) = tempN2((l-M2+N2)%N2+1)/(double)N2; 
+                    for (l=1; l<=M2a; ++l) epsFT2(i,j,l) = tempN2(safe_mod((l-M2+N2),N2)+1)/(double)N2; 
                 }
             }
 
@@ -241,7 +251,7 @@ namespace SCATMECH {
                 for (j=1; j<=M2; ++j) {
                     for (l=1; l<=N1; ++l) tempN1(l) = epsFT3b(i,j,l);
                     fft1d(tempN1,N1,-1);
-                    for (l=1; l<=M1a; ++l) epsFT3(i,j,l) = tempN1((l-M1+N1)%N1+1)/(double)N1;
+                    for (l=1; l<=M1a; ++l) epsFT3(i,j,l) = tempN1(safe_mod((l-M1+N1),N1)+1)/(double)N1;
                 }
             }
 

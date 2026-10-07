@@ -16,6 +16,11 @@ using namespace SCATMECH;
 
 #define HERE() cerr<<"I am here: " << __LINE__ << endl;
 
+#define CHECKHANDLE(MAP, HANDLE) if (MAP.find(HANDLE) == MAP.end()) {  \
+                                     PyErr_SetString(PyExc_RuntimeError, "Stale or invalid C++ model handle."); \
+                                     return NULL; \
+                                 } 
+
 std::map<int,Model*> mapModel;
 std::map<int,BRDF_Model_Ptr> mapBRDF_Model; 
 std::map<int,Local_BRDF_Model_Ptr> mapLocal_BRDF_Model;
@@ -408,6 +413,8 @@ static PyObject * BRDFJones(PyObject *self, PyObject *args)
     else if (std::string(coords)=="plane") _coords = BRDF_Model::plane;
     else return NULL;
     
+    CHECKHANDLE(mapBRDF_Model, handle);
+
     JonesMatrix jones = mapBRDF_Model[handle]->Jones(thetai,thetas,phis,rotation,_coords);
 
     return PyJones(jones);
@@ -438,6 +445,8 @@ static PyObject * VectoredBRDF(PyObject *self, PyObject *args)
     else if (std::string(coords)=="plane") _coords = BRDF_Model::plane;
     else return NULL;
     
+    CHECKHANDLE(mapBRDF_Model, handle);
+
     MuellerMatrix mueller = mapBRDF_Model[handle]->Mueller(source,viewer,normal,xaxis,_coords);
 
     return PyMueller(mueller);
@@ -468,6 +477,8 @@ static PyObject * VectoredBRDFJones(PyObject *self, PyObject *args)
     else if (std::string(coords)=="plane") _coords = BRDF_Model::plane;
     else return NULL;
     
+    CHECKHANDLE(mapBRDF_Model, handle);
+
     JonesMatrix jones = mapBRDF_Model[handle]->Jones(source,viewer,normal,xaxis,_coords);
 
     return PyJones(jones);
@@ -495,6 +506,8 @@ static PyObject * LocalDSC(PyObject *self, PyObject *args)
     else if (std::string(coords)=="plane") _coords = BRDF_Model::plane;
     else return NULL;
     
+    CHECKHANDLE(mapLocal_BRDF_Model, handle);
+
     MuellerMatrix mueller = mapLocal_BRDF_Model[handle]->MuellerDSC(thetai,thetas,phis,rotation,_coords);
 
     return PyMueller(mueller);
@@ -522,6 +535,8 @@ static PyObject * LocalDSCJones(PyObject *self, PyObject *args)
     else if (std::string(coords)=="plane") _coords = BRDF_Model::plane;
     else return NULL;
     
+    CHECKHANDLE(mapLocal_BRDF_Model, handle);
+
     JonesMatrix jones = mapLocal_BRDF_Model[handle]->JonesDSC(thetai,thetas,phis,rotation,_coords);
 
     return PyJones(jones);
@@ -542,6 +557,8 @@ static PyObject * FSSjones(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "idddddd", &handle, &kix, &kiy, &kiz, &ksx, &ksy, &ksz))
         return NULL;
     
+    CHECKHANDLE(mapFSS_Model, handle);
+
     Free_Space_Scatterer_Ptr &model = mapFSS_Model[handle];
 
     double lambda = model->get_lambda();
@@ -567,6 +584,8 @@ static PyObject * FSSext(PyObject *self, PyObject *args)
         return NULL;
 
     Vector k(kx,ky,kz);
+
+    CHECKHANDLE(mapFSS_Model, handle);
     Free_Space_Scatterer_Ptr &model = mapFSS_Model[handle];
 
     MuellerMatrix mueller = model->extinction(k);
@@ -587,6 +606,8 @@ static PyObject * RCWDiffractionEfficiency(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "ii", &handle, &i))
         return NULL;
 
+    CHECKHANDLE(mapRCW_Model, handle);
+    
     MuellerMatrix mueller = mapRCW_Model[handle]->GetIntensity(i);
 
     return PyMueller(mueller);
@@ -606,6 +627,7 @@ static PyObject * RCWDiffractionAmplitude(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "ii", &handle, &i))
         return NULL;
 
+    CHECKHANDLE(mapRCW_Model, handle);
     JonesMatrix jones = mapRCW_Model[handle]->GetAmplitude(i);
 
     return PyJones(jones);
@@ -625,6 +647,8 @@ static PyObject * CrossRCWDiffractionEfficiency(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "iii", &handle, &i,&j))
         return NULL;
 
+    CHECKHANDLE(mapCrossRCW_Model, handle);
+    
     MuellerMatrix mueller = mapCrossRCW_Model[handle]->GetIntensity(i,j);
 
     return PyMueller(mueller);
@@ -643,6 +667,7 @@ static PyObject * CrossRCWDiffractionAmplitude(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "iii", &handle, &i,&j))
         return NULL;
 
+    CHECKHANDLE(mapCrossRCW_Model, handle);
     JonesMatrix jones = mapCrossRCW_Model[handle]->GetAmplitude(i,j);
 
     return PyJones(jones);
@@ -661,6 +686,7 @@ static PyObject * RCWDirection(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "ii", &handle, &i))
         return NULL;
 
+    CHECKHANDLE(mapRCW_Model, handle);
     Vector direction = mapRCW_Model[handle]->GetDirection(i);
 
     return PyVector(direction);
@@ -684,6 +710,7 @@ static PyObject * GetGratingEpsilon(PyObject *self, PyObject *args)
 
     COMPLEX eps;
     
+    CHECKHANDLE(mapRCW_Model, handle);
     const Grating_Ptr &grating = mapRCW_Model[handle]->get_grating(); 
 
     int level = grating->get_level(z);
@@ -714,6 +741,8 @@ static PyObject * GetGratingDefinition(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "i", &handle))
         return NULL;
 
+    CHECKHANDLE(mapRCW_Model, handle);
+    
     Model_Ptr<RCW_Model> &model = mapRCW_Model[handle];
     const Grating_Ptr &grating = model->get_grating();
 
@@ -852,6 +881,8 @@ static PyObject * CrossRCWDirection(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "iii", &handle, &i,&j))
         return NULL;
 
+    CHECKHANDLE(mapCrossRCW_Model, handle);
+
     Vector direction = mapCrossRCW_Model[handle]->GetDirection(i,j);
 
     return PyVector(direction);
@@ -873,6 +904,8 @@ static PyObject * SetParameter(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "iss", &handle, &parameter, &value))
         return NULL;
  
+    CHECKHANDLE(mapModel, handle);
+
     mapModel[handle]->set_parameter(parameter,value);
     
     Py_INCREF(Py_None);
@@ -893,6 +926,8 @@ static PyObject * GetParameter(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "is", &handle, &parameter))
         return NULL;
 
+    CHECKHANDLE(mapModel, handle);
+    
     std::string value = mapModel[handle]->get_parameter(parameter);
 
     return PyUnicode_FromString(value.c_str());
@@ -912,6 +947,9 @@ static PyObject * PrintParameters(PyObject *self, PyObject *args)
         return NULL;
 
     std::ostringstream os;
+
+    CHECKHANDLE(mapModel, handle);
+
     mapModel[handle]->print_parameters(os);
 
     return PyUnicode_FromString(os.str().c_str());
@@ -929,6 +967,8 @@ static PyObject * AskParameters(PyObject *self, PyObject *args)
     
     if (!PyArg_ParseTuple(args, "i", &handle))
         return NULL;
+
+    CHECKHANDLE(mapModel, handle);
 
     Model* model = mapModel[handle];
     
@@ -954,6 +994,8 @@ static PyObject * GetParameterDictionary(PyObject *self, PyObject *args)
 
     typedef std::deque<std::string> StringList;
     StringList names;
+
+    CHECKHANDLE(mapModel, handle);
 
     Model *model = mapModel[handle];
     model->get_parameter_names(names);
@@ -990,6 +1032,8 @@ static PyObject * GetModelName(PyObject *self, PyObject *args)
     if (!PyArg_ParseTuple(args, "i", &handle))
         return NULL;
 
+    CHECKHANDLE(mapModel, handle);
+
     Model* model = mapModel[handle];
     
     
@@ -1014,6 +1058,8 @@ static PyObject * ReflectionCoefficient(PyObject *self, PyObject *args)
     
     if (!PyArg_ParseTuple(args, "iDdsss", &handle,&theta,&lambda,&n0,&nt,&type))
         return NULL;
+
+    CHECKHANDLE(mapStackModel, handle);
 
     string stype(type);
     JonesMatrix result;
@@ -1044,6 +1090,8 @@ static PyObject * TransmissionCoefficient(PyObject *self, PyObject *args)
     
     if (!PyArg_ParseTuple(args, "iDdsss", &handle,&theta,&lambda,&n0,&nt,&type))
         return NULL;
+
+    CHECKHANDLE(mapStackModel, handle);
 
     string stype(type);
     JonesMatrix result;

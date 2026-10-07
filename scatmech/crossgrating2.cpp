@@ -527,7 +527,7 @@ namespace SCATMECH {
                     }
                 }
             } else if (level>blevels + iseparation) {
-                int tlevel = blevels-level+blevels+iseparation;
+                int tlevel = levels - level;
                 thick(level) = top->get_thickness(tlevel);
                 FillE0E1E2E3Matrices(EPS0,EPS11,EPS12,EPS2,EPS3,
 					MU0, MU11, MU12, MU2, MU3,

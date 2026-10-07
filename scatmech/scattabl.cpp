@@ -236,7 +236,7 @@ namespace SCATMECH {
     vector<double> FormulaFile::get_column(int i, const Evaluator::VMAP &params)
     {
         if (params==lastparams && lastcolumns.size()!=0) {
-            if (i<0 || i>(int)lastcolumns.size()) error("Column number " + to_string(i) + " out of range");
+            if (i<=0 || i>(int)lastcolumns.size()) error("Column number " + to_string(i) + " out of range");
             return lastcolumns[i-1];
         }
 
@@ -285,6 +285,8 @@ namespace SCATMECH {
             if (file.fail()||word!="BY") error("BY expected");
             file >> step;
             if (file.fail()) error("Cannot read BY value");
+
+            if (step<=0) error("FOR loop BY step must be strictly greater than 0");
         } else error("FOR or AT expected");
 
         ifstream::pos_type backto=file.tellg();
@@ -325,7 +327,7 @@ namespace SCATMECH {
             }
             if (icol<i) error("Not enough columns in file");
         }
-        if (i<0 || i>(int)lastcolumns.size()) error("Column number " + to_string(i) + " out of range");
+        if (i<=0 || i>(int)lastcolumns.size()) error("Column number " + to_string(i) + " out of range");
         return lastcolumns[i-1];
     }
 

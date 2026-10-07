@@ -15,6 +15,7 @@
 
 #include <vector>
 #include <valarray>
+#include <climits>
 
 #include "scatmech.h"
 
@@ -36,6 +37,14 @@ namespace SCATMECH {
     template <class T>
     class FARRAY
     {
+        private: 
+            unsigned safe_multiply(unsigned a, unsigned b) {
+                if (a == 0 || b == 0) return 0;
+                if (a > UINT_MAX / b) {
+                    throw SCATMECH_exception("Integer overflow in FARRAY allocation");
+                }
+                return a * b;
+            }
         public:
             FARRAY() {
                 p = NULL;
@@ -84,31 +93,7 @@ namespace SCATMECH {
             }
 
             //FARRAY(const FARRAY& a) {p = (T*)(a.p); step1 = a.step1; owner=false;}
-            FARRAY(int i,int j) {
-                p = NULL;
-                allocate(i,j);
-            }
-            FARRAY(int i,int j,int k) {
-                p = NULL;
-                allocate(i,j,k);
-            }
-            FARRAY(int i,int j,int k,int l) {
-                p = NULL;
-                allocate(i,j,k,l);
-            }
-            FARRAY(int i,int j,int k,int l,int I) {
-                p = NULL;
-                allocate(i,j,k,l,I);
-            }
-            FARRAY(int i,int j,int k,int l,int I,int J) {
-                p = NULL;
-                allocate(i,j,k,l,I,J);
-            }
-            FARRAY(int i,int j,int k,int l,int I,int J,int K) {
-                p = NULL;
-                allocate(i,j,k,l,I,J,K);
-            }
-            FARRAY(int i,int j,int k,int l,int I,int J,int K,int L) {
+            FARRAY(int i,int j=1,int k=1,int l=1,int I=1,int J=1,int K=1,int L=1) {
                 p = NULL;
                 allocate(i,j,k,l,I,J,K,L);
             }
@@ -257,106 +242,28 @@ namespace SCATMECH {
                 dims[7]=L;
             }
             #endif
-            void array(int i) {
-                step[0] = i;
-                #ifdef _DEBUG
-                set_dims(i);
-                #endif
-            }
-            void array(int i,int j) {
-                step[1] = j*(step[0] = i);
-                #ifdef _DEBUG
-                set_dims(i,j);
-                #endif
-            }
-            void array(int i,int j,int k) {
-                step[2] = k*(step[1] = j*(step[0] = i) );
-                #ifdef _DEBUG
-                set_dims(i,j,k);
-                #endif
-            }
-            void array(int i,int j,int k,int l) {
-                step[3] = l*(step[2] = k*(step[1] = j*(step[0] = i) ) );
-                #ifdef _DEBUG
-                set_dims(i,j,k,l);
-                #endif
-            }
-            void array(int i,int j,int k,int l,int I) {
-                step[4] = I*(step[3] = l*(step[2] = k*(step[1] = j*(step[0] = i) ) ) );
-                #ifdef _DEBUG
-                set_dims(i,j,k,l,I);
-                #endif
-            }
-            void array(int i,int j,int k,int l,int I,int J) {
-                step[5] = J*(step[4] = I*(step[3] = l*(step[2] = k*(step[1] = j*(step[0] = i) ) ) ) );
-                #ifdef _DEBUG
-                set_dims(i,j,k,l,I,J);
-                #endif
-            }
-            void array(int i,int j,int k,int l,int I,int J,int K) {
-                step[6] = K*(step[5] = J*(step[4] = I*(step[3] = l*(step[2] = k*(step[1] = j*(step[0] = i) ) ) ) ) );
-                #ifdef _DEBUG
-                set_dims(i,j,k,l,I,J,K);
-                #endif
-            }
-            void array(int i,int j,int k,int l,int I,int J,int K,int L) {
+            
+      
+            void array(int i,int j=1,int k=1,int l=1,int I=1,int J=1,int K=1,int L=1) {
                 step[7] = L*(step[6] = K*(step[5] = J*(step[4] = I*(step[3] = l*(step[2] = k*(step[1] = j*(step[0] = i) ) ) ) ) ) );
                 #ifdef _DEBUG
                 set_dims(i,j,k,l,I,J,K,L);
                 #endif
             }
 
-            void allocate(int i) {
+            void allocate(int i,int j=1,int k=1,int l=1,int I=1,int J=1,int K=1,int L=1) {
+                if (i <= 0 || j <= 0 || k <= 0 || l <= 0 || I <= 0 || J <= 0 || K <= 0 || L <= 0) {
+                    throw SCATMECH_exception("Invalid dimensions in FARRAY");
+                }
                 deallocate();
-                array(i);
-                p = new T[i];
-                owner=true;
-            }
-            void allocate(int i,int j) {
-                deallocate();
-                unsigned size = i*j;
-                array(i,j);
-                p = new T[size];
-                owner=true;
-            }
-            void allocate(int i,int j,int k) {
-                deallocate();
-                unsigned size = i*j*k;
-                array(i,j,k);
-                p = new T[size];
-                owner=true;
-            }
-            void allocate(int i,int j,int k,int l) {
-                deallocate();
-                unsigned size = i*j*k*l;
-                array(i,j,k,l);
-                p = new T[size];
-                owner=true;
-            }
-            void allocate(int i,int j,int k,int l,int I) {
-                deallocate();
-                unsigned size = i*j*k*l*I;
-                array(i,j,k,l,I);
-                p = new T[size];
-                owner=true;
-            }
-            void allocate(int i,int j,int k,int l,int I,int J) {
-                deallocate();
-                unsigned size = i*j*k*l*I*J;
-                array(i,j,k,l,I,J);
-                p = new T[size];
-                owner=true;
-            }
-            void allocate(int i,int j,int k,int l,int I,int J,int K) {
-                deallocate();
-                unsigned size = i*j*k*l*I*J*K;
-                array(i,j,k,l,I,J,K);
-                p = new T[size];
-                owner=true;
-            }
-            void allocate(int i,int j,int k,int l,int I,int J,int K,int L) {
-                deallocate();
-                unsigned size = i*j*k*l*I*J*K*L;
+                unsigned size = safe_multiply(
+                                  safe_multiply(
+                                    safe_multiply(
+                                       safe_multiply(
+                                          safe_multiply(
+                                             safe_multiply(
+                                                safe_multiply(i, j), k), l), I), J), K),L);
+                array(i, j, k, l, I, J, K, L);
                 p = new T[size];
                 owner=true;
             }

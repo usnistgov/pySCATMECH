@@ -815,6 +815,8 @@ namespace SCATMECH {
         i = i+order1+1;
         j = j+order2+1;
 
+        if (i <= 0 || i>2 * order1 + 1|| j <= 0 || j > 2 * order2 + 1) error("Order index out of range");
+
         CVector result = ((type&0x01) ? Vt(i,j) : Vr(i,j));
 		if (type == 2 || type == 3) result.z = -result.z; 
 		return result;
@@ -827,6 +829,8 @@ namespace SCATMECH {
         i = i+order1+1;
         j = j+order2+1;
 
+        if (i <= 0 || i > 2 * order1 + 1 || j <= 0 || j > 2 * order2 + 1) error("Order index out of range");
+
         return (type&0x01) ? t(i,j) : r(i,j);
     }
 
@@ -836,6 +840,8 @@ namespace SCATMECH {
 
         i = i+order1+1;
         j = j+order2+1;
+
+        if (i <= 0 || i > 2 * order1 + 1 || j <= 0 || j > 2 * order2 + 1) error("Order index out of range");
 
         return (type&0x01) ? T(i,j) : R(i,j);
     }
